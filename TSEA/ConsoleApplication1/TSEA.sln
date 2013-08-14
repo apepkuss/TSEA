@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "ConsoleApplication1\Demo.csproj", "{23212881-D921-4C09-98C2-9BE10E23A812}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlDiff", "..\XmlDiff\XmlDiff\XmlDiff.csproj", "{DF063FA9-0770-4960-8A9E-80D5F55019C8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23212881-D921-4C09-98C2-9BE10E23A812}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23212881-D921-4C09-98C2-9BE10E23A812}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23212881-D921-4C09-98C2-9BE10E23A812}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23212881-D921-4C09-98C2-9BE10E23A812}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF063FA9-0770-4960-8A9E-80D5F55019C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF063FA9-0770-4960-8A9E-80D5F55019C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF063FA9-0770-4960-8A9E-80D5F55019C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF063FA9-0770-4960-8A9E-80D5F55019C8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
