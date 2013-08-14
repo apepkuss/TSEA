@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:airsyncbase="AirSyncBase" xmlns:email2="Email2" xmlns:tasks="Tasks" xmlns="Email" targetNamespace="Email" elementFormDefault="qualified" attributeFormDefault="unqualified">
-  <!--<xs:import namespace="AirSyncBase" schemaLocation="AirSyncBase.xsd"/>
+  <xs:import namespace="AirSyncBase" schemaLocation="AirSyncBase.xsd"/>
   <xs:import namespace="Email2" schemaLocation="Email2.xsd"/>
-  <xs:import namespace="Tasks" schemaLocation="Tasks.xsd"/>-->
+  <xs:import namespace="Tasks" schemaLocation="Tasks.xsd"/>
   <xs:element name="To">
     <xs:simpleType>
       <xs:restriction base="xs:string">

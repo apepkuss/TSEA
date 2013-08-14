@@ -58,9 +58,9 @@ namespace ConsoleApplication1
             //}
             #endregion
 
-            string soureFile = @"C:\Users\v-liuxin\SkyDrive\API Mapping\EAS\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Email.xsd";
-
-            XmlDiff diff = new XmlDiff(soureFile);
+            string soureFile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Email.xsd";
+            string changedFile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\email.xsd";
+            XmlDiff diff = new XmlDiff(soureFile, changedFile);
 
             diff.Diff();
 

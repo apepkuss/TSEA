@@ -60,10 +60,22 @@
     <None Include="Resources\changed.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Resources\ChangedXSD\asb.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\ChangedXSD\email.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Resources\ChangedXSD\email2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\tasks.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\original.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\AirSyncBase.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\OriginalXSD\Email.xsd">

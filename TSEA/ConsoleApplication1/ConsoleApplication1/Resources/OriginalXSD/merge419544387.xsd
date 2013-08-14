@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:airsyncbase="AirSyncBase" xmlns:email2="Email2" xmlns:tasks="Tasks" xmlns="Email" targetNamespace="Email" elementFormDefault="qualified" attributeFormDefault="unqualified">
-  <!--<xs:import namespace="AirSyncBase" schemaLocation="AirSyncBase.xsd"/>
-  <xs:import namespace="Email2" schemaLocation="Email2.xsd"/>
-  <xs:import namespace="Tasks" schemaLocation="Tasks.xsd"/>-->
+  <xs:import namespace="AirSyncBase" schemaLocation="AirSyncBase.xsd" />
+  <xs:import namespace="Email2" schemaLocation="Email2.xsd" />
+  <xs:import namespace="Tasks" schemaLocation="Tasks.xsd" />
   <xs:element name="To">
     <xs:simpleType>
       <xs:restriction base="xs:string">
@@ -59,9 +59,9 @@
                     <xs:element name="DayOfMonth" type="xs:integer" minOccurs="0" />
                     <xs:element name="DayOfWeek" type="xs:integer" minOccurs="0" />
                     <xs:element name="MonthOfYear" type="xs:integer" minOccurs="0" />
-                    <xs:element name="CalendarType" type="xs:integer" />
-                    <xs:element name="IsLeapMonth" type="xs:unsignedByte" />
-                    <xs:element name="FirstDayOfWeek" type="xs:unsignedByte" />
+                    <xs:element name="CalendarType" type="xs:integer" minOccurs="0" />
+                    <xs:element name="IsLeapMonth" type="xs:unsignedByte" minOccurs="0" />
+                    <xs:element name="FirstDayOfWeek" type="xs:unsignedByte" minOccurs="0" />
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
@@ -73,7 +73,7 @@
         <xs:element name="TimeZone" type="xs:string" />
         <xs:element name="GlobalObjId" type="xs:string" />
         <xs:element name="DisallowNewTimeProposal" type="xs:unsignedByte" minOccurs="0" />
-        <xs:element name="MeetingMessageType" type="xs:unsignedByte" />
+        <xs:element name="MeetingMessageType" type="xs:unsignedByte" minOccurs="0" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -81,19 +81,19 @@
   <xs:element name="Flag">
     <xs:complexType>
       <xs:all>
-        <xs:element name="Subject" type="xs:string" />
+        <xs:element name="Subject" type="xs:string" minOccurs="0" />
         <xs:element name="Status" type="xs:integer" minOccurs="0" />
         <xs:element name="FlagType" type="xs:string" minOccurs="0" />
-        <xs:element name="DateCompleted" type="xs:dateTime" />
+        <xs:element name="DateCompleted" type="xs:dateTime" minOccurs="0" />
         <xs:element name="CompleteTime" type="xs:dateTime" minOccurs="0" />
-        <xs:element name="StartDate" type="xs:dateTime" />
-        <xs:element name="DueDate" type="xs:dateTime" />
-        <xs:element name="UtcStartDate" type="xs:dateTime" />
-        <xs:element name="UtcDueDate" type="xs:dateTime" />
-        <xs:element name="ReminderSet" type="xs:unsignedByte" />
-        <xs:element name="ReminderTime" type="xs:dateTime" />
-        <xs:element name="OrdinalDate" type="xs:dateTime" />
-        <xs:element name="SubOrdinalDate" type="xs:string" />
+        <xs:element name="StartDate" type="xs:dateTime" minOccurs="0" />
+        <xs:element name="DueDate" type="xs:dateTime" minOccurs="0" />
+        <xs:element name="UtcStartDate" type="xs:dateTime" minOccurs="0" />
+        <xs:element name="UtcDueDate" type="xs:dateTime" minOccurs="0" />
+        <xs:element name="ReminderSet" type="xs:unsignedByte" minOccurs="0" />
+        <xs:element name="ReminderTime" type="xs:dateTime" minOccurs="0" />
+        <xs:element name="OrdinalDate" type="xs:dateTime" minOccurs="0" />
+        <xs:element name="SubOrdinalDate" type="xs:string" minOccurs="0" />
       </xs:all>
     </xs:complexType>
   </xs:element>
@@ -164,9 +164,9 @@
                           <xs:element name="DayOfMonth" type="xs:integer" minOccurs="0" />
                           <xs:element name="DayOfWeek" type="xs:integer" minOccurs="0" />
                           <xs:element name="MonthOfYear" type="xs:integer" minOccurs="0" />
-                          <xs:element name="CalendarType" type="xs:integer" />
-                          <xs:element name="IsLeapMonth" type="xs:unsignedByte" />
-                          <xs:element name="FirstDayOfWeek" type="xs:unsignedByte" />
+                          <xs:element name="CalendarType" type="xs:integer" minOccurs="0" />
+                          <xs:element name="IsLeapMonth" type="xs:unsignedByte" minOccurs="0" />
+                          <xs:element name="FirstDayOfWeek" type="xs:unsignedByte" minOccurs="0" />
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
@@ -178,7 +178,7 @@
               <xs:element name="TimeZone" type="xs:string" />
               <xs:element name="GlobalObjId" type="xs:string" />
               <xs:element name="DisallowNewTimeProposal" type="xs:unsignedByte" minOccurs="0" />
-              <xs:element name="MeetingMessageType" type="xs:unsignedByte" />
+              <xs:element name="MeetingMessageType" type="xs:unsignedByte" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -186,19 +186,19 @@
         <xs:element name="Flag">
           <xs:complexType>
             <xs:all>
-              <xs:element name="Subject" type="xs:string" />
+              <xs:element name="Subject" type="xs:string" minOccurs="0" />
               <xs:element name="Status" type="xs:integer" minOccurs="0" />
               <xs:element name="FlagType" type="xs:string" minOccurs="0" />
-              <xs:element name="DateCompleted" type="xs:dateTime" />
+              <xs:element name="DateCompleted" type="xs:dateTime" minOccurs="0" />
               <xs:element name="CompleteTime" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="StartDate" type="xs:dateTime" />
-              <xs:element name="DueDate" type="xs:dateTime" />
-              <xs:element name="UtcStartDate" type="xs:dateTime" />
-              <xs:element name="UtcDueDate" type="xs:dateTime" />
-              <xs:element name="ReminderSet" type="xs:unsignedByte" />
-              <xs:element name="ReminderTime" type="xs:dateTime" />
-              <xs:element name="OrdinalDate" type="xs:dateTime" />
-              <xs:element name="SubOrdinalDate" type="xs:string" />
+              <xs:element name="StartDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DueDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="UtcStartDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="UtcDueDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ReminderSet" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="ReminderTime" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="OrdinalDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="SubOrdinalDate" type="xs:string" minOccurs="0" />
             </xs:all>
           </xs:complexType>
         </xs:element>
@@ -271,9 +271,9 @@
                           <xs:element name="DayOfMonth" type="xs:integer" minOccurs="0" />
                           <xs:element name="DayOfWeek" type="xs:integer" minOccurs="0" />
                           <xs:element name="MonthOfYear" type="xs:integer" minOccurs="0" />
-                          <xs:element name="CalendarType" type="xs:integer" />
-                          <xs:element name="IsLeapMonth" type="xs:unsignedByte" />
-                          <xs:element name="FirstDayOfWeek" type="xs:unsignedByte" />
+                          <xs:element name="CalendarType" type="xs:integer" minOccurs="0" />
+                          <xs:element name="IsLeapMonth" type="xs:unsignedByte" minOccurs="0" />
+                          <xs:element name="FirstDayOfWeek" type="xs:unsignedByte" minOccurs="0" />
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
@@ -285,7 +285,7 @@
               <xs:element name="TimeZone" type="xs:string" />
               <xs:element name="GlobalObjId" type="xs:string" />
               <xs:element name="DisallowNewTimeProposal" type="xs:unsignedByte" minOccurs="0" />
-              <xs:element name="MeetingMessageType" type="xs:unsignedByte" />
+              <xs:element name="MeetingMessageType" type="xs:unsignedByte" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
