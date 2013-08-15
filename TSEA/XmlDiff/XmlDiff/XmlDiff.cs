@@ -18,6 +18,10 @@ namespace Sam.XmlDiff
 
         private string changedXsd;
 
+        private XmlDocument originalXmlDoc;
+
+        private XmlDocument changedXmlDoc;
+
         #endregion
 
         #region Constructors
@@ -53,32 +57,60 @@ namespace Sam.XmlDiff
 
         public void Diff()
         {
-            XmlDocument originalXmlDoc = new XmlDocument();
-            XmlDocument changedXmlDoc = new XmlDocument();
+            #region TODO: TO BE REMOVED
+            
+            //XmlDocument originalXmlDoc = new XmlDocument();
+            //XmlDocument changedXmlDoc = new XmlDocument();
 
-            try
-            {
-                originalXmlDoc.Load(this.originalXsd);
+            //try
+            //{
+            //    originalXmlDoc.Load(this.originalXsd);
 
-                // parse internal and external ref-nodes
-                this.Parse(ref originalXmlDoc, this.originalXsd);
+            //    // parse internal and external ref-nodes
+            //    this.Preprocess(ref originalXmlDoc, this.originalXsd);
 
-                // save the expanded XML doc
-                this.Save(ref originalXmlDoc, this.originalXsd);
+            //    // save the expanded XML doc
+            //    this.Save(ref originalXmlDoc, this.originalXsd);
 
-                changedXmlDoc.Load(this.changedXsd);
-                this.Parse(ref changedXmlDoc, this.changedXsd);
-                this.Save(ref changedXmlDoc, this.changedXsd);
+            //    changedXmlDoc.Load(this.changedXsd);
+            //    this.Preprocess(ref changedXmlDoc, this.changedXsd);
+            //    this.Save(ref changedXmlDoc, this.changedXsd);
 
-                this.Display("All done!");
-            }
-            catch (System.Exception ex)
-            {
-                this.Display(ex.Message);
-            }
+            //    this.Display("All done!");
+            //}
+            //catch (System.Exception ex)
+            //{
+            //    this.Display(ex.Message);
+            //}
+
+            #endregion
+
+
         }
 
-        private void Parse(ref XmlDocument xmlDoc, string xsdFile)
+        public void Parse()
+        {
+            if (!string.IsNullOrEmpty(this.originalXsd))
+            {
+                this.originalXmlDoc = new XmlDocument();
+                this.originalXmlDoc.Load(this.originalXsd);
+
+                // Parse, expand, and save the new doc
+                this.Preprocess(ref this.originalXmlDoc, this.originalXsd);
+            }
+
+            if (!string.IsNullOrEmpty(this.changedXsd))
+            {
+                this.changedXmlDoc = new XmlDocument();
+                this.changedXmlDoc.Load(this.changedXsd);
+
+                this.Preprocess(ref this.changedXmlDoc, this.changedXsd);
+            }
+
+            this.Display("Parsing is done!");
+        }
+
+        private void Preprocess(ref XmlDocument xmlDoc, string xsdFile)
         {
             this.ElementsWithRefAttribute = null;
             this.InteranlRefNodes = null;
@@ -178,6 +210,8 @@ namespace Sam.XmlDiff
 
                 this.ExpandExternalRefNodes(ref xmlDoc, xsdFile);
 
+                // save the expanded XML doc
+                this.Save(ref xmlDoc, xsdFile);
             }
             catch (FileNotFoundException ex)
             {
