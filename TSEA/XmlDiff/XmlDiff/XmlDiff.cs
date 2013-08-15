@@ -143,7 +143,9 @@ namespace Sam.XmlDiff
                 foreach (XmlNode node in nodes)
                 {
                     XmlElement element = node as XmlElement;
-                    if (element != null && element.HasAttribute("ref"))
+
+                    // filter ref-nodes
+                    if (element != null && (element.HasAttribute("ref") || element.HasAttribute("type")))
                     {
                         // filter and store ref-elements
                         if (this.ElementsWithRefAttribute == null)
@@ -156,16 +158,20 @@ namespace Sam.XmlDiff
                             this.ExternalRefNodes = new List<XmlNode>();
                         }
 
-                        attributeValue = element.GetAttribute("ref");
+                        if (element.HasAttribute("ref"))
+                        {
+                            attributeValue = element.GetAttribute("ref");
+                        }
+                        else
+                        {
+                            attributeValue = element.GetAttribute("type");
+                        }
 
                         if (attributeValue.Contains(":") && !attributeValue.Contains("xs:"))
                         {
                             // Handle external ref node
                             this.ExternalRefNodes.Add(node);
                         }
-
-                        this.ElementsWithRefAttribute.Add(element.GetAttribute("ref"));
-
                     }
                 }
                 #endregion
@@ -267,35 +273,77 @@ namespace Sam.XmlDiff
             foreach (XmlNode refNode in this.ExternalRefNodes)
             {
                 XmlElement refElement = refNode as XmlElement;
-                string[] refValue = refElement.GetAttribute("ref").Split(':');
+                string[] refValue = null;
+                bool hasTypeAttribute = false;
 
+                if (refElement.HasAttribute("ref"))
+                {
+                    refValue = refElement.GetAttribute("ref").Split(':');
+                }
+                else if (refElement.HasAttribute("type"))
+                {
+                    refValue = refElement.GetAttribute("type").Split(':');
+                    hasTypeAttribute = true;
+                }
+
+                if (refValue == null)
+                {
+                    this.Display("The attribute does not exist.");
+                }
+                
                 externalFileName = Path.Combine(Path.GetDirectoryName(xsdFile), externalFiles[refValue[0].ToLower()]);
                 externalDoc = new XmlDocument();
                 externalDoc.Load(externalFileName);
 
-                foreach (XmlNode conNode in externalDoc.GetElementsByTagName("xs:element"))
+                XmlNodeList conNodes = null;
+
+                if (hasTypeAttribute)
+                {
+                    conNodes = externalDoc.GetElementsByTagName("xs:simpleType");
+                } 
+                else
+                {
+                    conNodes = externalDoc.GetElementsByTagName("xs:element");
+                }
+
+                foreach (XmlNode conNode in conNodes)
                 {
                     XmlElement conElement = conNode as XmlElement;
                     if (conElement != null && conElement.HasAttribute("name") && string.Equals(refValue[1], conElement.GetAttribute("name")))
                     {
-                        XmlNode newNode = xmlDoc.ImportNode(conNode, true);
-
-                        // append non-ref attributes of refNode to conNode
-                        foreach (XmlAttribute attribute in refNode.Attributes)
+                        if (hasTypeAttribute)
                         {
-                            if (attribute.Name != "ref")
-                            {
-                                XmlElement newElement = newNode as XmlElement;
-                                newElement.SetAttribute(attribute.Name, attribute.Value);
-
-                                break;
-                            }
+                            conElement.RemoveAttribute("name");
                         }
 
-                        // replace an internal ref node with its corresponding concrete node
-                        XmlElement parent = refNode.ParentNode as XmlElement;
-                        parent.ReplaceChild(newNode, refNode);
+                        XmlNode newNode = xmlDoc.ImportNode(conNode, true);
 
+                        if (hasTypeAttribute)
+                        {
+                            refElement.RemoveAttribute("type");
+
+                            // replace an internal ref node with its corresponding concrete node
+                            refNode.AppendChild(newNode);
+                        }
+                        else
+                        {
+                            // append non-ref attributes of refNode to conNode
+                            foreach (XmlAttribute attribute in refNode.Attributes)
+                            {
+                                if (attribute.Name != "ref")
+                                {
+                                    XmlElement newElement = newNode as XmlElement;
+                                    newElement.SetAttribute(attribute.Name, attribute.Value);
+
+                                    break;
+                                }
+                            }
+
+                            // replace an internal ref node with its corresponding concrete node
+                            XmlElement parent = refNode.ParentNode as XmlElement;
+                            parent.ReplaceChild(newNode, refNode);
+                        }
+                        
                         break;
                     }
                 }
