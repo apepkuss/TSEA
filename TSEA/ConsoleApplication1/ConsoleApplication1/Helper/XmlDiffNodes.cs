@@ -505,13 +505,12 @@ namespace Sam.XmlDiffPath
     internal class XmlDiffER : XmlDiffNode
     {
         // Fields
-        string _name;
+        string name;
 
         // Constructor
-        internal XmlDiffER(int position, string name)
-            : base(position)
+        internal XmlDiffER(int position, string name) : base(position)
         {
-            _name = name;
+            this.name = name;
         }
 
         // Properties
@@ -521,7 +520,7 @@ namespace Sam.XmlDiffPath
         {
             get
             {
-                return _name;
+                return this.name;
             }
         }
 
@@ -534,11 +533,11 @@ namespace Sam.XmlDiffPath
         }
 
         // Methods
-        // computes hash value of the node and stores it in the _hashValue variable
+        // computes hash value of the node and stores it in the hashValue variable
         internal override void ComputeHashValue(XmlHash xmlHash)
         {
             Debug.Assert(this.hashValue == 0);
-            this.hashValue = xmlHash.HashER(_name);
+            this.hashValue = xmlHash.HashER(this.name);
         }
 
         // compares the node to another one and returns the xmldiff operation for changing this node to the other
@@ -554,10 +553,10 @@ namespace Sam.XmlDiffPath
                 return XmlDiffOperation.ChangeER;
         }
 
-        // Overriden abstract methods for outputing
+        // Overridden abstract methods for outputting
         internal override void WriteTo(XmlWriter w)
         {
-            w.WriteEntityRef(this._name);
+            w.WriteEntityRef(this.name);
         }
 
         internal override void WriteContentTo(XmlWriter w) { }
