@@ -22,6 +22,9 @@ namespace Sam.XmlDiff
 
         private XmlDocument changedXmlDoc;
 
+        private List<MismatchedElementPair> mismatchedNodePairs = new List<MismatchedElementPair>();
+
+        private List<MismatchedAttributePair> mismatchedAttrPairs = new List<MismatchedAttributePair>();
         #endregion
 
         #region Constructors
@@ -55,10 +58,32 @@ namespace Sam.XmlDiff
 
         #region Methods
 
+        public void Parse()
+        {
+            if (!string.IsNullOrEmpty(this.originalXsd))
+            {
+                this.originalXmlDoc = new XmlDocument();
+                this.originalXmlDoc.Load(this.originalXsd);
+
+                // Parse, expand, and save the new doc
+                this.Preprocess(ref this.originalXmlDoc, this.originalXsd);
+            }
+
+            if (!string.IsNullOrEmpty(this.changedXsd))
+            {
+                this.changedXmlDoc = new XmlDocument();
+                this.changedXmlDoc.Load(this.changedXsd);
+
+                this.Preprocess(ref this.changedXmlDoc, this.changedXsd);
+            }
+
+            this.Display("Parsing is done!");
+        }
+
         public void Diff()
         {
             #region TODO: TO BE REMOVED
-            
+
             //XmlDocument originalXmlDoc = new XmlDocument();
             //XmlDocument changedXmlDoc = new XmlDocument();
 
@@ -85,30 +110,32 @@ namespace Sam.XmlDiff
 
             #endregion
 
+            if (this.originalXmlDoc.DocumentElement != null && this.changedXmlDoc.DocumentElement != null)
+            {
+                this.Compare(this.originalXmlDoc.DocumentElement, this.changedXmlDoc.DocumentElement);
+            }
 
+            this.GenerateDelta();
         }
 
-        public void Parse()
+        public void GenerateDelta()
         {
-            if (!string.IsNullOrEmpty(this.originalXsd))
+            if (this.mismatchedAttrPairs.Count > 0)
             {
-                this.originalXmlDoc = new XmlDocument();
-                this.originalXmlDoc.Load(this.originalXsd);
-
-                // Parse, expand, and save the new doc
-                this.Preprocess(ref this.originalXmlDoc, this.originalXsd);
+                // TODO
             }
 
-            if (!string.IsNullOrEmpty(this.changedXsd))
+            if (this.mismatchedNodePairs.Count > 0)
             {
-                this.changedXmlDoc = new XmlDocument();
-                this.changedXmlDoc.Load(this.changedXsd);
-
-                this.Preprocess(ref this.changedXmlDoc, this.changedXsd);
+                // TODO
             }
-
-            this.Display("Parsing is done!");
         }
+
+        #endregion
+
+        #region Private Methods
+
+        #region Private Methods for Parse
 
         private void Preprocess(ref XmlDocument xmlDoc, string xsdFile)
         {
@@ -217,7 +244,7 @@ namespace Sam.XmlDiff
             {
                 Console.WriteLine("Exception: {0}", ex.Message);
             }
-            
+
         }
 
         private void Expand(ref XmlDocument xmlDoc)
@@ -296,14 +323,14 @@ namespace Sam.XmlDiff
                 {
                     if (externalFiles == null)
                     {
-                        externalFiles = new Dictionary<string,string>();
+                        externalFiles = new Dictionary<string, string>();
                     }
 
                     externalFiles.Add(importElement.GetAttribute("namespace").ToLower(), importElement.GetAttribute("schemaLocation"));
                 }
-                
+
             }
-            
+
             foreach (XmlNode refNode in this.ExternalRefNodes)
             {
                 XmlElement refElement = refNode as XmlElement;
@@ -324,7 +351,7 @@ namespace Sam.XmlDiff
                 {
                     this.Display("The attribute does not exist.");
                 }
-                
+
                 externalFileName = Path.Combine(Path.GetDirectoryName(xsdFile), externalFiles[refValue[0].ToLower()]);
                 externalDoc = new XmlDocument();
                 externalDoc.Load(externalFileName);
@@ -334,7 +361,7 @@ namespace Sam.XmlDiff
                 if (hasTypeAttribute)
                 {
                     conNodes = externalDoc.GetElementsByTagName("xs:simpleType");
-                } 
+                }
                 else
                 {
                     conNodes = externalDoc.GetElementsByTagName("xs:element");
@@ -377,12 +404,167 @@ namespace Sam.XmlDiff
                             XmlElement parent = refNode.ParentNode as XmlElement;
                             parent.ReplaceChild(newNode, refNode);
                         }
-                        
+
                         break;
                     }
                 }
             }
         }
+
+        #endregion
+
+        #region Private Methods for Diff
+        
+        private void Compare(XmlNode sourceNode, XmlNode changedNode)
+        {
+            if (!string.Equals(sourceNode.Name, changedNode.Name))
+            {
+                mismatchedNodePairs.Add(new MismatchedElementPair(sourceNode, changedNode));
+
+                if (sourceNode.HasChildNodes && changedNode.HasChildNodes)
+                {
+                    // TODO: handling the child elements of the mismatched non-leaf elements
+                    this.Compare(sourceNode.FirstChild, changedNode.FirstChild);
+                }
+            }
+
+            // compare the value of "name" attribute
+            XmlElement sourceElement = sourceNode as XmlElement;
+            XmlElement changedElement = changedNode as XmlElement;
+
+            // compare attributes and get those mismatched ones.
+            List<MismatchedAttributePair> mismatchedAttributes = this.CompareAttributes(sourceElement.Attributes, changedElement.Attributes);
+            
+            if (mismatchedAttributes.Count > 0)
+            {
+                foreach (MismatchedAttributePair misAttr in mismatchedAttributes)
+                {
+                    misAttr.SourceOwnerNode = sourceNode;
+                    misAttr.ChangedOwnerNode = changedNode;
+                }
+
+                this.mismatchedAttrPairs.AddRange(mismatchedAttributes);
+            }
+
+            if (sourceNode.HasChildNodes && changedNode.HasChildNodes)
+            {
+                this.Compare(sourceNode.FirstChild, changedNode.FirstChild);
+            }
+
+            if (sourceNode.NextSibling != null && changedNode.NextSibling != null)
+            {
+                this.Compare(sourceNode.NextSibling, changedNode.NextSibling);
+            }
+        }
+
+        private List<MismatchedAttributePair> CompareAttributes(XmlAttributeCollection sourceAttrCollection, XmlAttributeCollection changedAttrCollection)
+        {
+            List<MismatchedAttributePair> mismatchedAttributes = new List<MismatchedAttributePair>();
+
+            if (sourceAttrCollection.Count == changedAttrCollection.Count)
+            {
+                if (sourceAttrCollection.Count != 0)
+                {
+                    mismatchedAttributes = this.CompareSimpleAttributes(sourceAttrCollection, changedAttrCollection);
+                }
+            }
+            else
+            {
+                mismatchedAttributes = this.CompareComplexAttributes(sourceAttrCollection, changedAttrCollection);
+            }
+
+            return mismatchedAttributes;
+        }
+
+        private List<MismatchedAttributePair> CompareSimpleAttributes(XmlAttributeCollection sourceAttrCollection, XmlAttributeCollection changedAttrCollection)
+        {
+            List<MismatchedAttributePair> mismatchedAttributes = new List<MismatchedAttributePair>();
+
+            foreach (XmlAttribute attrSource in sourceAttrCollection)
+            {
+                foreach (XmlAttribute attrChanged in changedAttrCollection)
+                {
+                    if (string.Equals(attrSource.Name, attrChanged.Name, StringComparison.OrdinalIgnoreCase))
+                    {
+                        if (!string.Equals(attrSource.Value, attrChanged.Value))
+                        {
+                            mismatchedAttributes.Add(new MismatchedAttributePair(attrSource, attrChanged));
+                        }
+
+                        break;
+                    }
+                }
+            }
+
+            return mismatchedAttributes;
+        }
+
+        private List<MismatchedAttributePair> CompareComplexAttributes(XmlAttributeCollection sourceAttrCollection, XmlAttributeCollection changedAttrCollection)
+        {
+            bool isMatched = false;
+            List<MismatchedAttributePair> mismatchedAttributes = new List<MismatchedAttributePair>();
+            XmlAttributeCollection bigAttrCollection;
+            XmlAttributeCollection smallAttrCollection;
+
+            bool flag = sourceAttrCollection.Count > changedAttrCollection.Count;
+            if (flag)
+            {
+                bigAttrCollection = sourceAttrCollection;
+                smallAttrCollection = changedAttrCollection;
+            }
+            else
+            {
+                bigAttrCollection = changedAttrCollection;
+                smallAttrCollection = sourceAttrCollection;
+            }
+
+            foreach (XmlAttribute bAttr in bigAttrCollection)
+            {
+                foreach (XmlAttribute sAttr in smallAttrCollection)
+                {
+                    if (string.Equals(bAttr.Name, sAttr.Name, StringComparison.OrdinalIgnoreCase))
+                    {
+                        if (!string.Equals(bAttr.Value, sAttr.Value))
+                        {
+                            this.Display(string.Format(
+                                "Attribute Diff: source: {0}=\"{1}\"; changed: {2}=\"{3}\".",
+                                bAttr.Name, bAttr.Value,
+                                sAttr.Name, sAttr.Value));
+
+                            if (flag)
+                            {
+                                mismatchedAttributes.Add(new MismatchedAttributePair(bAttr, sAttr));
+                            }
+                            else
+                            {
+                                mismatchedAttributes.Add(new MismatchedAttributePair(sAttr, bAttr));
+                            }
+                        }
+
+                        isMatched = true;
+                        break;
+                    }
+                }
+
+                if (!isMatched)
+                {
+                    if (flag)
+                    {
+                        mismatchedAttributes.Add(new MismatchedAttributePair(bAttr, null));
+                    }
+                    else
+                    {
+                        mismatchedAttributes.Add(new MismatchedAttributePair(null, bAttr));
+                    }
+                }
+
+                isMatched = false;
+            }
+
+            return mismatchedAttributes;
+        }
+
+        #endregion
 
         private void Display(string message)
         {
@@ -404,5 +586,47 @@ namespace Sam.XmlDiff
         }
 
         #endregion
+
+    }
+
+    public enum MismatchedType
+    {
+        TypeToSimpleType,
+        SimpleTypeToType,
+
+        ChangeTypeValue,
+        RemoveType,
+        AddType,
+
+        ChangeQuantifierValue,
+        RemoveQuantifier,
+        AddQuantifier
+    }
+
+    public class MismatchedElementPair
+    {
+        public MismatchedElementPair(XmlNode sourceNode, XmlNode changedNode)
+        {
+            this.SourceNode = sourceNode;
+            this.ChangedNode = changedNode;
+        }
+
+        public XmlNode SourceNode { get; set; }
+        public XmlNode ChangedNode { get; set; }
+    }
+
+    public class MismatchedAttributePair
+    {
+        public MismatchedAttributePair(XmlAttribute sourceAttribute, XmlAttribute changedAttribute)
+        {
+            this.SourceAttribute = sourceAttribute;
+            this.ChangedAttribute = changedAttribute;
+        }
+
+        public XmlAttribute SourceAttribute { get; set; }
+        public XmlAttribute ChangedAttribute { get; set; }
+
+        public XmlNode SourceOwnerNode { get; set; }
+        public XmlNode ChangedOwnerNode { get; set; }
     }
 }
