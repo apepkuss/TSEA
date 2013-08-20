@@ -24,7 +24,6 @@ namespace Sam.XmlDiff
 
         private List<MismatchedElementPair> mismatchedNodePairs = new List<MismatchedElementPair>();
 
-        private List<MismatchedAttributePair> mismatchedAttrPairs = new List<MismatchedAttributePair>();
         #endregion
 
         #region Constructors
@@ -115,16 +114,11 @@ namespace Sam.XmlDiff
                 this.Compare(this.originalXmlDoc.DocumentElement, this.changedXmlDoc.DocumentElement);
             }
 
-            this.GenerateDelta();
+            this.GenerateDeltaFile();
         }
 
-        public void GenerateDelta()
+        public void GenerateDeltaFile()
         {
-            if (this.mismatchedAttrPairs.Count > 0)
-            {
-                // TODO
-            }
-
             if (this.mismatchedNodePairs.Count > 0)
             {
                 // TODO
@@ -417,40 +411,106 @@ namespace Sam.XmlDiff
         
         private void Compare(XmlNode sourceNode, XmlNode changedNode)
         {
+            // compare current node pair
             if (!string.Equals(sourceNode.Name, changedNode.Name))
             {
-                mismatchedNodePairs.Add(new MismatchedElementPair(sourceNode, changedNode));
+                MismatchedElementPair pair = new MismatchedElementPair(sourceNode, changedNode);
 
-                if (sourceNode.HasChildNodes && changedNode.HasChildNodes)
+                #region Set mismatched type
+                
+                if (string.Equals(sourceNode.LocalName, "complexType", StringComparison.OrdinalIgnoreCase) && 
+                    string.Equals(changedNode.LocalName, "simpleType", StringComparison.OrdinalIgnoreCase))
                 {
-                    // TODO: handling the child elements of the mismatched non-leaf elements
-                    this.Compare(sourceNode.FirstChild, changedNode.FirstChild);
+                    pair.MismatchedType = EvolutionTypes.ComplexTypeToSimpleType;
+                }
+
+                if (string.Equals(sourceNode.LocalName, "simpleType", StringComparison.OrdinalIgnoreCase) &&
+                    string.Equals(changedNode.LocalName, "complexType", StringComparison.OrdinalIgnoreCase))
+                {
+                    pair.MismatchedType = EvolutionTypes.SimpleTypeToComplexType;
+                }
+
+                #endregion
+
+                mismatchedNodePairs.Add(pair);
+
+                if (pair.MismatchedType == EvolutionTypes.ComplexTypeToSimpleType || 
+                    pair.MismatchedType == EvolutionTypes.SimpleTypeToComplexType)
+                {
+                    return;
                 }
             }
-
-            // compare the value of "name" attribute
-            XmlElement sourceElement = sourceNode as XmlElement;
-            XmlElement changedElement = changedNode as XmlElement;
-
-            // compare attributes and get those mismatched ones.
-            List<MismatchedAttributePair> mismatchedAttributes = this.CompareAttributes(sourceElement.Attributes, changedElement.Attributes);
-            
-            if (mismatchedAttributes.Count > 0)
+            else
             {
-                foreach (MismatchedAttributePair misAttr in mismatchedAttributes)
+                XmlElement sourceElement = sourceNode as XmlElement;
+                XmlElement changedElement = changedNode as XmlElement;
+
+                // compare attributes and get those mismatched ones.
+                List<MismatchedAttributePair> mismatchedAttributes = this.CompareAttributes(sourceElement.Attributes, changedElement.Attributes);
+
+                if (mismatchedAttributes.Count > 0)
                 {
-                    misAttr.SourceOwnerNode = sourceNode;
-                    misAttr.ChangedOwnerNode = changedNode;
+                    MismatchedElementPair pair = new MismatchedElementPair(sourceNode, changedNode);
+
+                    foreach (MismatchedAttributePair misAttr in mismatchedAttributes)
+                    {
+                        misAttr.SourceOwnerNode = sourceNode;
+                        misAttr.ChangedOwnerNode = changedNode;
+
+                        if (misAttr.MismatchedType == EvolutionTypes.RemoveType)
+                        {
+                            if (string.Equals(changedNode.FirstChild.LocalName, "simpleType"))
+                            {
+                                misAttr.MismatchedType = EvolutionTypes.TypeToSimpleType;
+                            }
+                            else if (string.Equals(changedNode.FirstChild.LocalName, "complexType"))
+                            {
+                                misAttr.MismatchedType = EvolutionTypes.TypeToComplexType;
+                            }
+                        }
+                        else if (misAttr.MismatchedType == EvolutionTypes.AddType)
+                        {
+                            if (string.Equals(sourceNode.FirstChild.LocalName, "simpleType"))
+                            {
+                                misAttr.MismatchedType = EvolutionTypes.SimpleTypeToType;
+                            }
+                            else if (string.Equals(sourceNode.FirstChild.LocalName, "complexType"))
+                            {
+                                misAttr.MismatchedType = EvolutionTypes.ComplexTypeToType;
+                            }
+                        }
+                        else if (string.Equals(sourceNode.LocalName, "maxLength", StringComparison.OrdinalIgnoreCase))
+                        {
+                            if (Convert.ToInt32(misAttr.SourceAttribute.Value) > Convert.ToInt32(misAttr.ChangedAttribute.Value))
+                            {
+                                misAttr.MismatchedType = EvolutionTypes.ChangeRestriction_MaxLength_Decreased;
+                            } 
+                            else
+                            {
+                                misAttr.MismatchedType = EvolutionTypes.ChangeRestriction_MaxLength_Increased;
+                            }
+                            
+                            pair.MismatchedType = EvolutionTypes.ChangeRestriction_MaxLength;
+                        }
+                        else if (string.Equals(sourceNode.LocalName, "import", StringComparison.OrdinalIgnoreCase))
+                        {
+                            pair.MismatchedType = EvolutionTypes.ImportElementChange;
+                        }
+                    }
+
+                    pair.AddMismatchedAttributes(mismatchedAttributes.ToArray());
+                    this.mismatchedNodePairs.Add(pair);
                 }
-
-                this.mismatchedAttrPairs.AddRange(mismatchedAttributes);
             }
+            
 
+            // traverse their child nodes
             if (sourceNode.HasChildNodes && changedNode.HasChildNodes)
             {
                 this.Compare(sourceNode.FirstChild, changedNode.FirstChild);
             }
 
+            // traverse their sibling nodes
             if (sourceNode.NextSibling != null && changedNode.NextSibling != null)
             {
                 this.Compare(sourceNode.NextSibling, changedNode.NextSibling);
@@ -486,12 +546,49 @@ namespace Sam.XmlDiff
                 {
                     if (string.Equals(attrSource.Name, attrChanged.Name, StringComparison.OrdinalIgnoreCase))
                     {
+                        MismatchedAttributePair pair = new MismatchedAttributePair(attrSource, attrChanged);
+
                         if (!string.Equals(attrSource.Value, attrChanged.Value))
                         {
-                            mismatchedAttributes.Add(new MismatchedAttributePair(attrSource, attrChanged));
-                        }
+                            // set MismatchedType
+                            if (string.Equals(attrSource.Name, "type", StringComparison.OrdinalIgnoreCase))
+                            {
+                                pair.MismatchedType = EvolutionTypes.ChangeType;
+                            }
+                            else if (string.Equals(attrSource.Name, "minOccurs", StringComparison.OrdinalIgnoreCase))
+                            {
+                                if (Convert.ToInt32(attrSource.Value) > Convert.ToInt32(attrChanged.Value))
+                                {
+                                    pair.MismatchedType = EvolutionTypes.DecreasedMinOccurs;
+                                } 
+                                else
+                                {
+                                    pair.MismatchedType = EvolutionTypes.IncreasedMinOccurs;
+                                }
+                            }
+                            else if (string.Equals(attrSource.Name, "maxOccurs", StringComparison.OrdinalIgnoreCase))
+                            {
+                                if (Convert.ToInt32(attrSource.Value) > Convert.ToInt32(attrChanged.Value))
+                                {
+                                    pair.MismatchedType = EvolutionTypes.DecreasedMaxOccurs;
+                                }
+                                else
+                                {
+                                    pair.MismatchedType = EvolutionTypes.IncreasedMaxOccurs;
+                                }
+                            }
+                            else if (string.Equals(attrSource.Name, "namespace", StringComparison.OrdinalIgnoreCase))
+                            {
+                                pair.MismatchedType = EvolutionTypes.ImportElementChange_Namespace_Update;
+                            }
+                            else if (string.Equals(attrSource.Name, "schemaLocation", StringComparison.OrdinalIgnoreCase))
+                            {
+                                pair.MismatchedType = EvolutionTypes.ImportElementChange_SchemaLocation_Update;
+                            }
 
-                        break;
+                            mismatchedAttributes.Add(pair);
+                            break;
+                        }
                     }
                 }
             }
@@ -526,18 +623,88 @@ namespace Sam.XmlDiff
                     {
                         if (!string.Equals(bAttr.Value, sAttr.Value))
                         {
-                            this.Display(string.Format(
-                                "Attribute Diff: source: {0}=\"{1}\"; changed: {2}=\"{3}\".",
-                                bAttr.Name, bAttr.Value,
-                                sAttr.Name, sAttr.Value));
-
+                            // record the mis-matched attribute pair
                             if (flag)
                             {
-                                mismatchedAttributes.Add(new MismatchedAttributePair(bAttr, sAttr));
+                                MismatchedAttributePair pair = new MismatchedAttributePair(bAttr, sAttr);
+
+                                if (string.Equals(bAttr.Name, "type", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    pair.MismatchedType = EvolutionTypes.ChangeType;
+                                }
+                                else if (string.Equals(bAttr.Name, "minOccurs", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    if (Convert.ToInt32(bAttr.Value) > Convert.ToInt32(sAttr.Value))
+                                    {
+                                        pair.MismatchedType = EvolutionTypes.DecreasedMinOccurs;
+                                    }
+                                    else
+                                    {
+                                        pair.MismatchedType = EvolutionTypes.IncreasedMinOccurs;
+                                    }
+                                }
+                                else if (string.Equals(bAttr.Name, "maxOccurs", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    if (Convert.ToInt32(bAttr.Value) > Convert.ToInt32(sAttr.Value))
+                                    {
+                                        pair.MismatchedType = EvolutionTypes.DecreasedMaxOccurs;
+                                    }
+                                    else
+                                    {
+                                        pair.MismatchedType = EvolutionTypes.IncreasedMaxOccurs;
+                                    }
+                                }
+                                else if (string.Equals(bAttr.Name, "namespace", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    pair.MismatchedType = EvolutionTypes.ImportElementChange_Namespace_Update;
+                                }
+                                else if (string.Equals(bAttr.Name, "schemaLocation", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    pair.MismatchedType = EvolutionTypes.ImportElementChange_SchemaLocation_Update;
+                                }
+
+                                mismatchedAttributes.Add(pair);
                             }
                             else
                             {
-                                mismatchedAttributes.Add(new MismatchedAttributePair(sAttr, bAttr));
+                                MismatchedAttributePair pair = new MismatchedAttributePair(sAttr, bAttr);
+
+                                if (string.Equals(bAttr.Name, "type", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    pair.MismatchedType = EvolutionTypes.ChangeType;
+                                }
+                                else if (string.Equals(bAttr.Name, "minOccurs", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    if (Convert.ToInt32(sAttr.Value) > Convert.ToInt32(bAttr.Value))
+                                    {
+                                        pair.MismatchedType = EvolutionTypes.DecreasedMinOccurs;
+                                    }
+                                    else
+                                    {
+                                        pair.MismatchedType = EvolutionTypes.IncreasedMinOccurs;
+                                    }
+                                }
+                                else if (string.Equals(bAttr.Name, "maxOccurs", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    if (Convert.ToInt32(sAttr.Value) > Convert.ToInt32(bAttr.Value))
+                                    {
+                                        pair.MismatchedType = EvolutionTypes.DecreasedMaxOccurs;
+                                    }
+                                    else
+                                    {
+                                        pair.MismatchedType = EvolutionTypes.IncreasedMaxOccurs;
+                                    }
+                                }
+                                else if (string.Equals(bAttr.Name, "namespace", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    pair.MismatchedType = EvolutionTypes.ImportElementChange_Namespace_Update;
+                                }
+                                else if (string.Equals(bAttr.Name, "schemaLocation", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    pair.MismatchedType = EvolutionTypes.ImportElementChange_SchemaLocation_Update;
+                                }
+
+                                mismatchedAttributes.Add(pair);
                             }
                         }
 
@@ -550,11 +717,57 @@ namespace Sam.XmlDiff
                 {
                     if (flag)
                     {
-                        mismatchedAttributes.Add(new MismatchedAttributePair(bAttr, null));
+                        MismatchedAttributePair pair = new MismatchedAttributePair(bAttr, null);
+
+                        if (string.Equals(bAttr.Name, "type", StringComparison.OrdinalIgnoreCase))
+                        {
+                            pair.MismatchedType = EvolutionTypes.RemoveType;
+                        }
+                        else if (string.Equals(bAttr.Name, "minOccurs", StringComparison.OrdinalIgnoreCase))
+                        {
+                            pair.MismatchedType = EvolutionTypes.RemoveMinQuantifier;
+                        }
+                        else if (string.Equals(bAttr.Name, "maxOccurs", StringComparison.OrdinalIgnoreCase))
+                        {
+                            pair.MismatchedType = EvolutionTypes.RemoveMaxQuantifier;
+                        }
+                        else if (string.Equals(bAttr.Name, "namespace", StringComparison.OrdinalIgnoreCase))
+                        {
+                            pair.MismatchedType = EvolutionTypes.ImportElementChange_Namespace_Remove;
+                        }
+                        else if (string.Equals(bAttr.Name, "schemaLocation", StringComparison.OrdinalIgnoreCase))
+                        {
+                            pair.MismatchedType = EvolutionTypes.ImportElementChange_SchemaLocation_Remove;
+                        }
+
+                        mismatchedAttributes.Add(pair);
                     }
                     else
                     {
-                        mismatchedAttributes.Add(new MismatchedAttributePair(null, bAttr));
+                        MismatchedAttributePair pair = new MismatchedAttributePair(null, bAttr);
+
+                        if (string.Equals(bAttr.Name, "type", StringComparison.OrdinalIgnoreCase))
+                        {
+                            pair.MismatchedType = EvolutionTypes.AddType;
+                        }
+                        else if (string.Equals(bAttr.Name, "minOccurs", StringComparison.OrdinalIgnoreCase))
+                        {
+                            pair.MismatchedType = EvolutionTypes.AddMinQuantifier;
+                        }
+                        else if (string.Equals(bAttr.Name, "maxOccurs", StringComparison.OrdinalIgnoreCase))
+                        {
+                            pair.MismatchedType = EvolutionTypes.AddMaxQuantifier;
+                        }
+                        else if (string.Equals(bAttr.Name, "namespace", StringComparison.OrdinalIgnoreCase))
+                        {
+                            pair.MismatchedType = EvolutionTypes.ImportElementChange_Namespace_Add;
+                        }
+                        else if (string.Equals(bAttr.Name, "schemaLocation", StringComparison.OrdinalIgnoreCase))
+                        {
+                            pair.MismatchedType = EvolutionTypes.ImportElementChange_SchemaLocation_Add;
+                        }
+
+                        mismatchedAttributes.Add(pair);
                     }
                 }
 
@@ -589,30 +802,83 @@ namespace Sam.XmlDiff
 
     }
 
-    public enum MismatchedType
+    public enum EvolutionTypes
     {
+        None,
+
         TypeToSimpleType,
         SimpleTypeToType,
 
-        ChangeTypeValue,
+        TypeToComplexType,
+        ComplexTypeToType,
+
+        SimpleTypeToComplexType,
+        ComplexTypeToSimpleType,
+
+        ChangeType,
         RemoveType,
         AddType,
 
         ChangeQuantifierValue,
-        RemoveQuantifier,
-        AddQuantifier
+        IncreasedMinOccurs,
+        DecreasedMinOccurs,
+        IncreasedMaxOccurs,
+        DecreasedMaxOccurs,
+
+
+        RemoveMinQuantifier,
+        RemoveMaxQuantifier,
+        AddMinQuantifier,
+        AddMaxQuantifier,
+
+        ChangeRestriction_MaxLength, // for element
+        ChangeRestriction_MaxLength_Increased,
+        ChangeRestriction_MaxLength_Decreased,
+
+        ImportElementChange, // for element
+        ImportElementChange_Namespace_Update,
+        ImportElementChange_Namespace_Add,
+        ImportElementChange_Namespace_Remove,
+        ImportElementChange_SchemaLocation_Update,
+        ImportElementChange_SchemaLocation_Add,
+        ImportElementChange_SchemaLocation_Remove
     }
 
     public class MismatchedElementPair
     {
+        #region Fields
+        
+        private List<MismatchedAttributePair> mismatchedAttributes = new List<MismatchedAttributePair>();
+
+        #endregion
+
+        #region Constructors
+        
         public MismatchedElementPair(XmlNode sourceNode, XmlNode changedNode)
         {
             this.SourceNode = sourceNode;
             this.ChangedNode = changedNode;
         }
 
+        #endregion
+
+        #region Properties
+
         public XmlNode SourceNode { get; set; }
         public XmlNode ChangedNode { get; set; }
+
+        public bool HasMismatchedAttributes { get { return this.mismatchedAttributes.Count > 0 ? true : false; } }
+        public EvolutionTypes MismatchedType { get; set; }
+        #endregion
+
+        #region Methods
+
+        public void AddMismatchedAttributes(MismatchedAttributePair[] attributes)
+        {
+            this.mismatchedAttributes.AddRange(attributes);
+        }
+
+        #endregion
     }
 
     public class MismatchedAttributePair
@@ -628,5 +894,7 @@ namespace Sam.XmlDiff
 
         public XmlNode SourceOwnerNode { get; set; }
         public XmlNode ChangedOwnerNode { get; set; }
+
+        public EvolutionTypes MismatchedType { get; set; }
     }
 }
