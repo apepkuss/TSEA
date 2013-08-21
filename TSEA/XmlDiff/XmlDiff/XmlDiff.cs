@@ -412,7 +412,7 @@ namespace Sam.XmlDiff
         private void Compare(XmlNode sourceNode, XmlNode changedNode)
         {
             // compare current node pair
-            if (!string.Equals(sourceNode.Name, changedNode.Name))
+            if (!string.Equals(sourceNode.Name, changedNode.Name, StringComparison.OrdinalIgnoreCase))
             {
                 MismatchedElementPair pair = new MismatchedElementPair(sourceNode, changedNode);
 
@@ -442,14 +442,22 @@ namespace Sam.XmlDiff
             }
             else
             {
-                if (string.Equals(sourceNode.LocalName, "group", StringComparison.OrdinalIgnoreCase))
-                {
-                    // TODO: this IF statement will stop the compare operation on "xs:group" element.
-                    return;
-                }
-
                 XmlElement sourceElement = sourceNode as XmlElement;
                 XmlElement changedElement = changedNode as XmlElement;
+
+                if (string.Equals(sourceNode.LocalName, "group", StringComparison.OrdinalIgnoreCase) &&
+                    sourceElement.GetAttribute("name") != "GhostingProps")
+                {
+                    // TODO: this IF statement will stop the compare operation on "xs:group" element.
+
+                    // traverse their sibling nodes
+                    if (sourceNode.NextSibling != null && changedNode.NextSibling != null)
+                    {
+                        this.Compare(sourceNode.NextSibling, changedNode.NextSibling);
+                    }
+
+                    return;
+                }
 
                 // compare attributes and get those mismatched ones.
                 List<MismatchedAttributePair> mismatchedAttributes = this.CompareAttributes(sourceElement.Attributes, changedElement.Attributes);
@@ -463,18 +471,11 @@ namespace Sam.XmlDiff
                         misAttr.SourceOwnerNode = sourceNode;
                         misAttr.ChangedOwnerNode = changedNode;
 
-                        if (misAttr.MismatchedType == EvolutionTypes.RemoveType)
+                        if (misAttr.MismatchedType == EvolutionTypes.TypeChange_Remove)
                         {
-                            if (string.Equals(changedNode.FirstChild.LocalName, "simpleType"))
-                            {
-                                misAttr.MismatchedType = EvolutionTypes.TypeToSimpleType;
-                            }
-                            else if (string.Equals(changedNode.FirstChild.LocalName, "complexType"))
-                            {
-                                misAttr.MismatchedType = EvolutionTypes.TypeToComplexType;
-                            }
+                            misAttr.MismatchedType = this.CheckTypeChange(sourceNode, changedNode, misAttr);
                         }
-                        else if (misAttr.MismatchedType == EvolutionTypes.AddType)
+                        else if (misAttr.MismatchedType == EvolutionTypes.TypeChange_Add)
                         {
                             if (string.Equals(sourceNode.FirstChild.LocalName, "simpleType"))
                             {
@@ -557,9 +558,13 @@ namespace Sam.XmlDiff
                         if (!string.Equals(attrSource.Value, attrChanged.Value))
                         {
                             // set MismatchedType
-                            if (string.Equals(attrSource.Name, "type", StringComparison.OrdinalIgnoreCase))
+                            if (string.Equals(attrSource.Value, attrChanged.Value, StringComparison.OrdinalIgnoreCase))
                             {
-                                pair.MismatchedType = EvolutionTypes.ChangeType;
+                                pair.MismatchedType = EvolutionTypes.Element_NameAttribute_Update;
+                            }
+                            else if (string.Equals(attrSource.Name, "type", StringComparison.OrdinalIgnoreCase))
+                            {
+                                pair.MismatchedType = EvolutionTypes.TypeChange_Update;
                             }
                             else if (string.Equals(attrSource.Name, "minOccurs", StringComparison.OrdinalIgnoreCase))
                             {
@@ -634,9 +639,13 @@ namespace Sam.XmlDiff
                             {
                                 MismatchedAttributePair pair = new MismatchedAttributePair(bAttr, sAttr);
 
-                                if (string.Equals(bAttr.Name, "type", StringComparison.OrdinalIgnoreCase))
+                                if (string.Equals(bAttr.Value, sAttr.Value, StringComparison.OrdinalIgnoreCase))
                                 {
-                                    pair.MismatchedType = EvolutionTypes.ChangeType;
+                                    pair.MismatchedType = EvolutionTypes.Element_NameAttribute_Update;
+                                }
+                                else if (string.Equals(bAttr.Name, "type", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    pair.MismatchedType = EvolutionTypes.TypeChange_Update;
                                 }
                                 else if (string.Equals(bAttr.Name, "minOccurs", StringComparison.OrdinalIgnoreCase))
                                 {
@@ -675,9 +684,13 @@ namespace Sam.XmlDiff
                             {
                                 MismatchedAttributePair pair = new MismatchedAttributePair(sAttr, bAttr);
 
-                                if (string.Equals(bAttr.Name, "type", StringComparison.OrdinalIgnoreCase))
+                                if (string.Equals(bAttr.Value, sAttr.Value, StringComparison.OrdinalIgnoreCase))
                                 {
-                                    pair.MismatchedType = EvolutionTypes.ChangeType;
+                                    pair.MismatchedType = EvolutionTypes.Element_NameAttribute_Update;
+                                }
+                                else if (string.Equals(bAttr.Name, "type", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    pair.MismatchedType = EvolutionTypes.TypeChange_Update;
                                 }
                                 else if (string.Equals(bAttr.Name, "minOccurs", StringComparison.OrdinalIgnoreCase))
                                 {
@@ -719,6 +732,7 @@ namespace Sam.XmlDiff
                     }
                 }
 
+                // handling the extra attribute
                 if (!isMatched)
                 {
                     if (flag)
@@ -727,7 +741,7 @@ namespace Sam.XmlDiff
 
                         if (string.Equals(bAttr.Name, "type", StringComparison.OrdinalIgnoreCase))
                         {
-                            pair.MismatchedType = EvolutionTypes.RemoveType;
+                            pair.MismatchedType = EvolutionTypes.TypeChange_Remove;
                         }
                         else if (string.Equals(bAttr.Name, "minOccurs", StringComparison.OrdinalIgnoreCase))
                         {
@@ -754,7 +768,7 @@ namespace Sam.XmlDiff
 
                         if (string.Equals(bAttr.Name, "type", StringComparison.OrdinalIgnoreCase))
                         {
-                            pair.MismatchedType = EvolutionTypes.AddType;
+                            pair.MismatchedType = EvolutionTypes.TypeChange_Add;
                         }
                         else if (string.Equals(bAttr.Name, "minOccurs", StringComparison.OrdinalIgnoreCase))
                         {
@@ -783,6 +797,80 @@ namespace Sam.XmlDiff
             return mismatchedAttributes;
         }
 
+        private EvolutionTypes CheckTypeChange(XmlNode sourceNode, XmlNode changedNode, MismatchedAttributePair attribute)
+        {
+            if (attribute.ChangedAttribute == null)
+            {
+                if (string.Equals(changedNode.FirstChild.LocalName, "simpleType", StringComparison.OrdinalIgnoreCase))
+                {
+                    return this.CheckTypeChangeSimpleType(attribute.SourceAttribute.Value, changedNode.FirstChild);
+                }
+                else if (string.Equals(changedNode.FirstChild.LocalName, "complexType", StringComparison.OrdinalIgnoreCase))
+                {
+                    return this.CheckTypeChangeComplexType(attribute.SourceAttribute.Value, changedNode.FirstChild);
+                }
+                else
+                {
+                    throw new Exception("An exception thrown from CheckTypeChange method.");
+                }
+            }
+            else if (attribute.SourceAttribute == null)
+            {
+                if (string.Equals(sourceNode.FirstChild.LocalName, "simpleType", StringComparison.OrdinalIgnoreCase))
+                {
+                    return this.CheckTypeChangeSimpleType(attribute.ChangedAttribute.Value, sourceNode.FirstChild);
+                }
+                else if (string.Equals(sourceNode.FirstChild.LocalName, "complexType", StringComparison.OrdinalIgnoreCase))
+                {
+                    return this.CheckTypeChangeComplexType(attribute.ChangedAttribute.Value, sourceNode.FirstChild);
+                }
+                else
+                {
+                    throw new Exception("An exception thrown from CheckTypeChange method.");
+                }
+                
+            }
+            else
+            {
+                throw new Exception("An exception thrown from CheckTypeChange method.");
+            }
+        }
+
+        private EvolutionTypes CheckTypeChangeSimpleType(string value, XmlNode xmlNode)
+        {
+            XmlNode node = xmlNode;
+
+            while (!string.Equals(node.LocalName, "restriction", StringComparison.OrdinalIgnoreCase))
+            {
+                node = node.FirstChild;
+            }
+
+            XmlElement element = node as XmlElement;
+            if (!string.Equals(value, element.GetAttribute("base"), StringComparison.OrdinalIgnoreCase))
+            {
+                return EvolutionTypes.TypeChange_Update;
+            }
+            else
+            {
+                return EvolutionTypes.TypeToSimpleType;
+            }
+
+            //if (string.Equals(changedNode.FirstChild.LocalName, "simpleType"))
+            //{
+            //    attribute.MismatchedType = EvolutionTypes.TypeToSimpleType;
+            //}
+            //else if (string.Equals(changedNode.FirstChild.LocalName, "complexType"))
+            //{
+            //    attribute.MismatchedType = EvolutionTypes.TypeToComplexType;
+            //}
+        }
+
+        private EvolutionTypes CheckTypeChangeComplexType(string p, XmlNode xmlNode)
+        {
+            throw new NotImplementedException();
+
+            // TODO: need more logic to deal with this case.
+        }
         #endregion
 
         private void Display(string message)
@@ -821,9 +909,9 @@ namespace Sam.XmlDiff
         SimpleTypeToComplexType,
         ComplexTypeToSimpleType,
 
-        ChangeType,
-        RemoveType,
-        AddType,
+        TypeChange_Update, // higher severity than TypeToSimpleType and TypeToComplexType
+        TypeChange_Remove,
+        TypeChange_Add,
 
         ChangeQuantifierValue,
         IncreasedMinOccurs,
@@ -847,7 +935,9 @@ namespace Sam.XmlDiff
         ImportElementChange_Namespace_Remove,
         ImportElementChange_SchemaLocation_Update,
         ImportElementChange_SchemaLocation_Add,
-        ImportElementChange_SchemaLocation_Remove
+        ImportElementChange_SchemaLocation_Remove,
+
+        Element_NameAttribute_Update
     }
 
     public class MismatchedElementPair

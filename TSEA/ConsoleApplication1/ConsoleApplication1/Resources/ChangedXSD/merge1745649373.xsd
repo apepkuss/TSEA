@@ -1,0 +1,857 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:airsyncbase="AirSyncBase" xmlns="Contacts" targetNamespace="Contacts" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:import namespace="AirSyncBase" schemaLocation="asb.xsd" />
+  <xs:element name="Anniversary" type="xs:dateTime" />
+  <xs:element name="AssistantName" type="xs:string" />
+  <xs:element name="AssistantPhoneNumber" type="xs:string" />
+  <xs:element name="Birthday" type="xs:dateTime" />
+  <xs:element name="Business2PhoneNumber" type="xs:string" />
+  <xs:element name="BusinessAddressCity" type="xs:string" />
+  <xs:element name="BusinessPhoneNumber" type="xs:string" />
+  <xs:element name="WebPage" type="xs:string" />
+  <xs:element name="BusinessAddressCountry" type="xs:string" />
+  <xs:element name="Department" type="xs:string" />
+  <xs:element name="Email1Address" type="xs:string" />
+  <xs:element name="Email2Address" type="xs:string" />
+  <xs:element name="Email3Address" type="xs:string" />
+  <xs:element name="BusinessFaxNumber" type="xs:string" />
+  <xs:element name="FileAs" type="xs:string" />
+  <xs:element name="Alias" type="xs:string" />
+  <xs:element name="WeightedRank" type="xs:int" />
+  <xs:element name="FirstName" type="xs:string" />
+  <xs:element name="MiddleName" type="xs:string" />
+  <xs:element name="HomeAddressCity" type="xs:string" />
+  <xs:element name="HomeAddressCountry" type="xs:string" />
+  <xs:element name="HomeFaxNumber" type="xs:string" />
+  <xs:element name="HomePhoneNumber" type="xs:string" />
+  <xs:element name="Home2PhoneNumber" type="xs:string" />
+  <xs:element name="HomeAddressPostalCode" type="xs:string" />
+  <xs:element name="HomeAddressState" type="xs:string" />
+  <xs:element name="HomeAddressStreet" type="xs:string" />
+  <xs:element name="MobilePhoneNumber" type="xs:string" />
+  <xs:element name="Suffix" type="xs:string" />
+  <xs:element name="CompanyName" type="xs:string" />
+  <xs:element name="OtherAddressCity" type="xs:string" />
+  <xs:element name="OtherAddressCountry" type="xs:string" />
+  <xs:element name="CarPhoneNumber" type="xs:string" />
+  <xs:element name="OtherAddressPostalCode" type="xs:string" />
+  <xs:element name="OtherAddressState" type="xs:string" />
+  <xs:element name="OtherAddressStreet" type="xs:string" />
+  <xs:element name="PagerNumber" type="xs:string" />
+  <xs:element name="Title" type="xs:string" />
+  <xs:element name="BusinessAddressPostalCode" type="xs:string" />
+  <xs:element name="LastName" type="xs:string" />
+  <xs:element name="Spouse" type="xs:string" />
+  <xs:element name="BusinessAddressState" type="xs:string" />
+  <xs:element name="BusinessAddressStreet" type="xs:string" />
+  <xs:element name="JobTitle" type="xs:string" />
+  <xs:element name="YomiFirstName" type="xs:string" />
+  <xs:element name="YomiLastName" type="xs:string" />
+  <xs:element name="YomiCompanyName" type="xs:string" />
+  <xs:element name="OfficeLocation" type="xs:string" />
+  <xs:element name="RadioPhoneNumber" type="xs:string" />
+  <xs:element name="Picture" type="xs:string" />
+  <xs:element name="Categories">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Category" type="xs:string" minOccurs="0" maxOccurs="300" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Children">
+    <xs:complexType>
+      <xs:sequence minOccurs="0">
+        <xs:element name="Child" type="xs:string" minOccurs="0" maxOccurs="300" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="AllProps">
+    <xs:sequence>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="Anniversary" type="xs:dateTime" />
+        <xs:element name="AssistantName" type="xs:string" />
+        <xs:element name="AssistantPhoneNumber" type="xs:string" />
+        <xs:element name="Birthday" type="xs:dateTime" />
+        <xs:element name="Business2PhoneNumber" type="xs:string" />
+        <xs:element name="BusinessAddressCity" type="xs:string" />
+        <xs:element name="BusinessPhoneNumber" type="xs:string" />
+        <xs:element name="WebPage" type="xs:string" />
+        <xs:element name="BusinessAddressCountry" type="xs:string" />
+        <xs:element name="Department" type="xs:string" />
+        <xs:element name="Email1Address" type="xs:string" />
+        <xs:element name="Email2Address" type="xs:string" />
+        <xs:element name="Email3Address" type="xs:string" />
+        <xs:element name="BusinessFaxNumber" type="xs:string" />
+        <xs:element name="FileAs" type="xs:string" />
+        <xs:element name="Alias" type="xs:string" />
+        <xs:element name="WeightedRank" type="xs:int" />
+        <xs:element name="FirstName" type="xs:string" />
+        <xs:element name="MiddleName" type="xs:string" />
+        <xs:element name="HomeAddressCity" type="xs:string" />
+        <xs:element name="HomeAddressCountry" type="xs:string" />
+        <xs:element name="HomeFaxNumber" type="xs:string" />
+        <xs:element name="HomePhoneNumber" type="xs:string" />
+        <xs:element name="Home2PhoneNumber" type="xs:string" />
+        <xs:element name="HomeAddressPostalCode" type="xs:string" />
+        <xs:element name="HomeAddressState" type="xs:string" />
+        <xs:element name="HomeAddressStreet" type="xs:string" />
+        <xs:element name="MobilePhoneNumber" type="xs:string" />
+        <xs:element name="Suffix" type="xs:string" />
+        <xs:element name="CompanyName" type="xs:string" />
+        <xs:element name="OtherAddressCity" type="xs:string" />
+        <xs:element name="OtherAddressCountry" type="xs:string" />
+        <xs:element name="CarPhoneNumber" type="xs:string" />
+        <xs:element name="OtherAddressPostalCode" type="xs:string" />
+        <xs:element name="OtherAddressState" type="xs:string" />
+        <xs:element name="OtherAddressStreet" type="xs:string" />
+        <xs:element name="PagerNumber" type="xs:string" />
+        <xs:element name="Title" type="xs:string" />
+        <xs:element name="BusinessAddressPostalCode" type="xs:string" />
+        <xs:element name="LastName" type="xs:string" />
+        <xs:element name="Spouse" type="xs:string" />
+        <xs:element name="BusinessAddressState" type="xs:string" />
+        <xs:element name="BusinessAddressStreet" type="xs:string" />
+        <xs:element name="JobTitle" type="xs:string" />
+        <xs:element name="YomiFirstName" type="xs:string" />
+        <xs:element name="YomiLastName" type="xs:string" />
+        <xs:element name="YomiCompanyName" type="xs:string" />
+        <xs:element name="OfficeLocation" type="xs:string" />
+        <xs:element name="RadioPhoneNumber" type="xs:string" />
+        <xs:element name="Picture" type="xs:string" />
+        <xs:element name="Categories">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Category" type="xs:string" minOccurs="0" maxOccurs="300" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Children">
+          <xs:complexType>
+            <xs:sequence minOccurs="0">
+              <xs:element name="Child" type="xs:string" minOccurs="0" maxOccurs="300" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="GhostingProps">
+    <xs:sequence>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="Anniversary">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Birthday">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="WebPage">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Children">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="BusinessAddressCountry">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Department">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Email1Address">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Email2Address">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Email3Address">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="BusinessFaxNumber">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="FileAs">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="FirstName">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="HomeAddressCity">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="HomeAddressCountry">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="HomeFaxNumber">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="HomePhoneNumber">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Home2PhoneNumber">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="HomeAddressPostalCode">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="HomeAddressState">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="HomeAddressStreet">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="BusinessAddressCity">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="MiddleName">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="MobilePhoneNumber">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Suffix">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="CompanyName">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="OtherAddressCity">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="OtherAddressCountry">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="CarPhoneNumber">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="OtherAddressPostalCode">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="OtherAddressState">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="OtherAddressStreet">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="PagerNumber">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Title">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="BusinessAddressPostalCode">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="AssistantName">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="AssistantPhoneNumber">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="AssistnamePhoneNumber">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="LastName">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Spouse">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="BusinessAddressState">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="BusinessAddressStreet">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="BusinessPhoneNumber">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Business2PhoneNumber">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="JobTitle">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="YomiFirstName">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="YomiLastName">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="YomiCompanyName">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="OfficeLocation">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="RadioPhoneNumber">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Picture">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Categories">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="TopLevelSchemaProps">
+    <xs:sequence>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="Anniversary">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Birthday">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Webpage">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Children">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="BusinessAddressCountry">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Department">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Email1Address">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Email2Address">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Email3Address">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="BusinessFaxNumber">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="FileAs">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="FirstName">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="HomeAddressCity">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="HomeAddressCountry">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="HomeFaxNumber">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="HomeTelephoneNumber">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Home2TelephoneNumber">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="HomeAddressPostalCode">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="HomeAddressState">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="HomeAddressStreet">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="BusinessAddressCity">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="MiddleName">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="MobileTelephoneNumber">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Suffix">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="CompanyName">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="OtherAddressCity">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="OtherAddressCountry">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="CarTelephoneNumber">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="OtherAddressPostalCode">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="OtherAddressState">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="OtherAddressStreet">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="PagerNumber">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Title">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="BusinessAddressPostalCode">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="AssistantName">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="AssistantTelephoneNumber">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="LastName">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Spouse">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="BusinessAddressState">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="BusinessAddressStreet">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="BusinessTelephoneNumber">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Business2TelephoneNumber">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="JobTitle">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="YomiFirstName">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="YomiLastName">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="YomiCompanyName">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="OfficeLocation">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="RadioTelephoneNumber">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Categories">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="Picture">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:maxLength value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:group>
+</xs:schema>
