@@ -442,6 +442,12 @@ namespace Sam.XmlDiff
             }
             else
             {
+                if (string.Equals(sourceNode.LocalName, "group", StringComparison.OrdinalIgnoreCase))
+                {
+                    // TODO: this IF statement will stop the compare operation on "xs:group" element.
+                    return;
+                }
+
                 XmlElement sourceElement = sourceNode as XmlElement;
                 XmlElement changedElement = changedNode as XmlElement;
 

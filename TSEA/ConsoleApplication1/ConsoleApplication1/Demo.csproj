@@ -57,10 +57,28 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Resources\changed.xsd">
+    <None Include="Resources\ChangedXSD\adms.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\as.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\ChangedXSD\asb.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\cal.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\cm.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\cntc.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\cntc2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\dl.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\ChangedXSD\email.xsd">
@@ -69,13 +87,55 @@
     <None Include="Resources\ChangedXSD\email2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Resources\ChangedXSD\fh.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\gal.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\io.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\notes.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\prov.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\rm.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\set.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\srch.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\ChangedXSD\tasks.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\original.xsd">
+    <None Include="Resources\OriginalXSD\AirSync.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\OriginalXSD\AirSyncBase.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\AutodiscoverResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Calendar.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\ComposeMail.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Contacts.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Contacts2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\DocumentLibrary.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\OriginalXSD\Email.xsd">
@@ -84,7 +144,85 @@
     <None Include="Resources\OriginalXSD\Email2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Resources\OriginalXSD\FolderCreateResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\FolderDeleteResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\FolderHierarchy.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\FolderSyncResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\FolderUpdateResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\GAL.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\GetItemEstimateResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\ItemOperations.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\ItemOperationsResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\MeetingResponseResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\MoveItemsResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Notes.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\PingResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Provision.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\ProvisionResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\ResolveRecipientsResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\RightsManagement.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Search.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\SearchResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\SendMailResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Settings.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\SettingsResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\SmartForwardResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\SmartReplyResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\SyncResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\OriginalXSD\Tasks.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\ValidateCertResponse.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
