@@ -929,6 +929,11 @@ namespace Sam.XmlDiff
         /// </summary>
         None,
 
+
+        TypeChange_Update, // higher severity than TypeToSimpleType and TypeToComplexType
+        TypeChange_Remove,
+        TypeChange_Add,
+
         TypeToSimpleType,
         SimpleTypeToType,
 
@@ -938,9 +943,12 @@ namespace Sam.XmlDiff
         SimpleTypeToComplexType,
         ComplexTypeToSimpleType,
 
-        TypeChange_Update, // higher severity than TypeToSimpleType and TypeToComplexType
-        TypeChange_Remove,
-        TypeChange_Add,
+        /// <summary>
+        /// The value of name attribute of an element has been changed, 
+        /// which will affect the variable name in proxy class and test suite.
+        /// </summary>
+        Element_NameAttribute_Update,
+
 
         // minOccurs
         IncreasedMinOccurs,
@@ -965,9 +973,9 @@ namespace Sam.XmlDiff
         ImportElementChange_Namespace_Remove,
         ImportElementChange_SchemaLocation_Update,
         ImportElementChange_SchemaLocation_Add,
-        ImportElementChange_SchemaLocation_Remove,
+        ImportElementChange_SchemaLocation_Remove
 
-        Element_NameAttribute_Update
+        
     }
 
     public class MismatchedElementPair
