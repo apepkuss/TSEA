@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:airsyncbase="AirSyncBase" xmlns:airsync="AirSync" xmlns:calendar="Calendar" xmlns:contacts="Contacts" xmlns:contacts2="Contacts2" xmlns:documentlibrary="DocumentLibrary" xmlns:email="Email" xmlns:email2="Email2" xmlns:gal="GAL" xmlns:notes="Notes" xmlns:tasks="Tasks" xmlns="Search" targetNamespace="Search" elementFormDefault="qualified" attributeFormDefault="unqualified">
-  <!--<xs:include schemaLocation="Search.xsd"/>
+  <xs:include schemaLocation="Search.xsd"/>
   <xs:import namespace="AirSync" schemaLocation="AirSync.xsd"/>
   <xs:import namespace="AirSyncBase" schemaLocation="AirSyncBase.xsd"/>
   <xs:import namespace="Calendar" schemaLocation="Calendar.xsd"/>
@@ -11,7 +11,7 @@
   <xs:import namespace="Email2" schemaLocation="Email2.xsd"/>
   <xs:import namespace="GAL" schemaLocation="GAL.xsd"/>
   <xs:import namespace="Notes" schemaLocation="Notes.xsd"/>
-  <xs:import namespace="Tasks" schemaLocation="Tasks.xsd"/>-->
+  <xs:import namespace="Tasks" schemaLocation="Tasks.xsd"/>
   <xs:element name="Search">
     <xs:complexType>
       <xs:sequence>

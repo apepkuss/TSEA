@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:email2="Email2" xmlns:itemoperations="ItemOperations" xmlns="AirSyncBase" targetNamespace="AirSyncBase" elementFormDefault="qualified" attributeFormDefault="unqualified">
-  <!--<xs:import namespace="Email2" schemaLocation="Email2.xsd"/>
-  <xs:import namespace="ItemOperations" schemaLocation="ItemOperations.xsd"/>-->
+  <xs:import namespace="Email2" schemaLocation="Email2.xsd"/>
+  <xs:import namespace="ItemOperations" schemaLocation="ItemOperations.xsd"/>
   <xs:simpleType name="EmptyTag">
     <xs:restriction base="xs:string">
       <xs:maxLength value="0"/>

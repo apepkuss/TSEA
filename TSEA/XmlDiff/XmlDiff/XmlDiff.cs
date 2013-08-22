@@ -273,12 +273,16 @@ namespace Sam.XmlDiff
                         XmlElement conElement = conNode as XmlElement;
                         if (conElement != null && conElement.HasAttribute("name") && string.Equals(refAttrValue, conElement.GetAttribute("name")))
                         {
+                            if (refAttrValue == "FilterType")
+                            {
+                            }
                             // append non-ref attributes of refNode to conNode
                             foreach (XmlAttribute attribute in refNode.Attributes)
                             {
                                 if (attribute.Name != "ref")
                                 {
-                                    conNode.Attributes.Append(attribute);
+                                    XmlAttribute additionalAttr = attribute.Clone() as XmlAttribute;
+                                    conNode.Attributes.Append(additionalAttr);
                                 }
                             }
 
@@ -897,6 +901,11 @@ namespace Sam.XmlDiff
             Console.WriteLine("Message: " + message);
         }
 
+        /// <summary>
+        /// Save the expanded XSD file to the physical disk, where the raw XSD file is.
+        /// </summary>
+        /// <param name="doc">The expanded XSD document, which an instance of XmlDocument type</param>
+        /// <param name="xsdFile">The raw XSD file with its path information</param>
         private void Save(ref XmlDocument doc, string xsdFile)
         {
             if (string.IsNullOrEmpty(xsdFile))
@@ -918,6 +927,9 @@ namespace Sam.XmlDiff
 
     public enum EvolutionTypes
     {
+        /// <summary>
+        /// Default value: a hold-place value and no real meaning.
+        /// </summary>
         None,
 
         TypeToSimpleType,

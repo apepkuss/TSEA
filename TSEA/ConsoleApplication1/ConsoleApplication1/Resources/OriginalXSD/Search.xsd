@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:airsyncbase="AirSyncBase" xmlns:airsync="AirSync" xmlns:documentlibrary="DocumentLibrary" xmlns:email="Email" xmlns:rm="RightsManagement" xmlns="Search" targetNamespace="Search" elementFormDefault="qualified" attributeFormDefault="unqualified">
-  <!--<xs:import namespace="AirSync" schemaLocation="AirSync.xsd"/>
+  <xs:import namespace="AirSync" schemaLocation="AirSync.xsd"/>
   <xs:import namespace="AirSyncBase" schemaLocation="AirSyncBase.xsd"/>
   <xs:import namespace="DocumentLibrary" schemaLocation="DocumentLibrary.xsd"/>
   <xs:import namespace="Email" schemaLocation="Email.xsd"/>
-  <xs:import namespace="RightsManagement" schemaLocation="RightsManagement.xsd"/>-->
+  <xs:import namespace="RightsManagement" schemaLocation="RightsManagement.xsd"/>
   <xs:complexType name="queryType" mixed="true">
     <xs:sequence>
       <xs:choice maxOccurs="unbounded">

@@ -8,7 +8,7 @@
   <xs:import namespace="Calendar" schemaLocation="cal.xsd"/>
   <xs:import namespace="Contacts" schemaLocation="cntc.xsd"/>
   <xs:import namespace="Contacts2" schemaLocation="cntc2.xsd"/>
-  <xs:import namespace="RightsManagement"
+  <xs:import namespace="rm"
       schemaLocation="rm.xsd"/>
   <xs:element name="SyncKey">
     <xs:simpleType>
