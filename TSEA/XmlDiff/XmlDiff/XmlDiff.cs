@@ -273,9 +273,6 @@ namespace Sam.XmlDiff
                         XmlElement conElement = conNode as XmlElement;
                         if (conElement != null && conElement.HasAttribute("name") && string.Equals(refAttrValue, conElement.GetAttribute("name")))
                         {
-                            if (refAttrValue == "FilterType")
-                            {
-                            }
                             // append non-ref attributes of refNode to conNode
                             foreach (XmlAttribute attribute in refNode.Attributes)
                             {
