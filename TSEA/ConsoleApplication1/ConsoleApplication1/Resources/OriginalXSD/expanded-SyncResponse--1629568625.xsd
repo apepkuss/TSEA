@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:airsyncbase="AirSyncBase" xmlns:calendar="Calendar" xmlns:contacts="Contacts" xmlns:contacts2="Contacts2" xmlns:documentlibrary="DocumentLibrary" xmlns:email="Email" xmlns:email2="Email2" xmlns:rm="RightsManagement" xmlns:notes="Notes" xmlns:tasks="Tasks" xmlns="AirSync" targetNamespace="AirSync" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:include schemaLocation="AirSync.xsd" />
+  <xs:import namespace="AirSyncBase" schemaLocation="AirSyncBase.xsd" />
+  <xs:import namespace="Calendar" schemaLocation="Calendar.xsd" />
+  <xs:import namespace="Contacts" schemaLocation="Contacts.xsd" />
+  <xs:import namespace="Contacts2" schemaLocation="Contacts2.xsd" />
+  <xs:import namespace="DocumentLibrary" schemaLocation="DocumentLibrary.xsd" />
+  <xs:import namespace="Email" schemaLocation="Email.xsd" />
+  <xs:import namespace="Email2" schemaLocation="Email2.xsd" />
+  <xs:import namespace="Notes" schemaLocation="Notes.xsd" />
+  <xs:import namespace="rm" schemaLocation="RightsManagement.xsd" />
+  <xs:import namespace="Tasks" schemaLocation="Tasks.xsd" />
+  <xs:element name="Sync">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Status" minOccurs="0" />
+        <xs:choice>
+          <xs:element ref="Limit" minOccurs="0" />
+          <xs:element name="Collections" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Collection" minOccurs="0" maxOccurs="unbounded">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:choice maxOccurs="unbounded">
+                        <xs:element ref="SyncKey" />
+                        <xs:element ref="CollectionId" />
+                        <xs:element ref="Status" />
+                        <xs:element name="Commands" minOccurs="0">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element name="Delete" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:element ref="Class" minOccurs="0" />
+                                    <xs:element ref="ServerId" />
+                                  </xs:sequence>
+                                </xs:complexType>
+                              </xs:element>
+                              <xs:element name="SoftDelete" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:element ref="ServerId" />
+                                  </xs:sequence>
+                                </xs:complexType>
+                              </xs:element>
+                              <xs:element name="Change" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:element ref="Class" minOccurs="0" />
+                                    <xs:element ref="ServerId" />
+                                    <xs:element name="ApplicationData" minOccurs="0">
+                                      <xs:complexType>
+                                        <xs:choice maxOccurs="unbounded">
+                                          <xs:element name="Attachments">
+                                            <xs:complexType>
+                                              <xs:sequence>
+                                                <xs:element name="Attachment" maxOccurs="unbounded">
+                                                  <xs:complexType>
+                                                    <xs:all>
+                                                      <xs:element name="DisplayName" type="xs:string" minOccurs="0" />
+                                                      <xs:element ref="FileReference" />
+                                                      <xs:element name="Method" type="xs:unsignedByte" />
+                                                      <xs:element name="EstimatedDataSize" type="xs:unsignedInt" />
+                                                      <xs:element name="ContentId" type="xs:string" minOccurs="0" />
+                                                      <xs:element name="ContentLocation" type="xs:string" minOccurs="0" />
+                                                      <xs:element name="IsInline" type="xs:boolean" minOccurs="0" />
+                                                      <xs:element ref="email2:UmAttDuration" minOccurs="0" />
+                                                      <xs:element ref="email2:UmAttOrder" minOccurs="0" />
+                                                    </xs:all>
+                                                  </xs:complexType>
+                                                </xs:element>
+                                              </xs:sequence>
+                                            </xs:complexType>
+                                          </xs:element>
+                                          <xs:element name="Body">
+                                            <xs:complexType>
+                                              <xs:sequence>
+                                                <xs:element name="Type" type="xs:unsignedByte" />
+                                                <xs:element name="EstimatedDataSize" type="xs:unsignedInt" minOccurs="0" />
+                                                <xs:element name="Truncated" type="xs:boolean" minOccurs="0" />
+                                                <xs:element name="Data" type="xs:string" minOccurs="0" />
+                                                <xs:element name="Preview" type="xs:string" minOccurs="0" />
+                                                <xs:element ref="itemoperations:Part" minOccurs="0" />
+                                              </xs:sequence>
+                                            </xs:complexType>
+                                          </xs:element>
+                                          <xs:element name="BodyPart">
+                                            <xs:complexType>
+                                              <xs:sequence>
+                                                <xs:element name="Status">
+                                                  <xs:simpleType>
+                                                    <xs:restriction base="xs:unsignedByte">
+                                                      <xs:enumeration value="1" />
+                                                      <xs:enumeration value="176" />
+                                                    </xs:restriction>
+                                                  </xs:simpleType>
+                                                </xs:element>
+                                                <xs:element name="Type" type="xs:unsignedByte" />
+                                                <xs:element name="EstimatedDataSize" type="xs:unsignedInt" />
+                                                <xs:element name="Truncated" type="xs:boolean" minOccurs="0" />
+                                                <xs:element name="Data" type="xs:string" minOccurs="0" />
+                                                <xs:element name="Preview" type="xs:string" minOccurs="0" />
+                                              </xs:sequence>
+                                            </xs:complexType>
+                                          </xs:element>
+                                          <xs:element name="NativeBodyType" type="xs:unsignedByte" />
+                                          <xs:group ref="calendar:AllProps" />
+                                          <xs:group ref="contacts:AllProps" />
+                                          <xs:group ref="contacts2:AllProps" />
+                                          <xs:group ref="documentlibrary:AllProps" />
+                                          <xs:group ref="email:AllProps" />
+                                          <xs:group ref="email2:AllProps" />
+                                          <xs:element name="Subject" type="xs:string" />
+                                          <xs:element name="MessageClass" type="xs:string" />
+                                          <xs:element name="LastModifiedDate" type="xs:string" />
+                                          <xs:element name="Categories">
+                                            <xs:complexType>
+                                              <xs:sequence minOccurs="0">
+                                                <xs:element name="Category" type="xs:string" maxOccurs="300" />
+                                              </xs:sequence>
+                                            </xs:complexType>
+                                          </xs:element>
+                                          <xs:group ref="tasks:AllProps" />
+                                          <xs:element name="RightsManagementLicense">
+                                            <xs:complexType>
+                                              <xs:sequence>
+                                                <xs:element name="Owner" type="xs:boolean" />
+                                                <xs:element name="ContentOwner" type="NonEmptyStringType" />
+                                                <xs:element name="ReplyAllAllowed" type="xs:boolean" />
+                                                <xs:element name="EditAllowed" type="xs:boolean" />
+                                                <xs:element name="ReplyAllowed" type="xs:boolean" />
+                                                <xs:element name="ForwardAllowed" type="xs:boolean" />
+                                                <xs:element name="ExportAllowed" type="xs:boolean" />
+                                                <xs:element name="ModifyRecipientsAllowed" type="xs:boolean" />
+                                                <xs:element ref="TemplateID" />
+                                                <xs:element name="ExtractAllowed" type="xs:boolean" />
+                                                <xs:element name="TemplateDescription" type="NonEmptyStringType" />
+                                                <xs:element name="ContentExpiryDate" type="xs:dateTime" />
+                                                <xs:element name="TemplateName" type="NonEmptyStringType" />
+                                                <xs:element name="PrintAllowed" type="xs:boolean" />
+                                                <xs:element name="ProgrammaticAccessAllowed" type="xs:boolean" />
+                                              </xs:sequence>
+                                            </xs:complexType>
+                                          </xs:element>
+                                        </xs:choice>
+                                      </xs:complexType>
+                                    </xs:element>
+                                  </xs:sequence>
+                                </xs:complexType>
+                              </xs:element>
+                              <xs:element name="Add" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:element ref="ServerId" />
+                                    <xs:element name="ApplicationData">
+                                      <xs:complexType>
+                                        <xs:sequence>
+                                          <xs:choice maxOccurs="unbounded">
+                                            <xs:element name="Attachments">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="Attachment" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                      <xs:all>
+                                                        <xs:element name="DisplayName" type="xs:string" minOccurs="0" />
+                                                        <xs:element ref="FileReference" />
+                                                        <xs:element name="Method" type="xs:unsignedByte" />
+                                                        <xs:element name="EstimatedDataSize" type="xs:unsignedInt" />
+                                                        <xs:element name="ContentId" type="xs:string" minOccurs="0" />
+                                                        <xs:element name="ContentLocation" type="xs:string" minOccurs="0" />
+                                                        <xs:element name="IsInline" type="xs:boolean" minOccurs="0" />
+                                                        <xs:element ref="email2:UmAttDuration" minOccurs="0" />
+                                                        <xs:element ref="email2:UmAttOrder" minOccurs="0" />
+                                                      </xs:all>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="Body">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="Type" type="xs:unsignedByte" />
+                                                  <xs:element name="EstimatedDataSize" type="xs:unsignedInt" minOccurs="0" />
+                                                  <xs:element name="Truncated" type="xs:boolean" minOccurs="0" />
+                                                  <xs:element name="Data" type="xs:string" minOccurs="0" />
+                                                  <xs:element name="Preview" type="xs:string" minOccurs="0" />
+                                                  <xs:element ref="itemoperations:Part" minOccurs="0" />
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="BodyPart">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="Status">
+                                                    <xs:simpleType>
+                                                      <xs:restriction base="xs:unsignedByte">
+                                                        <xs:enumeration value="1" />
+                                                        <xs:enumeration value="176" />
+                                                      </xs:restriction>
+                                                    </xs:simpleType>
+                                                  </xs:element>
+                                                  <xs:element name="Type" type="xs:unsignedByte" />
+                                                  <xs:element name="EstimatedDataSize" type="xs:unsignedInt" />
+                                                  <xs:element name="Truncated" type="xs:boolean" minOccurs="0" />
+                                                  <xs:element name="Data" type="xs:string" minOccurs="0" />
+                                                  <xs:element name="Preview" type="xs:string" minOccurs="0" />
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="NativeBodyType" type="xs:unsignedByte" />
+                                            <xs:group ref="calendar:AllProps" />
+                                            <xs:group ref="contacts:AllProps" />
+                                            <xs:group ref="contacts2:AllProps" />
+                                            <xs:group ref="documentlibrary:AllProps" />
+                                            <xs:group ref="email:AllProps" />
+                                            <xs:group ref="email2:AllProps" />
+                                            <xs:element name="Subject" type="xs:string" />
+                                            <xs:element name="MessageClass" type="xs:string" />
+                                            <xs:element name="LastModifiedDate" type="xs:string" />
+                                            <xs:element name="Categories">
+                                              <xs:complexType>
+                                                <xs:sequence minOccurs="0">
+                                                  <xs:element name="Category" type="xs:string" maxOccurs="300" />
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:group ref="tasks:AllProps" />
+                                            <xs:element name="RightsManagementLicense">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="Owner" type="xs:boolean" />
+                                                  <xs:element name="ContentOwner" type="NonEmptyStringType" />
+                                                  <xs:element name="ReplyAllAllowed" type="xs:boolean" />
+                                                  <xs:element name="EditAllowed" type="xs:boolean" />
+                                                  <xs:element name="ReplyAllowed" type="xs:boolean" />
+                                                  <xs:element name="ForwardAllowed" type="xs:boolean" />
+                                                  <xs:element name="ExportAllowed" type="xs:boolean" />
+                                                  <xs:element name="ModifyRecipientsAllowed" type="xs:boolean" />
+                                                  <xs:element ref="TemplateID" />
+                                                  <xs:element name="ExtractAllowed" type="xs:boolean" />
+                                                  <xs:element name="TemplateDescription" type="NonEmptyStringType" />
+                                                  <xs:element name="ContentExpiryDate" type="xs:dateTime" />
+                                                  <xs:element name="TemplateName" type="NonEmptyStringType" />
+                                                  <xs:element name="PrintAllowed" type="xs:boolean" />
+                                                  <xs:element name="ProgrammaticAccessAllowed" type="xs:boolean" />
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:choice>
+                                        </xs:sequence>
+                                      </xs:complexType>
+                                    </xs:element>
+                                  </xs:sequence>
+                                </xs:complexType>
+                              </xs:element>
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                        <xs:element name="Responses" minOccurs="0">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element name="Change" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:element ref="Class" minOccurs="0" />
+                                    <xs:element ref="ServerId" />
+                                    <xs:element ref="Status" />
+                                  </xs:sequence>
+                                </xs:complexType>
+                              </xs:element>
+                              <xs:element name="Add" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:element ref="Class" minOccurs="0" />
+                                    <xs:element ref="ClientId" />
+                                    <xs:element ref="ServerId" minOccurs="0" />
+                                    <xs:element ref="Status" />
+                                  </xs:sequence>
+                                </xs:complexType>
+                              </xs:element>
+                              <xs:element name="Fetch" minOccurs="0">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:element ref="ServerId" minOccurs="0" />
+                                    <xs:element ref="Status" />
+                                    <xs:element name="ApplicationData" minOccurs="0">
+                                      <xs:complexType>
+                                        <xs:sequence>
+                                          <xs:choice maxOccurs="unbounded">
+                                            <xs:element name="Attachments">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="Attachment" maxOccurs="unbounded">
+                                                    <xs:complexType>
+                                                      <xs:all>
+                                                        <xs:element name="DisplayName" type="xs:string" minOccurs="0" />
+                                                        <xs:element ref="FileReference" />
+                                                        <xs:element name="Method" type="xs:unsignedByte" />
+                                                        <xs:element name="EstimatedDataSize" type="xs:unsignedInt" />
+                                                        <xs:element name="ContentId" type="xs:string" minOccurs="0" />
+                                                        <xs:element name="ContentLocation" type="xs:string" minOccurs="0" />
+                                                        <xs:element name="IsInline" type="xs:boolean" minOccurs="0" />
+                                                        <xs:element ref="email2:UmAttDuration" minOccurs="0" />
+                                                        <xs:element ref="email2:UmAttOrder" minOccurs="0" />
+                                                      </xs:all>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="Body">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="Type" type="xs:unsignedByte" />
+                                                  <xs:element name="EstimatedDataSize" type="xs:unsignedInt" minOccurs="0" />
+                                                  <xs:element name="Truncated" type="xs:boolean" minOccurs="0" />
+                                                  <xs:element name="Data" type="xs:string" minOccurs="0" />
+                                                  <xs:element name="Preview" type="xs:string" minOccurs="0" />
+                                                  <xs:element ref="itemoperations:Part" minOccurs="0" />
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="NativeBodyType" type="xs:unsignedByte" />
+                                            <xs:group ref="calendar:AllProps" />
+                                            <xs:group ref="contacts:AllProps" />
+                                            <xs:group ref="contacts2:AllProps" />
+                                            <xs:group ref="documentlibrary:AllProps" />
+                                            <xs:group ref="email:AllProps" />
+                                            <xs:group ref="email2:AllProps" />
+                                            <xs:element name="Subject" type="xs:string" />
+                                            <xs:element name="MessageClass" type="xs:string" />
+                                            <xs:element name="LastModifiedDate" type="xs:string" />
+                                            <xs:element name="Categories">
+                                              <xs:complexType>
+                                                <xs:sequence minOccurs="0">
+                                                  <xs:element name="Category" type="xs:string" maxOccurs="300" />
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:group ref="tasks:AllProps" />
+                                            <xs:element name="RightsManagementLicense">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="Owner" type="xs:boolean" />
+                                                  <xs:element name="ContentOwner" type="NonEmptyStringType" />
+                                                  <xs:element name="ReplyAllAllowed" type="xs:boolean" />
+                                                  <xs:element name="EditAllowed" type="xs:boolean" />
+                                                  <xs:element name="ReplyAllowed" type="xs:boolean" />
+                                                  <xs:element name="ForwardAllowed" type="xs:boolean" />
+                                                  <xs:element name="ExportAllowed" type="xs:boolean" />
+                                                  <xs:element name="ModifyRecipientsAllowed" type="xs:boolean" />
+                                                  <xs:element ref="TemplateID" />
+                                                  <xs:element name="ExtractAllowed" type="xs:boolean" />
+                                                  <xs:element name="TemplateDescription" type="NonEmptyStringType" />
+                                                  <xs:element name="ContentExpiryDate" type="xs:dateTime" />
+                                                  <xs:element name="TemplateName" type="NonEmptyStringType" />
+                                                  <xs:element name="PrintAllowed" type="xs:boolean" />
+                                                  <xs:element name="ProgrammaticAccessAllowed" type="xs:boolean" />
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:choice>
+                                        </xs:sequence>
+                                      </xs:complexType>
+                                    </xs:element>
+                                  </xs:sequence>
+                                </xs:complexType>
+                              </xs:element>
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                        <xs:element ref="MoreAvailable" minOccurs="0" />
+                      </xs:choice>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -236,7 +236,7 @@ namespace Sam.XmlDiff
             }
             catch (FileNotFoundException ex)
             {
-                Console.WriteLine("Exception: {0}", ex.Message);
+                this.Display(string.Format("Exception: {0}", ex.Message));
             }
 
         }
@@ -348,7 +348,17 @@ namespace Sam.XmlDiff
 
                 externalFileName = Path.Combine(Path.GetDirectoryName(xsdFile), externalFiles[refValue[0].ToLower()]);
                 externalDoc = new XmlDocument();
-                externalDoc.Load(externalFileName);
+
+                try
+                {
+                    externalDoc.Load(externalFileName);
+                }
+                catch (System.Exception ex)
+                {
+                    this.Display(string.Format("Exception: {0}", ex.Message));
+                    return;
+                }
+                
 
                 XmlNodeList conNodes = null;
 
@@ -560,7 +570,10 @@ namespace Sam.XmlDiff
                             // set MismatchedType
                             if (string.Equals(attrSource.Value, attrChanged.Value, StringComparison.OrdinalIgnoreCase))
                             {
-                                pair.MismatchedType = EvolutionTypes.Element_NameAttribute_Update;
+                                if (string.Equals(attrSource.Name, "name", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    pair.MismatchedType = EvolutionTypes.Element_NameAttribute_Update;
+                                }
                             }
                             else if (string.Equals(attrSource.Name, "type", StringComparison.OrdinalIgnoreCase))
                             {
@@ -641,7 +654,10 @@ namespace Sam.XmlDiff
 
                                 if (string.Equals(bAttr.Value, sAttr.Value, StringComparison.OrdinalIgnoreCase))
                                 {
-                                    pair.MismatchedType = EvolutionTypes.Element_NameAttribute_Update;
+                                    if (string.Equals(bAttr.Name, "name", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        pair.MismatchedType = EvolutionTypes.Element_NameAttribute_Update;
+                                    }
                                 }
                                 else if (string.Equals(bAttr.Name, "type", StringComparison.OrdinalIgnoreCase))
                                 {
@@ -686,7 +702,10 @@ namespace Sam.XmlDiff
 
                                 if (string.Equals(bAttr.Value, sAttr.Value, StringComparison.OrdinalIgnoreCase))
                                 {
-                                    pair.MismatchedType = EvolutionTypes.Element_NameAttribute_Update;
+                                    if (string.Equals(bAttr.Name, "name", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        pair.MismatchedType = EvolutionTypes.Element_NameAttribute_Update;
+                                    }
                                 }
                                 else if (string.Equals(bAttr.Name, "type", StringComparison.OrdinalIgnoreCase))
                                 {
@@ -745,11 +764,11 @@ namespace Sam.XmlDiff
                         }
                         else if (string.Equals(bAttr.Name, "minOccurs", StringComparison.OrdinalIgnoreCase))
                         {
-                            pair.MismatchedType = EvolutionTypes.RemoveMinQuantifier;
+                            pair.MismatchedType = EvolutionTypes.RemoveMinOccurs;
                         }
                         else if (string.Equals(bAttr.Name, "maxOccurs", StringComparison.OrdinalIgnoreCase))
                         {
-                            pair.MismatchedType = EvolutionTypes.RemoveMaxQuantifier;
+                            pair.MismatchedType = EvolutionTypes.RemoveMaxOccurs;
                         }
                         else if (string.Equals(bAttr.Name, "namespace", StringComparison.OrdinalIgnoreCase))
                         {
@@ -772,11 +791,11 @@ namespace Sam.XmlDiff
                         }
                         else if (string.Equals(bAttr.Name, "minOccurs", StringComparison.OrdinalIgnoreCase))
                         {
-                            pair.MismatchedType = EvolutionTypes.AddMinQuantifier;
+                            pair.MismatchedType = EvolutionTypes.AddMinOccurs;
                         }
                         else if (string.Equals(bAttr.Name, "maxOccurs", StringComparison.OrdinalIgnoreCase))
                         {
-                            pair.MismatchedType = EvolutionTypes.AddMaxQuantifier;
+                            pair.MismatchedType = EvolutionTypes.AddMaxOccurs;
                         }
                         else if (string.Equals(bAttr.Name, "namespace", StringComparison.OrdinalIgnoreCase))
                         {
@@ -885,11 +904,12 @@ namespace Sam.XmlDiff
                 throw new ArgumentException("The second argument 'xsdFile' should not be empty or null.");
             }
 
-            string filename = Path.Combine(Path.GetDirectoryName(xsdFile), "merge" + DateTime.Now.GetHashCode() + ".xsd");
-            doc.Save(filename);
+            string filename = Path.GetFileNameWithoutExtension(xsdFile);
+            string path = Path.Combine(Path.GetDirectoryName(xsdFile), "expanded-" + filename + "-"  + DateTime.Now.GetHashCode() + ".xsd");
+            doc.Save(path);
 
             this.Display("Save Done!");
-            this.Display("You can locate the file in " + filename);
+            this.Display("You can locate the file in " + path);
         }
 
         #endregion
@@ -913,17 +933,18 @@ namespace Sam.XmlDiff
         TypeChange_Remove,
         TypeChange_Add,
 
-        ChangeQuantifierValue,
+        // minOccurs
         IncreasedMinOccurs,
         DecreasedMinOccurs,
+        AddMinOccurs,
+        RemoveMinOccurs,
+
+        // maxOccurs
         IncreasedMaxOccurs,
         DecreasedMaxOccurs,
-
-
-        RemoveMinQuantifier,
-        RemoveMaxQuantifier,
-        AddMinQuantifier,
-        AddMaxQuantifier,
+        AddMaxOccurs,
+        RemoveMaxOccurs,
+        
 
         ChangeRestriction_MaxLength, // for element
         ChangeRestriction_MaxLength_Increased,

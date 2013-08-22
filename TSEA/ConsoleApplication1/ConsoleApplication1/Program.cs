@@ -58,8 +58,8 @@ namespace ConsoleApplication1
             //}
             #endregion
 
-            string soureFile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Contacts.xsd";
-            string changedFile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\cntc.xsd";
+            string soureFile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\SyncResponse.xsd";
+            string changedFile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\syncres.xsd";
             
             XmlDiff diff = new XmlDiff(soureFile, changedFile);
 

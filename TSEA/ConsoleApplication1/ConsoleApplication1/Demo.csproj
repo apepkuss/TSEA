@@ -111,6 +111,9 @@
     <None Include="Resources\ChangedXSD\srch.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Resources\ChangedXSD\syncres.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\ChangedXSD\tasks.xsd">
       <SubType>Designer</SubType>
     </None>
