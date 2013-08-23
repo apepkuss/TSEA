@@ -45,7 +45,7 @@ namespace Sam.XmlDiff
 
         public List<string> ElementsWithRefAttribute { get; private set; }
 
-        public List<XmlNode> InteranlRefNodes { get; private set; }
+        public List<XmlNode> InternalRefNodes { get; private set; }
 
         public List<XmlNode> ExternalRefNodes { get; private set; }
 
@@ -134,8 +134,9 @@ namespace Sam.XmlDiff
 
         private void Preprocess(ref XmlDocument xmlDoc, string xsdFile)
         {
+            bool isExpanded = false;
             this.ElementsWithRefAttribute = null;
-            this.InteranlRefNodes = null;
+            this.InternalRefNodes = null;
             this.ExternalRefNodes = null;
             this.InternalConNodes = null;
 
@@ -160,15 +161,15 @@ namespace Sam.XmlDiff
                             this.ElementsWithRefAttribute = new List<string>();
                         }
 
-                        if (this.InteranlRefNodes == null)
+                        if (this.InternalRefNodes == null)
                         {
-                            this.InteranlRefNodes = new List<XmlNode>();
+                            this.InternalRefNodes = new List<XmlNode>();
                         }
 
                         if (!element.GetAttribute("ref").Contains(":"))
                         {
                             // handle internal ref node
-                            this.InteranlRefNodes.Add(node);
+                            this.InternalRefNodes.Add(node);
                         }
 
                         this.ElementsWithRefAttribute.Add(element.GetAttribute("ref"));
@@ -187,8 +188,12 @@ namespace Sam.XmlDiff
 
                 #endregion
 
-                this.ExpandInternalRefNodes();
-
+                if (this.InternalRefNodes != null)
+                {
+                    this.ExpandInternalRefNodes();
+                    isExpanded = true;
+                }
+                
                 #region Parse external ref-nodes
                 nodes = xmlDoc.GetElementsByTagName("xs:element");
                 this.ElementCount = nodes.Count;
@@ -230,10 +235,17 @@ namespace Sam.XmlDiff
                 }
                 #endregion
 
-                this.ExpandExternalRefNodes(ref xmlDoc, xsdFile);
-
-                // save the expanded XML doc
-                this.SaveExpandedXDoc(ref xmlDoc, xsdFile);
+                if (this.ExternalRefNodes != null)
+                {
+                    this.ExpandExternalRefNodes(ref xmlDoc, xsdFile);
+                    isExpanded = true;
+                }
+                
+                if (isExpanded)
+                {
+                    // save the expanded XML doc
+                    this.SaveExpandedXDoc(ref xmlDoc, xsdFile);
+                }
             }
             catch (FileNotFoundException ex)
             {
@@ -261,7 +273,7 @@ namespace Sam.XmlDiff
         private void ExpandInternalRefNodes()
         {
             int counter = 0;
-            foreach (XmlNode refNode in this.InteranlRefNodes)
+            foreach (XmlNode refNode in this.InternalRefNodes)
             {
                 XmlElement refElement = refNode as XmlElement;
                 if (refElement != null && refElement.HasAttribute("ref"))
