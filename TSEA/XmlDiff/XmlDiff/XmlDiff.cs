@@ -24,6 +24,10 @@ namespace Sam.XmlDiff
 
         private List<MismatchedElementPair> mismatchedNodePairs = new List<MismatchedElementPair>();
 
+        private bool isInternalExpanded = false;
+
+        private bool isExternalExpanded = false;
+
         #endregion
 
         #region Constructors
@@ -47,9 +51,15 @@ namespace Sam.XmlDiff
 
         public List<XmlNode> InternalRefNodes { get; private set; }
 
-        public List<XmlNode> ExternalRefNodes { get; private set; }
+        public List<XmlNode> ExternalImportNodes { get; private set; }
+
+        public List<XmlNode> ExternalIncludeNodes { get; private set; }
 
         public List<XmlNode> InternalConNodes { get; private set; }
+
+        public XmlNodeList IncludeNodes { get; private set; }
+
+        public XmlNodeList ImportNodes { get; private set; }
 
         public int ElementCount { get; private set; }
 
@@ -109,12 +119,16 @@ namespace Sam.XmlDiff
 
             #endregion
 
+            if (!this.isExternalExpanded || !this.isInternalExpanded)
+            {
+                return;
+            }
+
             if (this.originalXmlDoc.DocumentElement != null && this.changedXmlDoc.DocumentElement != null)
             {
                 this.Compare(this.originalXmlDoc.DocumentElement, this.changedXmlDoc.DocumentElement);
+                this.GenerateDeltaFile();
             }
-
-            this.GenerateDeltaFile();
         }
 
         public void GenerateDeltaFile()
@@ -134,109 +148,177 @@ namespace Sam.XmlDiff
 
         private void Preprocess(ref XmlDocument xmlDoc, string xsdFile)
         {
-            bool isInternalExpanded = false;
-            bool isExternalExpanded = false;
-            this.ElementsWithRefAttribute = null;
-            this.InternalRefNodes = null;
-            this.ExternalRefNodes = null;
-            this.InternalConNodes = null;
+            this.ElementsWithRefAttribute = new List<string>();
+            this.InternalRefNodes = new List<XmlNode>();
+            this.ExternalImportNodes = new List<XmlNode>();
+            this.ExternalIncludeNodes = new List<XmlNode>();
+            this.InternalConNodes = new List<XmlNode>();
+            this.ImportNodes = null;
+            this.IncludeNodes = null;
 
             try
             {
                 XmlNodeList nodes;
 
-                #region Parse internal ref-nodes
-                nodes = xmlDoc.GetElementsByTagName("xs:element");
-                this.ElementCount = nodes.Count;
+                #region Extract "Include" nodes
 
-                foreach (XmlNode node in nodes)
-                {
-                    XmlElement element = node as XmlElement;
-                    if (element != null && element.HasAttribute("ref"))
-                    {
-                        XmlElement parent = node.ParentNode as XmlElement;
+                this.IncludeNodes = xmlDoc.GetElementsByTagName("xs:include");
+                
+                #endregion
 
-                        // filter and store ref-elements
-                        if (this.ElementsWithRefAttribute == null)
-                        {
-                            this.ElementsWithRefAttribute = new List<string>();
-                        }
+                #region Extract "Import" nodes
 
-                        if (this.InternalRefNodes == null)
-                        {
-                            this.InternalRefNodes = new List<XmlNode>();
-                        }
-
-                        if (!element.GetAttribute("ref").Contains(":"))
-                        {
-                            // handle internal ref node
-                            this.InternalRefNodes.Add(node);
-                        }
-
-                        this.ElementsWithRefAttribute.Add(element.GetAttribute("ref"));
-                    }
-                    else
-                    {
-                        // filter and store non-ref nodes
-                        if (this.InternalConNodes == null)
-                        {
-                            this.InternalConNodes = new List<XmlNode>();
-                        }
-
-                        this.InternalConNodes.Add(node);
-                    }
-                }
+                this.ImportNodes = xmlDoc.GetElementsByTagName("xs:import");
 
                 #endregion
 
-                if (this.InternalRefNodes != null)
-                {
-                    isInternalExpanded = this.ExpandInternalRefNodes();
-                }
-                
-                #region Parse external ref-nodes
+
+                #region Extract internal and external ref-nodes
+
                 nodes = xmlDoc.GetElementsByTagName("xs:element");
                 this.ElementCount = nodes.Count;
-                string attributeValue;
+                string attributeValue1;
 
                 foreach (XmlNode node in nodes)
                 {
                     XmlElement element = node as XmlElement;
 
                     // filter ref-nodes
-                    if (element != null && (element.HasAttribute("ref") || element.HasAttribute("type")))
+                    if (element != null)
                     {
-                        // filter and store ref-elements
-                        if (this.ElementsWithRefAttribute == null)
-                        {
-                            this.ElementsWithRefAttribute = new List<string>();
-                        }
-
-                        if (this.ExternalRefNodes == null)
-                        {
-                            this.ExternalRefNodes = new List<XmlNode>();
-                        }
-
                         if (element.HasAttribute("ref"))
                         {
-                            attributeValue = element.GetAttribute("ref");
+                            attributeValue1 = element.GetAttribute("ref");
+
+                            //////////////////////////////////////////////////////////////////////////
+                            //
+                            // ref="elementname" -> internal ref (current doc or include)
+                            // ref="xxxx:yyyy"   -> external ref (import)
+                            //
+                            //////////////////////////////////////////////////////////////////////////
+                            if (!attributeValue1.Contains(":"))
+                            {
+                                // handle internal ref node
+                                this.InternalRefNodes.Add(node);
+                                continue;
+                            }
+                            else
+                            {
+                                // Handle external ref node
+                                this.ExternalImportNodes.Add(node);
+                                continue;
+                            }
                         }
-                        else
+                        else if (element.HasAttribute("type"))
                         {
-                            attributeValue = element.GetAttribute("type");
+                            attributeValue1 = element.GetAttribute("type");
+
+                            //////////////////////////////////////////////////////////////////////////
+                            //
+                            // type="xxxx"      -> internal ref node
+                            // type="xxxx:yyyy" -> external ref node (import)
+                            // type="xs:xxxx"   -> basic type (ignore)
+                            //
+                            //////////////////////////////////////////////////////////////////////////
+                            if (!attributeValue1.Contains(":"))
+                            {
+                                // handle internal ref node
+                                this.InternalRefNodes.Add(node);
+                                continue;
+                            }
+                            else if (attributeValue1.Contains(":") && !attributeValue1.Contains("xs:"))
+                            {
+                                // Handle external ref node
+                                this.ExternalImportNodes.Add(node);
+                                continue;
+                            }
                         }
 
-                        if (attributeValue.Contains(":") && !attributeValue.Contains("xs:"))
-                        {
-                            // Handle external ref node
-                            this.ExternalRefNodes.Add(node);
-                        }
+                        // filter and store non-ref nodes
+                        this.InternalConNodes.Add(node);
                     }
                 }
                 #endregion
 
-                if (this.ExternalRefNodes != null)
+                #region TODO: remove Parse internal ref-nodes
+                //nodes = xmlDoc.GetElementsByTagName("xs:element");
+                //this.ElementCount = nodes.Count;
+
+                //foreach (XmlNode node in nodes)
+                //{
+                //    XmlElement element = node as XmlElement;
+                //    if (element != null && element.HasAttribute("ref"))
+                //    {
+                //        XmlElement parent = node.ParentNode as XmlElement;
+
+                //        // filter and store ref-elements
+                //        if (this.ElementsWithRefAttribute == null)
+                //        {
+                //            this.ElementsWithRefAttribute = new List<string>();
+                //        }
+
+                //        if (!element.GetAttribute("ref").Contains(":"))
+                //        {
+                //            // handle internal ref node
+                //            this.InternalRefNodes.Add(node);
+                //        }
+
+                //        this.ElementsWithRefAttribute.Add(element.GetAttribute("ref"));
+                //    }
+                //    else
+                //    {
+                //        // filter and store non-ref nodes
+                //        this.InternalConNodes.Add(node);
+                //    }
+                //}
+
+                #endregion
+
+                if (this.InternalRefNodes != null && this.InternalRefNodes.Count > 0)
                 {
+                    // expand internal ref-nodes
+                    isInternalExpanded = this.ExpandInternalRefNodes(ref xmlDoc, xsdFile);
+                }
+                
+                #region TODO: remove Parse external ref-nodes
+                //nodes = xmlDoc.GetElementsByTagName("xs:element");
+                //this.ElementCount = nodes.Count;
+                //string attributeValue;
+
+                //foreach (XmlNode node in nodes)
+                //{
+                //    XmlElement element = node as XmlElement;
+
+                //    // filter ref-nodes
+                //    if (element != null && (element.HasAttribute("ref") || element.HasAttribute("type")))
+                //    {
+                //        // filter and store ref-elements
+                //        if (this.ElementsWithRefAttribute == null)
+                //        {
+                //            this.ElementsWithRefAttribute = new List<string>();
+                //        }
+
+                //        if (element.HasAttribute("ref"))
+                //        {
+                //            attributeValue = element.GetAttribute("ref");
+                //        }
+                //        else
+                //        {
+                //            attributeValue = element.GetAttribute("type");
+                //        }
+
+                //        if (attributeValue.Contains(":") && !attributeValue.Contains("xs:"))
+                //        {
+                //            // Handle external ref node
+                //            this.ExternalImportNodes.Add(node);
+                //        }
+                //    }
+                //}
+                #endregion
+
+                if (this.ExternalImportNodes != null && this.ExternalImportNodes.Count > 0)
+                {
+                    // expand external ref-nodes
                     isExternalExpanded = this.ExpandExternalRefNodes(ref xmlDoc, xsdFile);
                 }
 
@@ -251,8 +333,7 @@ namespace Sam.XmlDiff
                     {
                         this.Display("Fail to expand the internal reference node.");
                     }
-
-                    if (!isExternalExpanded)
+                    else if (!isExternalExpanded)
                     {
                         this.Display("Fail to expand the external reference node.");
                     }
@@ -271,7 +352,7 @@ namespace Sam.XmlDiff
             try
             {
                 // expand internal ref nodes
-                this.ExpandInternalRefNodes();
+                //this.ExpandInternalRefNodes(ref xmlDoc);
 
                 // expand external ref nodes
                 //this.ExpandExternalRefNodes(ref xmlDoc);
@@ -282,8 +363,16 @@ namespace Sam.XmlDiff
             }
         }
 
-        private bool ExpandInternalRefNodes()
+        private bool ExpandInternalRefNodes(ref XmlDocument xmlDoc, string xsdFile)
         {
+            Dictionary<string, string> externalFiles = null;
+
+            // get external file names
+            if (this.IncludeNodes != null && this.IncludeNodes.Count > 0)
+            {
+                externalFiles = this.GetExternalFiles(this.IncludeNodes);
+            }
+            
             int counter = 0;
             foreach (XmlNode refNode in this.InternalRefNodes)
             {
@@ -293,7 +382,8 @@ namespace Sam.XmlDiff
                 {
                     string refAttrValue = refElement.GetAttribute("ref");
 
-                    // replace the elements holding an internal 'ref' attribute with the concrete node.
+                    #region replace the elements holding an internal 'ref' attribute with the concrete node.
+
                     foreach (XmlNode conNode in this.InternalConNodes)
                     {
                         XmlElement conElement = conNode as XmlElement;
@@ -320,7 +410,70 @@ namespace Sam.XmlDiff
                         }
                     }
 
-                    if (isExpanded)
+                    #endregion
+
+                    #region handling ref-node by "include"
+                    // if the internal ref-node fails to locate the concrete node in the current doc,
+                    // continue to the search into the "include" docs.
+                    if (!isExpanded && externalFiles != null)
+                    {
+                        foreach (string value in externalFiles.Values)
+                        {
+                            XmlDocument externalDoc = this.LoadExternalXmlFile(value, xsdFile);
+
+                            if (externalDoc == null)
+                            {
+                                this.Display(string.Format("The file of {0}.xsd does not exist.", value));
+                                return false;
+                            }
+
+                            // get concrete nodes
+                            XmlNodeList conNodes = externalDoc.GetElementsByTagName("xs:element");
+
+                            if (conNodes == null || conNodes.Count == 0)
+                            {
+                                break;
+                            }
+
+                            foreach (XmlNode conNode in conNodes)
+                            {
+                                XmlElement conElement = conNode as XmlElement;
+
+                                if (conElement != null && conElement.HasAttribute("name") && string.Equals(refAttrValue, conElement.GetAttribute("name")))
+                                {
+                                    XmlNode newNode = xmlDoc.ImportNode(conNode, true);
+
+                                    // append non-ref attributes of refNode to conNode
+                                    foreach (XmlAttribute attribute in refNode.Attributes)
+                                    {
+                                        if (attribute.Name != "ref")
+                                        {
+                                            XmlElement newElement = newNode as XmlElement;
+                                            newElement.SetAttribute(attribute.Name, attribute.Value);
+                                        }
+                                    }
+
+                                    // replace an internal ref node with its corresponding concrete node
+                                    XmlElement parent = refNode.ParentNode as XmlElement;
+                                    parent.ReplaceChild(newNode, refNode);
+
+                                    isExpanded = true;
+                                    break;
+                                }
+                            }
+
+                            if (isExpanded)
+                            {
+                                break;
+                            }
+                        }
+                    }
+
+                    #endregion
+
+                    // if the internal ref-node fails to get the concrete node in both current and 
+                    // "include" docs, report the failure.
+                    if (!isExpanded)
                     {
                         this.Display(string.Format("Fail to expand: ref=\"{0}\"", refAttrValue));
                         return false;
@@ -335,34 +488,20 @@ namespace Sam.XmlDiff
 
         private bool ExpandExternalRefNodes(ref XmlDocument xmlDoc, string xsdFile)
         {
-            string externalFileName;
-            XmlDocument externalDoc;
             Dictionary<string, string> externalFiles = null;
 
-            if (string.IsNullOrEmpty(xsdFile))
+            // get external file names
+            if (this.ImportNodes != null && this.ImportNodes.Count > 0)
             {
-                this.Display("The second argument 'xsdFile' should not be empty or null.");
+                externalFiles = this.GetExternalFiles(this.ImportNodes);
+            }
+            else
+            {
+                this.Display("There is no import element available.");
                 return false;
             }
-
-            // get external file names
-            XmlNodeList importNodes = xmlDoc.GetElementsByTagName("xs:import");
-            foreach (XmlNode node in importNodes)
-            {
-                XmlElement importElement = node as XmlElement;
-                if (importElement.HasAttribute("namespace") && importElement.HasAttribute("schemaLocation"))
-                {
-                    if (externalFiles == null)
-                    {
-                        externalFiles = new Dictionary<string, string>();
-                    }
-
-                    externalFiles.Add(importElement.GetAttribute("namespace").ToLower(), importElement.GetAttribute("schemaLocation"));
-                }
-
-            }
-
-            foreach (XmlNode refNode in this.ExternalRefNodes)
+            
+            foreach (XmlNode refNode in this.ExternalImportNodes)
             {
                 XmlElement refElement = refNode as XmlElement;
                 string[] refValue = null;
@@ -381,26 +520,30 @@ namespace Sam.XmlDiff
                 if (refValue == null)
                 {
                     this.Display("The attribute does not exist.");
+                    return false;
                 }
 
+                string filename;
                 try
                 {
-                    externalFileName = Path.Combine(Path.GetDirectoryName(xsdFile), externalFiles[refValue[0].ToLower()]);
-                    externalDoc = new XmlDocument();
-                    externalDoc.Load(externalFileName);
+                    filename = externalFiles[refValue[0]];
                 }
                 catch (KeyNotFoundException ex)
                 {
-                    this.Display(string.Format("Exception: {0}", ex.Message));
+                    this.Display(string.Format("The key of {0} was not found.", refValue[0]));
                     return false;
                 }
-                catch (System.Exception ex)
+
+                // load external file
+                XmlDocument externalDoc = this.LoadExternalXmlFile(filename,xsdFile);
+
+                if (externalDoc == null)
                 {
-                    this.Display(string.Format("Exception: {0}", ex.Message));
+                    this.Display(string.Format("The file of {0}.xsd does not exist.", refValue[0]));
                     return false;
                 }
                 
-
+                // get concrete nodes
                 XmlNodeList conNodes = null;
 
                 if (hasTypeAttribute)
@@ -440,8 +583,6 @@ namespace Sam.XmlDiff
                                 {
                                     XmlElement newElement = newNode as XmlElement;
                                     newElement.SetAttribute(attribute.Name, attribute.Value);
-
-                                    break;
                                 }
                             }
 
@@ -839,6 +980,49 @@ namespace Sam.XmlDiff
                 pair.MismatchedType = EvolutionTypes.ImportElementChange_SchemaLocation_Remove;
             }
         }
+
+        private Dictionary<string, string> GetExternalFiles(XmlNodeList nodes)
+        {
+            Dictionary<string, string> externalFiles = new Dictionary<string, string>();
+
+            foreach (XmlNode node in nodes)
+            {
+                XmlElement importElement = node as XmlElement;
+
+                if (importElement.HasAttribute("schemaLocation"))
+                {
+                    if (importElement.HasAttribute("namespace"))
+                    {
+                        externalFiles.Add(importElement.GetAttribute("namespace").ToLower(), importElement.GetAttribute("schemaLocation"));
+                    }
+                    else
+                    {
+                        externalFiles.Add("include", importElement.GetAttribute("schemaLocation"));
+                    }
+                }
+            }
+
+            return externalFiles;
+        }
+
+        private XmlDocument LoadExternalXmlFile(string filename, string xsdFile)
+        {
+            XmlDocument externalDoc = new XmlDocument();
+
+            try
+            {
+                string externalFile = Path.Combine(Path.GetDirectoryName(xsdFile), filename);
+                externalDoc.Load(externalFile);
+            }
+            catch (System.Exception ex)
+            {
+                this.Display(string.Format("Exception: {0}", ex.Message));
+                return null;
+            }
+
+            return externalDoc;
+        }
+
         #endregion
 
         private void Display(string message)

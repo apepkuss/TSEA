@@ -108,6 +108,9 @@
     <None Include="Resources\ChangedXSD\set.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Resources\ChangedXSD\setres.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\ChangedXSD\srch.xsd">
       <SubType>Designer</SubType>
     </None>
