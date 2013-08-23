@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:rm="RightsManagement" xmlns="Settings" targetNamespace="Settings" elementFormDefault="qualified" attributeFormDefault="unqualified">
-  <xs:include schemaLocation="Settings.xsd"/>
-  <xs:import namespace="RightsManagement" schemaLocation="RightsManagement.xsd"/>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:rm=
+    "RightsManagement" xmlns="Settings" targetNamespace="Settings"
+    elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:include schemaLocation="set.xsd"/>
+  <xs:import namespace="RightsManagement" schemaLocation=
+      "rm.xsd"/>
   <xs:element name="DeviceInformation">
     <xs:complexType>
       <xs:all>

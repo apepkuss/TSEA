@@ -134,7 +134,8 @@ namespace Sam.XmlDiff
 
         private void Preprocess(ref XmlDocument xmlDoc, string xsdFile)
         {
-            bool isExpanded = false;
+            bool isInternalExpanded = false;
+            bool isExternalExpanded = false;
             this.ElementsWithRefAttribute = null;
             this.InternalRefNodes = null;
             this.ExternalRefNodes = null;
@@ -190,8 +191,7 @@ namespace Sam.XmlDiff
 
                 if (this.InternalRefNodes != null)
                 {
-                    this.ExpandInternalRefNodes();
-                    isExpanded = true;
+                    isInternalExpanded = this.ExpandInternalRefNodes();
                 }
                 
                 #region Parse external ref-nodes
@@ -237,15 +237,27 @@ namespace Sam.XmlDiff
 
                 if (this.ExternalRefNodes != null)
                 {
-                    this.ExpandExternalRefNodes(ref xmlDoc, xsdFile);
-                    isExpanded = true;
+                    isExternalExpanded = this.ExpandExternalRefNodes(ref xmlDoc, xsdFile);
                 }
-                
-                if (isExpanded)
+
+                if (isInternalExpanded && isExternalExpanded)
                 {
                     // save the expanded XML doc
                     this.SaveExpandedXDoc(ref xmlDoc, xsdFile);
                 }
+                else
+                {
+                    if (!isInternalExpanded)
+                    {
+                        this.Display("Fail to expand the internal reference node.");
+                    }
+
+                    if (!isExternalExpanded)
+                    {
+                        this.Display("Fail to expand the external reference node.");
+                    }
+                }
+
             }
             catch (FileNotFoundException ex)
             {
@@ -270,11 +282,12 @@ namespace Sam.XmlDiff
             }
         }
 
-        private void ExpandInternalRefNodes()
+        private bool ExpandInternalRefNodes()
         {
             int counter = 0;
             foreach (XmlNode refNode in this.InternalRefNodes)
             {
+                bool isExpanded = false;
                 XmlElement refElement = refNode as XmlElement;
                 if (refElement != null && refElement.HasAttribute("ref"))
                 {
@@ -302,16 +315,25 @@ namespace Sam.XmlDiff
                             XmlElement parent = refNode.ParentNode as XmlElement;
                             parent.ReplaceChild(newNode, refNode);
 
+                            isExpanded = true;
                             break;
                         }
+                    }
+
+                    if (isExpanded)
+                    {
+                        this.Display(string.Format("Fail to expand: ref=\"{0}\"", refAttrValue));
+                        return false;
                     }
                 }
 
                 counter++;
             }
+
+            return true;
         }
 
-        private void ExpandExternalRefNodes(ref XmlDocument xmlDoc, string xsdFile)
+        private bool ExpandExternalRefNodes(ref XmlDocument xmlDoc, string xsdFile)
         {
             string externalFileName;
             XmlDocument externalDoc;
@@ -319,7 +341,8 @@ namespace Sam.XmlDiff
 
             if (string.IsNullOrEmpty(xsdFile))
             {
-                throw new ArgumentException("The second argument 'xsdFile' should not be empty or null.");
+                this.Display("The second argument 'xsdFile' should not be empty or null.");
+                return false;
             }
 
             // get external file names
@@ -360,17 +383,21 @@ namespace Sam.XmlDiff
                     this.Display("The attribute does not exist.");
                 }
 
-                externalFileName = Path.Combine(Path.GetDirectoryName(xsdFile), externalFiles[refValue[0].ToLower()]);
-                externalDoc = new XmlDocument();
-
                 try
                 {
+                    externalFileName = Path.Combine(Path.GetDirectoryName(xsdFile), externalFiles[refValue[0].ToLower()]);
+                    externalDoc = new XmlDocument();
                     externalDoc.Load(externalFileName);
+                }
+                catch (KeyNotFoundException ex)
+                {
+                    this.Display(string.Format("Exception: {0}", ex.Message));
+                    return false;
                 }
                 catch (System.Exception ex)
                 {
                     this.Display(string.Format("Exception: {0}", ex.Message));
-                    return;
+                    return false;
                 }
                 
 
@@ -427,6 +454,8 @@ namespace Sam.XmlDiff
                     }
                 }
             }
+
+            return true;
         }
 
         #endregion
