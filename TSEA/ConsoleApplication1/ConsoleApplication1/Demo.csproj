@@ -233,6 +233,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\SOMDiff\SOMDiff\SOMDiff.csproj">
+      <Project>{201b1f6a-e860-405d-b795-c26c6d67b6b3}</Project>
+      <Name>SOMDiff</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\XmlDiff\XmlDiff\XmlDiff.csproj">
       <Project>{df063fa9-0770-4960-8a9e-80d5f55019c8}</Project>
       <Name>XmlDiff</Name>

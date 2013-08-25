@@ -7,9 +7,14 @@ namespace ConsoleApplication1
     using System.Text;
     using System.Threading.Tasks;
 
-
+    using System.IO;
     using System.Xml;
+    using System.Xml.Schema;
     using Sam.XmlDiff;
+    using System.Collections;
+
+
+    using Xin.SOMDiff;
 
     class Program
     {
@@ -58,8 +63,106 @@ namespace ConsoleApplication1
             //}
             #endregion
 
-            string soureFile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Email.xsd";
-            string changedFile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\email.xsd";
+
+            SOMDiff sdiff = new SOMDiff();
+            sdiff.SOMExpand();
+
+
+
+            Console.Read();
+
+
+            TestExpandRef();
+
+
+            Console.Read();
+
+            string sourefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Email2.xsd";
+            string path = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\result.xsd";
+
+            XmlTextReader reader = new XmlTextReader(sourefile);
+            XmlSchema myschema = XmlSchema.Read(reader, ValidationCallBack);
+
+            // Add the customer schema to a new XmlSchemaSet and compile it.
+            // Any schema validation warnings and errors encountered reading or 
+            // compiling the schema are handled by the ValidationEventHandler delegate.
+            XmlSchemaSet schemaSet = new XmlSchemaSet();
+            schemaSet.ValidationEventHandler += new ValidationEventHandler(ValidationCallBack);
+            schemaSet.Add(myschema);
+            schemaSet.Compile();
+
+            // Retrieve the compiled XmlSchema object from the XmlSchemaSet
+            // by iterating over the Schemas property.
+            XmlSchema customerSchema = null;
+            foreach (XmlSchema schema in schemaSet.Schemas())
+            {
+                customerSchema = schema;
+            }
+
+            // Iterate over each XmlSchemaElement in the Values collection
+            // of the Elements property.
+            foreach (XmlSchemaElement element in customerSchema.Elements.Values)
+            {
+
+                Console.WriteLine("Element: {0}", element.Name);
+
+                // Get the complex type of the Customer element.
+                XmlSchemaComplexType complexType = element.ElementSchemaType as XmlSchemaComplexType;
+
+                // If the complex type has any attributes, get an enumerator 
+                // and write each attribute name to the console.
+                if (complexType.AttributeUses.Count > 0)
+                {
+                    IDictionaryEnumerator enumerator =
+                        complexType.AttributeUses.GetEnumerator();
+
+                    while (enumerator.MoveNext())
+                    {
+                        XmlSchemaAttribute attribute =
+                            (XmlSchemaAttribute)enumerator.Value;
+
+                        Console.WriteLine("Attribute: {0}", attribute.Name);
+                    }
+                }
+
+                // Get the sequence particle of the complex type.
+                XmlSchemaSequence sequence = complexType.ContentTypeParticle as XmlSchemaSequence;
+
+                // Iterate over each XmlSchemaElement in the Items collection.
+                foreach (XmlSchemaElement childElement in sequence.Items)
+                {
+                    Console.WriteLine("Element: {0}", childElement.Name);
+                }
+            }
+
+
+            //try
+            //{
+            //    string sourefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Email2.xsd";
+            //    string path = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\result.xsd";
+
+            //    XmlTextReader reader = new XmlTextReader(sourefile);
+            //    XmlSchema myschema = XmlSchema.Read(reader, ValidationCallBack);
+                
+            //    // output the schema to console
+            //    myschema.Write(Console.Out);
+
+            //    // output the schema to a file
+            //    FileStream file = new FileStream(path, FileMode.Create, FileAccess.ReadWrite);
+            //    XmlTextWriter xwriter = new XmlTextWriter(file, new UTF8Encoding());
+            //    xwriter.Formatting = Formatting.Indented;
+            //    myschema.Write(xwriter);
+            //}
+            //catch (System.Exception ex)
+            //{
+            //    Console.WriteLine(ex);
+            //}
+
+
+            Console.Read();
+
+            string soureFile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\SettingsResponse.xsd";
+            string changedFile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\setres.xsd";
             
             XmlDiff diff = new XmlDiff(soureFile, changedFile);
 
@@ -69,6 +172,101 @@ namespace ConsoleApplication1
 
             Console.Read();
             
+        }
+
+        private static void ValidationCallBack(object sender, ValidationEventArgs args)
+        {
+            if (args.Severity == XmlSeverityType.Warning)
+                Console.Write("WARNING: ");
+            else if (args.Severity == XmlSeverityType.Error)
+                Console.Write("ERROR: ");
+
+            Console.WriteLine(args.Message);
+        }
+
+        private static void TestExpandRef()
+        {
+            // output the schema to a file
+            string path = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\result.xsd";
+            FileStream file = new FileStream(path, FileMode.Create, FileAccess.ReadWrite);
+            XmlTextWriter xwriter = new XmlTextWriter(file, new UTF8Encoding());
+            xwriter.Formatting = Formatting.Indented;
+
+            string email = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Email.xsd";
+            string email2 = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Email2.xsd";
+
+            XmlTextReader reader1 = new XmlTextReader(email);
+            XmlSchema emailSchema = XmlSchema.Read(reader1, ValidationCallBack);
+
+            XmlTextReader reader2 = new XmlTextReader(email2);
+            XmlSchema email2Schema = XmlSchema.Read(reader2, ValidationCallBack);
+
+            // Add the customer and address schemas to a new XmlSchemaSet and compile them.
+            // Any schema validation warnings and errors encountered reading or 
+            // compiling the schemas are handled by the ValidationEventHandler delegate.
+            XmlSchemaSet schemaSet = new XmlSchemaSet();
+            schemaSet.ValidationEventHandler += new ValidationEventHandler(ValidationCallBack);
+            schemaSet.Add(emailSchema);
+            schemaSet.Add(email2Schema);
+            schemaSet.Compile();
+
+            //// Retrieve the compiled XmlSchema objects for the customer and
+            //// address schema from the XmlSchemaSet by iterating over 
+            //// the Schemas property.
+            //XmlSchema customerSchema = null;
+            //XmlSchema addressSchema = null;
+            //foreach (XmlSchema schema in schemaSet.Schemas())
+            //{
+            //    if (schema.TargetNamespace == "http://www.tempuri.org")
+            //        customerSchema = schema;
+            //    else if (schema.TargetNamespace == "http://www.example.com/IPO")
+            //        addressSchema = schema;
+            //}
+            
+            // Create an XmlSchemaImport object, set the Namespace property
+            // to the namespace of the address schema, the Schema property 
+            // to the address schema, and add it to the Includes property
+            // of the customer schema.
+            XmlSchemaImport import = new XmlSchemaImport();
+            import.Namespace = email2Schema.TargetNamespace;
+            import.Schema = email2Schema;
+            emailSchema.Includes.Add(import);
+
+            // Reprocess and compile the modified XmlSchema object 
+            // of the customer schema and write it to the console.    
+            schemaSet.Reprocess(emailSchema);
+            schemaSet.Compile();
+            emailSchema.Write(xwriter);
+
+            // Recursively write all of the schemas imported into the
+            // customer schema to the console using the Includes 
+            // property of the customer schema.
+            RecurseExternals(emailSchema);
+        }
+
+        private static void RecurseExternals(XmlSchema schema)
+        {
+            foreach (XmlSchemaExternal external in schema.Includes)
+            {
+                if (external.SchemaLocation != null)
+                {
+                    Console.WriteLine("External SchemaLocation: {0}", external.SchemaLocation);
+                }
+
+                if (external is XmlSchemaImport)
+                {
+                    XmlSchemaImport import = external as XmlSchemaImport;
+                    Console.WriteLine("Imported namespace: {0}", import.Namespace);
+                }
+
+                if (external.Schema != null)
+                {
+                    external.Schema.Write(Console.Out);
+                    RecurseExternals(external.Schema);
+                }
+
+                Console.WriteLine();
+            }
         }
     }
 }
