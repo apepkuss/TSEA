@@ -63,9 +63,11 @@ namespace ConsoleApplication1
             //}
             #endregion
 
+            string sourefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Email.xsd";
+            string changefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\email.xsd";
 
             SOMDiff sdiff = new SOMDiff();
-            sdiff.SOMExpand();
+            sdiff.DiffSchemas(sourefile, changefile);
 
 
 
@@ -77,7 +79,7 @@ namespace ConsoleApplication1
 
             Console.Read();
 
-            string sourefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Email2.xsd";
+            //string sourefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Email2.xsd";
             string path = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\result.xsd";
 
             XmlTextReader reader = new XmlTextReader(sourefile);

@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "ConsoleApplication1\Demo.csproj", "{23212881-D921-4C09-98C2-9BE10E23A812}"
+	ProjectSection(ProjectDependencies) = postProject
+		{201B1F6A-E860-405D-B795-C26C6D67B6B3} = {201B1F6A-E860-405D-B795-C26C6D67B6B3}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlDiff", "..\XmlDiff\XmlDiff\XmlDiff.csproj", "{DF063FA9-0770-4960-8A9E-80D5F55019C8}"
 EndProject
