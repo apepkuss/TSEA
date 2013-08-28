@@ -11,22 +11,37 @@ namespace Xin.SOMDiff
     using System.Xml;
     using System.Xml.Schema;
 
-
     public class SOMDiff
     {
-        public void DiffSchemas(string sourefile, string changefile)
+        private static XmlSchema sourceXmlSchema = new XmlSchema();
+        private static XmlSchema changeXmlSchema = new XmlSchema();
+
+        private static XmlSchemaSet sourceSchemaSet = new XmlSchemaSet();
+        private static XmlSchemaSet changeSchemaSet = new XmlSchemaSet();
+
+        private static List<XmlSchemaFacet> removedFacets = new List<XmlSchemaFacet>();
+        private static List<XmlSchemaFacet> addedFacets = new List<XmlSchemaFacet>();
+
+        public SOMDiff()
+        {
+            
+        }
+
+        public SOMDiff(string sourefile, string changefile) : base()
         {
             XmlTextReader sreader = new XmlTextReader(sourefile);
-            XmlSchema sourceXmlSchema = XmlSchema.Read(sreader, this.ValidationCallBack);
+            //XmlSchema sourceXmlSchema = XmlSchema.Read(sreader, this.ValidationCallBack);
+            sourceXmlSchema = XmlSchema.Read(sreader, this.ValidationCallBack);
 
             XmlTextReader creader = new XmlTextReader(changefile);
-            XmlSchema changeXmlSchema = XmlSchema.Read(creader, this.ValidationCallBack);
+            //XmlSchema changeXmlSchema = XmlSchema.Read(creader, this.ValidationCallBack);
+            changeXmlSchema = XmlSchema.Read(creader, this.ValidationCallBack);
 
 
             // Add the customer schema to a new XmlSchemaSet and compile it.
             // Any schema validation warnings and errors encountered reading or 
             // compiling the schema are handled by the ValidationEventHandler delegate.
-            XmlSchemaSet sourceSchemaSet = new XmlSchemaSet();
+            //XmlSchemaSet sourceSchemaSet = new XmlSchemaSet();
             sourceSchemaSet.ValidationEventHandler += new ValidationEventHandler(this.ValidationCallBack);
             sourceSchemaSet.Add(sourceXmlSchema);
             sourceSchemaSet.Compile();
@@ -42,7 +57,7 @@ namespace Xin.SOMDiff
             }
 
 
-            XmlSchemaSet changeSchemaSet = new XmlSchemaSet();
+            //XmlSchemaSet changeSchemaSet = new XmlSchemaSet();
             changeSchemaSet.ValidationEventHandler += new ValidationEventHandler(this.ValidationCallBack);
             changeSchemaSet.Add(changeXmlSchema);
             changeSchemaSet.Compile();
@@ -56,12 +71,60 @@ namespace Xin.SOMDiff
                     break;
                 }
             }
+        }
+
+        public void DiffSchemas(string sourefile, string changefile)
+        {
+            #region The following code has been moved to constructor
+            
+            //XmlTextReader sreader = new XmlTextReader(sourefile);
+            //XmlSchema sourceXmlSchema = XmlSchema.Read(sreader, this.ValidationCallBack);
+
+            //XmlTextReader creader = new XmlTextReader(changefile);
+            //XmlSchema changeXmlSchema = XmlSchema.Read(creader, this.ValidationCallBack);
+
+
+            //// Add the customer schema to a new XmlSchemaSet and compile it.
+            //// Any schema validation warnings and errors encountered reading or 
+            //// compiling the schema are handled by the ValidationEventHandler delegate.
+            //XmlSchemaSet sourceSchemaSet = new XmlSchemaSet();
+            //sourceSchemaSet.ValidationEventHandler += new ValidationEventHandler(this.ValidationCallBack);
+            //sourceSchemaSet.Add(sourceXmlSchema);
+            //sourceSchemaSet.Compile();
+
+            //Uri sourceUri = new Uri(sourefile);
+            //foreach (XmlSchema schema in sourceSchemaSet.Schemas())
+            //{
+            //    if (schema.SourceUri == sourceUri.ToString())
+            //    {
+            //        sourceXmlSchema = schema;
+            //        break;
+            //    }
+            //}
+
+
+            //XmlSchemaSet changeSchemaSet = new XmlSchemaSet();
+            //changeSchemaSet.ValidationEventHandler += new ValidationEventHandler(this.ValidationCallBack);
+            //changeSchemaSet.Add(changeXmlSchema);
+            //changeSchemaSet.Compile();
+
+            //Uri changeUri = new Uri(changefile);
+            //foreach (XmlSchema schema in changeSchemaSet.Schemas())
+            //{
+            //    if (schema.SourceUri == changeUri.ToString())
+            //    {
+            //        changeXmlSchema = schema;
+            //        break;
+            //    }
+            //}
+
+            #endregion
 
             // Compare elements
-            //this.CompareElements(sourceXmlSchema.Elements, changeXmlSchema.Elements);
+            this.CompareElements(sourceXmlSchema.Elements, changeXmlSchema.Elements);
 
             // Compare groups
-            this.CompareGroups(sourceXmlSchema.Groups, changeXmlSchema.Groups, false);
+            //this.CompareGroups(sourceXmlSchema.Groups, changeXmlSchema.Groups, false);
 
             Console.Read();
 
@@ -293,68 +356,278 @@ namespace Xin.SOMDiff
 
         private void CompareSingleElement(XmlSchemaElement element1, XmlSchemaElement element2)
         {
-            if (element1.Name == "Category")
+            if (element1.Name == "MeetingStatus")
             {
                 
             }
 
-            if (!string.IsNullOrEmpty(element1.Name) && !string.IsNullOrEmpty(element2.Name))
+            // if element else ref-element
+            if (element1.RefName.IsEmpty && element2.RefName.IsEmpty)
             {
                 if (element1.Name != element2.Name)
                 {
                     // Change: Element_NameAttribute_Update
+                    EvolutionTypes changeType = EvolutionTypes.Element_NameAttribute_Update;
                 }
-            }
-            else if (!string.IsNullOrEmpty(element1.Name))
-            {
 
-            }
-            else if (!string.IsNullOrEmpty(element2.Name))
-            {
 
-            }
-            else if (!string.IsNullOrEmpty(element1.RefName.Name) && !string.IsNullOrEmpty(element2.RefName.Name))
-            {
-                this.CompareRefElement(element1, element2);
+                // if simpleType/complexType else common element
+                if (element1.SchemaTypeName.IsEmpty && element2.SchemaTypeName.IsEmpty)
+                {
+                    // simpleType or complexType
+                    this.CompareSchemaType(element1.ElementSchemaType, element2.ElementSchemaType);
+                }
+                else
+                {
+                    if (element1.SchemaTypeName.Namespace == element2.SchemaTypeName.Namespace)
+                    {
+                        if (element1.SchemaTypeName.Name != element2.SchemaTypeName.Name)
+                        {
+                            EvolutionTypes changeType = EvolutionTypes.TypeChange_Update;
+                        }
+                    }
+                    //else
+                    //{
+                    //    XmlSchemaType schemaType1 = null;
+                    //    if (element1.SchemaTypeName.Namespace != "http://www.w3.org/2001/XMLSchema")
+                    //    {
+                    //        schemaType1 = this.GetTypeByRefType(element1.SchemaTypeName, true);
+                    //    }
+                    //    else
+                    //    {
+                    //        schemaType1 = element1.ElementSchemaType;
+                    //    }
+
+                    //    XmlSchemaType schemaType2 = null;
+                    //    if (element2.SchemaTypeName.Namespace != "http://www.w3.org/2001/XMLSchema")
+                    //    {
+                    //        schemaType2 = this.GetTypeByRefType(element2.SchemaTypeName, false);
+                    //    }
+                    //    else
+                    //    {
+                    //        schemaType2 = element2.ElementSchemaType;
+                    //    }
+
+                    //    this.CompareSchemaType(schemaType1, schemaType2);
+                    //}
+
+                    if (element1.SchemaTypeName.Namespace != "http://www.w3.org/2001/XMLSchema" || element2.SchemaTypeName.Namespace != "http://www.w3.org/2001/XMLSchema")
+                    {
+                        XmlSchemaType schemaType1 = null;
+                        if (element1.SchemaTypeName.Namespace != "http://www.w3.org/2001/XMLSchema")
+                        {
+                            schemaType1 = this.GetTypeByRefType(element1.SchemaTypeName, true);
+                        }
+                        else
+                        {
+                            schemaType1 = element1.ElementSchemaType;
+                        }
+
+                        XmlSchemaType schemaType2 = null;
+                        if (element2.SchemaTypeName.Namespace != "http://www.w3.org/2001/XMLSchema")
+                        {
+                            schemaType2 = this.GetTypeByRefType(element2.SchemaTypeName, false);
+                        }
+                        else
+                        {
+                            schemaType2 = element2.ElementSchemaType;
+                        }
+
+                        this.CompareSchemaType(schemaType1, schemaType2);
+                    }
+
+                    this.CompareFacetMaxOccurs(element1.MaxOccursString, element2.MaxOccursString);
+
+                    this.CompareFacetMinOccurs(element1.MinOccursString, element2.MinOccursString);
+                }
+
+
+
+                //if (!string.IsNullOrEmpty(element1.SchemaTypeName.Name) && !string.IsNullOrEmpty(element2.SchemaTypeName.Name))
+                //{
+                //    if (element1.SchemaTypeName.Namespace == element2.SchemaTypeName.Namespace)
+                //    {
+                //        if (element1.SchemaTypeName.Name != element2.SchemaTypeName.Name)
+                //        {
+                //            EvolutionTypes changeType = EvolutionTypes.TypeChange_Update;
+                //        }
+                //    }
+                //    else
+                //    {
+                //        XmlSchemaType schemaType1 = null;
+                //        if (element1.SchemaTypeName.Namespace != "http://www.w3.org/2001/XMLSchema")
+                //        {
+                //            schemaType1 = this.GetTypeByRefType(element1.SchemaTypeName, true);
+                //        }
+                //        else
+                //        {
+                //            schemaType1 = element1.ElementSchemaType;
+                //        }
+
+                //        XmlSchemaType schemaType2 = null;
+                //        if (element2.SchemaTypeName.Namespace != "http://www.w3.org/2001/XMLSchema")
+                //        {
+                //            schemaType2 = this.GetTypeByRefType(element2.SchemaTypeName, false);
+                //        }
+                //        else
+                //        {
+                //            schemaType2 = element2.ElementSchemaType;
+                //        }
+
+                //        this.CompareSchemaType(schemaType1, schemaType2);
+                //    }
+
+
+                //    this.CompareFacetMaxOccurs(element1.MaxOccursString, element2.MaxOccursString);
+
+                //    this.CompareFacetMinOccurs(element1.MinOccursString, element2.MinOccursString);
+                //}
+                //else
+                //{
+                //    // Compare the type of the elements
+                //    this.CompareSchemaType(element1.ElementSchemaType, element2.ElementSchemaType);
+                //}
             }
             else
             {
-
+                if (!string.IsNullOrEmpty(element1.RefName.Name) && !string.IsNullOrEmpty(element2.RefName.Name))
+                {
+                    this.CompareRefElement(element1, element2);
+                }
+                else if (!string.IsNullOrEmpty(element1.RefName.Name) || !string.IsNullOrEmpty(element2.RefName.Name))
+                {
+                    this.CompareRefElement(element1, element2);
+                }
             }
 
-            if (!string.IsNullOrEmpty(element1.SchemaTypeName.Name) && !string.IsNullOrEmpty(element2.SchemaTypeName.Name))
+            #region Commented Useful Code
+            
+            //if (!string.IsNullOrEmpty(element1.Name) && !string.IsNullOrEmpty(element2.Name))
+            //{
+            //    if (element1.Name != element2.Name)
+            //    {
+            //        // Change: Element_NameAttribute_Update
+            //        EvolutionTypes changeType = EvolutionTypes.Element_NameAttribute_Update;
+            //    }
+            //}
+            
+            //if (!string.IsNullOrEmpty(element1.RefName.Name) && !string.IsNullOrEmpty(element2.RefName.Name))
+            //{
+            //    this.CompareRefElement(element1, element2);
+            //}
+            //else if (!string.IsNullOrEmpty(element1.RefName.Name))
+            //{
+            //    this.CompareRefElement(element1, element2);
+            //}
+            //else if (!string.IsNullOrEmpty(element2.RefName.Name))
+            //{
+
+            //}
+
+            //if (!string.IsNullOrEmpty(element1.SchemaTypeName.Name) && !string.IsNullOrEmpty(element2.SchemaTypeName.Name))
+            //{
+            //    if (element1.SchemaTypeName.Namespace == element2.SchemaTypeName.Namespace)
+            //    {
+            //        if (element1.SchemaTypeName.Name != element2.SchemaTypeName.Name)
+            //        {
+            //            EvolutionTypes changeType = EvolutionTypes.TypeChange_Update;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        XmlSchemaType schemaType1 = null;
+            //        if (element1.SchemaTypeName.Namespace != "http://www.w3.org/2001/XMLSchema")
+            //        {
+            //            schemaType1 = this.GetTypeByRefType(element1.SchemaTypeName, true);
+            //        }
+            //        else
+            //        {
+            //            schemaType1 = element1.ElementSchemaType;
+            //        }
+
+            //        XmlSchemaType schemaType2 = null;
+            //        if (element2.SchemaTypeName.Namespace != "http://www.w3.org/2001/XMLSchema")
+            //        {
+            //            schemaType2 = this.GetTypeByRefType(element2.SchemaTypeName, false);
+            //        }
+            //        else
+            //        {
+            //            schemaType2 = element2.ElementSchemaType;
+            //        }
+
+            //        this.CompareSchemaType(schemaType1, schemaType2);
+            //    }
+                
+
+            //    this.CompareFacetMaxOccurs(element1.MaxOccursString, element2.MaxOccursString);
+
+            //    this.CompareFacetMinOccurs(element1.MinOccursString, element2.MinOccursString);
+            //}
+            //else
+            //{
+            //    // Compare the type of the elements
+            //    this.CompareSchemaType(element1.ElementSchemaType, element2.ElementSchemaType);
+
+
+            //    //if ((element1.ElementSchemaType is XmlSchemaComplexType) && (element2.ElementSchemaType is XmlSchemaComplexType))
+            //    //{
+            //    //    XmlSchemaComplexType complex1 = element1.ElementSchemaType as XmlSchemaComplexType;
+            //    //    XmlSchemaComplexType complex2 = element2.ElementSchemaType as XmlSchemaComplexType;
+
+            //    //    this.CompareParticleComplexType(complex1, complex2);
+            //    //}
+            //    //else if ((element1.ElementSchemaType is XmlSchemaSimpleType) && (element2.ElementSchemaType is XmlSchemaSimpleType))
+            //    //{
+            //    //    XmlSchemaSimpleType simple1 = element1.ElementSchemaType as XmlSchemaSimpleType;
+            //    //    XmlSchemaSimpleType simple2 = element2.ElementSchemaType as XmlSchemaSimpleType;
+
+            //    //    this.CompareParticleSimpleType(simple1, simple2);
+            //    //}
+            //    //else
+            //    //{
+            //    //    // TODO
+            //    //}
+            //}
+
+            #endregion
+        }
+
+        private void CompareSchemaType(XmlSchemaType schemaType1, XmlSchemaType schemaType2)
+        {
+            if (schemaType1 is XmlSchemaSimpleType)
             {
-                if (element1.SchemaTypeName.Name != element2.SchemaTypeName.Name)
-                {
-                    EvolutionTypes changeType = EvolutionTypes.TypeChange_Update;
-                }
+                XmlSchemaSimpleType simple1 = schemaType1 as XmlSchemaSimpleType;
 
-                this.CompareFacetMaxOccurs(element1.MaxOccursString, element2.MaxOccursString);
-
-                this.CompareFacetMinOccurs(element1.MinOccursString, element2.MinOccursString);
-            }
-            else
-            {
-                if ((element1.ElementSchemaType is XmlSchemaComplexType) && (element2.ElementSchemaType is XmlSchemaComplexType))
+                if (schemaType2 is XmlSchemaSimpleType)
                 {
-                    XmlSchemaComplexType complex1 = element1.ElementSchemaType as XmlSchemaComplexType;
-                    XmlSchemaComplexType complex2 = element2.ElementSchemaType as XmlSchemaComplexType;
-
-                    this.CompareParticleComplexType(complex1, complex2);
-                }
-                else if ((element1.ElementSchemaType is XmlSchemaSimpleType) && (element2.ElementSchemaType is XmlSchemaSimpleType))
-                {
-                    XmlSchemaSimpleType simple1 = element1.ElementSchemaType as XmlSchemaSimpleType;
-                    XmlSchemaSimpleType simple2 = element2.ElementSchemaType as XmlSchemaSimpleType;
+                    XmlSchemaSimpleType simple2 = schemaType2 as XmlSchemaSimpleType;
 
                     this.CompareParticleSimpleType(simple1, simple2);
                 }
                 else
                 {
-                    // TODO
+
                 }
             }
+            else if (schemaType1 is XmlSchemaComplexType)
+            {
+                XmlSchemaComplexType complex1 = schemaType1 as XmlSchemaComplexType;
 
+                if (schemaType2 is XmlSchemaComplexType)
+                {
+                    XmlSchemaComplexType complex2 = schemaType2 as XmlSchemaComplexType;
+
+                    this.CompareParticleComplexType(complex1, complex2);
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+
+            }
         }
 
         private void CompareRefElement(XmlSchemaElement element1, XmlSchemaElement element2)
@@ -362,8 +635,30 @@ namespace Xin.SOMDiff
             this.CompareFacetMaxOccurs(element1.MaxOccursString, element2.MaxOccursString);
             this.CompareFacetMinOccurs(element1.MinOccursString, element2.MinOccursString);
 
-            if (element1.RefName.Name != element2.RefName.Name)
+            if (string.IsNullOrEmpty(element1.RefName.Name))
             {
+                if (element1.Name != element2.RefName.Name)
+                {
+                    // Change: Element_ReferenceChange_Update
+                    EvolutionTypes changeType = EvolutionTypes.Element_ReferenceChange_Update;
+                }
+
+                
+            }
+            else if (string.IsNullOrEmpty(element2.RefName.Name))
+            {
+                if (element1.RefName.Name != element2.Name)
+                {
+                    // Change: Element_ReferenceChange_Update
+                    EvolutionTypes changeType = EvolutionTypes.Element_ReferenceChange_Update;
+                }
+
+                XmlSchemaElement element = this.GetElementByRefName(element1.RefName, true);
+                this.CompareSingleElement(element, element2);
+            }
+            else if (element1.RefName.Name != element2.RefName.Name)
+            {
+                // Change: Element_ReferenceChange_Update
                 EvolutionTypes changeType = EvolutionTypes.Element_ReferenceChange_Update;
             }
 
@@ -480,7 +775,10 @@ namespace Xin.SOMDiff
 
         private void CompareParticleSequence(XmlSchemaSequence sequence1, XmlSchemaSequence sequence2, bool ordered = false)
         {
-            // TODO
+            this.CompareFacetMaxOccurs(sequence1.MaxOccursString, sequence2.MaxOccursString);
+
+            this.CompareFacetMinOccurs(sequence1.MinOccursString, sequence2.MinOccursString);
+
             if (sequence1.Items.Count == sequence2.Items.Count)
             {
                 for (int i = 0; i < sequence1.Items.Count; i++)
@@ -514,7 +812,20 @@ namespace Xin.SOMDiff
 
         private void CompareParticleAll(XmlSchemaAll all1, XmlSchemaAll all2)
         {
-            throw new NotImplementedException();
+            this.CompareFacetMaxOccurs(all1.MaxOccursString, all2.MaxOccursString);
+
+            this.CompareFacetMinOccurs(all1.MinOccursString, all2.MinOccursString);
+
+            if (all1.Items.Count == all2.Items.Count)
+            {
+                for (int i = 0; i < all1.Items.Count; i++)
+                {
+                    this.CompareXmlSchemaObject(all1.Items[i], all2.Items[i]);
+                }
+            } 
+            else
+            {
+            }
         }
 
         private void CompareParticleSimpleType(XmlSchemaSimpleType simple1, XmlSchemaSimpleType simple2)
@@ -531,6 +842,42 @@ namespace Xin.SOMDiff
 
                 this.CompareSimpleTypeRestriction(restriction1, restriction2);
             }
+            else
+            {
+
+            }
+
+            //if (!string.IsNullOrEmpty(simple1.QualifiedName.Namespace) &&
+            //    !string.IsNullOrEmpty(simple2.QualifiedName.Namespace) &&
+            //    ((simple1.QualifiedName.Namespace != "http://www.w3.org/2001/XMLSchema") || 
+            //    (simple2.QualifiedName.Namespace != "http://www.w3.org/2001/XMLSchema")))
+            //{
+            //    XmlSchemaSimpleType schemaType1 = null;
+            //    if (simple1.QualifiedName.Namespace != "http://www.w3.org/2001/XMLSchema")
+            //    {
+            //        schemaType1 = this.GetTypeByRefType(simple1.QualifiedName, true) as XmlSchemaSimpleType;
+            //    }
+            //    else
+            //    {
+            //        schemaType1 = simple1;
+            //    }
+
+            //    XmlSchemaSimpleType schemaType2 = null;
+            //    if (simple2.QualifiedName.Namespace != "http://www.w3.org/2001/XMLSchema")
+            //    {
+            //        schemaType2 = this.GetTypeByRefType(simple2.QualifiedName, false) as XmlSchemaSimpleType;
+            //    }
+            //    else
+            //    {
+            //        schemaType2 = simple2;
+            //    }
+
+            //    this.CompareParticleSimpleType(schemaType1, schemaType2);
+            //}
+            //else
+            //{
+                
+            //}
         }
 
         private void CompareParticleComplexType(XmlSchemaComplexType complex1, XmlSchemaComplexType complex2)
@@ -607,12 +954,80 @@ namespace Xin.SOMDiff
             if (restriction1.BaseTypeName.Name != restriction2.BaseTypeName.Name)
             {
                 // Change: base type update
+                EvolutionTypes changeType = EvolutionTypes.TypeChange_Update;
             }
 
             if (restriction1.Facets.Count > 0 && restriction2.Facets.Count > 0)
             {
                 this.CompareFacets(restriction1.Facets, restriction2.Facets);
             }
+            else if (restriction1.Facets.Count > 0)
+            {
+                this.OutputFacetUpdate(restriction1.Facets, true);
+            }
+            else if (restriction2.Facets.Count > 0)
+            {
+                this.OutputFacetUpdate(restriction2.Facets, false);
+                
+            }
+        }
+
+        private void OutputFacetUpdate(XmlSchemaObjectCollection facets, bool flag)
+        {
+            //List<XmlSchemaFacet> addedFacets = new List<XmlSchemaFacet>();
+            //List<XmlSchemaFacet> removedFacets = new List<XmlSchemaFacet>();
+
+            //foreach (XmlSchemaFacet facet in facets)
+            //{
+            //    if (facet is XmlSchemaLengthFacet)
+            //    {
+            //        // TODO
+            //    }
+            //    else if (facet is XmlSchemaMinLengthFacet)
+            //    {
+
+            //    }
+            //    else if (facet is XmlSchemaMaxLengthFacet)
+            //    {
+
+            //    }
+            //    else if (facet is XmlSchemaPatternFacet)
+            //    {
+
+            //    }
+            //    else if (facet is XmlSchemaEnumerationFacet)
+            //    {
+
+            //    }
+            //    else if (facet is XmlSchemaMaxInclusiveFacet)
+            //    {
+
+            //    }
+            //    else if (facet is XmlSchemaMaxExclusiveFacet)
+            //    {
+
+            //    }
+            //    else if (facet is XmlSchemaMinInclusiveFacet)
+            //    {
+
+            //    }
+            //    else if (facet is XmlSchemaMinExclusiveFacet)
+            //    {
+
+            //    }
+            //    else if (facet is XmlSchemaFractionDigitsFacet)
+            //    {
+
+            //    }
+            //    else if (facet is XmlSchemaTotalDigitsFacet)
+            //    {
+
+            //    }
+            //    else if (facet is XmlSchemaWhiteSpaceFacet)
+            //    {
+
+            //    }
+            //}
         }
 
         #endregion
@@ -678,28 +1093,44 @@ namespace Xin.SOMDiff
 
         private void CompareUnorderedFacets(XmlSchemaObjectCollection facets1, XmlSchemaObjectCollection facets2)
         {
-            List<XmlSchemaObject> sourcelist = new List<XmlSchemaObject>();
-            List<XmlSchemaObject> changelist = new List<XmlSchemaObject>();
+            Dictionary<string, XmlSchemaFacet> sourcelist = new Dictionary<string, XmlSchemaFacet>();
+            Dictionary<string, XmlSchemaFacet> changelist = new Dictionary<string, XmlSchemaFacet>();
+            List<XmlSchemaFacet> removedFacets = new List<XmlSchemaFacet>();
 
-
-
-
-            XmlSchemaObject facet1 = facets1[0];
-            XmlSchemaObject facet2 = facets2[0];
-
-            this.CompareSingleFacet(facet1, facet2);
-
-
-
-
-            if (sourcelist.Count > 0)
+            foreach (XmlSchemaFacet facet in facets1)
             {
-                // TODO
+                sourcelist.Add(facet.Value, facet);
+            }
+
+            foreach (XmlSchemaFacet facet in facets2)
+            {
+                changelist.Add(facet.Value, facet);
+            }
+
+            while (sourcelist.Count > 0 && changelist.Count > 0)
+            {
+                string key = sourcelist.First().Key;
+
+                if (!changelist.ContainsKey(key))
+                {
+                    removedFacets.Add(sourcelist[key]);
+                    sourcelist.Remove(key);
+                }
+                else
+                {
+                    sourcelist.Remove(key);
+                    changelist.Remove(key);
+                }
+            }
+
+            if (removedFacets.Count > 0)
+            {
+                this.ReportFacetCollection(removedFacets, true);
             }
 
             if (changelist.Count > 0)
             {
-                // TODO
+                this.ReportFacetCollection(changelist.Values.ToList<XmlSchemaFacet>(), false);
             }
         }
 
@@ -745,6 +1176,15 @@ namespace Xin.SOMDiff
                     {
                         this.CompareRefElement(element1, element2);
                     }
+                    else if (!string.IsNullOrEmpty(element1.RefName.Name))
+                    {
+                        this.CompareSingleElement(element1, element2);
+                    }
+                    else if (!string.IsNullOrEmpty(element2.RefName.Name))
+                    {
+
+                    }
+
                 }
                 else
                 {
@@ -808,6 +1248,127 @@ namespace Xin.SOMDiff
             }
 
             return elements;
+        }
+
+        private XmlSchemaElement GetElementByRefName(XmlQualifiedName refName, bool flag)
+        {
+            XmlSchema refSchema = null;
+
+            if (flag)
+            {
+                if (refName.Namespace == sourceXmlSchema.TargetNamespace)
+                {
+                    refSchema = sourceXmlSchema;
+                }
+                else
+                {
+                    foreach (XmlSchema schema in sourceSchemaSet.Schemas())
+                    {
+                        if (refName.Namespace == schema.TargetNamespace)
+                        {
+                            refSchema = schema;
+                            break;
+                        }
+                    }
+                }
+
+            }
+            else
+            {
+                if (refName.Namespace == changeXmlSchema.TargetNamespace)
+                {
+                    refSchema = changeXmlSchema;
+                }
+                else
+                {
+                    foreach (XmlSchema schema in changeSchemaSet.Schemas())
+                    {
+                        if (refName.Namespace == schema.TargetNamespace)
+                        {
+                            refSchema = schema;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            foreach (XmlSchemaElement element in refSchema.Elements.Values)
+            {
+                if (refName.Name == element.Name)
+                {
+                    return element;
+                }
+            }
+
+            return null;
+        }
+
+        private XmlSchemaType GetTypeByRefType(XmlQualifiedName refType, bool flag)
+        {
+            XmlSchema refSchema = null;
+
+            if (flag)
+            {
+                if (refType.Namespace == sourceXmlSchema.TargetNamespace)
+                {
+                    refSchema = sourceXmlSchema;
+                }
+                else
+                {
+                    foreach (XmlSchema schema in sourceSchemaSet.Schemas())
+                    {
+                        if (refType.Namespace == schema.TargetNamespace)
+                        {
+                            refSchema = schema;
+                            break;
+                        }
+                    }
+                }
+
+            }
+            else
+            {
+                if (refType.Namespace == changeXmlSchema.TargetNamespace)
+                {
+                    refSchema = changeXmlSchema;
+                }
+                else
+                {
+                    foreach (XmlSchema schema in changeSchemaSet.Schemas())
+                    {
+                        if (refType.Namespace == schema.TargetNamespace)
+                        {
+                            refSchema = schema;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            foreach (XmlSchemaType type in refSchema.SchemaTypes.Values)
+            {
+
+                if (refType.Name == type.Name)
+                {
+                    return type;
+                }
+            }
+
+            return null;
+        }
+
+        private void ReportFacetCollection(List<XmlSchemaFacet> facets, bool flag)
+        {
+            if (flag)
+            {
+                // removed
+                removedFacets.AddRange(facets);
+            }
+            else
+            {
+                // added
+                addedFacets.AddRange(facets);
+            }
         }
 
         #endregion
@@ -925,7 +1486,7 @@ namespace Xin.SOMDiff
         ImportElementChange_SchemaLocation_Remove,
 
         Element_ReferenceChange_Update,
-
+        Element_Name_Update,
         AllToSequence
     }
 }
