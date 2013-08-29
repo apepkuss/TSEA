@@ -336,7 +336,10 @@ namespace Xin.SOMDiff
                         this.CompareSingleElement(element1, element2);
                         break;
                     }
+                    else
+                    {
 
+                    }
                 }
 
                 sourcelist.Remove(element1);
@@ -356,9 +359,14 @@ namespace Xin.SOMDiff
 
         private void CompareSingleElement(XmlSchemaElement element1, XmlSchemaElement element2)
         {
-            if (element1.Name == "MeetingStatus")
+            if (element1.Name == "OofState")
             {
                 
+            }
+
+            if (element1.RefName.Name == "OofState")
+            {
+
             }
 
             // if element else ref-element
@@ -592,44 +600,6 @@ namespace Xin.SOMDiff
             #endregion
         }
 
-        private void CompareSchemaType(XmlSchemaType schemaType1, XmlSchemaType schemaType2)
-        {
-            if (schemaType1 is XmlSchemaSimpleType)
-            {
-                XmlSchemaSimpleType simple1 = schemaType1 as XmlSchemaSimpleType;
-
-                if (schemaType2 is XmlSchemaSimpleType)
-                {
-                    XmlSchemaSimpleType simple2 = schemaType2 as XmlSchemaSimpleType;
-
-                    this.CompareParticleSimpleType(simple1, simple2);
-                }
-                else
-                {
-
-                }
-            }
-            else if (schemaType1 is XmlSchemaComplexType)
-            {
-                XmlSchemaComplexType complex1 = schemaType1 as XmlSchemaComplexType;
-
-                if (schemaType2 is XmlSchemaComplexType)
-                {
-                    XmlSchemaComplexType complex2 = schemaType2 as XmlSchemaComplexType;
-
-                    this.CompareParticleComplexType(complex1, complex2);
-                }
-                else
-                {
-
-                }
-            }
-            else
-            {
-
-            }
-        }
-
         private void CompareRefElement(XmlSchemaElement element1, XmlSchemaElement element2)
         {
             this.CompareFacetMaxOccurs(element1.MaxOccursString, element2.MaxOccursString);
@@ -825,6 +795,49 @@ namespace Xin.SOMDiff
             } 
             else
             {
+            }
+        }
+
+        private void CompareSchemaType(XmlSchemaType schemaType1, XmlSchemaType schemaType2)
+        {
+            if (schemaType1 == null && schemaType2 == null)
+            {
+                return;
+            }
+
+            if (schemaType1 is XmlSchemaSimpleType)
+            {
+                XmlSchemaSimpleType simple1 = schemaType1 as XmlSchemaSimpleType;
+
+                if (schemaType2 is XmlSchemaSimpleType)
+                {
+                    XmlSchemaSimpleType simple2 = schemaType2 as XmlSchemaSimpleType;
+
+                    this.CompareParticleSimpleType(simple1, simple2);
+                }
+                else
+                {
+
+                }
+            }
+            else if (schemaType1 is XmlSchemaComplexType)
+            {
+                XmlSchemaComplexType complex1 = schemaType1 as XmlSchemaComplexType;
+
+                if (schemaType2 is XmlSchemaComplexType)
+                {
+                    XmlSchemaComplexType complex2 = schemaType2 as XmlSchemaComplexType;
+
+                    this.CompareParticleComplexType(complex1, complex2);
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+
             }
         }
 
