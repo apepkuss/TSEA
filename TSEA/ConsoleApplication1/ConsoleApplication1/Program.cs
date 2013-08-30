@@ -63,8 +63,8 @@ namespace ConsoleApplication1
             //}
             #endregion
 
-            string sourefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\SettingsResponse.xsd";
-            string changefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\setres.xsd";
+            string sourefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Provision.xsd";
+            string changefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\prov.xsd";
 
             SOMDiff sdiff = new SOMDiff(sourefile, changefile);
             sdiff.DiffSchemas(sourefile, changefile);
