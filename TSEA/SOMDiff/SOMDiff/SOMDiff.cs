@@ -1655,6 +1655,16 @@ namespace Xin.SOMDiff
             }
         }
 
+        private void ValidationCallBack(object sender, ValidationEventArgs args)
+        {
+            if (args.Severity == XmlSeverityType.Warning)
+                Console.Write("WARNING: ");
+            else if (args.Severity == XmlSeverityType.Error)
+                Console.Write("ERROR: ");
+
+            Console.WriteLine(args.Message);
+        }
+
         #endregion
 
         private void ParseChoiceNode(XmlSchemaObject node)
@@ -1698,17 +1708,6 @@ namespace Xin.SOMDiff
             }
 
         }
-
-        private void ValidationCallBack(object sender, ValidationEventArgs args)
-        {
-            if (args.Severity == XmlSeverityType.Warning)
-                Console.Write("WARNING: ");
-            else if (args.Severity == XmlSeverityType.Error)
-                Console.Write("ERROR: ");
-
-            Console.WriteLine(args.Message);
-        }
-        
     }
 
     public enum ChangeTypes
