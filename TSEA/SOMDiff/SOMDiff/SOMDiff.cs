@@ -13,6 +13,8 @@ namespace Xin.SOMDiff
 
     public class SOMDiff
     {
+        #region Fields
+        
         private static XmlSchema sourceXmlSchema = new XmlSchema();
         private static XmlSchema changeXmlSchema = new XmlSchema();
 
@@ -25,8 +27,11 @@ namespace Xin.SOMDiff
         private static Stack<string> sourcePath = new Stack<string>();
         private static Stack<string> changePath = new Stack<string>();
         private static List<MismatchedPair> result = new List<MismatchedPair>();
-        
 
+        #endregion
+
+        #region Constructors
+        
         public SOMDiff()
         {
             sourcePath.Clear();
@@ -79,6 +84,10 @@ namespace Xin.SOMDiff
             }
         }
 
+        #endregion
+
+        #region Public Methods
+        
         public void DiffSchemas(string sourefile, string changefile)
         {
             #region The following code has been moved to constructor
@@ -221,8 +230,12 @@ namespace Xin.SOMDiff
             #endregion
         }
 
+        #endregion
+
+        #region Private Methods
+
         #region Compare elements
-        
+
         private void CompareElements(XmlSchemaObjectTable source, XmlSchemaObjectTable change, bool ordered = false)
         {
             if (ordered)
@@ -396,6 +409,10 @@ namespace Xin.SOMDiff
 
                             this.AddMismatchedPair(sourcePath.ToArray(), element1, changePath.ToArray(), element2, ChangeTypes.TypeChange_Update);
                         }
+                    }
+                    else
+                    {
+
                     }
 
                     #region Commented Code
@@ -946,12 +963,20 @@ namespace Xin.SOMDiff
                 this.AddMismatchedPair(sourcePath.ToArray(), simple1, changePath.ToArray(), simple2, ChangeTypes.TypeChange_Update);
             }
 
-            if ((simple1.Content is XmlSchemaSimpleTypeRestriction) && (simple2.Content is XmlSchemaSimpleTypeRestriction))
+            if (simple1.Content is XmlSchemaSimpleTypeRestriction)
             {
                 XmlSchemaSimpleTypeRestriction restriction1 = simple1.Content as XmlSchemaSimpleTypeRestriction;
-                XmlSchemaSimpleTypeRestriction restriction2 = simple2.Content as XmlSchemaSimpleTypeRestriction;
 
-                this.CompareSimpleTypeRestriction(restriction1, restriction2);
+                if (simple2.Content is XmlSchemaSimpleTypeRestriction)
+                {
+                    XmlSchemaSimpleTypeRestriction restriction2 = simple2.Content as XmlSchemaSimpleTypeRestriction;
+
+                    this.CompareSimpleTypeRestriction(restriction1, restriction2);
+                } 
+                else
+                {
+
+                }
             }
             else if ((simple1.Content is XmlSchemaSimpleTypeUnion) && (simple2.Content is XmlSchemaSimpleTypeUnion))
             {
@@ -1012,7 +1037,15 @@ namespace Xin.SOMDiff
 
             if (union1.MemberTypes.Length == union2.MemberTypes.Length)
             {
-                this.CompareQualifiedNames(union1.MemberTypes, union2.MemberTypes);
+                //this.CompareQualifiedNames(union1.MemberTypes, union2.MemberTypes);
+                foreach (XmlQualifiedName name1 in union1.MemberTypes)
+                {
+                    foreach (XmlQualifiedName name2 in union2.MemberTypes)
+                    {
+                        ChangeTypes changeType = this.CompareQualifiedName(name1, name2);
+                        this.AddMismatchedPair(sourcePath.ToArray(), union1, changePath.ToArray(), union2, changeType);
+                    }
+                }
             }
             else
             {
@@ -1030,26 +1063,26 @@ namespace Xin.SOMDiff
 
             foreach (XmlQualifiedName name1 in xmlQualifiedName1)
             {
-                bool isMatched = false;
-
                 foreach (XmlQualifiedName name2 in xmlQualifiedName2)
                 {
-                    if (name1.Namespace == name2.Namespace && name1.Name == name2.Name)
-                    {
-                        isMatched = true;
-                        break;
-                    }
-                }
-
-                if (!isMatched)
-                {
-                    // change: 
-                    // record name1 and name2
+                    ChangeTypes changeType = this.CompareQualifiedName(name1, name2);
                 }
             }
 
             sourcePath.Pop();
             changePath.Pop();
+        }
+
+        private ChangeTypes CompareQualifiedName(XmlQualifiedName name1, XmlQualifiedName name2)
+        {
+            if (name1.Namespace != name2.Namespace || name1.Name != name2.Name)
+            {
+                return ChangeTypes.TypeChange_Update;
+            }
+            else
+            {
+                return ChangeTypes.None;
+            }
         }
 
         private void CompareParticleComplexType(XmlSchemaComplexType complex1, XmlSchemaComplexType complex2)
@@ -1134,11 +1167,13 @@ namespace Xin.SOMDiff
 
             ChangeTypes changeType = ChangeTypes.None;
 
-            if (restriction1.BaseTypeName.Name != restriction2.BaseTypeName.Name)
+            if (!restriction1.BaseTypeName.IsEmpty && !restriction2.BaseTypeName.IsEmpty)
             {
-                // Change: base type update
-                changeType = ChangeTypes.TypeChange_Update;
-
+                changeType = this.CompareQualifiedName(restriction1.BaseTypeName, restriction2.BaseTypeName);
+                this.AddMismatchedPair(sourcePath.ToArray(), restriction1, changePath.ToArray(), restriction2, changeType);
+            }
+            else if (!restriction1.BaseTypeName.IsEmpty || !restriction2.BaseTypeName.IsEmpty)
+            {
                 this.AddMismatchedPair(sourcePath.ToArray(), restriction1, changePath.ToArray(), restriction2, ChangeTypes.TypeChange_Update);
             }
 
@@ -1289,45 +1324,175 @@ namespace Xin.SOMDiff
 
         private void CompareUnorderedFacets(XmlSchemaObjectCollection facets1, XmlSchemaObjectCollection facets2)
         {
-            Dictionary<string, XmlSchemaFacet> sourcelist = new Dictionary<string, XmlSchemaFacet>();
-            Dictionary<string, XmlSchemaFacet> changelist = new Dictionary<string, XmlSchemaFacet>();
+            Dictionary<FacetTypes, XmlSchemaFacet> sourcelist = new Dictionary<FacetTypes, XmlSchemaFacet>();
+            Dictionary<FacetTypes, XmlSchemaFacet> changelist = new Dictionary<FacetTypes, XmlSchemaFacet>();
             List<XmlSchemaFacet> removedFacets = new List<XmlSchemaFacet>();
 
             foreach (XmlSchemaFacet facet in facets1)
             {
-                sourcelist.Add(facet.Value, facet);
+                sourcelist.Add(this.GetFacetType(facet), facet);
             }
 
             foreach (XmlSchemaFacet facet in facets2)
             {
-                changelist.Add(facet.Value, facet);
+                changelist.Add(this.GetFacetType(facet), facet);
             }
 
             while (sourcelist.Count > 0 && changelist.Count > 0)
             {
-                string key = sourcelist.First().Key;
+                FacetTypes key = sourcelist.First().Key;
 
                 if (!changelist.ContainsKey(key))
                 {
-                    removedFacets.Add(sourcelist[key]);
+                    this.CheckFacetChangeType(key, sourcelist[key], null);
+
+                    //removedFacets.Add(sourcelist[key]);
                     sourcelist.Remove(key);
                 }
                 else
                 {
+                    if (sourcelist[key].Value != changelist[key].Value)
+                    {
+                        // Change:
+                        this.CheckFacetChangeType(key, sourcelist[key], changelist[key]);
+                    }
+
                     sourcelist.Remove(key);
                     changelist.Remove(key);
                 }
             }
 
-            if (removedFacets.Count > 0)
+            if (sourcelist.Count > 0)
             {
-                this.ReportFacetCollection(removedFacets, true);
+                foreach (FacetTypes key in sourcelist.Keys)
+                {
+                    // Change: 
+                    this.CheckFacetChangeType(key, sourcelist[key], null);
+                }
+                
             }
 
             if (changelist.Count > 0)
             {
-                this.ReportFacetCollection(changelist.Values.ToList<XmlSchemaFacet>(), false);
+                foreach (FacetTypes key in changelist.Keys)
+                {
+                    // Change: 
+                    this.CheckFacetChangeType(key, null, changelist[key]);
+                }
             }
+        }
+
+        private ChangeTypes CheckFacetChangeType(FacetTypes facetType, XmlSchemaFacet sourceFacet, XmlSchemaFacet changeFacet)
+        {
+            ChangeTypes changeType = ChangeTypes.None;
+
+            if (facetType == FacetTypes.EnumerationFacet)
+            {
+                if (sourceFacet != null && changeFacet != null)
+                {
+                    sourcePath.Push("enumeration");
+                    changePath.Push("enumeration");
+
+
+
+
+
+                    sourcePath.Pop();
+                    changePath.Pop();
+                }
+                else if (sourceFacet != null)
+                {
+                    sourcePath.Push("enumeration");
+
+
+
+
+
+                    sourcePath.Pop();
+                }
+                else if (changeFacet != null)
+                {
+                    changePath.Push("enumeration");
+
+
+
+
+
+                    changePath.Pop();
+                }
+
+
+
+                
+            }
+            else if (facetType == FacetTypes.MaxExclusiveFacet)
+            {
+            }
+            else if (facetType == FacetTypes.MaxInclusiveFacet)
+            {
+
+            }
+            else if (facetType == FacetTypes.MinExclusiveFacet)
+            {
+            }
+            else if (facetType == FacetTypes.MinInclusiveFacet)
+            {
+            }
+            else if (facetType == FacetTypes.NumericFacet)
+            {
+            }
+            else if (facetType == FacetTypes.PatternFacet)
+            {
+            }
+            else if (facetType == FacetTypes.WhiteSpaceFacet)
+            {
+            }
+            else
+            {
+
+            }
+
+            return changeType;
+        }
+
+        private FacetTypes GetFacetType(XmlSchemaFacet facet)
+        {
+            FacetTypes facetType = FacetTypes.None;
+
+            if (facet is XmlSchemaEnumerationFacet)
+            {
+                facetType = FacetTypes.EnumerationFacet;
+            }
+            else if (facet is XmlSchemaMaxExclusiveFacet)
+            {
+                facetType = FacetTypes.MaxExclusiveFacet;
+            }
+            else if (facet is XmlSchemaMaxInclusiveFacet)
+            {
+                facetType = FacetTypes.MaxInclusiveFacet;
+            } 
+            else if(facet is XmlSchemaMinExclusiveFacet)
+            {
+                facetType = FacetTypes.MinExclusiveFacet;
+            }
+            else if (facet is XmlSchemaMinInclusiveFacet)
+            {
+                facetType = FacetTypes.MinInclusiveFacet;
+            } 
+            else if (facet is XmlSchemaNumericFacet)
+            {
+                facetType = FacetTypes.NumericFacet;
+            }
+            else if (facet is XmlSchemaPatternFacet)
+            {
+                facetType = FacetTypes.PatternFacet;
+            }
+            else if (facet is XmlSchemaWhiteSpaceFacet)
+            {
+                facetType = FacetTypes.WhiteSpaceFacet;
+            }
+
+            return facetType;
         }
 
         private void CompareSingleFacet(XmlSchemaObject facet1, XmlSchemaObject facet2)
@@ -1708,71 +1873,73 @@ namespace Xin.SOMDiff
             }
 
         }
+
+        #endregion
     }
 
-    public enum ChangeTypes
-    {
-        /// <summary>
-        /// Default value: a hold-place value and no real meaning.
-        /// </summary>
-        None,
+    //public enum ChangeTypes
+    //{
+    //    /// <summary>
+    //    /// Default value: a hold-place value and no real meaning.
+    //    /// </summary>
+    //    None,
 
 
-        TypeChange_Update, // higher severity than TypeToSimpleType and TypeToComplexType
-        TypeChange_Remove,
-        TypeChange_Add,
+    //    TypeChange_Update, // higher severity than TypeToSimpleType and TypeToComplexType
+    //    TypeChange_Remove,
+    //    TypeChange_Add,
 
-        TypeToSimpleType,
-        SimpleTypeToType,
+    //    TypeToSimpleType,
+    //    SimpleTypeToType,
 
-        TypeToComplexType,
-        ComplexTypeToType,
+    //    TypeToComplexType,
+    //    ComplexTypeToType,
 
-        SimpleTypeToComplexType,
-        ComplexTypeToSimpleType,
+    //    SimpleTypeToComplexType,
+    //    ComplexTypeToSimpleType,
 
-        /// <summary>
-        /// The value of name attribute of an element has been changed, 
-        /// which will affect the variable name in proxy class and test suite.
-        /// </summary>
-        Element_NameAttribute_Update,
-
-
-        // minOccurs
-        IncreasedMinOccurs,
-        DecreasedMinOccurs,
-        AddMinOccurs,
-        RemoveMinOccurs,
-
-        // maxOccurs
-        IncreasedMaxOccurs,
-        DecreasedMaxOccurs,
-        AddMaxOccurs,
-        RemoveMaxOccurs,
-
-        // maxLength
-        IncreasedMaxLength,
-        DecreasedMaxLength,
-        AddMaxLength,
-        RemoveMaxLength,
+    //    /// <summary>
+    //    /// The value of name attribute of an element has been changed, 
+    //    /// which will affect the variable name in proxy class and test suite.
+    //    /// </summary>
+    //    Element_NameAttribute_Update,
 
 
-        ChangeRestriction_MaxLength, // for element
-        ChangeRestriction_MaxLength_Increased,
-        ChangeRestriction_MaxLength_Decreased,
+    //    // minOccurs
+    //    IncreasedMinOccurs,
+    //    DecreasedMinOccurs,
+    //    AddMinOccurs,
+    //    RemoveMinOccurs,
 
-        ImportElementChange, // for element
-        ImportElementChange_Namespace_Update,
-        ImportElementChange_Namespace_Add,
-        ImportElementChange_Namespace_Remove,
-        ImportElementChange_SchemaLocation_Update,
-        ImportElementChange_SchemaLocation_Add,
-        ImportElementChange_SchemaLocation_Remove,
+    //    // maxOccurs
+    //    IncreasedMaxOccurs,
+    //    DecreasedMaxOccurs,
+    //    AddMaxOccurs,
+    //    RemoveMaxOccurs,
 
-        Element_ReferenceChange_Update,
-        Element_Name_Update,
-        AllToSequence
-    }
+    //    // maxLength
+    //    IncreasedMaxLength,
+    //    DecreasedMaxLength,
+    //    AddMaxLength,
+    //    RemoveMaxLength,
+
+
+    //    ChangeRestriction_MaxLength, // for element
+    //    ChangeRestriction_MaxLength_Increased,
+    //    ChangeRestriction_MaxLength_Decreased,
+
+    //    ImportElementChange, // for element
+    //    ImportElementChange_Namespace_Update,
+    //    ImportElementChange_Namespace_Add,
+    //    ImportElementChange_Namespace_Remove,
+    //    ImportElementChange_SchemaLocation_Update,
+    //    ImportElementChange_SchemaLocation_Add,
+    //    ImportElementChange_SchemaLocation_Remove,
+
+    //    Element_ReferenceChange_Update,
+    //    Element_Name_Update,
+    //    AllToSequence
+    //}
 
     public class MismatchedPair
     {
