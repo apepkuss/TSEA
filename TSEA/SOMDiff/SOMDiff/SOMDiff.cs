@@ -139,7 +139,7 @@ namespace Xin.SOMDiff
             this.CompareElements(sourceXmlSchema.Elements, changeXmlSchema.Elements);
 
             // Compare groups
-            this.CompareGroups(sourceXmlSchema.Groups, changeXmlSchema.Groups, false);
+            //this.CompareGroups(sourceXmlSchema.Groups, changeXmlSchema.Groups, false);
 
             Console.Read();
 
@@ -366,12 +366,12 @@ namespace Xin.SOMDiff
         {
             ChangeTypes changeType = ChangeTypes.None;
 
-            if (element1.Name == "AppliesToInternal")
+            if (element1.Name == "Reminder")
             {
                 
             }
 
-            if (element1.RefName.Name == "OofMessage")
+            if (element1.RefName.Name == "Reminder")
             {
 
             }
@@ -1326,17 +1326,38 @@ namespace Xin.SOMDiff
         {
             Dictionary<FacetTypes, XmlSchemaFacet> sourcelist = new Dictionary<FacetTypes, XmlSchemaFacet>();
             Dictionary<FacetTypes, XmlSchemaFacet> changelist = new Dictionary<FacetTypes, XmlSchemaFacet>();
+
+            Dictionary<string, XmlSchemaFacet> sourcelistForEnum = new Dictionary<string, XmlSchemaFacet>();
+            Dictionary<string, XmlSchemaFacet> changelistForEnum = new Dictionary<string, XmlSchemaFacet>();
+
             List<XmlSchemaFacet> removedFacets = new List<XmlSchemaFacet>();
 
             foreach (XmlSchemaFacet facet in facets1)
             {
-                sourcelist.Add(this.GetFacetType(facet), facet);
+                if (facet is XmlSchemaEnumerationFacet)
+                {
+                    sourcelistForEnum.Add(facet.Value, facet);
+                }
+                else
+                {
+                    sourcelist.Add(this.GetFacetType(facet), facet);
+                }
+                
             }
 
             foreach (XmlSchemaFacet facet in facets2)
             {
-                changelist.Add(this.GetFacetType(facet), facet);
+                if (facet is XmlSchemaEnumerationFacet)
+                {
+                    changelistForEnum.Add(facet.Value, facet);
+                }
+                else
+                {
+                    changelist.Add(this.GetFacetType(facet), facet);
+                }
             }
+
+            this.CompareEnumerationFact(sourcelistForEnum, changelistForEnum);
 
             while (sourcelist.Count > 0 && changelist.Count > 0)
             {
@@ -1380,6 +1401,11 @@ namespace Xin.SOMDiff
                     this.CheckFacetChangeType(key, null, changelist[key]);
                 }
             }
+        }
+
+        private void CompareEnumerationFact(Dictionary<string, XmlSchemaFacet> sourcelistForEnum, Dictionary<string, XmlSchemaFacet> changelistForEnum)
+        {
+            // TODO:
         }
 
         private ChangeTypes CheckFacetChangeType(FacetTypes facetType, XmlSchemaFacet sourceFacet, XmlSchemaFacet changeFacet)
@@ -1876,70 +1902,6 @@ namespace Xin.SOMDiff
 
         #endregion
     }
-
-    //public enum ChangeTypes
-    //{
-    //    /// <summary>
-    //    /// Default value: a hold-place value and no real meaning.
-    //    /// </summary>
-    //    None,
-
-
-    //    TypeChange_Update, // higher severity than TypeToSimpleType and TypeToComplexType
-    //    TypeChange_Remove,
-    //    TypeChange_Add,
-
-    //    TypeToSimpleType,
-    //    SimpleTypeToType,
-
-    //    TypeToComplexType,
-    //    ComplexTypeToType,
-
-    //    SimpleTypeToComplexType,
-    //    ComplexTypeToSimpleType,
-
-    //    /// <summary>
-    //    /// The value of name attribute of an element has been changed, 
-    //    /// which will affect the variable name in proxy class and test suite.
-    //    /// </summary>
-    //    Element_NameAttribute_Update,
-
-
-    //    // minOccurs
-    //    IncreasedMinOccurs,
-    //    DecreasedMinOccurs,
-    //    AddMinOccurs,
-    //    RemoveMinOccurs,
-
-    //    // maxOccurs
-    //    IncreasedMaxOccurs,
-    //    DecreasedMaxOccurs,
-    //    AddMaxOccurs,
-    //    RemoveMaxOccurs,
-
-    //    // maxLength
-    //    IncreasedMaxLength,
-    //    DecreasedMaxLength,
-    //    AddMaxLength,
-    //    RemoveMaxLength,
-
-
-    //    ChangeRestriction_MaxLength, // for element
-    //    ChangeRestriction_MaxLength_Increased,
-    //    ChangeRestriction_MaxLength_Decreased,
-
-    //    ImportElementChange, // for element
-    //    ImportElementChange_Namespace_Update,
-    //    ImportElementChange_Namespace_Add,
-    //    ImportElementChange_Namespace_Remove,
-    //    ImportElementChange_SchemaLocation_Update,
-    //    ImportElementChange_SchemaLocation_Add,
-    //    ImportElementChange_SchemaLocation_Remove,
-
-    //    Element_ReferenceChange_Update,
-    //    Element_Name_Update,
-    //    AllToSequence
-    //}
 
     public class MismatchedPair
     {

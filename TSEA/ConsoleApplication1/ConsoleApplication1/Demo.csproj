@@ -241,6 +241,10 @@
       <Project>{df063fa9-0770-4960-8a9e-80d5f55019c8}</Project>
       <Name>XmlDiff</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\XsdToClass\XsdToClass\XsdToClass.csproj">
+      <Project>{525991bc-6026-4987-9263-569bb7aa421b}</Project>
+      <Name>XsdToClass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

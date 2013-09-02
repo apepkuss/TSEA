@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiffXAlgorithem", "DiffXAlg
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOMDiff", "..\SOMDiff\SOMDiff\SOMDiff.csproj", "{201B1F6A-E860-405D-B795-C26C6D67B6B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XsdToClass", "..\XsdToClass\XsdToClass\XsdToClass.csproj", "{525991BC-6026-4987-9263-569BB7AA421B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +36,10 @@ Global
 		{201B1F6A-E860-405D-B795-C26C6D67B6B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{201B1F6A-E860-405D-B795-C26C6D67B6B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{201B1F6A-E860-405D-B795-C26C6D67B6B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{525991BC-6026-4987-9263-569BB7AA421B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{525991BC-6026-4987-9263-569BB7AA421B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{525991BC-6026-4987-9263-569BB7AA421B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{525991BC-6026-4987-9263-569BB7AA421B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

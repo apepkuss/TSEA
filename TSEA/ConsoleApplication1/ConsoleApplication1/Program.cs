@@ -15,6 +15,7 @@ namespace ConsoleApplication1
 
 
     using Xin.SOMDiff;
+    using Xin.XsdToClass;
 
     class Program
     {
@@ -63,8 +64,18 @@ namespace ConsoleApplication1
             //}
             #endregion
 
-            string sourefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\AirSyncBase.xsd";
-            string changefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\asb.xsd";
+            string xsdpath = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD";
+            string[] xsdfiles = Directory.GetFiles(xsdpath, "*.xsd", SearchOption.TopDirectoryOnly);
+
+            XsdToClass tool = new XsdToClass();
+            tool.XsdToClassTest(xsdfiles);
+
+            Console.Read();
+
+
+
+            string sourefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Calendar.xsd";
+            string changefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\cal.xsd";
 
             SOMDiff sdiff = new SOMDiff(sourefile, changefile);
             sdiff.DiffSchemas(sourefile, changefile);
