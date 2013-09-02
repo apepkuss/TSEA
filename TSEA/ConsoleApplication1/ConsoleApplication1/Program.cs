@@ -12,10 +12,10 @@ namespace ConsoleApplication1
     using System.Xml.Schema;
     using Sam.XmlDiff;
     using System.Collections;
-
+    using System.Diagnostics;
 
     using Xin.SOMDiff;
-    using Xin.XsdToClass;
+    //using Xin.XsdToClass;
 
     class Program
     {
@@ -64,11 +64,25 @@ namespace ConsoleApplication1
             //}
             #endregion
 
-            string xsdpath = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD";
+            string directory = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD";
+
+            string xsdpath = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD";
             string[] xsdfiles = Directory.GetFiles(xsdpath, "*.xsd", SearchOption.TopDirectoryOnly);
 
-            XsdToClass tool = new XsdToClass();
-            tool.XsdToClassTest(xsdfiles);
+            StringBuilder arguments = new StringBuilder();
+
+            foreach (string file in xsdfiles)
+            {
+                arguments.Append(file);
+                arguments.Append(" ");
+            }
+
+            ProcessStartInfo processStartInfo = new ProcessStartInfo();
+            processStartInfo.FileName = @"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\xsd.exe";
+            processStartInfo.Arguments = arguments.ToString() + "/classes /language:cs";
+            processStartInfo.WorkingDirectory = directory;
+
+            Process.Start(processStartInfo);
 
             Console.Read();
 
