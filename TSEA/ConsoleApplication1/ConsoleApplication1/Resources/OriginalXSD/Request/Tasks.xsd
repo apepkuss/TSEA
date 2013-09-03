@@ -49,4 +49,27 @@ targetNamespace="Tasks" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:airsyn
    <xs:element name="ReminderSet" type="xs:unsignedByte" />
    <xs:element name="OrdinalDate" type="xs:dateTime" />
    <xs:element name="SubOrdinalDate" type="xs:string" />
+  
+   <!-- added groups -->
+   <xs:group name="AllProps">
+    <xs:sequence>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="Subject"/>
+        <xs:element ref="Importance"/>
+        <xs:element ref="UtcStartDate"/>
+        <xs:element ref="StartDate"/>
+        <xs:element ref="UtcDueDate"/>
+        <xs:element ref="DueDate"/>
+        <xs:element ref="Categories"/>
+        <xs:element ref="Recurrence"/>
+        <xs:element ref="Complete"/>
+        <xs:element ref="DateCompleted"/>
+        <xs:element ref="Sensitivity"/>
+        <xs:element ref="ReminderTime"/>
+        <xs:element ref="ReminderSet"/>
+        <xs:element ref="OrdinalDate"/>
+        <xs:element ref="SubOrdinalDate"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:group>
 </xs:schema>

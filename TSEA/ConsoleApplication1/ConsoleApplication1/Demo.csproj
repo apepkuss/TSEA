@@ -57,241 +57,466 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Resources\ChangedXSD\adms.xsd">
+    <None Include="Resources\ChangedXSD\Request\adms.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\adres.xsd">
+    <None Include="Resources\ChangedXSD\Request\adreq.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\as.xsd">
+    <None Include="Resources\ChangedXSD\Request\as.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\asb.xsd">
+    <None Include="Resources\ChangedXSD\Request\asb.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\cal.xsd">
+    <None Include="Resources\ChangedXSD\Request\cal.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\cm.xsd">
+    <None Include="Resources\ChangedXSD\Request\cm.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\cntc.xsd">
+    <None Include="Resources\ChangedXSD\Request\cntc.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\cntc2.xsd">
+    <None Include="Resources\ChangedXSD\Request\cntc2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\dl.xsd">
+    <None Include="Resources\ChangedXSD\Request\dl.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\email.xsd">
+    <None Include="Resources\ChangedXSD\Request\email.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\email2.xsd">
+    <None Include="Resources\ChangedXSD\Request\email2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\fcres.xsd">
+    <None Include="Resources\ChangedXSD\Request\fcreq.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\fdres.xsd">
+    <None Include="Resources\ChangedXSD\Request\fdreq.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\fh.xsd">
+    <None Include="Resources\ChangedXSD\Request\fh.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\fsres.xsd">
+    <None Include="Resources\ChangedXSD\Request\fsreq.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\fures.xsd">
+    <None Include="Resources\ChangedXSD\Request\fureq.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\gal.xsd">
+    <None Include="Resources\ChangedXSD\Request\gal.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\gieres.xsd">
+    <None Include="Resources\ChangedXSD\Request\giereq.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\io.xsd">
+    <None Include="Resources\ChangedXSD\Request\io.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\iores.xsd">
+    <None Include="Resources\ChangedXSD\Request\ioreq.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\mires.xsd">
+    <None Include="Resources\ChangedXSD\Request\mireq.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\mrres.xsd">
+    <None Include="Resources\ChangedXSD\Request\mrreq.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\notes.xsd">
+    <None Include="Resources\ChangedXSD\Request\notes.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\pingres.xsd">
+    <None Include="Resources\ChangedXSD\Request\pingreq.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\prov.xsd">
+    <None Include="Resources\ChangedXSD\Request\prov.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\provres.xsd">
+    <None Include="Resources\ChangedXSD\Request\provreq.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\rm.xsd">
+    <None Include="Resources\ChangedXSD\Request\rm.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\rrres.xsd">
+    <None Include="Resources\ChangedXSD\Request\rrreq.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\set.xsd">
+    <None Include="Resources\ChangedXSD\Request\set.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\setres.xsd">
+    <None Include="Resources\ChangedXSD\Request\setreq.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\sfres.xsd">
+    <None Include="Resources\ChangedXSD\Request\sfreq.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\smres.xsd">
+    <None Include="Resources\ChangedXSD\Request\smreq.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\srch.xsd">
+    <None Include="Resources\ChangedXSD\Request\srch.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\srchres.xsd">
+    <None Include="Resources\ChangedXSD\Request\srchreq.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\srres.xsd">
+    <None Include="Resources\ChangedXSD\Request\srreq.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\syncres.xsd">
+    <None Include="Resources\ChangedXSD\Request\syncreq.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\tasks.xsd">
+    <None Include="Resources\ChangedXSD\Request\tasks.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\ChangedXSD\vcres.xsd">
+    <None Include="Resources\ChangedXSD\Request\vcreq.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\AirSync.xsd">
+    <None Include="Resources\ChangedXSD\Response\adms.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\AirSyncBase.xsd">
+    <None Include="Resources\ChangedXSD\Response\adres.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\AutodiscoverResponse.xsd">
+    <None Include="Resources\ChangedXSD\Response\as.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\Calendar.xsd">
+    <None Include="Resources\ChangedXSD\Response\asb.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\ComposeMail.xsd">
+    <None Include="Resources\ChangedXSD\Response\cal.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\Contacts.xsd">
+    <None Include="Resources\ChangedXSD\Response\cm.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\Contacts2.xsd">
+    <None Include="Resources\ChangedXSD\Response\cntc.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\DocumentLibrary.xsd">
+    <None Include="Resources\ChangedXSD\Response\cntc2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\Email.xsd">
+    <None Include="Resources\ChangedXSD\Response\dl.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\Email2.xsd">
+    <None Include="Resources\ChangedXSD\Response\email.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\FolderCreateResponse.xsd">
+    <None Include="Resources\ChangedXSD\Response\email2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\FolderDeleteResponse.xsd">
+    <None Include="Resources\ChangedXSD\Response\fcres.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\FolderHierarchy.xsd">
+    <None Include="Resources\ChangedXSD\Response\fdres.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\FolderSyncResponse.xsd">
+    <None Include="Resources\ChangedXSD\Response\fh.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\FolderUpdateResponse.xsd">
+    <None Include="Resources\ChangedXSD\Response\fsres.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\GAL.xsd">
+    <None Include="Resources\ChangedXSD\Response\fures.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\GetItemEstimateResponse.xsd">
+    <None Include="Resources\ChangedXSD\Response\gal.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\ItemOperations.xsd">
+    <None Include="Resources\ChangedXSD\Response\gieres.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\ItemOperationsResponse.xsd">
+    <None Include="Resources\ChangedXSD\Response\io.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\MeetingResponse.xsd">
+    <None Include="Resources\ChangedXSD\Response\iores.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\MeetingResponseResponse.xsd">
+    <None Include="Resources\ChangedXSD\Response\mires.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\Move.xsd">
+    <None Include="Resources\ChangedXSD\Response\mrres.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\MoveItemsResponse.xsd">
+    <None Include="Resources\ChangedXSD\Response\notes.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\Notes.xsd">
+    <None Include="Resources\ChangedXSD\Response\pingres.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\Ping.xsd">
+    <None Include="Resources\ChangedXSD\Response\prov.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\PingResponse.xsd">
+    <None Include="Resources\ChangedXSD\Response\provres.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\Provision.xsd">
+    <None Include="Resources\ChangedXSD\Response\rm.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\ProvisionResponse.xsd">
+    <None Include="Resources\ChangedXSD\Response\rrres.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\ResolveRecipients.xsd">
+    <None Include="Resources\ChangedXSD\Response\set.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\ResolveRecipientsResponse.xsd">
+    <None Include="Resources\ChangedXSD\Response\setres.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\RightsManagement.xsd">
+    <None Include="Resources\ChangedXSD\Response\sfres.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\Search.xsd">
+    <None Include="Resources\ChangedXSD\Response\smres.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\SearchResponse.xsd">
+    <None Include="Resources\ChangedXSD\Response\srch.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\SendMailResponse.xsd">
+    <None Include="Resources\ChangedXSD\Response\srchres.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\Settings.xsd">
+    <None Include="Resources\ChangedXSD\Response\srres.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\SettingsResponse.xsd">
+    <None Include="Resources\ChangedXSD\Response\syncres.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\SmartForwardResponse.xsd">
+    <None Include="Resources\ChangedXSD\Response\tasks.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\SmartReplyResponse.xsd">
+    <None Include="Resources\ChangedXSD\Response\vcres.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\SyncResponse.xsd">
+    <None Include="Resources\OriginalXSD\Request\AirSync.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\Tasks.xsd">
+    <None Include="Resources\OriginalXSD\Request\AirSyncBase.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\OriginalXSD\ValidateCertResponse.xsd">
+    <None Include="Resources\OriginalXSD\Request\AutodiscoverRequest.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\Calendar.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\ComposeMail.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\Contacts.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\Contacts2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\DocumentLibrary.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\Email.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\Email2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\FolderCreateRequest.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\FolderDeleteRequest.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\FolderHierarchy.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\FolderSyncRequest.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\FolderUpdateRequest.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\GAL.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\GetItemEstimate.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\ItemOperations.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\ItemOperationsRequest.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\MeetingResponseRequest.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\MoveItemsRequest.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\Notes.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\PingRequest.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\Provision.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\ProvisionRequest.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\ResolveRecipientsRequest.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\RightsManagement.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\Search.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\SearchRequest.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\SendMailRequest.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\Settings.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\SettingsRequest.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\SmartForwardRequest.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\SmartReplyRequest.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\SyncRequest.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\Tasks.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Request\ValidateCertRequest.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\AirSync.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\AirSyncBase.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\AutodiscoverResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\Calendar.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\ComposeMail.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\Contacts.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\Contacts2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\DocumentLibrary.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\Email.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\Email2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\FolderCreateResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\FolderDeleteResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\FolderHierarchy.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\FolderSyncResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\FolderUpdateResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\GAL.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\GetItemEstimateResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\ItemOperations.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\ItemOperationsResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\MeetingResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\MeetingResponseResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\Move.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\MoveItemsResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\Notes.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\Ping.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\PingResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\Provision.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\ProvisionResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\ResolveRecipients.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\ResolveRecipientsResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\RightsManagement.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\Search.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\SearchResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\SendMailResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\Settings.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\SettingsResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\SmartForwardResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\SmartReplyResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\SyncResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\Tasks.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Response\ValidateCertResponse.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -309,6 +534,7 @@
       <Name>XsdToClass</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

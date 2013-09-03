@@ -64,9 +64,9 @@ namespace ConsoleApplication1
             //}
             #endregion
 
-            string directory = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD";
+            string directory = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Request";
 
-            string xsdpath = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD";
+            string xsdpath = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Request";
             string[] xsdfiles = Directory.GetFiles(xsdpath, "*.xsd", SearchOption.TopDirectoryOnly);
 
             StringBuilder arguments = new StringBuilder();
@@ -81,8 +81,22 @@ namespace ConsoleApplication1
             processStartInfo.FileName = @"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\xsd.exe";
             processStartInfo.Arguments = arguments.ToString() + "/classes /language:cs";
             processStartInfo.WorkingDirectory = directory;
+            processStartInfo.RedirectStandardOutput = true;
+            processStartInfo.UseShellExecute = false;
+            //Process.Start(processStartInfo);
 
-            Process.Start(processStartInfo);
+            Process xsdtool = new Process();
+            xsdtool.StartInfo = processStartInfo;
+            xsdtool.Start();
+            string output = xsdtool.StandardOutput.ReadToEnd();
+            xsdtool.WaitForExit();
+
+            string[] lines = output.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (string line in lines)
+            {
+                Console.WriteLine(line);
+            }
 
             Console.Read();
 
