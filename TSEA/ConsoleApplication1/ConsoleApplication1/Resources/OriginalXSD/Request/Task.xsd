@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<xs:schema xmlns:tns="Tasks" attributeFormDefault="unqualified" elementFormDefault="qualified"
+targetNamespace="Tasks" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:airsyncbase="AirSyncBase">
+   <xs:import namespace="AirSyncBase" schemaLocation="AirSyncBase.xsd" />
+   <xs:element name="Subject" type="xs:string" />
+   <xs:element name="Importance" type="xs:unsignedByte" />
+   <xs:element name="UtcStartDate" type="xs:dateTime" />
+   <xs:element name="StartDate" type="xs:dateTime" />
+   <xs:element name="UtcDueDate" type="xs:dateTime" />
+   <xs:element name="DueDate" type="xs:dateTime" />
+   <xs:element name="Categories">
+      <xs:complexType>
+           <xs:sequence minOccurs="0">
+             <xs:element maxOccurs="300" name="Category" type="xs:string" />
+           </xs:sequence>
+        </xs:complexType>
+   </xs:element>
+   <xs:element name="Recurrence">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="Type" type="xs:unsignedByte" />
+            <xs:element name="Start" type="xs:dateTime" />
+            <xs:element name="Until" type="xs:dateTime" />
+            <xs:element name="Occurrences" type="xs:unsignedByte" />
+            <xs:element minOccurs="0" name="Interval" type="xs:unsignedByte" />
+            <xs:element name="DayOfWeek" type="xs:unsignedByte" />
+            <xs:element name="DayOfMonth" type="xs:unsignedByte" />
+            <xs:element name="WeekOfMonth" type="xs:unsignedByte" />
+            <xs:element name="MonthOfYear" type="xs:unsignedByte" />
+            <xs:element name="Regenerate" type="xs:unsignedByte" />
+            <xs:element name="DeadOccur" type="xs:unsignedByte" />
+            <xs:element name="CalendarType" type="xs:unsignedByte" />
+            <xs:element name="IsLeapMonth" type="xs:unsignedByte" />
+            <xs:element minOccurs="0" name="FirstDayOfWeek">
+                 <xs:simpleType>
+                      <xs:restriction base="xs:unsignedByte">
+                           <xs:minInclusive value="0"/>
+                           <xs:maxInclusive value="6"/>
+                      </xs:restriction>
+                 </xs:simpleType>
+            </xs:element>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="Complete" type="xs:unsignedByte" />
+   <xs:element name="DateCompleted" type="xs:dateTime" />
+   <xs:element name="Sensitivity" type="xs:unsignedByte"  />
+   <xs:element name="ReminderTime" type="xs:dateTime" />
+   <xs:element name="ReminderSet" type="xs:unsignedByte" />
+   <xs:element name="OrdinalDate" type="xs:dateTime" />
+   <xs:element name="SubOrdinalDate" type="xs:string" />
+</xs:schema>

@@ -60,6 +60,9 @@
     <None Include="Resources\ChangedXSD\adms.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Resources\ChangedXSD\adres.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\ChangedXSD\as.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -87,22 +90,55 @@
     <None Include="Resources\ChangedXSD\email2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Resources\ChangedXSD\fcres.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\fdres.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\ChangedXSD\fh.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\fsres.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\fures.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\ChangedXSD\gal.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Resources\ChangedXSD\gieres.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\ChangedXSD\io.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\iores.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\mires.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\mrres.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\ChangedXSD\notes.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Resources\ChangedXSD\pingres.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\ChangedXSD\prov.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Resources\ChangedXSD\provres.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\ChangedXSD\rm.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\rrres.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\ChangedXSD\set.xsd">
@@ -111,13 +147,28 @@
     <None Include="Resources\ChangedXSD\setres.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Resources\ChangedXSD\sfres.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\smres.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\ChangedXSD\srch.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\srchres.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\srres.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\ChangedXSD\syncres.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\ChangedXSD\tasks.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\ChangedXSD\vcres.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\OriginalXSD\AirSync.xsd">
@@ -177,13 +228,22 @@
     <None Include="Resources\OriginalXSD\ItemOperationsResponse.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Resources\OriginalXSD\MeetingResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\OriginalXSD\MeetingResponseResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Move.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\OriginalXSD\MoveItemsResponse.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\OriginalXSD\Notes.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\Ping.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\OriginalXSD\PingResponse.xsd">
@@ -193,6 +253,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\OriginalXSD\ProvisionResponse.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\OriginalXSD\ResolveRecipients.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\OriginalXSD\ResolveRecipientsResponse.xsd">

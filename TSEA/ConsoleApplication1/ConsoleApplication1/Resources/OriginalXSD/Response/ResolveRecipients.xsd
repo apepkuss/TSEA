@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" ?>
+<xs:schema xmlns:tns="ResolveRecipients:" attributeFormDefault="unqualified" elementFormDefault="qualified"
+targetNamespace="ResolveRecipients:" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ResolveRecipients">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Status" type="xs:unsignedByte" />
+        <xs:element minOccurs="0" name="Response">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="To">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="256"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Status" type="xs:string"/>
+              <xs:element name="RecipientCount" type="xs:integer" minOccurs="0"/>
+              <xs:element maxOccurs="unbounded" name="Recipient" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Type" type="xs:unsignedByte"/>
+                    <xs:element name="DisplayName" type="xs:string"/>
+                    <xs:element name="EmailAddress" type="xs:string"/>
+                    <xs:element minOccurs="0" name="Availability">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Status" type="xs:string"/>
+                          <xs:element minOccurs="0" name="MergedFreeBusy" type="xs:string"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="Certificates">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Status" type="xs:unsignedByte"/>
+                          <xs:element name="CertificateCount" type="xs:integer" minOccurs="0"/>
+                          <xs:element name="RecipientCount" type="xs:integer" minOccurs="0"/>
+                          <xs:element minOccurs="0" maxOccurs="unbounded" name="Certificate" type="xs:string"/>
+                          <xs:element minOccurs="0" name="MiniCertificate" type="xs:string"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="Picture">
+                      <xs:complexType>
+                        <xs:all>
+                          <xs:element name="Status" type="xs:string"/>
+                          <xs:element name="Data" type="xs:string" minOccurs="0"/>
+                        </xs:all>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
