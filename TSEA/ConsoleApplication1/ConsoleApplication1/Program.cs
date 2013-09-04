@@ -64,11 +64,25 @@ namespace ConsoleApplication1
             //}
             #endregion
 
-            #region Launch xsd.exe to generate proxy class automatically
             
-            string directory = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Request";
+
+            #region Step1: SOMDiff invocation
+
+            string sourefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Request\Calendar.xsd";
+            string changefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Request\cal.xsd";
+
+            SOMDiff sdiff = new SOMDiff(sourefile, changefile);
+            sdiff.DiffSchemas(sourefile, changefile);
+
+            Console.Read();
+
+            #endregion
+
+            #region Step2: Launch xsd.exe to generate proxy class automatically
+
+            string directory = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Response";
             //directory = @"C:\Users\v-liuxin\Desktop\Request\All";
-            string xsdpath = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Request";
+            string xsdpath = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Response";
             //xsdpath = @"C:\Users\v-liuxin\Desktop\Request\All";
             string[] xsdfiles = Directory.GetFiles(xsdpath, "*.xsd", SearchOption.TopDirectoryOnly);
 
@@ -82,7 +96,7 @@ namespace ConsoleApplication1
 
             ProcessStartInfo processStartInfo = new ProcessStartInfo();
             processStartInfo.FileName = @"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\xsd.exe";
-            processStartInfo.Arguments = arguments.ToString() + "/classes /language:cs /n:Microsoft.Protocols.TestSuites.CommonProject.Request";
+            processStartInfo.Arguments = arguments.ToString() + "/classes /language:cs /n:TSEA.Changed.Response";
             processStartInfo.WorkingDirectory = directory;
             processStartInfo.RedirectStandardOutput = true;
             processStartInfo.UseShellExecute = false;
@@ -106,17 +120,7 @@ namespace ConsoleApplication1
             #endregion
 
 
-            #region SOMDiff invocation
             
-            string sourefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Calendar.xsd";
-            string changefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\cal.xsd";
-
-            SOMDiff sdiff = new SOMDiff(sourefile, changefile);
-            sdiff.DiffSchemas(sourefile, changefile);
-
-            Console.Read();
-
-            #endregion
 
 
             #region Test alternative methods

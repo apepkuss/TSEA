@@ -54,6 +54,10 @@
     <Compile Include="Helper\XmlDiffDocument.cs" />
     <Compile Include="Helper\XmlDiffNodes.cs" />
     <Compile Include="Helper\XmlHash.cs" />
+    <Compile Include="Resources\ChangedXSD\Proxy\ChangedActiveSyncRequestProxy.cs" />
+    <Compile Include="Resources\ChangedXSD\Proxy\ChangedActiveSyncResponseProxy.cs" />
+    <Compile Include="Resources\OriginalXSD\Proxy\OriginalActiveSyncRequestProxy.cs" />
+    <Compile Include="Resources\OriginalXSD\Proxy\OriginalActiveSyncResponseProxy.cs" />
     <Compile Include="Resources\OriginalXSD\Request\ValidateCertRequest.cs">
       <DependentUpon>ValidateCertRequest.xsd</DependentUpon>
     </Compile>

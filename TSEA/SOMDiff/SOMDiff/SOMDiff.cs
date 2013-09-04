@@ -366,12 +366,12 @@ namespace Xin.SOMDiff
         {
             ChangeTypes changeType = ChangeTypes.None;
 
-            if (element1.Name == "Reminder")
+            if (element1.Name == "Exception")
             {
                 
             }
 
-            if (element1.RefName.Name == "Reminder")
+            if (element1.RefName.Name == "Subject")
             {
 
             }
@@ -681,15 +681,18 @@ namespace Xin.SOMDiff
                 sourcePath.Pop();
                 changePath.Pop();
             }
-            else if (element1.RefName.Name != element2.RefName.Name)
+            else
             {
                 sourcePath.Push(string.Format("{0}:{1}", element1.RefName.Namespace, element1.RefName.Name));
                 changePath.Push(string.Format("{0}:{1}", element2.RefName.Namespace, element2.RefName.Name));
 
-                // Change: Element_ReferenceChange_Update
-                changeType = ChangeTypes.Element_ReferenceChange_Update;
+                if (element1.RefName.Name != element2.RefName.Name)
+                {
+                    // Change: Element_ReferenceChange_Update
+                    changeType = ChangeTypes.Element_ReferenceChange_Update;
 
-                this.AddMismatchedPair(sourcePath.ToArray(), element1, changePath.ToArray(), element2, ChangeTypes.Element_ReferenceChange_Update);
+                    this.AddMismatchedPair(sourcePath.ToArray(), element1, changePath.ToArray(), element2, ChangeTypes.Element_ReferenceChange_Update);
+                }
 
                 XmlSchemaElement elem1 = this.GetElementByRefName(element1.RefName, true);
                 XmlSchemaElement elem2 = this.GetElementByRefName(element2.RefName, false);
@@ -823,8 +826,8 @@ namespace Xin.SOMDiff
 
         private void CompareParticleSequence(XmlSchemaSequence sequence1, XmlSchemaSequence sequence2, bool ordered = false)
         {
-            sourcePath.Push("sequence");
-            changePath.Push("sequence");
+            //sourcePath.Push("sequence");
+            //changePath.Push("sequence");
 
             ChangeTypes changeType = ChangeTypes.None;
 
@@ -846,14 +849,14 @@ namespace Xin.SOMDiff
             }
 
 
-            sourcePath.Pop();
-            changePath.Pop();
+            //sourcePath.Pop();
+            //changePath.Pop();
         }
 
         private void CompareParticleChoice(XmlSchemaChoice choice1, XmlSchemaChoice choice2)
         {
-            sourcePath.Push("choice");
-            changePath.Push("choice");
+            //sourcePath.Push("choice");
+            //changePath.Push("choice");
 
             ChangeTypes changeType = ChangeTypes.None;
 
@@ -874,14 +877,14 @@ namespace Xin.SOMDiff
             {
             }
 
-            sourcePath.Pop();
-            changePath.Pop();
+            //sourcePath.Pop();
+            //changePath.Pop();
         }
 
         private void CompareParticleAll(XmlSchemaAll all1, XmlSchemaAll all2)
         {
-            sourcePath.Push("all");
-            changePath.Push("all");
+            //sourcePath.Push("all");
+            //changePath.Push("all");
 
             ChangeTypes changeType = ChangeTypes.None;
 
@@ -904,8 +907,8 @@ namespace Xin.SOMDiff
             {
             }
 
-            sourcePath.Pop();
-            changePath.Pop();
+            //sourcePath.Pop();
+            //changePath.Pop();
         }
 
         private void CompareSchemaType(XmlSchemaType schemaType1, XmlSchemaType schemaType2)
@@ -953,8 +956,8 @@ namespace Xin.SOMDiff
 
         private void CompareParticleSimpleType(XmlSchemaSimpleType simple1, XmlSchemaSimpleType simple2)
         {
-            sourcePath.Push("SimpleType");
-            changePath.Push("SimpleType");
+            //sourcePath.Push("SimpleType");
+            //changePath.Push("SimpleType");
 
             if (simple1.TypeCode != simple2.TypeCode)
             {
@@ -1026,14 +1029,14 @@ namespace Xin.SOMDiff
 
             #endregion
 
-            sourcePath.Pop();
-            changePath.Pop();
+            //sourcePath.Pop();
+            //changePath.Pop();
         }
 
         private void CompareSimpleTypeUnion(XmlSchemaSimpleTypeUnion union1, XmlSchemaSimpleTypeUnion union2)
         {
-            sourcePath.Push("Union");
-            changePath.Push("Union");
+            //sourcePath.Push("Union");
+            //changePath.Push("Union");
 
             if (union1.MemberTypes.Length == union2.MemberTypes.Length)
             {
@@ -1052,8 +1055,8 @@ namespace Xin.SOMDiff
 
             }
 
-            sourcePath.Pop();
-            changePath.Pop();
+            //sourcePath.Pop();
+            //changePath.Pop();
         }
 
         private void CompareQualifiedNames(XmlQualifiedName[] xmlQualifiedName1, XmlQualifiedName[] xmlQualifiedName2)
@@ -1087,8 +1090,8 @@ namespace Xin.SOMDiff
 
         private void CompareParticleComplexType(XmlSchemaComplexType complex1, XmlSchemaComplexType complex2)
         {
-            sourcePath.Push("ComplexType");
-            changePath.Push("ComplexType");
+            //sourcePath.Push("ComplexType");
+            //changePath.Push("ComplexType");
 
             bool elementOnly = complex1.ContentType == XmlSchemaContentType.ElementOnly && complex1.ContentType == XmlSchemaContentType.ElementOnly;
 
@@ -1156,8 +1159,8 @@ namespace Xin.SOMDiff
                 }
             }
 
-            sourcePath.Pop();
-            changePath.Pop();
+            //sourcePath.Pop();
+            //changePath.Pop();
         }
 
         private void CompareSimpleTypeRestriction(XmlSchemaSimpleTypeRestriction restriction1, XmlSchemaSimpleTypeRestriction restriction2)
@@ -1732,14 +1735,14 @@ namespace Xin.SOMDiff
             {
                 if (refName.Name == element.Name)
                 {
-                    if (flag)
-                    {
-                        sourcePath.Push(string.Format("{0}:{1}", refName.Namespace, refName.Name));
-                    }
-                    else
-                    {
-                        changePath.Push(string.Format("{0}:{1}", refName.Namespace, refName.Name));
-                    }
+                    //if (flag)
+                    //{
+                    //    sourcePath.Push(string.Format("{0}:{1}", refName.Namespace, refName.Name));
+                    //}
+                    //else
+                    //{
+                    //    changePath.Push(string.Format("{0}:{1}", refName.Namespace, refName.Name));
+                    //}
 
                     return element;
                 }
@@ -1818,32 +1821,59 @@ namespace Xin.SOMDiff
 
         private void AddMismatchedPair(string[] rawPath1, XmlSchemaObject object1, string[] rawPath2, XmlSchemaObject object2, ChangeTypes changeType)
         {
+            if (rawPath1.Length > 3 && changeType != ChangeTypes.None)
+            {
+
+            }
             if (changeType != ChangeTypes.None)
             {
-                StringBuilder path1 = new StringBuilder();
-                StringBuilder path2 = new StringBuilder();
-
-                foreach (string path in rawPath1)
-                {
-                    path1.Append(path);
-                }
-
-                foreach (string path in rawPath2)
-                {
-                    path2.Append(path);
-                }
-
                 MismatchedPair pair = new MismatchedPair();
 
-                pair.SourcePath = path1.ToString();
+                pair.SourcePath = this.GetXPath(rawPath1);
                 pair.SourceObject = object1;
-                pair.ChangePath = path2.ToString();
+                pair.ChangePath = this.GetXPath(rawPath2);
                 pair.ChangeObject = object2;
 
                 pair.ChangeType = changeType;
 
                 result.Add(pair);
             }
+        }
+
+        private string GetXPath(string[] rawPath)
+        {
+            StringBuilder path = new StringBuilder();
+
+            bool referenced = false;
+            for (int i = rawPath.Length - 1; i >= 0; i--)
+            {
+                if (!referenced)
+                {
+                    path.Append(rawPath[i]);
+                    path.Append("/");
+
+                    if (rawPath[i].Contains(":"))
+                    {
+                        referenced = true;
+                    }
+                }
+                else
+                {
+                    if (rawPath[i].Contains(":"))
+                    {
+                        path.Append(rawPath[i]);
+                        path.Append("/");
+                    }
+                    else
+                    {
+                        referenced = false;
+                    }
+                }
+            }
+
+            path.Length--;
+
+            return path.ToString();
         }
 
         private void ValidationCallBack(object sender, ValidationEventArgs args)
