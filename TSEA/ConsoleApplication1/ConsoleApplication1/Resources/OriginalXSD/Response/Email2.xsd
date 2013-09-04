@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="Email2" targetNamespace="Email2" elementFormDefault="qualified" attributeFormDefault="unqualified">
   <xs:element name="UmCallerID" type="xs:string"/>
   <xs:element name="UmUserNotes" type="xs:string"/>

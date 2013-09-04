@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="Notes" targetNamespace="Notes" elementFormDefault="qualified" attributeFormDefault="unqualified">
   <xs:element name="Subject" type="xs:string"/>
   <xs:element name="MessageClass" type="xs:string"/>
-  <xs:element name="LastModifiedDate" type="xs:string"/>
+  <xs:element name="LastModifiedDate" type="xs:dateTime"/>
   <xs:element name="Categories">
     <xs:complexType>
       <xs:sequence minOccurs="0">

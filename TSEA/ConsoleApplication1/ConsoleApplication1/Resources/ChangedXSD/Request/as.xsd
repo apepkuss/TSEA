@@ -1,15 +1,19 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:airsyncbase=
-    "AirSyncBase" xmlns:calendar="Calendar" xmlns:contacts="Contacts"
-    xmlns:contacts2="Contacts2" xmlns:rm="RightsManagement" xmlns="AirSync"
-    targetNamespace="AirSync" elementFormDefault="qualified"
-    attributeFormDefault="unqualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           xmlns:airsyncbase="AirSyncBase" 
+           xmlns:calendar="Calendar" 
+           xmlns:contacts="Contacts"
+           xmlns:contacts2="Contacts2" 
+           xmlns:rm="RightsManagement" 
+           xmlns="AirSync"
+           targetNamespace="AirSync" 
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
   <xs:import namespace="AirSyncBase" schemaLocation="asb.xsd"/>
   <xs:import namespace="Calendar" schemaLocation="cal.xsd"/>
   <xs:import namespace="Contacts" schemaLocation="cntc.xsd"/>
   <xs:import namespace="Contacts2" schemaLocation="cntc2.xsd"/>
-  <xs:import namespace="RightsManagement"
-      schemaLocation="rm.xsd"/>
+  <xs:import namespace="RightsManagement" schemaLocation="rm.xsd"/>
   <xs:element name="SyncKey">
     <xs:simpleType>
       <xs:restriction base="xs:string">

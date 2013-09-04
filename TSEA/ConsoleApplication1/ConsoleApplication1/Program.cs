@@ -64,9 +64,12 @@ namespace ConsoleApplication1
             //}
             #endregion
 
-            string directory = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Request";
-
-            string xsdpath = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Request";
+            #region Launch xsd.exe to generate proxy class automatically
+            
+            string directory = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Request";
+            //directory = @"C:\Users\v-liuxin\Desktop\Request\All";
+            string xsdpath = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Request";
+            //xsdpath = @"C:\Users\v-liuxin\Desktop\Request\All";
             string[] xsdfiles = Directory.GetFiles(xsdpath, "*.xsd", SearchOption.TopDirectoryOnly);
 
             StringBuilder arguments = new StringBuilder();
@@ -79,7 +82,7 @@ namespace ConsoleApplication1
 
             ProcessStartInfo processStartInfo = new ProcessStartInfo();
             processStartInfo.FileName = @"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\xsd.exe";
-            processStartInfo.Arguments = arguments.ToString() + "/classes /language:cs";
+            processStartInfo.Arguments = arguments.ToString() + "/classes /language:cs /n:Microsoft.Protocols.TestSuites.CommonProject.Request";
             processStartInfo.WorkingDirectory = directory;
             processStartInfo.RedirectStandardOutput = true;
             processStartInfo.UseShellExecute = false;
@@ -100,23 +103,29 @@ namespace ConsoleApplication1
 
             Console.Read();
 
+            #endregion
 
 
+            #region SOMDiff invocation
+            
             string sourefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Calendar.xsd";
             string changefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\cal.xsd";
 
             SOMDiff sdiff = new SOMDiff(sourefile, changefile);
             sdiff.DiffSchemas(sourefile, changefile);
 
-
-
             Console.Read();
 
+            #endregion
 
-            TestExpandRef();
+
+            #region Test alternative methods
+            
+
+            //TestExpandRef();
+            //Console.Read();
 
 
-            Console.Read();
 
             //string sourefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Email2.xsd";
             string path = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\result.xsd";
@@ -202,6 +211,11 @@ namespace ConsoleApplication1
 
             Console.Read();
 
+            #endregion
+
+
+            #region XmlDiff invocation
+
             string soureFile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\SettingsResponse.xsd";
             string changedFile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\setres.xsd";
             
@@ -212,7 +226,9 @@ namespace ConsoleApplication1
             diff.Diff();
 
             Console.Read();
-            
+
+            #endregion
+
         }
 
         private static void ValidationCallBack(object sender, ValidationEventArgs args)
