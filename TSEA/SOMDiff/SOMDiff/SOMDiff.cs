@@ -322,10 +322,13 @@ namespace Xin.SOMDiff
 
         private void CompareUnorderedElements(List<XmlSchemaElement> sourcelist, List<XmlSchemaElement> changelist)
         {
+            List<XmlSchemaElement> source = new List<XmlSchemaElement>();
+
             while (sourcelist.Count > 0 && changelist.Count > 0)
             {
                 XmlSchemaElement element1 = sourcelist.FirstOrDefault();
 
+                bool matched = false;
                 XmlSchemaElement element2 = null;
                 foreach (XmlSchemaElement element in changelist)
                 {
@@ -334,11 +337,13 @@ namespace Xin.SOMDiff
                     if (!string.IsNullOrEmpty(element1.RefName.Name) || !string.IsNullOrEmpty(element.RefName.Name))
                     {
                         this.CompareRefElement(element1, element2);
+                        matched = true;
                         break;
                     }
                     else if (element1.Name == element.Name)
                     {
                         this.CompareSingleElement(element1, element2);
+                        matched = true;
                         break;
                     }
                     else
@@ -347,11 +352,19 @@ namespace Xin.SOMDiff
                     }
                 }
 
+                if (matched)
+                {
+                    changelist.Remove(element2);
+                }
+                else
+                {
+                    source.Add(element1);
+                }
+
                 sourcelist.Remove(element1);
-                changelist.Remove(element2);
             }
 
-            if (sourcelist.Count > 0)
+            if (source.Count > 0)
             {
                 // TODO
             }
@@ -366,12 +379,12 @@ namespace Xin.SOMDiff
         {
             ChangeTypes changeType = ChangeTypes.None;
 
-            if (element1.Name == "Exception")
+            if (element1.Name == "Supported")
             {
                 
             }
 
-            if (element1.RefName.Name == "Subject")
+            if (element1.RefName.Name == "Supported")
             {
 
             }
@@ -390,30 +403,22 @@ namespace Xin.SOMDiff
                     this.AddMismatchedPair(sourcePath.ToArray(), element1, changePath.ToArray(), element2, ChangeTypes.Element_NameAttribute_Update);
                 }
 
-
-                // if simpleType/complexType else common element
-                if (element1.SchemaTypeName.IsEmpty && element2.SchemaTypeName.IsEmpty)
+                // 1. leaf elements; 2. simple/complex elements; 3. hybrid elements
+                if (!element1.SchemaTypeName.IsEmpty && !element2.SchemaTypeName.IsEmpty)
                 {
-                    // simpleType or complexType
-                    //this.CompareSchemaType(element1.ElementSchemaType, element2.ElementSchemaType);
+                    //if (element1.SchemaTypeName.Namespace == element2.SchemaTypeName.Namespace)
+                    //{
+                    //    if (element1.SchemaTypeName.Name != element2.SchemaTypeName.Name)
+                    //    {
+                    //        changeType = ChangeTypes.TypeChange_Update;
 
-                    this.CompareSchemaType(element1.SchemaType, element2.SchemaType);
-                }
-                else
-                {
-                    if (element1.SchemaTypeName.Namespace == element2.SchemaTypeName.Namespace)
-                    {
-                        if (element1.SchemaTypeName.Name != element2.SchemaTypeName.Name)
-                        {
-                            changeType = ChangeTypes.TypeChange_Update;
-
-                            this.AddMismatchedPair(sourcePath.ToArray(), element1, changePath.ToArray(), element2, ChangeTypes.TypeChange_Update);
-                        }
-                    }
-                    else
-                    {
-
-                    }
+                    //        this.AddMismatchedPair(sourcePath.ToArray(), element1, changePath.ToArray(), element2, ChangeTypes.TypeChange_Update);
+                    //    }
+                    //}
+                    //else
+                    //{
+                        
+                    //}
 
                     #region Commented Code
                     
@@ -468,12 +473,50 @@ namespace Xin.SOMDiff
 
                         this.CompareSchemaType(schemaType1, schemaType2);
                     }
+                    else
+                    {
+                        if (element1.SchemaTypeName.Name != element2.SchemaTypeName.Name)
+                        {
+                            changeType = ChangeTypes.TypeChange_Update;
+
+                            this.AddMismatchedPair(sourcePath.ToArray(), element1, changePath.ToArray(), element2, ChangeTypes.TypeChange_Update);
+                        }
+                    }
 
                     changeType = this.CompareFacetMaxOccurs(element1.MaxOccursString, element2.MaxOccursString);
                     this.AddMismatchedPair(sourcePath.ToArray(), element1, changePath.ToArray(), element2, changeType);
 
                     changeType = this.CompareFacetMinOccurs(element1.MinOccursString, element2.MinOccursString);
                     this.AddMismatchedPair(sourcePath.ToArray(), element1, changePath.ToArray(), element2, changeType);
+                }
+                else if (element1.SchemaTypeName.IsEmpty && element2.SchemaTypeName.IsEmpty)
+                {
+                    // simpleType or complexType
+                    //this.CompareSchemaType(element1.ElementSchemaType, element2.ElementSchemaType);
+
+                    this.CompareSchemaType(element1.SchemaType, element2.SchemaType);
+                }
+                else if (!element1.SchemaTypeName.IsEmpty)
+                {
+                    // in this case, element1 is a simpleType or complexType element, while element2 is a leaf element.
+                    XmlSchemaType schemaType1 = null;
+                    if (element1.SchemaTypeName.Namespace != "http://www.w3.org/2001/XMLSchema")
+                    {
+                        schemaType1 = this.GetTypeByRefType(element1.SchemaTypeName, true);
+                    }
+
+                    this.CompareSchemaType(schemaType1, element2.SchemaType);
+                }
+                else
+                {
+                    // in this case, element2 is a simpleType or complexType element, while element1 is a leaf element.
+                    XmlSchemaType schemaType2 = null;
+                    if (element2.SchemaTypeName.Namespace != "http://www.w3.org/2001/XMLSchema")
+                    {
+                        schemaType2 = this.GetTypeByRefType(element2.SchemaTypeName, false);
+                    }
+
+                    this.CompareSchemaType(element1.SchemaType, schemaType2);
                 }
 
 
@@ -820,6 +863,85 @@ namespace Xin.SOMDiff
             changePath.Pop();
         }
 
+        private void CompareRefGroups(List<XmlSchemaGroupRef> groupRef1, List<XmlSchemaGroupRef> groupRef2, bool flag = false)
+        {
+            List<XmlSchemaGroupRef> source = new List<XmlSchemaGroupRef>();
+
+            while (groupRef1.Count > 0 && groupRef2.Count > 0)
+            {
+                XmlSchemaGroupRef group1 = groupRef1.FirstOrDefault();
+
+                bool matched = false;
+                XmlSchemaGroupRef group2 = null;
+                foreach (XmlSchemaGroupRef item in groupRef2)
+                {
+                    group2 = item;
+
+                    if (group1.RefName.Namespace == group2.RefName.Namespace && group1.RefName.Name == group2.RefName.Name)
+                    {
+                        this.CompareSingleRefGroup(group1, group2);
+                        matched = true;
+                        break;
+                    }
+                }
+
+                if (matched)
+                {
+                    groupRef2.Remove(group2);
+                }
+                else
+                {
+                    source.Add(group1);
+                }
+
+                groupRef1.Remove(group1);
+            }
+
+            if (source.Count > 0)
+            {
+                // TODO
+            }
+
+            if (groupRef2.Count > 0)
+            {
+                // TODO
+            }
+        }
+
+        private void CompareSingleRefGroup(XmlSchemaGroupRef group1, XmlSchemaGroupRef group2)
+        {
+            if (group1 == null || group2 == null)
+            {
+                return;
+            }
+
+            sourcePath.Push(string.Format("{0}:{1}", group1.RefName.Namespace, group1.RefName.Name));
+            changePath.Push(string.Format("{0}:{1}", group2.RefName.Namespace, group2.RefName.Name));
+
+            if (group1.Particle is XmlSchemaSequence)
+            {
+                XmlSchemaSequence sequence1 = group1.Particle as XmlSchemaSequence;
+
+                if (group2.Particle is XmlSchemaSequence)
+                {
+                    XmlSchemaSequence sequence2 = group2.Particle as XmlSchemaSequence;
+
+                    this.CompareParticleSequence(sequence1, sequence2);
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+
+            }
+
+            sourcePath.Pop();
+            changePath.Pop();
+        }
+
         #endregion
 
         #region Compare Particles: sequence, choice, all, simpletype, complextype
@@ -849,6 +971,7 @@ namespace Xin.SOMDiff
             }
 
 
+
             //sourcePath.Pop();
             //changePath.Pop();
         }
@@ -858,6 +981,11 @@ namespace Xin.SOMDiff
             //sourcePath.Push("choice");
             //changePath.Push("choice");
 
+            if (choice1 == null || choice2 == null)
+            {
+                return;
+            }
+
             ChangeTypes changeType = ChangeTypes.None;
 
             changeType = this.CompareFacetMaxOccurs(choice1.MaxOccursString, choice2.MaxOccursString);
@@ -866,16 +994,20 @@ namespace Xin.SOMDiff
             changeType = this.CompareFacetMinOccurs(choice1.MinOccursString, choice2.MinOccursString);
             this.AddMismatchedPair(sourcePath.ToArray(), choice1, changePath.ToArray(), choice2, changeType);
 
-            if (choice1.Items.Count == choice2.Items.Count)
-            {
-                for (int i = 0; i < choice1.Items.Count; i++)
-                {
-                    this.CompareXmlSchemaObject(choice1.Items[i], choice2.Items[i]);
-                }
-            }
-            else
-            {
-            }
+            this.CompareXmlSchemaObjectCollection(choice1.Items, choice2.Items);
+
+
+            //if (choice1.Items.Count == choice2.Items.Count)
+            //{
+            //    for (int i = 0; i < choice1.Items.Count; i++)
+            //    {
+            //        this.CompareXmlSchemaObject(choice1.Items[i], choice2.Items[i]);
+            //    }
+            //}
+            //else
+            //{
+            //    this.CompareXmlSchemaObjectCollection(choice1.Items, choice2.Items);
+            //}
 
             //sourcePath.Pop();
             //changePath.Pop();
@@ -943,9 +1075,15 @@ namespace Xin.SOMDiff
 
                     this.CompareParticleComplexType(complex1, complex2);
                 }
+                else if (schemaType2 is XmlSchemaSimpleType)
+                {
+                    // Change:
+                    ChangeTypes changeType = ChangeTypes.ComplexTypeToSimpleType;
+                    this.AddMismatchedPair(sourcePath.ToArray(), complex1.Parent, changePath.ToArray(), schemaType2.Parent, changeType);
+                }
                 else
                 {
-
+                    
                 }
             }
             else
@@ -1191,7 +1329,6 @@ namespace Xin.SOMDiff
             else if (restriction2.Facets.Count > 0)
             {
                 this.OutputFacetUpdate(restriction2.Facets, false);
-                
             }
 
             sourcePath.Pop();
@@ -1200,6 +1337,32 @@ namespace Xin.SOMDiff
 
         private void OutputFacetUpdate(XmlSchemaObjectCollection facets, bool flag)
         {
+            foreach (XmlSchemaObject facet in facets)
+            {
+                if (facet is XmlSchemaMaxLengthFacet)
+                {
+                    XmlSchemaMaxLengthFacet maxLength = facet as XmlSchemaMaxLengthFacet;
+
+                    if (flag)
+                    {
+                        sourcePath.Push("maxLength");
+                        this.AddMismatchedPair(sourcePath.ToArray(), facet, changePath.ToArray(), null, ChangeTypes.RemoveMaxLength);
+                        sourcePath.Pop();
+                    }
+                    else
+                    {
+                        changePath.Push("maxLength");
+                        this.AddMismatchedPair(sourcePath.ToArray(), null, changePath.ToArray(), facet, ChangeTypes.AddMaxLength);
+                        changePath.Pop();
+                    }
+                }
+                else
+                {
+
+                }
+            }
+
+
             //List<XmlSchemaFacet> addedFacets = new List<XmlSchemaFacet>();
             //List<XmlSchemaFacet> removedFacets = new List<XmlSchemaFacet>();
 
@@ -1415,6 +1578,11 @@ namespace Xin.SOMDiff
         {
             ChangeTypes changeType = ChangeTypes.None;
 
+            if (sourceFacet == null && changeFacet == null)
+            {
+                return changeType;
+            }
+
             if (facetType == FacetTypes.EnumerationFacet)
             {
                 if (sourceFacet != null && changeFacet != null)
@@ -1423,7 +1591,7 @@ namespace Xin.SOMDiff
                     changePath.Push("enumeration");
 
 
-
+                    // TODO
 
 
                     sourcePath.Pop();
@@ -1466,6 +1634,7 @@ namespace Xin.SOMDiff
             }
             else if (facetType == FacetTypes.MinInclusiveFacet)
             {
+                // TODO: change
             }
             else if (facetType == FacetTypes.NumericFacet)
             {
@@ -1575,12 +1744,18 @@ namespace Xin.SOMDiff
                 // compare the elements of the collections unorderly
                 List<XmlSchemaElement> elements1 = new List<XmlSchemaElement>();
                 List<XmlSchemaElement> elements2 = new List<XmlSchemaElement>();
+                List<XmlSchemaGroupRef> groupRef1 = new List<XmlSchemaGroupRef>();
+                List<XmlSchemaGroupRef> groupRef2 = new List<XmlSchemaGroupRef>();
 
                 foreach (XmlSchemaObject item in xmlSchemaObjectCollection1)
                 {
                     if (item is XmlSchemaElement)
                     {
                         elements1.Add(item as XmlSchemaElement);
+                    }
+                    else if(item is XmlSchemaGroupRef)
+                    {
+                        groupRef1.Add(item as XmlSchemaGroupRef);
                     }
                 }
 
@@ -1590,9 +1765,21 @@ namespace Xin.SOMDiff
                     {
                         elements2.Add(item as XmlSchemaElement);
                     }
+                    else if (item is XmlSchemaGroupRef)
+                    {
+                        groupRef2.Add(item as XmlSchemaGroupRef);
+                    }
                 }
 
-                this.CompareUnorderedElements(elements1, elements2);
+                if (elements1.Count > 0 && elements2.Count > 0)
+                {
+                    this.CompareUnorderedElements(elements1, elements2);
+                }
+
+                if (groupRef1.Count > 0 && groupRef2.Count > 0)
+                {
+                    this.CompareRefGroups(groupRef1, groupRef2);
+                }
             }
         }
 
@@ -1821,10 +2008,6 @@ namespace Xin.SOMDiff
 
         private void AddMismatchedPair(string[] rawPath1, XmlSchemaObject object1, string[] rawPath2, XmlSchemaObject object2, ChangeTypes changeType)
         {
-            if (rawPath1.Length > 3 && changeType != ChangeTypes.None)
-            {
-
-            }
             if (changeType != ChangeTypes.None)
             {
                 MismatchedPair pair = new MismatchedPair();
@@ -1849,6 +2032,11 @@ namespace Xin.SOMDiff
             {
                 if (!referenced)
                 {
+                    if (i < rawPath.Length - 1 && rawPath[i + 1].Contains(rawPath[i]))
+                    {
+                        break;
+                    }
+
                     path.Append(rawPath[i]);
                     path.Append("/");
 
@@ -1859,7 +2047,7 @@ namespace Xin.SOMDiff
                 }
                 else
                 {
-                    if (rawPath[i].Contains(":"))
+                    if (rawPath[i].Contains(":") || (i < rawPath.Length - 1 && !rawPath[i + 1].Contains(rawPath[i])))
                     {
                         path.Append(rawPath[i]);
                         path.Append("/");

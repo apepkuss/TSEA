@@ -58,12 +58,6 @@
     <Compile Include="Resources\ChangedXSD\Proxy\ChangedActiveSyncResponseProxy.cs" />
     <Compile Include="Resources\OriginalXSD\Proxy\OriginalActiveSyncRequestProxy.cs" />
     <Compile Include="Resources\OriginalXSD\Proxy\OriginalActiveSyncResponseProxy.cs" />
-    <Compile Include="Resources\OriginalXSD\Request\ValidateCertRequest.cs">
-      <DependentUpon>ValidateCertRequest.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Resources\OriginalXSD\Response\ValidateCertResponse.cs">
-      <DependentUpon>ValidateCertResponse.xsd</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
