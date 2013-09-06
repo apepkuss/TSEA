@@ -14,6 +14,8 @@ namespace Xin.SOMDiff
         MaxInclusiveFacet,
         MinExclusiveFacet,
         MinInclusiveFacet,
+        MaxLengthFacet,
+        MinLengthFacet,
         NumericFacet,
         PatternFacet,
         WhiteSpaceFacet

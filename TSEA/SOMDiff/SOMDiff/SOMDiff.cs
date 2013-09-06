@@ -26,8 +26,10 @@ namespace Xin.SOMDiff
 
         private static Stack<string> sourcePath = new Stack<string>();
         private static Stack<string> changePath = new Stack<string>();
+        
         private static List<MismatchedPair> result = new List<MismatchedPair>();
-
+        private static Dictionary<string, SchemaTypeCollection> sourceSchemaTypeCollection = new Dictionary<string, SchemaTypeCollection>();
+        private static Dictionary<string, SchemaTypeCollection> changeSchemaTypeCollection = new Dictionary<string, SchemaTypeCollection>();
         #endregion
 
         #region Constructors
@@ -60,10 +62,19 @@ namespace Xin.SOMDiff
             Uri sourceUri = new Uri(sourefile);
             foreach (XmlSchema schema in sourceSchemaSet.Schemas())
             {
+                foreach (XmlSchemaType schemaType in schema.SchemaTypes.Values)
+                {
+                    SchemaTypeCollection collection = new SchemaTypeCollection();
+                    collection.Add(schemaType);
+
+                    sourceSchemaTypeCollection.Add(schema.TargetNamespace, collection);
+                }
+
+
                 if (schema.SourceUri == sourceUri.ToString())
                 {
                     sourceXmlSchema = schema;
-                    break;
+                    //break;
                 }
             }
 
@@ -76,10 +87,18 @@ namespace Xin.SOMDiff
             Uri changeUri = new Uri(changefile);
             foreach (XmlSchema schema in changeSchemaSet.Schemas())
             {
+                foreach (XmlSchemaType schemaType in schema.SchemaTypes.Values)
+                {
+                    SchemaTypeCollection collection = new SchemaTypeCollection();
+                    collection.Add(schemaType);
+
+                    changeSchemaTypeCollection.Add(schema.TargetNamespace, collection);
+                }
+
                 if (schema.SourceUri == changeUri.ToString())
                 {
                     changeXmlSchema = schema;
-                    break;
+                    //break;
                 }
             }
         }
@@ -137,7 +156,7 @@ namespace Xin.SOMDiff
 
             // Compare elements
             this.CompareElements(sourceXmlSchema.Elements, changeXmlSchema.Elements);
-
+            
             // Compare groups
             //this.CompareGroups(sourceXmlSchema.Groups, changeXmlSchema.Groups, false);
 
@@ -379,15 +398,15 @@ namespace Xin.SOMDiff
         {
             ChangeTypes changeType = ChangeTypes.None;
 
-            if (element1.Name == "Supported")
-            {
-                
-            }
+            //if (element1.Name == "MoreAvailable")
+            //{
 
-            if (element1.RefName.Name == "Supported")
-            {
+            //}
 
-            }
+            //if (element1.RefName.Name == "Supported")
+            //{
+
+            //}
 
             // if element else ref-element
             if (element1.RefName.IsEmpty && element2.RefName.IsEmpty)
@@ -449,6 +468,7 @@ namespace Xin.SOMDiff
 
                     #endregion
 
+                    // 1. leaf ref-node; 2. leaf node.
                     if (element1.SchemaTypeName.Namespace != "http://www.w3.org/2001/XMLSchema" || element2.SchemaTypeName.Namespace != "http://www.w3.org/2001/XMLSchema")
                     {
                         XmlSchemaType schemaType1 = null;
@@ -492,8 +512,6 @@ namespace Xin.SOMDiff
                 else if (element1.SchemaTypeName.IsEmpty && element2.SchemaTypeName.IsEmpty)
                 {
                     // simpleType or complexType
-                    //this.CompareSchemaType(element1.ElementSchemaType, element2.ElementSchemaType);
-
                     this.CompareSchemaType(element1.SchemaType, element2.SchemaType);
                 }
                 else if (!element1.SchemaTypeName.IsEmpty)
@@ -1103,32 +1121,34 @@ namespace Xin.SOMDiff
 
                 this.AddMismatchedPair(sourcePath.ToArray(), simple1, changePath.ToArray(), simple2, ChangeTypes.TypeChange_Update);
             }
-
-            if (simple1.Content is XmlSchemaSimpleTypeRestriction)
+            else
             {
-                XmlSchemaSimpleTypeRestriction restriction1 = simple1.Content as XmlSchemaSimpleTypeRestriction;
-
-                if (simple2.Content is XmlSchemaSimpleTypeRestriction)
+                if (simple1.Content is XmlSchemaSimpleTypeRestriction)
                 {
-                    XmlSchemaSimpleTypeRestriction restriction2 = simple2.Content as XmlSchemaSimpleTypeRestriction;
+                    XmlSchemaSimpleTypeRestriction restriction1 = simple1.Content as XmlSchemaSimpleTypeRestriction;
 
-                    this.CompareSimpleTypeRestriction(restriction1, restriction2);
-                } 
+                    if (simple2.Content is XmlSchemaSimpleTypeRestriction)
+                    {
+                        XmlSchemaSimpleTypeRestriction restriction2 = simple2.Content as XmlSchemaSimpleTypeRestriction;
+
+                        this.CompareSimpleTypeRestriction(restriction1, restriction2);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else if ((simple1.Content is XmlSchemaSimpleTypeUnion) && (simple2.Content is XmlSchemaSimpleTypeUnion))
+                {
+                    XmlSchemaSimpleTypeUnion union1 = simple1.Content as XmlSchemaSimpleTypeUnion;
+                    XmlSchemaSimpleTypeUnion union2 = simple2.Content as XmlSchemaSimpleTypeUnion;
+
+                    this.CompareSimpleTypeUnion(union1, union2);
+                }
                 else
                 {
 
                 }
-            }
-            else if ((simple1.Content is XmlSchemaSimpleTypeUnion) && (simple2.Content is XmlSchemaSimpleTypeUnion))
-            {
-                XmlSchemaSimpleTypeUnion union1 = simple1.Content as XmlSchemaSimpleTypeUnion;
-                XmlSchemaSimpleTypeUnion union2 = simple2.Content as XmlSchemaSimpleTypeUnion;
-
-                this.CompareSimpleTypeUnion(union1, union2);
-            }
-            else
-            {
-
             }
 
             #region Commented Code
@@ -1308,15 +1328,21 @@ namespace Xin.SOMDiff
 
             ChangeTypes changeType = ChangeTypes.None;
 
-            if (!restriction1.BaseTypeName.IsEmpty && !restriction2.BaseTypeName.IsEmpty)
-            {
-                changeType = this.CompareQualifiedName(restriction1.BaseTypeName, restriction2.BaseTypeName);
-                this.AddMismatchedPair(sourcePath.ToArray(), restriction1, changePath.ToArray(), restriction2, changeType);
-            }
-            else if (!restriction1.BaseTypeName.IsEmpty || !restriction2.BaseTypeName.IsEmpty)
-            {
-                this.AddMismatchedPair(sourcePath.ToArray(), restriction1, changePath.ToArray(), restriction2, ChangeTypes.TypeChange_Update);
-            }
+            //if (!restriction1.BaseTypeName.IsEmpty && !restriction2.BaseTypeName.IsEmpty)
+            //{
+            //    changeType = this.CompareQualifiedName(restriction1.BaseTypeName, restriction2.BaseTypeName);
+
+            //    if (changeType != ChangeTypes.None)
+            //    {
+
+            //    }
+
+            //    this.AddMismatchedPair(sourcePath.ToArray(), restriction1, changePath.ToArray(), restriction2, changeType);
+            //}
+            //else if (!restriction1.BaseTypeName.IsEmpty || !restriction2.BaseTypeName.IsEmpty)
+            //{
+            //    this.AddMismatchedPair(sourcePath.ToArray(), restriction1, changePath.ToArray(), restriction2, ChangeTypes.TypeChange_Update);
+            //}
 
             if (restriction1.Facets.Count > 0 && restriction2.Facets.Count > 0)
             {
@@ -1541,7 +1567,8 @@ namespace Xin.SOMDiff
                     if (sourcelist[key].Value != changelist[key].Value)
                     {
                         // Change:
-                        this.CheckFacetChangeType(key, sourcelist[key], changelist[key]);
+                        ChangeTypes changeType = this.CheckFacetChangeType(key, sourcelist[key], changelist[key]);
+                        this.AddMismatchedPair(sourcePath.ToArray(), sourcelist[key], changePath.ToArray(), changelist[key], changeType);
                     }
 
                     sourcelist.Remove(key);
@@ -1578,10 +1605,23 @@ namespace Xin.SOMDiff
         {
             ChangeTypes changeType = ChangeTypes.None;
 
-            if (sourceFacet == null && changeFacet == null)
-            {
-                return changeType;
-            }
+            //if (sourceFacet != null && changeFacet != null)
+            //{
+            //    // TODO
+            //}
+            //else if (sourceFacet != null)
+            //{
+            //    // TODO
+            //}
+            //else if (changeFacet != null)
+            //{
+
+            //}
+            //else
+            //{
+            //    return changeType;
+            //}
+
 
             if (facetType == FacetTypes.EnumerationFacet)
             {
@@ -1634,10 +1674,26 @@ namespace Xin.SOMDiff
             }
             else if (facetType == FacetTypes.MinInclusiveFacet)
             {
-                // TODO: change
+                // TODO
             }
-            else if (facetType == FacetTypes.NumericFacet)
+            else if (facetType == FacetTypes.MaxLengthFacet)
             {
+                if (sourceFacet != null && changeFacet != null)
+                {
+                    changeType = Convert.ToInt32(sourceFacet.Value) > Convert.ToInt32(changeFacet.Value) ? ChangeTypes.ChangeRestriction_MaxLength_Decreased : ChangeTypes.ChangeRestriction_MaxLength_Increased;
+                }
+                else if (sourceFacet != null)
+                {
+
+                }
+                else if (changeFacet != null)
+                {
+
+                }
+            }
+            else if (facetType == FacetTypes.MaxLengthFacet)
+            {
+                
             }
             else if (facetType == FacetTypes.PatternFacet)
             {
@@ -1677,10 +1733,6 @@ namespace Xin.SOMDiff
             {
                 facetType = FacetTypes.MinInclusiveFacet;
             } 
-            else if (facet is XmlSchemaNumericFacet)
-            {
-                facetType = FacetTypes.NumericFacet;
-            }
             else if (facet is XmlSchemaPatternFacet)
             {
                 facetType = FacetTypes.PatternFacet;
@@ -1688,6 +1740,14 @@ namespace Xin.SOMDiff
             else if (facet is XmlSchemaWhiteSpaceFacet)
             {
                 facetType = FacetTypes.WhiteSpaceFacet;
+            }
+            else if (facet is XmlSchemaMaxLengthFacet)
+            {
+                facetType = FacetTypes.MaxLengthFacet;
+            }
+            else if (facet is XmlSchemaMinLengthFacet)
+            {
+                facetType = FacetTypes.MinLengthFacet;
             }
 
             return facetType;
@@ -2030,31 +2090,34 @@ namespace Xin.SOMDiff
             bool referenced = false;
             for (int i = rawPath.Length - 1; i >= 0; i--)
             {
-                if (!referenced)
+                if (referenced)
                 {
-                    if (i < rawPath.Length - 1 && rawPath[i + 1].Contains(rawPath[i]))
+                    if (i < rawPath.Length - 1 && !rawPath[i + 1].Contains(rawPath[i]))
                     {
-                        break;
+                        path.Append(rawPath[i]);
+                        path.Append("/");
+
+                        if (!rawPath[i].Contains(":"))
+                        {
+                            referenced = false;
+                        }
                     }
-
-                    path.Append(rawPath[i]);
-                    path.Append("/");
-
-                    if (rawPath[i].Contains(":"))
+                    else
                     {
-                        referenced = true;
+                        
                     }
                 }
                 else
                 {
-                    if (rawPath[i].Contains(":") || (i < rawPath.Length - 1 && !rawPath[i + 1].Contains(rawPath[i])))
+                    if (rawPath[i].Contains(":") && !referenced)
+                    {
+                        referenced = true;
+                    }
+
+                    if ((i == rawPath.Length - 1) || (i < rawPath.Length - 1 && !rawPath[i + 1].Contains(rawPath[i])))
                     {
                         path.Append(rawPath[i]);
                         path.Append("/");
-                    }
-                    else
-                    {
-                        referenced = false;
                     }
                 }
             }
@@ -2130,5 +2193,50 @@ namespace Xin.SOMDiff
         public XmlSchemaObject ChangeObject { get; set; }
 
         public ChangeTypes ChangeType { get; set; }
+    }
+
+    public class SchemaTypeCollection
+    {
+        private List<XmlSchemaSimpleType> simpleTypeList;
+        private List<XmlSchemaComplexType> complexTypeList;
+
+        public SchemaTypeCollection()
+        {
+            this.simpleTypeList = new List<XmlSchemaSimpleType>();
+            this.complexTypeList = new List<XmlSchemaComplexType>();
+        }
+
+        public string SchemaLocation { get; set; }
+
+        public List<XmlSchemaSimpleType> SimpleTypeList 
+        {
+            get { return this.simpleTypeList; }
+        }
+        public List<XmlSchemaComplexType> ComplexTypeList
+        { 
+            get { return this.complexTypeList; }
+        }
+
+        public void Add(XmlSchemaType schemaType)
+        {
+            if (schemaType is XmlSchemaSimpleType)
+            {
+                this.AddSimpleType(schemaType as XmlSchemaSimpleType);
+            }
+            else
+            {
+                this.AddComplexType(schemaType as XmlSchemaComplexType);
+            }
+        }
+
+        private void AddSimpleType(XmlSchemaSimpleType simpleType)
+        {
+            this.simpleTypeList.Add(simpleType);
+        }
+
+        private void AddComplexType(XmlSchemaComplexType complexType)
+        {
+            this.complexTypeList.Add(complexType);
+        }
     }
 }
