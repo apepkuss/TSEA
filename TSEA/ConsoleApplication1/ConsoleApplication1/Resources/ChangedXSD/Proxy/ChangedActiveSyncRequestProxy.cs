@@ -20,290 +20,21 @@ namespace TSEA.Changed.Request {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.microsoft.com/exchange/autodiscover/mobilesync/responseschema/2006" +
-        "")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://schemas.microsoft.com/exchange/autodiscover/mobilesync/responseschema/2006" +
-        "", IsNullable=false)]
-    public partial class Response {
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.microsoft.com/exchange/autodiscover/mobilesync/requestschema/2006")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://schemas.microsoft.com/exchange/autodiscover/mobilesync/requestschema/2006", IsNullable=false)]
+    public partial class Autodiscover {
         
-        private string cultureField;
-        
-        private ResponseUser userField;
-        
-        private ResponseAction actionField;
-        
-        private ResponseError errorField;
+        private RequestType requestField;
         
         /// <remarks/>
-        public string Culture {
+        public RequestType Request {
             get {
-                return this.cultureField;
+                return this.requestField;
             }
             set {
-                this.cultureField = value;
+                this.requestField = value;
             }
         }
-        
-        /// <remarks/>
-        public ResponseUser User {
-            get {
-                return this.userField;
-            }
-            set {
-                this.userField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public ResponseAction Action {
-            get {
-                return this.actionField;
-            }
-            set {
-                this.actionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public ResponseError Error {
-            get {
-                return this.errorField;
-            }
-            set {
-                this.errorField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.microsoft.com/exchange/autodiscover/mobilesync/responseschema/2006" +
-        "")]
-    public partial class ResponseUser {
-        
-        private object displayNameField;
-        
-        private object eMailAddressField;
-        
-        /// <remarks/>
-        public object DisplayName {
-            get {
-                return this.displayNameField;
-            }
-            set {
-                this.displayNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public object EMailAddress {
-            get {
-                return this.eMailAddressField;
-            }
-            set {
-                this.eMailAddressField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="Search")]
-    [System.Xml.Serialization.XmlRootAttribute("Query", Namespace="Search", IsNullable=false)]
-    public partial class queryType {
-        
-        private object[] itemsField;
-        
-        private ItemsChoiceType[] itemsElementNameField;
-        
-        private string[] textField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Class", typeof(string), Namespace="AirSync")]
-        [System.Xml.Serialization.XmlElementAttribute("CollectionId", typeof(string), Namespace="AirSync")]
-        [System.Xml.Serialization.XmlElementAttribute("And", typeof(queryType))]
-        [System.Xml.Serialization.XmlElementAttribute("ConversationId", typeof(string))]
-        [System.Xml.Serialization.XmlElementAttribute("EqualTo", typeof(queryTypeEqualTo))]
-        [System.Xml.Serialization.XmlElementAttribute("FreeText", typeof(string))]
-        [System.Xml.Serialization.XmlElementAttribute("GreaterThan", typeof(queryTypeGreaterThan))]
-        [System.Xml.Serialization.XmlElementAttribute("LessThan", typeof(queryTypeLessThan))]
-        [System.Xml.Serialization.XmlElementAttribute("Or", typeof(queryType))]
-        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
-        public object[] Items {
-            get {
-                return this.itemsField;
-            }
-            set {
-                this.itemsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType[] ItemsElementName {
-            get {
-                return this.itemsElementNameField;
-            }
-            set {
-                this.itemsElementNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public string[] Text {
-            get {
-                return this.textField;
-            }
-            set {
-                this.textField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Search")]
-    public partial class queryTypeEqualTo {
-        
-        private string linkIdField;
-        
-        private string valueField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="DocumentLibrary")]
-        public string LinkId {
-            get {
-                return this.linkIdField;
-            }
-            set {
-                this.linkIdField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Search")]
-    public partial class queryTypeGreaterThan {
-        
-        private string[] itemsField;
-        
-        private string valueField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("DateReceived", Namespace="Email")]
-        public string[] Items {
-            get {
-                return this.itemsField;
-            }
-            set {
-                this.itemsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Search")]
-    public partial class queryTypeLessThan {
-        
-        private string[] itemsField;
-        
-        private string valueField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("DateReceived", Namespace="Email")]
-        public string[] Items {
-            get {
-                return this.itemsField;
-            }
-            set {
-                this.itemsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="Search", IncludeInSchema=false)]
-    public enum ItemsChoiceType {
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSync:Class")]
-        Class,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSync:CollectionId")]
-        CollectionId,
-        
-        /// <remarks/>
-        And,
-        
-        /// <remarks/>
-        ConversationId,
-        
-        /// <remarks/>
-        EqualTo,
-        
-        /// <remarks/>
-        FreeText,
-        
-        /// <remarks/>
-        GreaterThan,
-        
-        /// <remarks/>
-        LessThan,
-        
-        /// <remarks/>
-        Or,
     }
     
     /// <remarks/>
@@ -344,285 +75,13 @@ namespace TSEA.Changed.Request {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.microsoft.com/exchange/autodiscover/mobilesync/responseschema/2006" +
-        "")]
-    public partial class ResponseAction {
-        
-        private string redirectField;
-        
-        private ResponseActionServer[] settingsField;
-        
-        private ResponseActionError errorField;
-        
-        /// <remarks/>
-        public string Redirect {
-            get {
-                return this.redirectField;
-            }
-            set {
-                this.redirectField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayItemAttribute("Server", IsNullable=false)]
-        public ResponseActionServer[] Settings {
-            get {
-                return this.settingsField;
-            }
-            set {
-                this.settingsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public ResponseActionError Error {
-            get {
-                return this.errorField;
-            }
-            set {
-                this.errorField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.microsoft.com/exchange/autodiscover/mobilesync/responseschema/2006" +
-        "")]
-    public partial class ResponseActionServer {
-        
-        private string typeField;
-        
-        private string urlField;
-        
-        private string nameField;
-        
-        private string serverDataField;
-        
-        /// <remarks/>
-        public string Type {
-            get {
-                return this.typeField;
-            }
-            set {
-                this.typeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Url {
-            get {
-                return this.urlField;
-            }
-            set {
-                this.urlField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string ServerData {
-            get {
-                return this.serverDataField;
-            }
-            set {
-                this.serverDataField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.microsoft.com/exchange/autodiscover/mobilesync/responseschema/2006" +
-        "")]
-    public partial class ResponseActionError {
-        
-        private string statusField;
-        
-        private string messageField;
-        
-        private string debugDataField;
-        
-        private string errorCodeField;
-        
-        /// <remarks/>
-        public string Status {
-            get {
-                return this.statusField;
-            }
-            set {
-                this.statusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Message {
-            get {
-                return this.messageField;
-            }
-            set {
-                this.messageField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string DebugData {
-            get {
-                return this.debugDataField;
-            }
-            set {
-                this.debugDataField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string ErrorCode {
-            get {
-                return this.errorCodeField;
-            }
-            set {
-                this.errorCodeField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.microsoft.com/exchange/autodiscover/mobilesync/responseschema/2006" +
-        "")]
-    public partial class ResponseError {
-        
-        private string errorCodeField;
-        
-        private string messageField;
-        
-        private string debugDataField;
-        
-        private string timeField;
-        
-        private uint idField;
-        
-        private bool idFieldSpecified;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string ErrorCode {
-            get {
-                return this.errorCodeField;
-            }
-            set {
-                this.errorCodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Message {
-            get {
-                return this.messageField;
-            }
-            set {
-                this.messageField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string DebugData {
-            get {
-                return this.debugDataField;
-            }
-            set {
-                this.debugDataField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Time {
-            get {
-                return this.timeField;
-            }
-            set {
-                this.timeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public uint Id {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool IdSpecified {
-            get {
-                return this.idFieldSpecified;
-            }
-            set {
-                this.idFieldSpecified = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.microsoft.com/exchange/autodiscover/mobilesync/requestschema/2006")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://schemas.microsoft.com/exchange/autodiscover/mobilesync/requestschema/2006", IsNullable=false)]
-    public partial class Autodiscover {
-        
-        private RequestType requestField;
-        
-        /// <remarks/>
-        public RequestType Request {
-            get {
-                return this.requestField;
-            }
-            set {
-                this.requestField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="AirSync")]
     [System.Xml.Serialization.XmlRootAttribute(Namespace="AirSync", IsNullable=false)]
     public partial class Supported {
         
         private string[] itemsField;
         
-        private ItemsChoiceType1[] itemsElementNameField;
+        private ItemsChoiceType[] itemsElementNameField;
         
         private string[] textField;
         
@@ -721,7 +180,7 @@ namespace TSEA.Changed.Request {
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType1[] ItemsElementName {
+        public ItemsChoiceType[] ItemsElementName {
             get {
                 return this.itemsElementNameField;
             }
@@ -746,7 +205,7 @@ namespace TSEA.Changed.Request {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="AirSync", IncludeInSchema=false)]
-    public enum ItemsChoiceType1 {
+    public enum ItemsChoiceType {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("Calendar:AllDayEvent")]
@@ -1106,7 +565,7 @@ namespace TSEA.Changed.Request {
         
         private object[] itemsField;
         
-        private ItemsChoiceType2[] itemsElementNameField;
+        private ItemsChoiceType1[] itemsElementNameField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Class", typeof(string))]
@@ -1131,7 +590,7 @@ namespace TSEA.Changed.Request {
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType2[] ItemsElementName {
+        public ItemsChoiceType1[] ItemsElementName {
             get {
                 return this.itemsElementNameField;
             }
@@ -1339,7 +798,7 @@ namespace TSEA.Changed.Request {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="AirSync", IncludeInSchema=false)]
-    public enum ItemsChoiceType2 {
+    public enum ItemsChoiceType1 {
         
         /// <remarks/>
         Class,
@@ -3665,7 +3124,7 @@ namespace TSEA.Changed.Request {
         
         private object[] itemsField;
         
-        private ItemsChoiceType3[] itemsElementNameField;
+        private ItemsChoiceType2[] itemsElementNameField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Attachments", typeof(Attachments), Namespace="AirSyncBase")]
@@ -3835,7 +3294,7 @@ namespace TSEA.Changed.Request {
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType3[] ItemsElementName {
+        public ItemsChoiceType2[] ItemsElementName {
             get {
                 return this.itemsElementNameField;
             }
@@ -4289,7 +3748,7 @@ namespace TSEA.Changed.Request {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="ItemOperations", IncludeInSchema=false)]
-    public enum ItemsChoiceType3 {
+    public enum ItemsChoiceType2 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Attachments")]
@@ -4914,7 +4373,7 @@ namespace TSEA.Changed.Request {
         
         private string[] itemsField;
         
-        private ItemsChoiceType4[] itemsElementNameField;
+        private ItemsChoiceType3[] itemsElementNameField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Attachments", typeof(string), Namespace="AirSyncBase")]
@@ -5026,7 +4485,7 @@ namespace TSEA.Changed.Request {
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType4[] ItemsElementName {
+        public ItemsChoiceType3[] ItemsElementName {
             get {
                 return this.itemsElementNameField;
             }
@@ -5040,7 +4499,7 @@ namespace TSEA.Changed.Request {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="ItemOperations", IncludeInSchema=false)]
-    public enum ItemsChoiceType4 {
+    public enum ItemsChoiceType3 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Attachments")]
@@ -5628,7 +5087,7 @@ namespace TSEA.Changed.Request {
         
         private object[] itemsField;
         
-        private ItemsChoiceType5[] itemsElementNameField;
+        private ItemsChoiceType4[] itemsElementNameField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("MIMESupport", typeof(byte), Namespace="AirSync")]
@@ -5652,7 +5111,7 @@ namespace TSEA.Changed.Request {
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType5[] ItemsElementName {
+        public ItemsChoiceType4[] ItemsElementName {
             get {
                 return this.itemsElementNameField;
             }
@@ -5666,7 +5125,7 @@ namespace TSEA.Changed.Request {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="ItemOperations", IncludeInSchema=false)]
-    public enum ItemsChoiceType5 {
+    public enum ItemsChoiceType4 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("AirSync:MIMESupport")]
@@ -8158,6 +7617,203 @@ namespace TSEA.Changed.Request {
                 this.templateIDField = value;
             }
         }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="Search")]
+    [System.Xml.Serialization.XmlRootAttribute("Query", Namespace="Search", IsNullable=false)]
+    public partial class queryType {
+        
+        private object[] itemsField;
+        
+        private ItemsChoiceType5[] itemsElementNameField;
+        
+        private string[] textField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Class", typeof(string), Namespace="AirSync")]
+        [System.Xml.Serialization.XmlElementAttribute("CollectionId", typeof(string), Namespace="AirSync")]
+        [System.Xml.Serialization.XmlElementAttribute("And", typeof(queryType))]
+        [System.Xml.Serialization.XmlElementAttribute("ConversationId", typeof(string))]
+        [System.Xml.Serialization.XmlElementAttribute("EqualTo", typeof(queryTypeEqualTo))]
+        [System.Xml.Serialization.XmlElementAttribute("FreeText", typeof(string))]
+        [System.Xml.Serialization.XmlElementAttribute("GreaterThan", typeof(queryTypeGreaterThan))]
+        [System.Xml.Serialization.XmlElementAttribute("LessThan", typeof(queryTypeLessThan))]
+        [System.Xml.Serialization.XmlElementAttribute("Or", typeof(queryType))]
+        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
+        public object[] Items {
+            get {
+                return this.itemsField;
+            }
+            set {
+                this.itemsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public ItemsChoiceType5[] ItemsElementName {
+            get {
+                return this.itemsElementNameField;
+            }
+            set {
+                this.itemsElementNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string[] Text {
+            get {
+                return this.textField;
+            }
+            set {
+                this.textField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Search")]
+    public partial class queryTypeEqualTo {
+        
+        private string linkIdField;
+        
+        private string valueField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace="DocumentLibrary")]
+        public string LinkId {
+            get {
+                return this.linkIdField;
+            }
+            set {
+                this.linkIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Search")]
+    public partial class queryTypeGreaterThan {
+        
+        private string[] itemsField;
+        
+        private string valueField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("DateReceived", Namespace="Email")]
+        public string[] Items {
+            get {
+                return this.itemsField;
+            }
+            set {
+                this.itemsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Search")]
+    public partial class queryTypeLessThan {
+        
+        private string[] itemsField;
+        
+        private string valueField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("DateReceived", Namespace="Email")]
+        public string[] Items {
+            get {
+                return this.itemsField;
+            }
+            set {
+                this.itemsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="Search", IncludeInSchema=false)]
+    public enum ItemsChoiceType5 {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSync:Class")]
+        Class,
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSync:CollectionId")]
+        CollectionId,
+        
+        /// <remarks/>
+        And,
+        
+        /// <remarks/>
+        ConversationId,
+        
+        /// <remarks/>
+        EqualTo,
+        
+        /// <remarks/>
+        FreeText,
+        
+        /// <remarks/>
+        GreaterThan,
+        
+        /// <remarks/>
+        LessThan,
+        
+        /// <remarks/>
+        Or,
     }
     
     /// <remarks/>
