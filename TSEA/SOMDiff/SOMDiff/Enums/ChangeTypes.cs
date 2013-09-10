@@ -13,6 +13,8 @@ namespace Xin.SOMDiff
         /// </summary>
         None,
 
+        Element_Add,
+        Element_Remove,
 
         TypeChange_Update, // higher severity than TypeToSimpleType and TypeToComplexType
         TypeChange_Remove,

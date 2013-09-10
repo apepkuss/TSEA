@@ -342,55 +342,101 @@ namespace Xin.SOMDiff
         private void CompareUnorderedElements(List<XmlSchemaElement> sourcelist, List<XmlSchemaElement> changelist)
         {
             List<XmlSchemaElement> source = new List<XmlSchemaElement>();
+            Dictionary<string, XmlSchemaElement> dic1 = new Dictionary<string, XmlSchemaElement>();
+            Dictionary<string, XmlSchemaElement> dic2 = new Dictionary<string, XmlSchemaElement>();
 
-            while (sourcelist.Count > 0 && changelist.Count > 0)
+            foreach (XmlSchemaElement element in sourcelist)
             {
-                XmlSchemaElement element1 = sourcelist.FirstOrDefault();
-
-                bool matched = false;
-                XmlSchemaElement element2 = null;
-                foreach (XmlSchemaElement element in changelist)
+                if (!element.RefName.IsEmpty)
                 {
-                    element2 = element;
-
-                    if (!string.IsNullOrEmpty(element1.RefName.Name) || !string.IsNullOrEmpty(element.RefName.Name))
-                    {
-                        this.CompareRefElement(element1, element2);
-                        matched = true;
-                        break;
-                    }
-                    else if (element1.Name == element.Name)
-                    {
-                        this.CompareSingleElement(element1, element2);
-                        matched = true;
-                        break;
-                    }
-                    else
-                    {
-
-                    }
-                }
-
-                if (matched)
-                {
-                    changelist.Remove(element2);
+                    dic1.Add(element.RefName.Name, element);
                 }
                 else
                 {
-                    source.Add(element1);
+                    dic1.Add(element.Name, element);
+                }
+            }
+
+            foreach (XmlSchemaElement element in changelist)
+            {
+                if (!element.RefName.IsEmpty)
+                {
+                    dic2.Add(element.RefName.Name, element);
+                }
+                else
+                {
+                    dic2.Add(element.Name, element);
+                }
+            }
+
+
+
+            while (dic1.Count > 0)
+            {
+
+                string key = dic1.First().Key;
+
+                if (dic2.ContainsKey(key))
+                {
+                    this.CompareSingleElement(dic1[key], dic2[key]);
+                }
+                else
+                {
+                    source.Add(dic1[key]);
                 }
 
-                sourcelist.Remove(element1);
+                dic1.Remove(key);
+                dic2.Remove(key);
             }
 
             if (source.Count > 0)
             {
-                // TODO
+                foreach (XmlSchemaElement element in source)
+                {
+                    if (!element.RefName.IsEmpty)
+                    {
+                        sourcePath.Push(string.Format("{0}:{1}", element.RefName.Namespace, element.RefName.Name));
+
+                        // Change: add a new ref-element
+                        XmlSchemaElement refelement = this.GetElementByRefName(element.RefName, true);
+                        this.AddMismatchedPair(sourcePath.ToArray(), refelement, changePath.ToArray(), null, ChangeTypes.Element_Remove);
+
+                        
+                    }
+                    else
+                    {
+                        sourcePath.Push(element.Name);
+
+                        // Change: add a new element
+                        this.AddMismatchedPair(sourcePath.ToArray(), element, changePath.ToArray(), null, ChangeTypes.Element_Remove);
+                    }
+
+                    sourcePath.Pop();
+                }
             }
 
-            if (changelist.Count > 0)
+            if (dic2.Count > 0)
             {
-                // TODO
+                foreach (XmlSchemaElement element in dic2.Values)
+                {
+                    if (!element.RefName.IsEmpty)
+                    {
+                        changePath.Push(string.Format("{0}:{1}", element.RefName.Namespace, element.RefName.Name));
+
+                        // Change: add a new ref-element
+                        XmlSchemaElement refelement = this.GetElementByRefName(element.RefName, false);
+                        this.AddMismatchedPair(sourcePath.ToArray(), null, changePath.ToArray(), refelement, ChangeTypes.Element_Add);
+                    }
+                    else
+                    {
+                        changePath.Push(element.Name);
+
+                        // Change: add a new element
+                        this.AddMismatchedPair(sourcePath.ToArray(), null, changePath.ToArray(), element, ChangeTypes.Element_Add);
+                    }
+
+                    changePath.Pop();
+                }
             }
         }
 
@@ -398,7 +444,7 @@ namespace Xin.SOMDiff
         {
             ChangeTypes changeType = ChangeTypes.None;
 
-            //if (element1.Name == "MoreAvailable")
+            //if (element1.Name == "Supported")
             //{
 
             //}
@@ -425,20 +471,6 @@ namespace Xin.SOMDiff
                 // 1. leaf elements; 2. simple/complex elements; 3. hybrid elements
                 if (!element1.SchemaTypeName.IsEmpty && !element2.SchemaTypeName.IsEmpty)
                 {
-                    //if (element1.SchemaTypeName.Namespace == element2.SchemaTypeName.Namespace)
-                    //{
-                    //    if (element1.SchemaTypeName.Name != element2.SchemaTypeName.Name)
-                    //    {
-                    //        changeType = ChangeTypes.TypeChange_Update;
-
-                    //        this.AddMismatchedPair(sourcePath.ToArray(), element1, changePath.ToArray(), element2, ChangeTypes.TypeChange_Update);
-                    //    }
-                    //}
-                    //else
-                    //{
-                        
-                    //}
-
                     #region Commented Code
                     
                     //else
@@ -698,16 +730,22 @@ namespace Xin.SOMDiff
         {
             ChangeTypes changeType = ChangeTypes.None;
 
-            changeType = this.CompareFacetMaxOccurs(element1.MaxOccursString, element2.MaxOccursString);
-            this.AddMismatchedPair(sourcePath.ToArray(), element1, changePath.ToArray(), element2, changeType);
+            //changeType = this.CompareFacetMaxOccurs(element1.MaxOccursString, element2.MaxOccursString);
+            //this.AddMismatchedPair(sourcePath.ToArray(), element1, changePath.ToArray(), element2, changeType);
 
-            changeType = this.CompareFacetMinOccurs(element1.MinOccursString, element2.MinOccursString);
-            this.AddMismatchedPair(sourcePath.ToArray(), element1, changePath.ToArray(), element2, changeType);
+            //changeType = this.CompareFacetMinOccurs(element1.MinOccursString, element2.MinOccursString);
+            //this.AddMismatchedPair(sourcePath.ToArray(), element1, changePath.ToArray(), element2, changeType);
 
             if (string.IsNullOrEmpty(element1.RefName.Name))
             {
                 sourcePath.Push(element1.Name);
                 changePath.Push(string.Format("{0}:{1}", element2.RefName.Namespace, element2.RefName.Name));
+
+                changeType = this.CompareFacetMaxOccurs(element1.MaxOccursString, element2.MaxOccursString);
+                this.AddMismatchedPair(sourcePath.ToArray(), element1, changePath.ToArray(), element2, changeType);
+
+                changeType = this.CompareFacetMinOccurs(element1.MinOccursString, element2.MinOccursString);
+                this.AddMismatchedPair(sourcePath.ToArray(), element1, changePath.ToArray(), element2, changeType);
 
                 if (element1.Name != element2.RefName.Name)
                 {
@@ -728,6 +766,12 @@ namespace Xin.SOMDiff
                 sourcePath.Push(string.Format("{0}:{1}", element1.RefName.Namespace, element1.RefName.Name));
                 changePath.Push(element2.Name);
 
+                changeType = this.CompareFacetMaxOccurs(element1.MaxOccursString, element2.MaxOccursString);
+                this.AddMismatchedPair(sourcePath.ToArray(), element1, changePath.ToArray(), element2, changeType);
+
+                changeType = this.CompareFacetMinOccurs(element1.MinOccursString, element2.MinOccursString);
+                this.AddMismatchedPair(sourcePath.ToArray(), element1, changePath.ToArray(), element2, changeType);
+
                 if (element1.RefName.Name != element2.Name)
                 {
                     // Change: Element_ReferenceChange_Update
@@ -746,6 +790,12 @@ namespace Xin.SOMDiff
             {
                 sourcePath.Push(string.Format("{0}:{1}", element1.RefName.Namespace, element1.RefName.Name));
                 changePath.Push(string.Format("{0}:{1}", element2.RefName.Namespace, element2.RefName.Name));
+
+                changeType = this.CompareFacetMaxOccurs(element1.MaxOccursString, element2.MaxOccursString);
+                this.AddMismatchedPair(sourcePath.ToArray(), element1, changePath.ToArray(), element2, changeType);
+
+                changeType = this.CompareFacetMinOccurs(element1.MinOccursString, element2.MinOccursString);
+                this.AddMismatchedPair(sourcePath.ToArray(), element1, changePath.ToArray(), element2, changeType);
 
                 if (element1.RefName.Name != element2.RefName.Name)
                 {
@@ -1487,11 +1537,11 @@ namespace Xin.SOMDiff
             }
             else if (!string.IsNullOrEmpty(minOccursString1))
             {
-                changeType = ChangeTypes.AddMinOccurs;
+                changeType = ChangeTypes.RemoveMinOccurs;
             }
             else if (!string.IsNullOrEmpty(minOccursString2))
             {
-                changeType = ChangeTypes.RemoveMinOccurs;
+                changeType = ChangeTypes.AddMinOccurs;
             }
 
             return changeType;

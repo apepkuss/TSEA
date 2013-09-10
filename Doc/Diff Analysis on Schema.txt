@@ -1,0 +1,101 @@
+
+Email.xsd vs email.xsd: 2 in total
+
+1. ChangeType: RemoveMinOccurs
+   SourcePath: "MeetingRequest/Recurrences/Until"
+   ChangePath: "MeetingRequest/Recurrences/Until"
+   SourceCode:
+		private System.DateTime untilField;
+		private bool untilFieldSpecified;
+
+		public System.DateTime Until;
+		public bool UntilSpecified;
+   ChangeCode:
+		private System.DateTime untilField;
+		public System.DateTime Until
+
+2. ChangeType: RemoveMinOccurs
+   SourcePath: "MeetingRequest/Email2:MeetingMessageType"
+   ChangePath: "MeetingRequest/Email2:MeetingMessageType"
+   SourceCode:
+		private byte meetingMessageTypeField
+		private bool meetingMessageTypeFieldSpecified
+
+		public byte MeetingMessageType
+		public bool MeetingMessageTypeSpecified
+		
+
+Email2.xsd vs email2.xsd: 0 in total
+
+Calendar.xsd vs cal.xsd: 6 in total
+
+1. ChangeType: TypeChange_Update (string -> unsignedInt)
+   SourcePath: "Reminder"
+   ChangePath: "Reminder"
+		
+2. ChangeType: AddMaxOccurs
+   SourcePath: "Categories"
+   ChangePath: "Categories"
+
+3. ChangeType: RemoveMaxOccurs
+   SourcePath: "Categories/Category"
+   ChangePath: "Categories/Category"
+
+4. ChangeType: AddMaxOccurs
+   SourcePath: "Exceptions/Calendar:Categories"
+   ChangePath: "Exceptions/Calendar:Categories"
+   SourceCode: 
+		private string[] categoriesField
+		public string[] Categories
+   ChangeCode:
+		private string[] categoriesField
+		public string[] Categories
+
+5. ChangeType: RemoveMaxOccurs
+   SourcePath: "Exceptions/Calendar:Categories/Category"
+   ChangePath: "Exceptions/Calendar:Categories/Category"
+   
+
+6. ChangeType: TypeChange_Update
+   SourcePath: "Exceptions/Calendar:Reminder"
+   ChangePath: "Exceptions/Calendar:Reminder"
+   SourceCode:
+		private uint reminderField
+		private bool reminderFieldSpecified
+
+		public uint Reminder
+		public bool ReminderSpecified
+   ChangeCode:
+		private uint reminderField
+		private bool reminderFieldSpecified
+
+		public uint Reminder
+		public bool ReminderSpecified
+
+
+AirSync.xsd vs as.xsd: 81 in total
+
+1. ChangeType: AddMaxLength
+   SourcePath: "Supported/Calendar:GhostingProps/Calendar:Timezone/Restriction"
+   ChangePath: "Supported/Calendar:GhostingProps/Timezone/Restriction/maxLength"
+   SourceCode:
+		public object[] Items
+		public ItemsChoiceType[] ItemsElementName
+   ChangeCode:
+		public string[] Items
+		public ItemsChoiceType[] ItemsElementName
+
+2. ChangeType: Element_Add
+   SourcePath: "Supported/Contacts:GhostingProps"
+   ChangePath: "Supported/Contacts:GhostingProps/AssistnamePhoneNumber"
+
+
+
+
+
+
+
+
+
+
+

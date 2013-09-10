@@ -78,7 +78,6 @@ namespace ConsoleApplication1
 
             #endregion
 
-
             #region Step2: Launch xsd.exe to generate proxy class automatically
 
             string directory = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Request";
@@ -119,6 +118,7 @@ namespace ConsoleApplication1
             Console.Read();
 
             #endregion
+            
 
             
 
