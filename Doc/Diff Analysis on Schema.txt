@@ -1,31 +1,24 @@
 
-Email.xsd vs email.xsd: 2 in total
+AirSync.xsd vs as.xsd: 81 in total
 
-1. ChangeType: RemoveMinOccurs
-   SourcePath: "MeetingRequest/Recurrences/Until"
-   ChangePath: "MeetingRequest/Recurrences/Until"
+1. ChangeType: AddMaxLength
+   SourcePath: "Supported/Calendar:GhostingProps/Calendar:Timezone/Restriction"
+   ChangePath: "Supported/Calendar:GhostingProps/Timezone/Restriction/maxLength"
    SourceCode:
-		private System.DateTime untilField;
-		private bool untilFieldSpecified;
-
-		public System.DateTime Until;
-		public bool UntilSpecified;
+		public object[] Items
+		public ItemsChoiceType[] ItemsElementName
    ChangeCode:
-		private System.DateTime untilField;
-		public System.DateTime Until
+		public string[] Items
+		public ItemsChoiceType[] ItemsElementName
 
-2. ChangeType: RemoveMinOccurs
-   SourcePath: "MeetingRequest/Email2:MeetingMessageType"
-   ChangePath: "MeetingRequest/Email2:MeetingMessageType"
-   SourceCode:
-		private byte meetingMessageTypeField
-		private bool meetingMessageTypeFieldSpecified
+2. ChangeType: Element_Add
+   SourcePath: "Supported/Contacts:GhostingProps"
+   ChangePath: "Supported/Contacts:GhostingProps/AssistnamePhoneNumber"
 
-		public byte MeetingMessageType
-		public bool MeetingMessageTypeSpecified
-		
 
-Email2.xsd vs email2.xsd: 0 in total
+AirSyncBase.xsd vs asb.xsd: 0 in total
+
+AutodiscoverRequest.xsd vs adreq.xsd: 0 in total
 
 Calendar.xsd vs cal.xsd: 6 in total
 
@@ -72,22 +65,97 @@ Calendar.xsd vs cal.xsd: 6 in total
 		public uint Reminder
 		public bool ReminderSpecified
 
+ComposeMail.xsd vs cm.xsd: 0 in total
 
-AirSync.xsd vs as.xsd: 81 in total
+Contacts.xsd vs cntc.xsd: 0 in total
 
-1. ChangeType: AddMaxLength
-   SourcePath: "Supported/Calendar:GhostingProps/Calendar:Timezone/Restriction"
-   ChangePath: "Supported/Calendar:GhostingProps/Timezone/Restriction/maxLength"
+Contacts2.xsd vs cntc2.xsd: 0 in total
+
+DocumentLibrary.xsd vs dl.xsd: 0 in total
+
+Email.xsd vs email.xsd: 2 in total
+
+1. ChangeType: RemoveMinOccurs
+   SourcePath: "MeetingRequest/Recurrences/Until"
+   ChangePath: "MeetingRequest/Recurrences/Until"
    SourceCode:
-		public object[] Items
-		public ItemsChoiceType[] ItemsElementName
-   ChangeCode:
-		public string[] Items
-		public ItemsChoiceType[] ItemsElementName
+		private System.DateTime untilField;
+		private bool untilFieldSpecified;
 
-2. ChangeType: Element_Add
-   SourcePath: "Supported/Contacts:GhostingProps"
-   ChangePath: "Supported/Contacts:GhostingProps/AssistnamePhoneNumber"
+		public System.DateTime Until;
+		public bool UntilSpecified;
+   ChangeCode:
+		private System.DateTime untilField;
+		public System.DateTime Until
+
+2. ChangeType: RemoveMinOccurs
+   SourcePath: "MeetingRequest/Email2:MeetingMessageType"
+   ChangePath: "MeetingRequest/Email2:MeetingMessageType"
+   SourceCode:
+		private byte meetingMessageTypeField
+		private bool meetingMessageTypeFieldSpecified
+
+		public byte MeetingMessageType
+		public bool MeetingMessageTypeSpecified
+		
+
+Email2.xsd vs email2.xsd: 0 in total
+
+FolderCreateRequest.xsd vs fcreq.xsd: 0 in total
+
+FolderDeleteRequest.xsd vs fdreq.xsd
+
+FolderHierarchy.xsd vs fh.xsd: 0 in total
+
+FolderSyncRequest.xsd vs fsreq.xsd: 0 in total
+
+GAL.xsd vs gal.xsd: 0 in total
+
+GetItemEstimate.xsd vs giereq.xsd: 1 in total
+
+1. ChangeType: AddMaxOccurs
+   SourcePath: "GetItemEstimate/Collections/Collection" (here is a bug in GetXPath method)
+   ChangePath: "GetItemEstimate/Collections/Collection"
+   SourceCode:
+		@GetItemEstimate class
+		private GetItemEstimateCollections collectionsField;
+		public GetItemEstimateCollections Collections
+		
+		@GetItemEstimateCollections class
+		private GetItemEstimateCollectionsCollection collectionField
+		public GetItemEstimateCollectionsCollection Collection
+
+		@GetItemEstimateCollectionsCollection class
+   ChangeCode:
+		@GetItemEstimate
+		private GetItemEstimateCollection[] collectionsField
+		public GetItemEstimateCollection[] Collections
+
+		@GetItemEstimateCollection
+
+   (NOTICE)ProxyChange: map 3 classes to 2 classes before and after the change.
+		
+
+ItemOperations.xsd vs io.xsd: 219 in total *--------- NEED A FURTHER ANALYSIS ---------*
+
+ItemOperationsRequest.xsd vs ioreq.xsd: 229 in total *--------- NEED A FURTHER ANALYSIS ---------*
+
+MoveItemsRequest.xsd vs mireq.xsd: 0 in total
+
+MeetingResponseRequest.xsd vs mrreq.xsd: 0 in total
+
+Notes.xsd vs notes.xsd: 0 in total
+
+Provision.xsd vs prov.xsd: 0 in total
+
+ProvisionRequest.xsd vs provreq.xsd: 0 in total
+
+RightsManagement.xsd vs rm.xsd: 0 in total
+
+ResolveRecipientsRequest.xsd vs rrreq.xsd: 0 in total
+
+Settings.xsd vs set.xsd: 0 in total
+
 
 
 

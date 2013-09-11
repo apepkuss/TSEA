@@ -68,8 +68,8 @@ namespace ConsoleApplication1
 
             #region Step1: SOMDiff invocation
 
-            string sourefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Request\AirSync.xsd";
-            string changefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Request\as.xsd";
+            string sourefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Request\SettingsRequest.xsd";
+            string changefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Request\setreq.xsd";
 
             SOMDiff sdiff = new SOMDiff(sourefile, changefile);
             sdiff.DiffSchemas(sourefile, changefile);

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:airsyncbase="AirSyncBase" xmlns="Provision" targetNamespace="Provision" elementFormDefault="qualified" attributeFormDefault="unqualified">
-  <!--<xs:import namespace="AirSyncBase" schemaLocation="AirSyncBase.xsd"/>-->
+  <xs:import namespace="AirSyncBase" schemaLocation="AirSyncBase.xsd"/>
   <xs:simpleType name="unsignedByteOrEmpty">
     <xs:union memberTypes="xs:unsignedByte airsyncbase:EmptyTag"/>
   </xs:simpleType>
