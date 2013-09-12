@@ -346,26 +346,30 @@ namespace Xin.SOMDiff
 
             foreach (XmlSchemaElement element in sourcelist)
             {
-                if (!element.RefName.IsEmpty)
-                {
-                    dic1.Add(element.RefName.Name, element);
-                }
-                else
-                {
-                    dic1.Add(element.Name, element);
-                }
+                //if (!element.RefName.IsEmpty)
+                //{
+                //    dic1.Add(string.Format("{0}:{1}", element.RefName.Namespace, element.RefName.Name), element);
+                //}
+                //else
+                //{
+                //    dic1.Add(element.Name, element);
+                //}
+
+                dic1.Add(string.Format("{0}:{1}", element.QualifiedName.Namespace, element.QualifiedName.Name), element);
             }
 
             foreach (XmlSchemaElement element in changelist)
             {
-                if (!element.RefName.IsEmpty)
-                {
-                    dic2.Add(element.RefName.Name, element);
-                }
-                else
-                {
-                    dic2.Add(element.Name, element);
-                }
+                //if (!element.RefName.IsEmpty)
+                //{
+                //    dic2.Add(string.Format("{0}:{1}", element.RefName.Namespace, element.RefName.Name), element);
+                //}
+                //else
+                //{
+                //    dic2.Add(element.Name, element);
+                //}
+
+                dic2.Add(string.Format("{0}:{1}", element.QualifiedName.Namespace, element.QualifiedName.Name), element);
             }
 
 
@@ -459,7 +463,7 @@ namespace Xin.SOMDiff
         {
             ChangeTypes changeType = ChangeTypes.None;
 
-            if (element1.Name == "Properties")
+            if (element1.Name == "Query")
             {
 
             }

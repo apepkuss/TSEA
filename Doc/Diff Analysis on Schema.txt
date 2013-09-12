@@ -156,14 +156,31 @@ ResolveRecipientsRequest.xsd vs rrreq.xsd: 0 in total
 
 Settings.xsd vs set.xsd: 0 in total
 
+SmartForwardRequest.xsd vs sfreq.xsd: 0 in total
 
+SendMailRequest.xsd vs smreq.xsd: 0 in total
 
+Search.xsd vs srch.xsd: 0 in total
 
+SearchRequest.xsd vs srchreq.xsd: 0 in total
 
+SmartReplyRequest.xsd vs srreq.xsd: 0 in total
 
+SyncRequest.xsd vs syncreq.xsd: 176 in total *--------- NEED A FURTHER ANALYSIS ---------*
 
+Tasks.xsd vs tasks.xsd: 1 in total
 
+1. ChangeType: TypeChange_Update
+   SourcePath: "Recurrence/Interval"
+   ChangePath: "Recurrence/Interval"
+   SourceCode: 
+		private byte intervalField
+		public byte Interval
+   ChangeCode:
+		private ushort intervalField
+		public ushort Interval
 
-
-
+NOTE: sequence -> all
+		
+ValidateCertRequest.xsd vs vcreq.xsd: 0 in total.
 
