@@ -43,18 +43,15 @@ namespace Xin.SOMDiff
         public SOMDiff(string sourefile, string changefile) : base()
         {
             XmlTextReader sreader = new XmlTextReader(sourefile);
-            //XmlSchema sourceXmlSchema = XmlSchema.Read(sreader, this.ValidationCallBack);
             sourceXmlSchema = XmlSchema.Read(sreader, this.ValidationCallBack);
 
             XmlTextReader creader = new XmlTextReader(changefile);
-            //XmlSchema changeXmlSchema = XmlSchema.Read(creader, this.ValidationCallBack);
             changeXmlSchema = XmlSchema.Read(creader, this.ValidationCallBack);
 
 
             // Add the customer schema to a new XmlSchemaSet and compile it.
             // Any schema validation warnings and errors encountered reading or 
             // compiling the schema are handled by the ValidationEventHandler delegate.
-            //XmlSchemaSet sourceSchemaSet = new XmlSchemaSet();
             sourceSchemaSet.ValidationEventHandler += new ValidationEventHandler(this.ValidationCallBack);
             sourceSchemaSet.Add(sourceXmlSchema);
             sourceSchemaSet.Compile();
@@ -73,12 +70,9 @@ namespace Xin.SOMDiff
                 if (schema.SourceUri == sourceUri.ToString())
                 {
                     sourceXmlSchema = schema;
-                    //break;
                 }
             }
 
-
-            //XmlSchemaSet changeSchemaSet = new XmlSchemaSet();
             changeSchemaSet.ValidationEventHandler += new ValidationEventHandler(this.ValidationCallBack);
             changeSchemaSet.Add(changeXmlSchema);
             changeSchemaSet.Compile();
@@ -90,14 +84,13 @@ namespace Xin.SOMDiff
                 {
                     SchemaTypeCollection collection = new SchemaTypeCollection();
                     collection.Add(schemaType);
-
+                    
                     changeSchemaTypeCollection.Add(string.Format("{0}:{1}", schemaType.QualifiedName.Namespace, schemaType.QualifiedName.Name), collection);
                 }
 
                 if (schema.SourceUri == changeUri.ToString())
                 {
                     changeXmlSchema = schema;
-                    //break;
                 }
             }
         }
@@ -1044,104 +1037,7 @@ namespace Xin.SOMDiff
 
         #endregion
 
-        #region Compare Particles: sequence, choice, all, simpletype, complextype
-
-        private void CompareParticleSequence(XmlSchemaSequence sequence1, XmlSchemaSequence sequence2, bool ordered = false)
-        {
-            //sourcePath.Push("sequence");
-            //changePath.Push("sequence");
-
-            ChangeTypes changeType = ChangeTypes.None;
-
-            changeType = this.CompareFacetMaxOccurs(sequence1.MaxOccursString, sequence2.MaxOccursString);
-            this.AddMismatchedPair(sourcePath.ToArray(), sequence1, changePath.ToArray(), sequence2, changeType);
-
-            changeType = this.CompareFacetMinOccurs(sequence1.MinOccursString, sequence2.MinOccursString);
-            this.AddMismatchedPair(sourcePath.ToArray(), sequence1, changePath.ToArray(), sequence2, changeType);
-
-            if (sequence1.Items.Count == sequence2.Items.Count)
-            {
-                for (int i = 0; i < sequence1.Items.Count; i++)
-                {
-                    this.CompareXmlSchemaObject(sequence1.Items[i], sequence2.Items[i]);
-                }
-            }
-            else
-            {
-            }
-
-
-
-            //sourcePath.Pop();
-            //changePath.Pop();
-        }
-
-        private void CompareParticleChoice(XmlSchemaChoice choice1, XmlSchemaChoice choice2)
-        {
-            //sourcePath.Push("choice");
-            //changePath.Push("choice");
-
-            if (choice1 == null || choice2 == null)
-            {
-                return;
-            }
-
-            ChangeTypes changeType = ChangeTypes.None;
-
-            changeType = this.CompareFacetMaxOccurs(choice1.MaxOccursString, choice2.MaxOccursString);
-            this.AddMismatchedPair(sourcePath.ToArray(), choice1, changePath.ToArray(), choice2, changeType);
-
-            changeType = this.CompareFacetMinOccurs(choice1.MinOccursString, choice2.MinOccursString);
-            this.AddMismatchedPair(sourcePath.ToArray(), choice1, changePath.ToArray(), choice2, changeType);
-
-            this.CompareXmlSchemaObjectCollection(choice1.Items, choice2.Items);
-
-
-            //if (choice1.Items.Count == choice2.Items.Count)
-            //{
-            //    for (int i = 0; i < choice1.Items.Count; i++)
-            //    {
-            //        this.CompareXmlSchemaObject(choice1.Items[i], choice2.Items[i]);
-            //    }
-            //}
-            //else
-            //{
-            //    this.CompareXmlSchemaObjectCollection(choice1.Items, choice2.Items);
-            //}
-
-            //sourcePath.Pop();
-            //changePath.Pop();
-        }
-
-        private void CompareParticleAll(XmlSchemaAll all1, XmlSchemaAll all2)
-        {
-            //sourcePath.Push("all");
-            //changePath.Push("all");
-
-            ChangeTypes changeType = ChangeTypes.None;
-
-            changeType = this.CompareFacetMaxOccurs(all1.MaxOccursString, all2.MaxOccursString);
-            this.AddMismatchedPair(sourcePath.ToArray(), all1, changePath.ToArray(), all2, changeType);
-
-            changeType = this.CompareFacetMinOccurs(all1.MinOccursString, all2.MinOccursString);
-            this.AddMismatchedPair(sourcePath.ToArray(), all1, changePath.ToArray(), all2, changeType);
-
-            if (all1.Items.Count == all2.Items.Count)
-            {
-                //for (int i = 0; i < all1.Items.Count; i++)
-                //{
-                //    this.CompareXmlSchemaObject(all1.Items[i], all2.Items[i]);
-                //}
-
-                this.CompareXmlSchemaObjectCollection(all1.Items, all2.Items);
-            } 
-            else
-            {
-            }
-
-            //sourcePath.Pop();
-            //changePath.Pop();
-        }
+        #region Compare Types: simpleType and complexType
 
         private void CompareSchemaType(XmlSchemaType schemaType1, XmlSchemaType schemaType2)
         {
@@ -1183,7 +1079,7 @@ namespace Xin.SOMDiff
                 }
                 else
                 {
-                    
+
                 }
             }
             else
@@ -1234,7 +1130,7 @@ namespace Xin.SOMDiff
             }
 
             #region Commented Code
-            
+
             //if (!string.IsNullOrEmpty(simple1.QualifiedName.Namespace) &&
             //    !string.IsNullOrEmpty(simple2.QualifiedName.Namespace) &&
             //    ((simple1.QualifiedName.Namespace != "http://www.w3.org/2001/XMLSchema") || 
@@ -1271,93 +1167,6 @@ namespace Xin.SOMDiff
 
             //sourcePath.Pop();
             //changePath.Pop();
-        }
-
-        private void CompareSimpleTypeUnion(XmlSchemaSimpleTypeUnion union1, XmlSchemaSimpleTypeUnion union2)
-        {
-            //sourcePath.Push("Union");
-            //changePath.Push("Union");
-
-            if (union1.MemberTypes.Length == union2.MemberTypes.Length)
-            {
-                Dictionary<string, XmlQualifiedName> members1 = new Dictionary<string, XmlQualifiedName>();
-                foreach (XmlQualifiedName name in union1.MemberTypes)
-                {
-                    members1.Add(name.Name, name);
-                }
-
-                Dictionary<string, XmlQualifiedName> members2 = new Dictionary<string, XmlQualifiedName>();
-                foreach (XmlQualifiedName name in union2.MemberTypes)
-                {
-                    members2.Add(name.Name, name);
-                }
-
-                List<string> source = new List<string>();
-                while (members1.Count > 0)
-                {
-                    string key = members1.Keys.First();
-
-                    if (members2.ContainsKey(key))
-                    {
-                        ChangeTypes changeType = this.CompareQualifiedName(members1[key], members2[key]);
-                        this.AddMismatchedPair(sourcePath.ToArray(), union1, changePath.ToArray(), union2, changeType);
-
-                        members1.Remove(key);
-                        members2.Remove(key);
-                    }
-                    else
-                    {
-                        source.Add(key);
-                        members1.Remove(key);
-                    }
-                }
-
-                if (source.Count > 0)
-                {
-                    // TODO
-                }
-
-                if (members2.Count > 0)
-                {
-                    // TODO
-                }
-            }
-            else
-            {
-
-            }
-
-            //sourcePath.Pop();
-            //changePath.Pop();
-        }
-
-        private void CompareQualifiedNames(XmlQualifiedName[] xmlQualifiedName1, XmlQualifiedName[] xmlQualifiedName2)
-        {
-            sourcePath.Push("QualifiedName");
-            changePath.Push("QualifiedName");
-
-            foreach (XmlQualifiedName name1 in xmlQualifiedName1)
-            {
-                foreach (XmlQualifiedName name2 in xmlQualifiedName2)
-                {
-                    ChangeTypes changeType = this.CompareQualifiedName(name1, name2);
-                }
-            }
-
-            sourcePath.Pop();
-            changePath.Pop();
-        }
-
-        private ChangeTypes CompareQualifiedName(XmlQualifiedName name1, XmlQualifiedName name2)
-        {
-            if (name1.Namespace != name2.Namespace || name1.Name != name2.Name)
-            {
-                return ChangeTypes.TypeChange_Update;
-            }
-            else
-            {
-                return ChangeTypes.None;
-            }
         }
 
         private void CompareParticleComplexType(XmlSchemaComplexType complex1, XmlSchemaComplexType complex2)
@@ -1462,6 +1271,234 @@ namespace Xin.SOMDiff
             //changePath.Pop();
         }
 
+        #endregion
+
+        #region Compare Particles: sequence, choice, all, hybrid
+
+        private void CompareParticleSequence(XmlSchemaSequence sequence1, XmlSchemaSequence sequence2, bool ordered = false)
+        {
+            //sourcePath.Push("sequence");
+            //changePath.Push("sequence");
+
+            ChangeTypes changeType = ChangeTypes.None;
+
+            changeType = this.CompareFacetMaxOccurs(sequence1.MaxOccursString, sequence2.MaxOccursString);
+            this.AddMismatchedPair(sourcePath.ToArray(), sequence1, changePath.ToArray(), sequence2, changeType);
+
+            changeType = this.CompareFacetMinOccurs(sequence1.MinOccursString, sequence2.MinOccursString);
+            this.AddMismatchedPair(sourcePath.ToArray(), sequence1, changePath.ToArray(), sequence2, changeType);
+
+            if (sequence1.Items.Count == sequence2.Items.Count)
+            {
+                for (int i = 0; i < sequence1.Items.Count; i++)
+                {
+                    this.CompareXmlSchemaObject(sequence1.Items[i], sequence2.Items[i]);
+                }
+            }
+            else
+            {
+            }
+
+
+
+            //sourcePath.Pop();
+            //changePath.Pop();
+        }
+
+        private void CompareParticleChoice(XmlSchemaChoice choice1, XmlSchemaChoice choice2)
+        {
+            //sourcePath.Push("choice");
+            //changePath.Push("choice");
+
+            if (choice1 == null || choice2 == null)
+            {
+                return;
+            }
+
+            ChangeTypes changeType = ChangeTypes.None;
+
+            changeType = this.CompareFacetMaxOccurs(choice1.MaxOccursString, choice2.MaxOccursString);
+            this.AddMismatchedPair(sourcePath.ToArray(), choice1, changePath.ToArray(), choice2, changeType);
+
+            changeType = this.CompareFacetMinOccurs(choice1.MinOccursString, choice2.MinOccursString);
+            this.AddMismatchedPair(sourcePath.ToArray(), choice1, changePath.ToArray(), choice2, changeType);
+
+            this.CompareXmlSchemaObjectCollection(choice1.Items, choice2.Items);
+
+
+            //if (choice1.Items.Count == choice2.Items.Count)
+            //{
+            //    for (int i = 0; i < choice1.Items.Count; i++)
+            //    {
+            //        this.CompareXmlSchemaObject(choice1.Items[i], choice2.Items[i]);
+            //    }
+            //}
+            //else
+            //{
+            //    this.CompareXmlSchemaObjectCollection(choice1.Items, choice2.Items);
+            //}
+
+            //sourcePath.Pop();
+            //changePath.Pop();
+        }
+
+        private void CompareParticleAll(XmlSchemaAll all1, XmlSchemaAll all2)
+        {
+            //sourcePath.Push("all");
+            //changePath.Push("all");
+
+            ChangeTypes changeType = ChangeTypes.None;
+
+            changeType = this.CompareFacetMaxOccurs(all1.MaxOccursString, all2.MaxOccursString);
+            this.AddMismatchedPair(sourcePath.ToArray(), all1, changePath.ToArray(), all2, changeType);
+
+            changeType = this.CompareFacetMinOccurs(all1.MinOccursString, all2.MinOccursString);
+            this.AddMismatchedPair(sourcePath.ToArray(), all1, changePath.ToArray(), all2, changeType);
+
+            if (all1.Items.Count == all2.Items.Count)
+            {
+                //for (int i = 0; i < all1.Items.Count; i++)
+                //{
+                //    this.CompareXmlSchemaObject(all1.Items[i], all2.Items[i]);
+                //}
+
+                this.CompareXmlSchemaObjectCollection(all1.Items, all2.Items);
+            } 
+            else
+            {
+            }
+
+            //sourcePath.Pop();
+            //changePath.Pop();
+        }
+
+        private void CompareSimpleTypeUnion(XmlSchemaSimpleTypeUnion union1, XmlSchemaSimpleTypeUnion union2)
+        {
+            //sourcePath.Push("Union");
+            //changePath.Push("Union");
+
+            if (union1.MemberTypes.Length == union2.MemberTypes.Length)
+            {
+                Dictionary<string, XmlQualifiedName> members1 = new Dictionary<string, XmlQualifiedName>();
+                foreach (XmlQualifiedName name in union1.MemberTypes)
+                {
+                    members1.Add(name.Name, name);
+                }
+
+                Dictionary<string, XmlQualifiedName> members2 = new Dictionary<string, XmlQualifiedName>();
+                foreach (XmlQualifiedName name in union2.MemberTypes)
+                {
+                    members2.Add(name.Name, name);
+                }
+
+                List<string> source = new List<string>();
+                while (members1.Count > 0)
+                {
+                    string key = members1.Keys.First();
+
+                    if (members2.ContainsKey(key))
+                    {
+                        ChangeTypes changeType = this.CompareQualifiedName(members1[key], members2[key]);
+                        this.AddMismatchedPair(sourcePath.ToArray(), union1, changePath.ToArray(), union2, changeType);
+
+                        members1.Remove(key);
+                        members2.Remove(key);
+                    }
+                    else
+                    {
+                        source.Add(key);
+                        members1.Remove(key);
+                    }
+                }
+
+                if (source.Count > 0)
+                {
+                    // TODO
+                }
+
+                if (members2.Count > 0)
+                {
+                    // TODO
+                }
+            }
+            else
+            {
+
+            }
+
+            //sourcePath.Pop();
+            //changePath.Pop();
+        }
+
+        private void CompareSimpleTypeRestriction(XmlSchemaSimpleTypeRestriction restriction1, XmlSchemaSimpleTypeRestriction restriction2)
+        {
+            sourcePath.Push("Restriction");
+            changePath.Push("Restriction");
+
+            ChangeTypes changeType = ChangeTypes.None;
+
+            //if (!restriction1.BaseTypeName.IsEmpty && !restriction2.BaseTypeName.IsEmpty)
+            //{
+            //    changeType = this.CompareQualifiedName(restriction1.BaseTypeName, restriction2.BaseTypeName);
+
+            //    if (changeType != ChangeTypes.None)
+            //    {
+
+            //    }
+
+            //    this.AddMismatchedPair(sourcePath.ToArray(), restriction1, changePath.ToArray(), restriction2, changeType);
+            //}
+            //else if (!restriction1.BaseTypeName.IsEmpty || !restriction2.BaseTypeName.IsEmpty)
+            //{
+            //    this.AddMismatchedPair(sourcePath.ToArray(), restriction1, changePath.ToArray(), restriction2, ChangeTypes.TypeChange_Update);
+            //}
+
+            if (restriction1.Facets.Count > 0 && restriction2.Facets.Count > 0)
+            {
+                this.CompareFacets(restriction1.Facets, restriction2.Facets);
+            }
+            else if (restriction1.Facets.Count > 0)
+            {
+                this.OutputFacetUpdate(restriction1.Facets, true);
+            }
+            else if (restriction2.Facets.Count > 0)
+            {
+                this.OutputFacetUpdate(restriction2.Facets, false);
+            }
+
+            sourcePath.Pop();
+            changePath.Pop();
+        }
+
+        private void CompareQualifiedNames(XmlQualifiedName[] xmlQualifiedName1, XmlQualifiedName[] xmlQualifiedName2)
+        {
+            sourcePath.Push("QualifiedName");
+            changePath.Push("QualifiedName");
+
+            foreach (XmlQualifiedName name1 in xmlQualifiedName1)
+            {
+                foreach (XmlQualifiedName name2 in xmlQualifiedName2)
+                {
+                    ChangeTypes changeType = this.CompareQualifiedName(name1, name2);
+                }
+            }
+
+            sourcePath.Pop();
+            changePath.Pop();
+        }
+
+        private ChangeTypes CompareQualifiedName(XmlQualifiedName name1, XmlQualifiedName name2)
+        {
+            if (name1.Namespace != name2.Namespace || name1.Name != name2.Name)
+            {
+                return ChangeTypes.TypeChange_Update;
+            }
+            else
+            {
+                return ChangeTypes.None;
+            }
+        }
+
         /// <summary>
         /// Compare an XmlSchemaSequence element with an XmlSchemaAll element.
         /// </summary>
@@ -1543,46 +1580,6 @@ namespace Xin.SOMDiff
             {
                 // TODO
             }
-        }
-
-        private void CompareSimpleTypeRestriction(XmlSchemaSimpleTypeRestriction restriction1, XmlSchemaSimpleTypeRestriction restriction2)
-        {
-            sourcePath.Push("Restriction");
-            changePath.Push("Restriction");
-
-            ChangeTypes changeType = ChangeTypes.None;
-
-            //if (!restriction1.BaseTypeName.IsEmpty && !restriction2.BaseTypeName.IsEmpty)
-            //{
-            //    changeType = this.CompareQualifiedName(restriction1.BaseTypeName, restriction2.BaseTypeName);
-
-            //    if (changeType != ChangeTypes.None)
-            //    {
-
-            //    }
-
-            //    this.AddMismatchedPair(sourcePath.ToArray(), restriction1, changePath.ToArray(), restriction2, changeType);
-            //}
-            //else if (!restriction1.BaseTypeName.IsEmpty || !restriction2.BaseTypeName.IsEmpty)
-            //{
-            //    this.AddMismatchedPair(sourcePath.ToArray(), restriction1, changePath.ToArray(), restriction2, ChangeTypes.TypeChange_Update);
-            //}
-
-            if (restriction1.Facets.Count > 0 && restriction2.Facets.Count > 0)
-            {
-                this.CompareFacets(restriction1.Facets, restriction2.Facets);
-            }
-            else if (restriction1.Facets.Count > 0)
-            {
-                this.OutputFacetUpdate(restriction1.Facets, true);
-            }
-            else if (restriction2.Facets.Count > 0)
-            {
-                this.OutputFacetUpdate(restriction2.Facets, false);
-            }
-
-            sourcePath.Pop();
-            changePath.Pop();
         }
 
         private void OutputFacetUpdate(XmlSchemaObjectCollection facets, bool flag)
@@ -1671,7 +1668,135 @@ namespace Xin.SOMDiff
 
         #endregion
 
-        #region Compare Facets: MaxOccurs, MinOccurs
+        #region Compare Facets: MaxOccurs, MinOccurs, Enumeration
+
+        private void CompareFacets(XmlSchemaObjectCollection facets1, XmlSchemaObjectCollection facets2, bool ordered = false)
+        {
+            if (ordered)
+            {
+                this.CompareOrderedFacets(facets1, facets2);
+            }
+            else
+            {
+                this.CompareUnorderedFacets(facets1, facets2);
+            }
+        }
+
+        private void CompareOrderedFacets(XmlSchemaObjectCollection facets1, XmlSchemaObjectCollection facets2)
+        {
+            // TODO
+        }
+
+        private void CompareUnorderedFacets(XmlSchemaObjectCollection facets1, XmlSchemaObjectCollection facets2)
+        {
+            Dictionary<FacetTypes, XmlSchemaFacet> sourcelist = new Dictionary<FacetTypes, XmlSchemaFacet>();
+            Dictionary<FacetTypes, XmlSchemaFacet> changelist = new Dictionary<FacetTypes, XmlSchemaFacet>();
+
+            Dictionary<string, XmlSchemaFacet> sourcelistForEnum = new Dictionary<string, XmlSchemaFacet>();
+            Dictionary<string, XmlSchemaFacet> changelistForEnum = new Dictionary<string, XmlSchemaFacet>();
+
+            List<XmlSchemaFacet> removedFacets = new List<XmlSchemaFacet>();
+
+            foreach (XmlSchemaFacet facet in facets1)
+            {
+                if (facet is XmlSchemaEnumerationFacet)
+                {
+                    sourcelistForEnum.Add(facet.Value, facet);
+                }
+                else
+                {
+                    sourcelist.Add(this.GetFacetType(facet), facet);
+                }
+
+            }
+
+            foreach (XmlSchemaFacet facet in facets2)
+            {
+                if (facet is XmlSchemaEnumerationFacet)
+                {
+                    changelistForEnum.Add(facet.Value, facet);
+                }
+                else
+                {
+                    changelist.Add(this.GetFacetType(facet), facet);
+                }
+            }
+
+            this.CompareEnumerationFact(sourcelistForEnum, changelistForEnum);
+
+            while (sourcelist.Count > 0 && changelist.Count > 0)
+            {
+                FacetTypes key = sourcelist.First().Key;
+
+                if (!changelist.ContainsKey(key))
+                {
+                    this.CheckFacetChangeType(key, sourcelist[key], null);
+
+                    //removedFacets.Add(sourcelist[key]);
+                    sourcelist.Remove(key);
+                }
+                else
+                {
+                    if (sourcelist[key].Value != changelist[key].Value)
+                    {
+                        // Change:
+                        ChangeTypes changeType = this.CheckFacetChangeType(key, sourcelist[key], changelist[key]);
+                        this.AddMismatchedPair(sourcePath.ToArray(), sourcelist[key], changePath.ToArray(), changelist[key], changeType);
+                    }
+
+                    sourcelist.Remove(key);
+                    changelist.Remove(key);
+                }
+            }
+
+            if (sourcelist.Count > 0)
+            {
+                foreach (FacetTypes key in sourcelist.Keys)
+                {
+                    // Change: 
+                    this.CheckFacetChangeType(key, sourcelist[key], null);
+                }
+
+            }
+
+            if (changelist.Count > 0)
+            {
+                foreach (FacetTypes key in changelist.Keys)
+                {
+                    // Change: 
+                    this.CheckFacetChangeType(key, null, changelist[key]);
+                }
+            }
+        }
+
+        private void CompareSingleFacet(XmlSchemaObject facet1, XmlSchemaObject facet2)
+        {
+            ChangeTypes changeType = ChangeTypes.None;
+
+            if ((facet1 is XmlSchemaMaxLengthFacet) && (facet2 is XmlSchemaMaxLengthFacet))
+            {
+                sourcePath.Push("MaxLength");
+                changePath.Push("MaxLength");
+
+                XmlSchemaMaxLengthFacet maxLengthFacet1 = facet1 as XmlSchemaMaxLengthFacet;
+                XmlSchemaMaxLengthFacet maxLengthFacet2 = facet2 as XmlSchemaMaxLengthFacet;
+
+                if (maxLengthFacet1.Value != maxLengthFacet2.Value)
+                {
+                    // Change: maxLength
+                    changeType = this.CompareQuantifiers(Convert.ToInt32(maxLengthFacet1.Value), Convert.ToInt32(maxLengthFacet2.Value)) ? ChangeTypes.DecreasedMaxLength : ChangeTypes.IncreasedMaxLength;
+
+                    this.AddMismatchedPair(sourcePath.ToArray(), facet1, changePath.ToArray(), facet2, changeType);
+                }
+
+                sourcePath.Pop();
+                changePath.Pop();
+            }
+            else
+            {
+                // TODO
+            }
+        }
 
         private ChangeTypes CompareFacetMaxOccurs(string maxOccursString1, string maxOccursString2)
         {
@@ -1721,289 +1846,9 @@ namespace Xin.SOMDiff
             return changeType;
         }
 
-        private void CompareFacets(XmlSchemaObjectCollection facets1, XmlSchemaObjectCollection facets2, bool ordered = false)
-        {
-            if (ordered)
-            {
-                this.CompareOrderedFacets(facets1, facets2);
-            }
-            else
-            {
-                this.CompareUnorderedFacets(facets1, facets2);
-            }
-        }
-
-        private void CompareOrderedFacets(XmlSchemaObjectCollection facets1, XmlSchemaObjectCollection facets2)
-        {
-            // TODO
-        }
-
-        private void CompareUnorderedFacets(XmlSchemaObjectCollection facets1, XmlSchemaObjectCollection facets2)
-        {
-            Dictionary<FacetTypes, XmlSchemaFacet> sourcelist = new Dictionary<FacetTypes, XmlSchemaFacet>();
-            Dictionary<FacetTypes, XmlSchemaFacet> changelist = new Dictionary<FacetTypes, XmlSchemaFacet>();
-
-            Dictionary<string, XmlSchemaFacet> sourcelistForEnum = new Dictionary<string, XmlSchemaFacet>();
-            Dictionary<string, XmlSchemaFacet> changelistForEnum = new Dictionary<string, XmlSchemaFacet>();
-
-            List<XmlSchemaFacet> removedFacets = new List<XmlSchemaFacet>();
-
-            foreach (XmlSchemaFacet facet in facets1)
-            {
-                if (facet is XmlSchemaEnumerationFacet)
-                {
-                    sourcelistForEnum.Add(facet.Value, facet);
-                }
-                else
-                {
-                    sourcelist.Add(this.GetFacetType(facet), facet);
-                }
-                
-            }
-
-            foreach (XmlSchemaFacet facet in facets2)
-            {
-                if (facet is XmlSchemaEnumerationFacet)
-                {
-                    changelistForEnum.Add(facet.Value, facet);
-                }
-                else
-                {
-                    changelist.Add(this.GetFacetType(facet), facet);
-                }
-            }
-
-            this.CompareEnumerationFact(sourcelistForEnum, changelistForEnum);
-
-            while (sourcelist.Count > 0 && changelist.Count > 0)
-            {
-                FacetTypes key = sourcelist.First().Key;
-
-                if (!changelist.ContainsKey(key))
-                {
-                    this.CheckFacetChangeType(key, sourcelist[key], null);
-
-                    //removedFacets.Add(sourcelist[key]);
-                    sourcelist.Remove(key);
-                }
-                else
-                {
-                    if (sourcelist[key].Value != changelist[key].Value)
-                    {
-                        // Change:
-                        ChangeTypes changeType = this.CheckFacetChangeType(key, sourcelist[key], changelist[key]);
-                        this.AddMismatchedPair(sourcePath.ToArray(), sourcelist[key], changePath.ToArray(), changelist[key], changeType);
-                    }
-
-                    sourcelist.Remove(key);
-                    changelist.Remove(key);
-                }
-            }
-
-            if (sourcelist.Count > 0)
-            {
-                foreach (FacetTypes key in sourcelist.Keys)
-                {
-                    // Change: 
-                    this.CheckFacetChangeType(key, sourcelist[key], null);
-                }
-                
-            }
-
-            if (changelist.Count > 0)
-            {
-                foreach (FacetTypes key in changelist.Keys)
-                {
-                    // Change: 
-                    this.CheckFacetChangeType(key, null, changelist[key]);
-                }
-            }
-        }
-
         private void CompareEnumerationFact(Dictionary<string, XmlSchemaFacet> sourcelistForEnum, Dictionary<string, XmlSchemaFacet> changelistForEnum)
         {
             // TODO:
-        }
-
-        private ChangeTypes CheckFacetChangeType(FacetTypes facetType, XmlSchemaFacet sourceFacet, XmlSchemaFacet changeFacet)
-        {
-            ChangeTypes changeType = ChangeTypes.None;
-
-            //if (sourceFacet != null && changeFacet != null)
-            //{
-            //    // TODO
-            //}
-            //else if (sourceFacet != null)
-            //{
-            //    // TODO
-            //}
-            //else if (changeFacet != null)
-            //{
-
-            //}
-            //else
-            //{
-            //    return changeType;
-            //}
-
-
-            if (facetType == FacetTypes.EnumerationFacet)
-            {
-                if (sourceFacet != null && changeFacet != null)
-                {
-                    sourcePath.Push("enumeration");
-                    changePath.Push("enumeration");
-
-
-                    // TODO
-
-
-                    sourcePath.Pop();
-                    changePath.Pop();
-                }
-                else if (sourceFacet != null)
-                {
-                    sourcePath.Push("enumeration");
-
-
-
-
-
-                    sourcePath.Pop();
-                }
-                else if (changeFacet != null)
-                {
-                    changePath.Push("enumeration");
-
-
-
-
-
-                    changePath.Pop();
-                }
-
-
-
-                
-            }
-            else if (facetType == FacetTypes.MaxExclusiveFacet)
-            {
-            }
-            else if (facetType == FacetTypes.MaxInclusiveFacet)
-            {
-
-            }
-            else if (facetType == FacetTypes.MinExclusiveFacet)
-            {
-            }
-            else if (facetType == FacetTypes.MinInclusiveFacet)
-            {
-                // TODO
-            }
-            else if (facetType == FacetTypes.MaxLengthFacet)
-            {
-                if (sourceFacet != null && changeFacet != null)
-                {
-                    changeType = Convert.ToInt32(sourceFacet.Value) > Convert.ToInt32(changeFacet.Value) ? ChangeTypes.ChangeRestriction_MaxLength_Decreased : ChangeTypes.ChangeRestriction_MaxLength_Increased;
-                }
-                else if (sourceFacet != null)
-                {
-
-                }
-                else if (changeFacet != null)
-                {
-
-                }
-            }
-            else if (facetType == FacetTypes.MaxLengthFacet)
-            {
-                
-            }
-            else if (facetType == FacetTypes.PatternFacet)
-            {
-            }
-            else if (facetType == FacetTypes.WhiteSpaceFacet)
-            {
-            }
-            else
-            {
-
-            }
-
-            return changeType;
-        }
-
-        private FacetTypes GetFacetType(XmlSchemaFacet facet)
-        {
-            FacetTypes facetType = FacetTypes.None;
-
-            if (facet is XmlSchemaEnumerationFacet)
-            {
-                facetType = FacetTypes.EnumerationFacet;
-            }
-            else if (facet is XmlSchemaMaxExclusiveFacet)
-            {
-                facetType = FacetTypes.MaxExclusiveFacet;
-            }
-            else if (facet is XmlSchemaMaxInclusiveFacet)
-            {
-                facetType = FacetTypes.MaxInclusiveFacet;
-            } 
-            else if(facet is XmlSchemaMinExclusiveFacet)
-            {
-                facetType = FacetTypes.MinExclusiveFacet;
-            }
-            else if (facet is XmlSchemaMinInclusiveFacet)
-            {
-                facetType = FacetTypes.MinInclusiveFacet;
-            } 
-            else if (facet is XmlSchemaPatternFacet)
-            {
-                facetType = FacetTypes.PatternFacet;
-            }
-            else if (facet is XmlSchemaWhiteSpaceFacet)
-            {
-                facetType = FacetTypes.WhiteSpaceFacet;
-            }
-            else if (facet is XmlSchemaMaxLengthFacet)
-            {
-                facetType = FacetTypes.MaxLengthFacet;
-            }
-            else if (facet is XmlSchemaMinLengthFacet)
-            {
-                facetType = FacetTypes.MinLengthFacet;
-            }
-
-            return facetType;
-        }
-
-        private void CompareSingleFacet(XmlSchemaObject facet1, XmlSchemaObject facet2)
-        {
-            ChangeTypes changeType = ChangeTypes.None;
-
-            if ((facet1 is XmlSchemaMaxLengthFacet) && (facet2 is XmlSchemaMaxLengthFacet))
-            {
-                sourcePath.Push("MaxLength");
-                changePath.Push("MaxLength");
-
-                XmlSchemaMaxLengthFacet maxLengthFacet1 = facet1 as XmlSchemaMaxLengthFacet;
-                XmlSchemaMaxLengthFacet maxLengthFacet2 = facet2 as XmlSchemaMaxLengthFacet;
-
-                if (maxLengthFacet1.Value != maxLengthFacet2.Value)
-                {
-                    // Change: maxLength
-                    changeType = this.CompareQuantifiers(Convert.ToInt32(maxLengthFacet1.Value), Convert.ToInt32(maxLengthFacet2.Value)) ? ChangeTypes.DecreasedMaxLength : ChangeTypes.IncreasedMaxLength;
-
-                    this.AddMismatchedPair(sourcePath.ToArray(), facet1, changePath.ToArray(), facet2, changeType);
-                }
-
-                sourcePath.Pop();
-                changePath.Pop();
-            }
-            else
-            {
-                // TODO
-            }
         }
 
         #endregion
@@ -2374,6 +2219,158 @@ namespace Xin.SOMDiff
                 Console.Write("ERROR: ");
 
             Console.WriteLine(args.Message);
+        }
+
+        private ChangeTypes CheckFacetChangeType(FacetTypes facetType, XmlSchemaFacet sourceFacet, XmlSchemaFacet changeFacet)
+        {
+            ChangeTypes changeType = ChangeTypes.None;
+
+            //if (sourceFacet != null && changeFacet != null)
+            //{
+            //    // TODO
+            //}
+            //else if (sourceFacet != null)
+            //{
+            //    // TODO
+            //}
+            //else if (changeFacet != null)
+            //{
+
+            //}
+            //else
+            //{
+            //    return changeType;
+            //}
+
+
+            if (facetType == FacetTypes.EnumerationFacet)
+            {
+                if (sourceFacet != null && changeFacet != null)
+                {
+                    sourcePath.Push("enumeration");
+                    changePath.Push("enumeration");
+
+
+                    // TODO
+
+
+                    sourcePath.Pop();
+                    changePath.Pop();
+                }
+                else if (sourceFacet != null)
+                {
+                    sourcePath.Push("enumeration");
+
+
+
+
+
+                    sourcePath.Pop();
+                }
+                else if (changeFacet != null)
+                {
+                    changePath.Push("enumeration");
+
+
+
+
+
+                    changePath.Pop();
+                }
+
+
+
+
+            }
+            else if (facetType == FacetTypes.MaxExclusiveFacet)
+            {
+            }
+            else if (facetType == FacetTypes.MaxInclusiveFacet)
+            {
+
+            }
+            else if (facetType == FacetTypes.MinExclusiveFacet)
+            {
+            }
+            else if (facetType == FacetTypes.MinInclusiveFacet)
+            {
+                // TODO
+            }
+            else if (facetType == FacetTypes.MaxLengthFacet)
+            {
+                if (sourceFacet != null && changeFacet != null)
+                {
+                    changeType = Convert.ToInt32(sourceFacet.Value) > Convert.ToInt32(changeFacet.Value) ? ChangeTypes.ChangeRestriction_MaxLength_Decreased : ChangeTypes.ChangeRestriction_MaxLength_Increased;
+                }
+                else if (sourceFacet != null)
+                {
+
+                }
+                else if (changeFacet != null)
+                {
+
+                }
+            }
+            else if (facetType == FacetTypes.MaxLengthFacet)
+            {
+
+            }
+            else if (facetType == FacetTypes.PatternFacet)
+            {
+            }
+            else if (facetType == FacetTypes.WhiteSpaceFacet)
+            {
+            }
+            else
+            {
+
+            }
+
+            return changeType;
+        }
+
+        private FacetTypes GetFacetType(XmlSchemaFacet facet)
+        {
+            FacetTypes facetType = FacetTypes.None;
+
+            if (facet is XmlSchemaEnumerationFacet)
+            {
+                facetType = FacetTypes.EnumerationFacet;
+            }
+            else if (facet is XmlSchemaMaxExclusiveFacet)
+            {
+                facetType = FacetTypes.MaxExclusiveFacet;
+            }
+            else if (facet is XmlSchemaMaxInclusiveFacet)
+            {
+                facetType = FacetTypes.MaxInclusiveFacet;
+            }
+            else if (facet is XmlSchemaMinExclusiveFacet)
+            {
+                facetType = FacetTypes.MinExclusiveFacet;
+            }
+            else if (facet is XmlSchemaMinInclusiveFacet)
+            {
+                facetType = FacetTypes.MinInclusiveFacet;
+            }
+            else if (facet is XmlSchemaPatternFacet)
+            {
+                facetType = FacetTypes.PatternFacet;
+            }
+            else if (facet is XmlSchemaWhiteSpaceFacet)
+            {
+                facetType = FacetTypes.WhiteSpaceFacet;
+            }
+            else if (facet is XmlSchemaMaxLengthFacet)
+            {
+                facetType = FacetTypes.MaxLengthFacet;
+            }
+            else if (facet is XmlSchemaMinLengthFacet)
+            {
+                facetType = FacetTypes.MinLengthFacet;
+            }
+
+            return facetType;
         }
 
         #endregion
