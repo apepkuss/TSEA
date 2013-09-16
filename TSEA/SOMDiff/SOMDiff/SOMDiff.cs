@@ -456,7 +456,9 @@ namespace Xin.SOMDiff
         {
             ChangeTypes changeType = ChangeTypes.None;
 
-            if (element1.Name == "Query")
+            #region Code for debug
+
+            if (element1.Name == "DeleteSubFolders")
             {
 
             }
@@ -465,6 +467,8 @@ namespace Xin.SOMDiff
             //{
 
             //}
+
+            #endregion
 
             // if element else ref-element
             if (element1.RefName.IsEmpty && element2.RefName.IsEmpty)
@@ -551,12 +555,6 @@ namespace Xin.SOMDiff
                             this.AddMismatchedPair(sourcePath.ToArray(), element1, changePath.ToArray(), element2, ChangeTypes.TypeChange_Update);
                         }
                     }
-
-                    //changeType = this.CompareFacetMaxOccurs(element1.MaxOccursString, element2.MaxOccursString);
-                    //this.AddMismatchedPair(sourcePath.ToArray(), element1, changePath.ToArray(), element2, changeType);
-
-                    //changeType = this.CompareFacetMinOccurs(element1.MinOccursString, element2.MinOccursString);
-                    //this.AddMismatchedPair(sourcePath.ToArray(), element1, changePath.ToArray(), element2, changeType);
                 }
                 else if (element1.SchemaTypeName.IsEmpty && element2.SchemaTypeName.IsEmpty)
                 {
@@ -585,56 +583,6 @@ namespace Xin.SOMDiff
 
                     this.CompareSchemaType(element1.SchemaType, schemaType2);
                 }
-
-
-                #region Commented Code
-                
-                //if (!string.IsNullOrEmpty(element1.SchemaTypeName.Name) && !string.IsNullOrEmpty(element2.SchemaTypeName.Name))
-                //{
-                //    if (element1.SchemaTypeName.Namespace == element2.SchemaTypeName.Namespace)
-                //    {
-                //        if (element1.SchemaTypeName.Name != element2.SchemaTypeName.Name)
-                //        {
-                //            EvolutionTypes changeType = EvolutionTypes.TypeChange_Update;
-                //        }
-                //    }
-                //    else
-                //    {
-                //        XmlSchemaType schemaType1 = null;
-                //        if (element1.SchemaTypeName.Namespace != "http://www.w3.org/2001/XMLSchema")
-                //        {
-                //            schemaType1 = this.GetTypeByRefType(element1.SchemaTypeName, true);
-                //        }
-                //        else
-                //        {
-                //            schemaType1 = element1.ElementSchemaType;
-                //        }
-
-                //        XmlSchemaType schemaType2 = null;
-                //        if (element2.SchemaTypeName.Namespace != "http://www.w3.org/2001/XMLSchema")
-                //        {
-                //            schemaType2 = this.GetTypeByRefType(element2.SchemaTypeName, false);
-                //        }
-                //        else
-                //        {
-                //            schemaType2 = element2.ElementSchemaType;
-                //        }
-
-                //        this.CompareSchemaType(schemaType1, schemaType2);
-                //    }
-
-
-                //    this.CompareFacetMaxOccurs(element1.MaxOccursString, element2.MaxOccursString);
-
-                //    this.CompareFacetMinOccurs(element1.MinOccursString, element2.MinOccursString);
-                //}
-                //else
-                //{
-                //    // Compare the type of the elements
-                //    this.CompareSchemaType(element1.ElementSchemaType, element2.ElementSchemaType);
-                //}
-
-                #endregion
 
                 sourcePath.Pop();
                 changePath.Pop();
