@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOMDiff", "..\SOMDiff\SOMDi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XsdToClass", "..\XsdToClass\XsdToClass\XsdToClass.csproj", "{525991BC-6026-4987-9263-569BB7AA421B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReferenceDrawer", "..\ReferenceDrawer\ReferenceDrawer.csproj", "{BF66D698-3548-4D8E-9E01-624663E93BFA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{525991BC-6026-4987-9263-569BB7AA421B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{525991BC-6026-4987-9263-569BB7AA421B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{525991BC-6026-4987-9263-569BB7AA421B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF66D698-3548-4D8E-9E01-624663E93BFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF66D698-3548-4D8E-9E01-624663E93BFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF66D698-3548-4D8E-9E01-624663E93BFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF66D698-3548-4D8E-9E01-624663E93BFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

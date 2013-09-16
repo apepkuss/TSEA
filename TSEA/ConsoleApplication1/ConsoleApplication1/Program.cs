@@ -72,7 +72,7 @@ namespace ConsoleApplication1
             string changefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Request\io.xsd";
 
             SOMDiff sdiff = new SOMDiff(sourefile, changefile);
-            sdiff.DiffSchemas(sourefile, changefile);
+            sdiff.DiffSchemas();
 
             Console.Read();
 

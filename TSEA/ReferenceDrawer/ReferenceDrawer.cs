@@ -6,28 +6,37 @@ using System.Threading.Tasks;
 
 namespace ReferenceDrawer
 {
-    using Microsoft.Glee.Drawing;
-
+    using Microsoft.Msagl.Drawing;
+    using Microsoft.Msagl.WpfGraphControl;
 
     public class ReferenceDrawer
     {
+        GraphViewer graphViewer = new GraphViewer();
 
-
-        private static void CreateSourceNode(Node a)
+        /// <summary>
+        /// Create a reference graph
+        /// </summary>
+        /// <returns></returns>
+        public Graph CreateReferenceGraph()
         {
-            a.Attr.Shape = Microsoft.Glee.Drawing.Shape.Box;
-            a.Attr.XRad = 3;
-            a.Attr.YRad = 3;
-            a.Attr.Fillcolor = Microsoft.Glee.Drawing.Color.Green;
-            a.Attr.LineWidth = 10;
+            Graph graph = new Graph();
+
+            // TODO:
+
+            return graph;
         }
 
-        private void CreateTargetNode(Node a)
+        /// <summary>
+        /// Display a reference graph.
+        /// </summary>
+        public void DisplayReferenceGraph()
         {
-            a.Attr.Shape = Microsoft.Glee.Drawing.Shape.DoubleCircle;
-            a.Attr.Fillcolor = Microsoft.Glee.Drawing.Color.LightGray;
+            Graph graph = this.CreateReferenceGraph();
 
-            a.Attr.LabelMargin = -4;
+            if (graph != null)
+            {
+                this.graphViewer.Graph = graph;
+            }
         }
     }
 }

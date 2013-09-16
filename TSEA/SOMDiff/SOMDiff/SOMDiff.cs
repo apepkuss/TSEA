@@ -98,8 +98,16 @@ namespace Xin.SOMDiff
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        /// Analyze the dependency among schemas and display the dependency graph.
+        /// </summary>
+        public void ParseSchemaDependency()
+        {
+
+        }
         
-        public void DiffSchemas(string sourefile, string changefile)
+        public void DiffSchemas()
         {
             #region The following code has been moved to constructor
             
