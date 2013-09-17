@@ -4,7 +4,7 @@
   <xs:import namespace="Calendar" schemaLocation="Calendar.xsd"/>
   <xs:import namespace="Contacts" schemaLocation="Contacts.xsd"/>
   <xs:import namespace="Contacts2" schemaLocation="Contacts2.xsd"/>
-  <xs:import namespace="rm" schemaLocation="RightsManagement.xsd"/>
+  <xs:import namespace="RightsManagement" schemaLocation="RightsManagement.xsd"/>
   <xs:element name="SyncKey">
     <xs:simpleType>
       <xs:restriction base="xs:string">

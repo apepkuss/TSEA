@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:airsyncbase="AirSyncBase" xmlns:calendar="Calendar" xmlns:contacts="Contacts" xmlns:contacts2="Contacts2" xmlns:documentlibrary="DocumentLibrary" xmlns:email="Email" xmlns:email2="Email2" xmlns:notes="Notes" xmlns:rm="RightsManagement" xmlns:tasks="Tasks" xmlns="ItemOperations" targetNamespace="ItemOperations" elementFormDefault="qualified" attributeFormDefault="unqualified">
-  <!--<xs:import namespace="AirSyncBase" schemaLocation="AirSyncBase.xsd"/>
+  <xs:import namespace="AirSyncBase" schemaLocation="AirSyncBase.xsd"/>
   <xs:import namespace="Calendar" schemaLocation="Calendar.xsd"/>
   <xs:import namespace="Contacts" schemaLocation="Contacts.xsd"/>
   <xs:import namespace="Contacts2" schemaLocation="Contacts2.xsd"/>
@@ -9,7 +9,7 @@
   <xs:import namespace="Email2" schemaLocation="Email2.xsd"/>
   <xs:import namespace="Notes" schemaLocation="Notes.xsd"/>
   <xs:import namespace="RightsManagement" schemaLocation="RightsManagement.xsd"/>
-  <xs:import namespace="Tasks" schemaLocation="Tasks.xsd"/>-->
+  <xs:import namespace="Tasks" schemaLocation="Tasks.xsd"/>
   <xs:element name="Store">
     <xs:simpleType>
       <xs:restriction base="xs:string">

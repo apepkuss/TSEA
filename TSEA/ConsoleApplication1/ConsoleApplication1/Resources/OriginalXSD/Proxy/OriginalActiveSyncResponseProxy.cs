@@ -13,239 +13,492 @@
 // 
 namespace TSEA.Original.Response {
     using System.Xml.Serialization;
-    
-    
+
+
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="AirSync")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="AirSync", IsNullable=false)]
-    public partial class Supported {
-        
-        private object[] itemsField;
-        
-        private ItemsChoiceType[] itemsElementNameField;
-        
-        private string[] textField;
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Settings")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "Settings", IsNullable = false)]
+    public partial class Accounts
+    {
+
+        private AccountsAccount[] accountField;
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("AllDayEvent", typeof(byte), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Attendees", typeof(Attendees), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("BusyStatus", typeof(byte), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Categories", typeof(Categories), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("DisallowNewTimeProposal", typeof(bool), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("DtStamp", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("EndTime", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Exceptions", typeof(Exceptions), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Location", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("MeetingStatus", typeof(byte), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("OrganizerEmail", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("OrganizerName", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Recurrence", typeof(Recurrence), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Reminder", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("ResponseRequested", typeof(bool), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Sensitivity", typeof(byte), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("StartTime", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Subject", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Timezone", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("UID", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("AccountName", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("CompanyMainPhone", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("CustomerId", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("GovernmentId", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("IMAddress", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("IMAddress2", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("IMAddress3", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("MMS", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("ManagerName", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("NickName", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("Anniversary", typeof(System.DateTime), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("AssistantName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("AssistantPhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Birthday", typeof(System.DateTime), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Business2PhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressCity", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressCountry", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressPostalCode", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressState", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressStreet", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("BusinessFaxNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("BusinessPhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("CarPhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Categories", typeof(Categories1), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Children", typeof(Children), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("CompanyName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Department", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Email1Address", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Email2Address", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Email3Address", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("FileAs", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("FirstName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Home2PhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("HomeAddressCity", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("HomeAddressCountry", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("HomeAddressPostalCode", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("HomeAddressState", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("HomeAddressStreet", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("HomeFaxNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("HomePhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("JobTitle", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("LastName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("MiddleName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("MobilePhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("OfficeLocation", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("OtherAddressCity", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("OtherAddressCountry", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("OtherAddressPostalCode", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("OtherAddressState", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("OtherAddressStreet", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("PagerNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Picture", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("RadioPhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Spouse", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Suffix", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Title", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("WebPage", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("YomiCompanyName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("YomiFirstName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("YomiLastName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
-        public object[] Items {
-            get {
-                return this.itemsField;
+        [System.Xml.Serialization.XmlElementAttribute("Account")]
+        public AccountsAccount[] Account
+        {
+            get
+            {
+                return this.accountField;
             }
-            set {
-                this.itemsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType[] ItemsElementName {
-            get {
-                return this.itemsElementNameField;
-            }
-            set {
-                this.itemsElementNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public string[] Text {
-            get {
-                return this.textField;
-            }
-            set {
-                this.textField = value;
+            set
+            {
+                this.accountField = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Calendar")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="Calendar", IsNullable=false)]
-    public partial class Attendees {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Settings")]
+    public partial class AccountsAccount
+    {
+
+        private string accountIdField;
+
+        private string accountNameField;
+
+        private string userDisplayNameField;
+
+        private bool sendDisabledField;
+
+        private bool sendDisabledFieldSpecified;
+
+        private AccountsAccountEmailAddresses emailAddressesField;
+
+        /// <remarks/>
+        public string AccountId
+        {
+            get
+            {
+                return this.accountIdField;
+            }
+            set
+            {
+                this.accountIdField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string AccountName
+        {
+            get
+            {
+                return this.accountNameField;
+            }
+            set
+            {
+                this.accountNameField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string UserDisplayName
+        {
+            get
+            {
+                return this.userDisplayNameField;
+            }
+            set
+            {
+                this.userDisplayNameField = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool SendDisabled
+        {
+            get
+            {
+                return this.sendDisabledField;
+            }
+            set
+            {
+                this.sendDisabledField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool SendDisabledSpecified
+        {
+            get
+            {
+                return this.sendDisabledFieldSpecified;
+            }
+            set
+            {
+                this.sendDisabledFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public AccountsAccountEmailAddresses EmailAddresses
+        {
+            get
+            {
+                return this.emailAddressesField;
+            }
+            set
+            {
+                this.emailAddressesField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Settings")]
+    public partial class AccountsAccountEmailAddresses
+    {
+
+        private string[] sMTPAddressField;
+
+        private string primarySmtpAddressField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("SMTPAddress")]
+        public string[] SMTPAddress
+        {
+            get
+            {
+                return this.sMTPAddressField;
+            }
+            set
+            {
+                this.sMTPAddressField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string PrimarySmtpAddress
+        {
+            get
+            {
+                return this.primarySmtpAddressField;
+            }
+            set
+            {
+                this.primarySmtpAddressField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "AirSyncBase")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "AirSyncBase", IsNullable = false)]
+    public partial class Attachments
+    {
+
+        private AttachmentsAttachment[] attachmentField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Attachment")]
+        public AttachmentsAttachment[] Attachment
+        {
+            get
+            {
+                return this.attachmentField;
+            }
+            set
+            {
+                this.attachmentField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "AirSyncBase")]
+    public partial class AttachmentsAttachment
+    {
+
+        private string displayNameField;
+
+        private string fileReferenceField;
+
+        private byte methodField;
+
+        private uint estimatedDataSizeField;
+
+        private string contentIdField;
+
+        private string contentLocationField;
+
+        private bool isInlineField;
+
+        private bool isInlineFieldSpecified;
+
+        private string umAttDurationField;
+
+        private string umAttOrderField;
+
+        /// <remarks/>
+        public string DisplayName
+        {
+            get
+            {
+                return this.displayNameField;
+            }
+            set
+            {
+                this.displayNameField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string FileReference
+        {
+            get
+            {
+                return this.fileReferenceField;
+            }
+            set
+            {
+                this.fileReferenceField = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte Method
+        {
+            get
+            {
+                return this.methodField;
+            }
+            set
+            {
+                this.methodField = value;
+            }
+        }
+
+        /// <remarks/>
+        public uint EstimatedDataSize
+        {
+            get
+            {
+                return this.estimatedDataSizeField;
+            }
+            set
+            {
+                this.estimatedDataSizeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string ContentId
+        {
+            get
+            {
+                return this.contentIdField;
+            }
+            set
+            {
+                this.contentIdField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string ContentLocation
+        {
+            get
+            {
+                return this.contentLocationField;
+            }
+            set
+            {
+                this.contentLocationField = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool IsInline
+        {
+            get
+            {
+                return this.isInlineField;
+            }
+            set
+            {
+                this.isInlineField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool IsInlineSpecified
+        {
+            get
+            {
+                return this.isInlineFieldSpecified;
+            }
+            set
+            {
+                this.isInlineFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "Email2", DataType = "integer")]
+        public string UmAttDuration
+        {
+            get
+            {
+                return this.umAttDurationField;
+            }
+            set
+            {
+                this.umAttDurationField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "Email2", DataType = "integer")]
+        public string UmAttOrder
+        {
+            get
+            {
+                return this.umAttOrderField;
+            }
+            set
+            {
+                this.umAttOrderField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Calendar")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "Calendar", IsNullable = false)]
+    public partial class Attendees
+    {
+
         private AttendeesAttendee[] attendeeField;
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Attendee")]
-        public AttendeesAttendee[] Attendee {
-            get {
+        public AttendeesAttendee[] Attendee
+        {
+            get
+            {
                 return this.attendeeField;
             }
-            set {
+            set
+            {
                 this.attendeeField = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Calendar")]
-    public partial class AttendeesAttendee {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Calendar")]
+    public partial class AttendeesAttendee
+    {
+
         private string emailField;
-        
+
         private string nameField;
-        
+
         private byte attendeeStatusField;
-        
+
         private bool attendeeStatusFieldSpecified;
-        
+
         private byte attendeeTypeField;
-        
+
         private bool attendeeTypeFieldSpecified;
-        
+
         /// <remarks/>
-        public string Email {
-            get {
+        public string Email
+        {
+            get
+            {
                 return this.emailField;
             }
-            set {
+            set
+            {
                 this.emailField = value;
             }
         }
-        
+
         /// <remarks/>
-        public string Name {
-            get {
+        public string Name
+        {
+            get
+            {
                 return this.nameField;
             }
-            set {
+            set
+            {
                 this.nameField = value;
             }
         }
-        
+
         /// <remarks/>
-        public byte AttendeeStatus {
-            get {
+        public byte AttendeeStatus
+        {
+            get
+            {
                 return this.attendeeStatusField;
             }
-            set {
+            set
+            {
                 this.attendeeStatusField = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AttendeeStatusSpecified {
-            get {
+        public bool AttendeeStatusSpecified
+        {
+            get
+            {
                 return this.attendeeStatusFieldSpecified;
             }
-            set {
+            set
+            {
                 this.attendeeStatusFieldSpecified = value;
             }
         }
-        
+
         /// <remarks/>
-        public byte AttendeeType {
-            get {
+        public byte AttendeeType
+        {
+            get
+            {
                 return this.attendeeTypeField;
             }
-            set {
+            set
+            {
                 this.attendeeTypeField = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AttendeeTypeSpecified {
-            get {
+        public bool AttendeeTypeSpecified
+        {
+            get
+            {
                 return this.attendeeTypeFieldSpecified;
             }
-            set {
+            set
+            {
                 this.attendeeTypeFieldSpecified = value;
             }
         }
@@ -256,5371 +509,8441 @@ namespace TSEA.Original.Response {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Calendar")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="Calendar", IsNullable=false)]
-    public partial class Categories {
-        
-        private string[] categoryField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Category")]
-        public string[] Category {
-            get {
-                return this.categoryField;
-            }
-            set {
-                this.categoryField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Calendar")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="Calendar", IsNullable=false)]
-    public partial class Exceptions {
-        
-        private ExceptionsException[] exceptionField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Exception")]
-        public ExceptionsException[] Exception {
-            get {
-                return this.exceptionField;
-            }
-            set {
-                this.exceptionField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Calendar")]
-    public partial class ExceptionsException {
-        
-        private byte deletedField;
-        
-        private bool deletedFieldSpecified;
-        
-        private string exceptionStartTimeField;
-        
-        private string subjectField;
-        
-        private string startTimeField;
-        
-        private string endTimeField;
-        
-        private Body bodyField;
-        
-        private string locationField;
-        
-        private Categories categoriesField;
-        
-        private byte sensitivityField;
-        
-        private bool sensitivityFieldSpecified;
-        
-        private byte busyStatusField;
-        
-        private bool busyStatusFieldSpecified;
-        
-        private byte allDayEventField;
-        
-        private bool allDayEventFieldSpecified;
-        
-        private string reminderField;
-        
-        private string dtStampField;
-        
-        private byte meetingStatusField;
-        
-        private bool meetingStatusFieldSpecified;
-        
-        private AttendeesAttendee[] attendeesField;
-        
-        private string appointmentReplyTimeField;
-        
-        private uint responseTypeField;
-        
-        private bool responseTypeFieldSpecified;
-        
-        private string onlineMeetingConfLinkField;
-        
-        private string onlineMeetingExternalLinkField;
-        
-        /// <remarks/>
-        public byte Deleted {
-            get {
-                return this.deletedField;
-            }
-            set {
-                this.deletedField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool DeletedSpecified {
-            get {
-                return this.deletedFieldSpecified;
-            }
-            set {
-                this.deletedFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string ExceptionStartTime {
-            get {
-                return this.exceptionStartTimeField;
-            }
-            set {
-                this.exceptionStartTimeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Subject {
-            get {
-                return this.subjectField;
-            }
-            set {
-                this.subjectField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string StartTime {
-            get {
-                return this.startTimeField;
-            }
-            set {
-                this.startTimeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string EndTime {
-            get {
-                return this.endTimeField;
-            }
-            set {
-                this.endTimeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="AirSyncBase")]
-        public Body Body {
-            get {
-                return this.bodyField;
-            }
-            set {
-                this.bodyField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Location {
-            get {
-                return this.locationField;
-            }
-            set {
-                this.locationField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public Categories Categories {
-            get {
-                return this.categoriesField;
-            }
-            set {
-                this.categoriesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte Sensitivity {
-            get {
-                return this.sensitivityField;
-            }
-            set {
-                this.sensitivityField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool SensitivitySpecified {
-            get {
-                return this.sensitivityFieldSpecified;
-            }
-            set {
-                this.sensitivityFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte BusyStatus {
-            get {
-                return this.busyStatusField;
-            }
-            set {
-                this.busyStatusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool BusyStatusSpecified {
-            get {
-                return this.busyStatusFieldSpecified;
-            }
-            set {
-                this.busyStatusFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte AllDayEvent {
-            get {
-                return this.allDayEventField;
-            }
-            set {
-                this.allDayEventField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AllDayEventSpecified {
-            get {
-                return this.allDayEventFieldSpecified;
-            }
-            set {
-                this.allDayEventFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Reminder {
-            get {
-                return this.reminderField;
-            }
-            set {
-                this.reminderField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string DtStamp {
-            get {
-                return this.dtStampField;
-            }
-            set {
-                this.dtStampField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte MeetingStatus {
-            get {
-                return this.meetingStatusField;
-            }
-            set {
-                this.meetingStatusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool MeetingStatusSpecified {
-            get {
-                return this.meetingStatusFieldSpecified;
-            }
-            set {
-                this.meetingStatusFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Attendees", typeof(Attendees))]
-        public AttendeesAttendee[] Attendees {
-            get {
-                return this.attendeesField;
-            }
-            set {
-                this.attendeesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string AppointmentReplyTime {
-            get {
-                return this.appointmentReplyTimeField;
-            }
-            set {
-                this.appointmentReplyTimeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public uint ResponseType {
-            get {
-                return this.responseTypeField;
-            }
-            set {
-                this.responseTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool ResponseTypeSpecified {
-            get {
-                return this.responseTypeFieldSpecified;
-            }
-            set {
-                this.responseTypeFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string OnlineMeetingConfLink {
-            get {
-                return this.onlineMeetingConfLinkField;
-            }
-            set {
-                this.onlineMeetingConfLinkField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string OnlineMeetingExternalLink {
-            get {
-                return this.onlineMeetingExternalLinkField;
-            }
-            set {
-                this.onlineMeetingExternalLinkField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="AirSyncBase")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="AirSyncBase", IsNullable=false)]
-    public partial class Body {
-        
-        private byte typeField;
-        
-        private uint estimatedDataSizeField;
-        
-        private bool estimatedDataSizeFieldSpecified;
-        
-        private bool truncatedField;
-        
-        private bool truncatedFieldSpecified;
-        
-        private string dataField;
-        
-        private string previewField;
-        
-        private string partField;
-        
-        /// <remarks/>
-        public byte Type {
-            get {
-                return this.typeField;
-            }
-            set {
-                this.typeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public uint EstimatedDataSize {
-            get {
-                return this.estimatedDataSizeField;
-            }
-            set {
-                this.estimatedDataSizeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool EstimatedDataSizeSpecified {
-            get {
-                return this.estimatedDataSizeFieldSpecified;
-            }
-            set {
-                this.estimatedDataSizeFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool Truncated {
-            get {
-                return this.truncatedField;
-            }
-            set {
-                this.truncatedField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool TruncatedSpecified {
-            get {
-                return this.truncatedFieldSpecified;
-            }
-            set {
-                this.truncatedFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Data {
-            get {
-                return this.dataField;
-            }
-            set {
-                this.dataField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Preview {
-            get {
-                return this.previewField;
-            }
-            set {
-                this.previewField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="ItemOperations", DataType="integer")]
-        public string Part {
-            get {
-                return this.partField;
-            }
-            set {
-                this.partField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Calendar")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="Calendar", IsNullable=false)]
-    public partial class Recurrence {
-        
-        private byte typeField;
-        
-        private ushort occurrencesField;
-        
-        private bool occurrencesFieldSpecified;
-        
-        private ushort intervalField;
-        
-        private byte weekOfMonthField;
-        
-        private bool weekOfMonthFieldSpecified;
-        
-        private ushort dayOfWeekField;
-        
-        private bool dayOfWeekFieldSpecified;
-        
-        private byte monthOfYearField;
-        
-        private bool monthOfYearFieldSpecified;
-        
-        private string untilField;
-        
-        private byte dayOfMonthField;
-        
-        private bool dayOfMonthFieldSpecified;
-        
-        private byte calendarTypeField;
-        
-        private bool calendarTypeFieldSpecified;
-        
-        private byte isLeapMonthField;
-        
-        private bool isLeapMonthFieldSpecified;
-        
-        private byte firstDayOfWeekField;
-        
-        private bool firstDayOfWeekFieldSpecified;
-        
-        /// <remarks/>
-        public byte Type {
-            get {
-                return this.typeField;
-            }
-            set {
-                this.typeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public ushort Occurrences {
-            get {
-                return this.occurrencesField;
-            }
-            set {
-                this.occurrencesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool OccurrencesSpecified {
-            get {
-                return this.occurrencesFieldSpecified;
-            }
-            set {
-                this.occurrencesFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public ushort Interval {
-            get {
-                return this.intervalField;
-            }
-            set {
-                this.intervalField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte WeekOfMonth {
-            get {
-                return this.weekOfMonthField;
-            }
-            set {
-                this.weekOfMonthField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool WeekOfMonthSpecified {
-            get {
-                return this.weekOfMonthFieldSpecified;
-            }
-            set {
-                this.weekOfMonthFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public ushort DayOfWeek {
-            get {
-                return this.dayOfWeekField;
-            }
-            set {
-                this.dayOfWeekField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool DayOfWeekSpecified {
-            get {
-                return this.dayOfWeekFieldSpecified;
-            }
-            set {
-                this.dayOfWeekFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte MonthOfYear {
-            get {
-                return this.monthOfYearField;
-            }
-            set {
-                this.monthOfYearField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool MonthOfYearSpecified {
-            get {
-                return this.monthOfYearFieldSpecified;
-            }
-            set {
-                this.monthOfYearFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Until {
-            get {
-                return this.untilField;
-            }
-            set {
-                this.untilField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte DayOfMonth {
-            get {
-                return this.dayOfMonthField;
-            }
-            set {
-                this.dayOfMonthField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool DayOfMonthSpecified {
-            get {
-                return this.dayOfMonthFieldSpecified;
-            }
-            set {
-                this.dayOfMonthFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte CalendarType {
-            get {
-                return this.calendarTypeField;
-            }
-            set {
-                this.calendarTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool CalendarTypeSpecified {
-            get {
-                return this.calendarTypeFieldSpecified;
-            }
-            set {
-                this.calendarTypeFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte IsLeapMonth {
-            get {
-                return this.isLeapMonthField;
-            }
-            set {
-                this.isLeapMonthField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool IsLeapMonthSpecified {
-            get {
-                return this.isLeapMonthFieldSpecified;
-            }
-            set {
-                this.isLeapMonthFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte FirstDayOfWeek {
-            get {
-                return this.firstDayOfWeekField;
-            }
-            set {
-                this.firstDayOfWeekField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool FirstDayOfWeekSpecified {
-            get {
-                return this.firstDayOfWeekFieldSpecified;
-            }
-            set {
-                this.firstDayOfWeekFieldSpecified = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Contacts")]
-    [System.Xml.Serialization.XmlRootAttribute("Categories", Namespace="Contacts", IsNullable=false)]
-    public partial class Categories1 {
-        
-        private string[] categoryField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Category")]
-        public string[] Category {
-            get {
-                return this.categoryField;
-            }
-            set {
-                this.categoryField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Contacts")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="Contacts", IsNullable=false)]
-    public partial class Children {
-        
-        private string[] childField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Child")]
-        public string[] Child {
-            get {
-                return this.childField;
-            }
-            set {
-                this.childField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="AirSync", IncludeInSchema=false)]
-    public enum ItemsChoiceType {
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AllDayEvent")]
-        AllDayEvent,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Attendees")]
-        Attendees,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:BusyStatus")]
-        BusyStatus,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Categories")]
-        Categories,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DisallowNewTimeProposal")]
-        DisallowNewTimeProposal,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DtStamp")]
-        DtStamp,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:EndTime")]
-        EndTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Exceptions")]
-        Exceptions,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Location")]
-        Location,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:MeetingStatus")]
-        MeetingStatus,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerEmail")]
-        OrganizerEmail,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerName")]
-        OrganizerName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Recurrence")]
-        Recurrence,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Reminder")]
-        Reminder,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseRequested")]
-        ResponseRequested,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Sensitivity")]
-        Sensitivity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:StartTime")]
-        StartTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Subject")]
-        Subject,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Timezone")]
-        Timezone,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:UID")]
-        UID,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:AccountName")]
-        AccountName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CompanyMainPhone")]
-        CompanyMainPhone,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CustomerId")]
-        CustomerId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:GovernmentId")]
-        GovernmentId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress")]
-        IMAddress,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress2")]
-        IMAddress2,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress3")]
-        IMAddress3,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:MMS")]
-        MMS,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:ManagerName")]
-        ManagerName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:NickName")]
-        NickName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Anniversary")]
-        Anniversary,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantName")]
-        AssistantName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantPhoneNumber")]
-        AssistantPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Birthday")]
-        Birthday,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Business2PhoneNumber")]
-        Business2PhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCity")]
-        BusinessAddressCity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCountry")]
-        BusinessAddressCountry,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressPostalCode")]
-        BusinessAddressPostalCode,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressState")]
-        BusinessAddressState,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressStreet")]
-        BusinessAddressStreet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessFaxNumber")]
-        BusinessFaxNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessPhoneNumber")]
-        BusinessPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CarPhoneNumber")]
-        CarPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Categories")]
-        Categories1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Children")]
-        Children,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CompanyName")]
-        CompanyName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Department")]
-        Department,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email1Address")]
-        Email1Address,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email2Address")]
-        Email2Address,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email3Address")]
-        Email3Address,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FileAs")]
-        FileAs,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FirstName")]
-        FirstName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Home2PhoneNumber")]
-        Home2PhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCity")]
-        HomeAddressCity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCountry")]
-        HomeAddressCountry,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressPostalCode")]
-        HomeAddressPostalCode,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressState")]
-        HomeAddressState,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressStreet")]
-        HomeAddressStreet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeFaxNumber")]
-        HomeFaxNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomePhoneNumber")]
-        HomePhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:JobTitle")]
-        JobTitle,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:LastName")]
-        LastName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MiddleName")]
-        MiddleName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MobilePhoneNumber")]
-        MobilePhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OfficeLocation")]
-        OfficeLocation,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCity")]
-        OtherAddressCity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCountry")]
-        OtherAddressCountry,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressPostalCode")]
-        OtherAddressPostalCode,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressState")]
-        OtherAddressState,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressStreet")]
-        OtherAddressStreet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:PagerNumber")]
-        PagerNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Picture")]
-        Picture,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:RadioPhoneNumber")]
-        RadioPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Spouse")]
-        Spouse,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Suffix")]
-        Suffix,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Title")]
-        Title,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WebPage")]
-        WebPage,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiCompanyName")]
-        YomiCompanyName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiFirstName")]
-        YomiFirstName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiLastName")]
-        YomiLastName,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="AirSync")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="AirSync", IsNullable=false)]
-    public partial class SoftDelete {
-        
-        private string serverIdField;
-        
-        /// <remarks/>
-        public string ServerId {
-            get {
-                return this.serverIdField;
-            }
-            set {
-                this.serverIdField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="AirSync")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="AirSync", IsNullable=false)]
-    public partial class Options {
-        
-        private object[] itemsField;
-        
-        private ItemsChoiceType1[] itemsElementNameField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Class", typeof(string))]
-        [System.Xml.Serialization.XmlElementAttribute("Conflict", typeof(byte))]
-        [System.Xml.Serialization.XmlElementAttribute("FilterType", typeof(byte))]
-        [System.Xml.Serialization.XmlElementAttribute("MIMESupport", typeof(byte))]
-        [System.Xml.Serialization.XmlElementAttribute("MIMETruncation", typeof(byte))]
-        [System.Xml.Serialization.XmlElementAttribute("MaxItems", typeof(string), DataType="integer")]
-        [System.Xml.Serialization.XmlElementAttribute("BodyPartPreference", typeof(BodyPartPreference), Namespace="AirSyncBase")]
-        [System.Xml.Serialization.XmlElementAttribute("BodyPreference", typeof(BodyPreference), Namespace="AirSyncBase")]
-        [System.Xml.Serialization.XmlElementAttribute("RightsManagementSupport", typeof(bool), Namespace="RightsManagement")]
-        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
-        public object[] Items {
-            get {
-                return this.itemsField;
-            }
-            set {
-                this.itemsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType1[] ItemsElementName {
-            get {
-                return this.itemsElementNameField;
-            }
-            set {
-                this.itemsElementNameField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="AirSyncBase")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="AirSyncBase", IsNullable=false)]
-    public partial class BodyPartPreference {
-        
-        private byte typeField;
-        
-        private uint truncationSizeField;
-        
-        private bool truncationSizeFieldSpecified;
-        
-        private bool allOrNoneField;
-        
-        private bool allOrNoneFieldSpecified;
-        
-        private uint previewField;
-        
-        private bool previewFieldSpecified;
-        
-        /// <remarks/>
-        public byte Type {
-            get {
-                return this.typeField;
-            }
-            set {
-                this.typeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public uint TruncationSize {
-            get {
-                return this.truncationSizeField;
-            }
-            set {
-                this.truncationSizeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool TruncationSizeSpecified {
-            get {
-                return this.truncationSizeFieldSpecified;
-            }
-            set {
-                this.truncationSizeFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool AllOrNone {
-            get {
-                return this.allOrNoneField;
-            }
-            set {
-                this.allOrNoneField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AllOrNoneSpecified {
-            get {
-                return this.allOrNoneFieldSpecified;
-            }
-            set {
-                this.allOrNoneFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public uint Preview {
-            get {
-                return this.previewField;
-            }
-            set {
-                this.previewField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool PreviewSpecified {
-            get {
-                return this.previewFieldSpecified;
-            }
-            set {
-                this.previewFieldSpecified = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="AirSyncBase")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="AirSyncBase", IsNullable=false)]
-    public partial class BodyPreference {
-        
-        private byte typeField;
-        
-        private uint truncationSizeField;
-        
-        private bool truncationSizeFieldSpecified;
-        
-        private bool allOrNoneField;
-        
-        private bool allOrNoneFieldSpecified;
-        
-        private uint previewField;
-        
-        private bool previewFieldSpecified;
-        
-        /// <remarks/>
-        public byte Type {
-            get {
-                return this.typeField;
-            }
-            set {
-                this.typeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public uint TruncationSize {
-            get {
-                return this.truncationSizeField;
-            }
-            set {
-                this.truncationSizeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool TruncationSizeSpecified {
-            get {
-                return this.truncationSizeFieldSpecified;
-            }
-            set {
-                this.truncationSizeFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool AllOrNone {
-            get {
-                return this.allOrNoneField;
-            }
-            set {
-                this.allOrNoneField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AllOrNoneSpecified {
-            get {
-                return this.allOrNoneFieldSpecified;
-            }
-            set {
-                this.allOrNoneFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public uint Preview {
-            get {
-                return this.previewField;
-            }
-            set {
-                this.previewField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool PreviewSpecified {
-            get {
-                return this.previewFieldSpecified;
-            }
-            set {
-                this.previewFieldSpecified = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="AirSync", IncludeInSchema=false)]
-    public enum ItemsChoiceType1 {
-        
-        /// <remarks/>
-        Class,
-        
-        /// <remarks/>
-        Conflict,
-        
-        /// <remarks/>
-        FilterType,
-        
-        /// <remarks/>
-        MIMESupport,
-        
-        /// <remarks/>
-        MIMETruncation,
-        
-        /// <remarks/>
-        MaxItems,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:BodyPartPreference")]
-        BodyPartPreference,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:BodyPreference")]
-        BodyPreference,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("RightsManagement:RightsManagementSupport")]
-        RightsManagementSupport,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="AirSyncBase")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="AirSyncBase", IsNullable=false)]
-    public partial class BodyPart {
-        
-        private byte statusField;
-        
-        private byte typeField;
-        
-        private uint estimatedDataSizeField;
-        
-        private bool truncatedField;
-        
-        private bool truncatedFieldSpecified;
-        
-        private string dataField;
-        
-        private string previewField;
-        
-        /// <remarks/>
-        public byte Status {
-            get {
-                return this.statusField;
-            }
-            set {
-                this.statusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte Type {
-            get {
-                return this.typeField;
-            }
-            set {
-                this.typeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public uint EstimatedDataSize {
-            get {
-                return this.estimatedDataSizeField;
-            }
-            set {
-                this.estimatedDataSizeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool Truncated {
-            get {
-                return this.truncatedField;
-            }
-            set {
-                this.truncatedField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool TruncatedSpecified {
-            get {
-                return this.truncatedFieldSpecified;
-            }
-            set {
-                this.truncatedFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Data {
-            get {
-                return this.dataField;
-            }
-            set {
-                this.dataField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Preview {
-            get {
-                return this.previewField;
-            }
-            set {
-                this.previewField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="AirSyncBase")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="AirSyncBase", IsNullable=false)]
-    public partial class Attachments {
-        
-        private AttachmentsAttachment[] attachmentField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Attachment")]
-        public AttachmentsAttachment[] Attachment {
-            get {
-                return this.attachmentField;
-            }
-            set {
-                this.attachmentField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="AirSyncBase")]
-    public partial class AttachmentsAttachment {
-        
-        private string displayNameField;
-        
-        private string fileReferenceField;
-        
-        private byte methodField;
-        
-        private uint estimatedDataSizeField;
-        
-        private string contentIdField;
-        
-        private string contentLocationField;
-        
-        private bool isInlineField;
-        
-        private bool isInlineFieldSpecified;
-        
-        private string umAttDurationField;
-        
-        private string umAttOrderField;
-        
-        /// <remarks/>
-        public string DisplayName {
-            get {
-                return this.displayNameField;
-            }
-            set {
-                this.displayNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string FileReference {
-            get {
-                return this.fileReferenceField;
-            }
-            set {
-                this.fileReferenceField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte Method {
-            get {
-                return this.methodField;
-            }
-            set {
-                this.methodField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public uint EstimatedDataSize {
-            get {
-                return this.estimatedDataSizeField;
-            }
-            set {
-                this.estimatedDataSizeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string ContentId {
-            get {
-                return this.contentIdField;
-            }
-            set {
-                this.contentIdField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string ContentLocation {
-            get {
-                return this.contentLocationField;
-            }
-            set {
-                this.contentLocationField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool IsInline {
-            get {
-                return this.isInlineField;
-            }
-            set {
-                this.isInlineField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool IsInlineSpecified {
-            get {
-                return this.isInlineFieldSpecified;
-            }
-            set {
-                this.isInlineFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="Email2", DataType="integer")]
-        public string UmAttDuration {
-            get {
-                return this.umAttDurationField;
-            }
-            set {
-                this.umAttDurationField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="Email2", DataType="integer")]
-        public string UmAttOrder {
-            get {
-                return this.umAttOrderField;
-            }
-            set {
-                this.umAttOrderField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.microsoft.com/exchange/autodiscover/mobilesync/requestschema/2006")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://schemas.microsoft.com/exchange/autodiscover/mobilesync/requestschema/2006", IsNullable=false)]
-    public partial class Autodiscover {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/exchange/autodiscover/mobilesync/requestschema/2006")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://schemas.microsoft.com/exchange/autodiscover/mobilesync/requestschema/2006", IsNullable = false)]
+    public partial class Autodiscover
+    {
+
         private AutodiscoverResponse responseField;
-        
+
         /// <remarks/>
-        public AutodiscoverResponse Response {
-            get {
+        public AutodiscoverResponse Response
+        {
+            get
+            {
                 return this.responseField;
             }
-            set {
+            set
+            {
                 this.responseField = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.microsoft.com/exchange/autodiscover/mobilesync/requestschema/2006")]
-    public partial class AutodiscoverResponse {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/exchange/autodiscover/mobilesync/requestschema/2006")]
+    public partial class AutodiscoverResponse
+    {
+
         private string cultureField;
-        
+
         private AutodiscoverResponseUser userField;
-        
+
         private AutodiscoverResponseAction actionField;
-        
+
         private AutodiscoverResponseError errorField;
-        
+
         /// <remarks/>
-        public string Culture {
-            get {
+        public string Culture
+        {
+            get
+            {
                 return this.cultureField;
             }
-            set {
+            set
+            {
                 this.cultureField = value;
             }
         }
-        
+
         /// <remarks/>
-        public AutodiscoverResponseUser User {
-            get {
+        public AutodiscoverResponseUser User
+        {
+            get
+            {
                 return this.userField;
             }
-            set {
+            set
+            {
                 this.userField = value;
             }
         }
-        
+
         /// <remarks/>
-        public AutodiscoverResponseAction Action {
-            get {
+        public AutodiscoverResponseAction Action
+        {
+            get
+            {
                 return this.actionField;
             }
-            set {
+            set
+            {
                 this.actionField = value;
             }
         }
-        
+
         /// <remarks/>
-        public AutodiscoverResponseError Error {
-            get {
+        public AutodiscoverResponseError Error
+        {
+            get
+            {
                 return this.errorField;
             }
-            set {
+            set
+            {
                 this.errorField = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.microsoft.com/exchange/autodiscover/mobilesync/requestschema/2006")]
-    public partial class AutodiscoverResponseUser {
-        
-        private object displayNameField;
-        
-        private object eMailAddressField;
-        
-        /// <remarks/>
-        public object DisplayName {
-            get {
-                return this.displayNameField;
-            }
-            set {
-                this.displayNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public object EMailAddress {
-            get {
-                return this.eMailAddressField;
-            }
-            set {
-                this.eMailAddressField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.microsoft.com/exchange/autodiscover/mobilesync/requestschema/2006")]
-    public partial class AutodiscoverResponseAction {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/exchange/autodiscover/mobilesync/requestschema/2006")]
+    public partial class AutodiscoverResponseAction
+    {
+
         private string redirectField;
-        
+
         private AutodiscoverResponseActionServer[] settingsField;
-        
+
         private AutodiscoverResponseActionError errorField;
-        
+
         /// <remarks/>
-        public string Redirect {
-            get {
+        public string Redirect
+        {
+            get
+            {
                 return this.redirectField;
             }
-            set {
+            set
+            {
                 this.redirectField = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlArrayItemAttribute("Server", IsNullable=false)]
-        public AutodiscoverResponseActionServer[] Settings {
-            get {
+        [System.Xml.Serialization.XmlArrayItemAttribute("Server", IsNullable = false)]
+        public AutodiscoverResponseActionServer[] Settings
+        {
+            get
+            {
                 return this.settingsField;
             }
-            set {
+            set
+            {
                 this.settingsField = value;
             }
         }
-        
+
         /// <remarks/>
-        public AutodiscoverResponseActionError Error {
-            get {
+        public AutodiscoverResponseActionError Error
+        {
+            get
+            {
                 return this.errorField;
             }
-            set {
+            set
+            {
                 this.errorField = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.microsoft.com/exchange/autodiscover/mobilesync/requestschema/2006")]
-    public partial class AutodiscoverResponseActionServer {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/exchange/autodiscover/mobilesync/requestschema/2006")]
+    public partial class AutodiscoverResponseActionServer
+    {
+
         private string typeField;
-        
+
         private string urlField;
-        
+
         private string nameField;
-        
+
         private string serverDataField;
-        
+
         /// <remarks/>
-        public string Type {
-            get {
+        public string Type
+        {
+            get
+            {
                 return this.typeField;
             }
-            set {
+            set
+            {
                 this.typeField = value;
             }
         }
-        
+
         /// <remarks/>
-        public string Url {
-            get {
+        public string Url
+        {
+            get
+            {
                 return this.urlField;
             }
-            set {
+            set
+            {
                 this.urlField = value;
             }
         }
-        
+
         /// <remarks/>
-        public string Name {
-            get {
+        public string Name
+        {
+            get
+            {
                 return this.nameField;
             }
-            set {
+            set
+            {
                 this.nameField = value;
             }
         }
-        
+
         /// <remarks/>
-        public string ServerData {
-            get {
+        public string ServerData
+        {
+            get
+            {
                 return this.serverDataField;
             }
-            set {
+            set
+            {
                 this.serverDataField = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.microsoft.com/exchange/autodiscover/mobilesync/requestschema/2006")]
-    public partial class AutodiscoverResponseActionError {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/exchange/autodiscover/mobilesync/requestschema/2006")]
+    public partial class AutodiscoverResponseActionError
+    {
+
         private string statusField;
-        
+
         private string messageField;
-        
+
         private string debugDataField;
-        
+
         private string errorCodeField;
-        
+
         /// <remarks/>
-        public string Status {
-            get {
+        public string Status
+        {
+            get
+            {
                 return this.statusField;
             }
-            set {
+            set
+            {
                 this.statusField = value;
             }
         }
-        
+
         /// <remarks/>
-        public string Message {
-            get {
+        public string Message
+        {
+            get
+            {
                 return this.messageField;
             }
-            set {
+            set
+            {
                 this.messageField = value;
             }
         }
-        
+
         /// <remarks/>
-        public string DebugData {
-            get {
+        public string DebugData
+        {
+            get
+            {
                 return this.debugDataField;
             }
-            set {
+            set
+            {
                 this.debugDataField = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string ErrorCode {
-            get {
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string ErrorCode
+        {
+            get
+            {
                 return this.errorCodeField;
             }
-            set {
+            set
+            {
                 this.errorCodeField = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://schemas.microsoft.com/exchange/autodiscover/mobilesync/requestschema/2006")]
-    public partial class AutodiscoverResponseError {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/exchange/autodiscover/mobilesync/requestschema/2006")]
+    public partial class AutodiscoverResponseError
+    {
+
         private string errorCodeField;
-        
+
         private string messageField;
-        
+
         private string debugDataField;
-        
+
         private string timeField;
-        
+
         private uint idField;
-        
+
         private bool idFieldSpecified;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string ErrorCode {
-            get {
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string ErrorCode
+        {
+            get
+            {
                 return this.errorCodeField;
             }
-            set {
+            set
+            {
                 this.errorCodeField = value;
             }
         }
-        
+
         /// <remarks/>
-        public string Message {
-            get {
+        public string Message
+        {
+            get
+            {
                 return this.messageField;
             }
-            set {
+            set
+            {
                 this.messageField = value;
             }
         }
-        
+
         /// <remarks/>
-        public string DebugData {
-            get {
+        public string DebugData
+        {
+            get
+            {
                 return this.debugDataField;
             }
-            set {
+            set
+            {
                 this.debugDataField = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Time {
-            get {
+        public string Time
+        {
+            get
+            {
                 return this.timeField;
             }
-            set {
+            set
+            {
                 this.timeField = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public uint Id {
-            get {
+        public uint Id
+        {
+            get
+            {
                 return this.idField;
             }
-            set {
+            set
+            {
                 this.idField = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool IdSpecified {
-            get {
+        public bool IdSpecified
+        {
+            get
+            {
                 return this.idFieldSpecified;
             }
-            set {
+            set
+            {
                 this.idFieldSpecified = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="ComposeMail")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="ComposeMail", IsNullable=false)]
-    public partial class Source {
-        
-        private string folderIdField;
-        
-        private string itemIdField;
-        
-        private string longIdField;
-        
-        private string instanceIdField;
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://schemas.microsoft.com/exchange/autodiscover/mobilesync/requestschema/2006")]
+    public partial class AutodiscoverResponseUser
+    {
+
+        private object displayNameField;
+
+        private object eMailAddressField;
+
         /// <remarks/>
-        public string FolderId {
-            get {
-                return this.folderIdField;
+        public object DisplayName
+        {
+            get
+            {
+                return this.displayNameField;
             }
-            set {
-                this.folderIdField = value;
+            set
+            {
+                this.displayNameField = value;
             }
         }
-        
+
         /// <remarks/>
-        public string ItemId {
-            get {
-                return this.itemIdField;
+        public object EMailAddress
+        {
+            get
+            {
+                return this.eMailAddressField;
             }
-            set {
-                this.itemIdField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string LongId {
-            get {
-                return this.longIdField;
-            }
-            set {
-                this.longIdField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string InstanceId {
-            get {
-                return this.instanceIdField;
-            }
-            set {
-                this.instanceIdField = value;
+            set
+            {
+                this.eMailAddressField = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Email")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="Email", IsNullable=false)]
-    public partial class MeetingRequest {
-        
-        private byte allDayEventField;
-        
-        private bool allDayEventFieldSpecified;
-        
-        private System.DateTime startTimeField;
-        
-        private System.DateTime dtStampField;
-        
-        private System.DateTime endTimeField;
-        
-        private byte instanceTypeField;
-        
-        private string locationField;
-        
-        private string organizerField;
-        
-        private System.DateTime recurrenceIdField;
-        
-        private bool recurrenceIdFieldSpecified;
-        
-        private ushort reminderField;
-        
-        private bool reminderFieldSpecified;
-        
-        private byte responseRequestedField;
-        
-        private bool responseRequestedFieldSpecified;
-        
-        private MeetingRequestRecurrences recurrencesField;
-        
-        private string sensitivityField;
-        
-        private string busyStatusField;
-        
-        private string timeZoneField;
-        
-        private string globalObjIdField;
-        
-        private byte disallowNewTimeProposalField;
-        
-        private bool disallowNewTimeProposalFieldSpecified;
-        
-        private byte meetingMessageTypeField;
-        
-        /// <remarks/>
-        public byte AllDayEvent {
-            get {
-                return this.allDayEventField;
-            }
-            set {
-                this.allDayEventField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AllDayEventSpecified {
-            get {
-                return this.allDayEventFieldSpecified;
-            }
-            set {
-                this.allDayEventFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime StartTime {
-            get {
-                return this.startTimeField;
-            }
-            set {
-                this.startTimeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime DtStamp {
-            get {
-                return this.dtStampField;
-            }
-            set {
-                this.dtStampField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime EndTime {
-            get {
-                return this.endTimeField;
-            }
-            set {
-                this.endTimeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte InstanceType {
-            get {
-                return this.instanceTypeField;
-            }
-            set {
-                this.instanceTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Location {
-            get {
-                return this.locationField;
-            }
-            set {
-                this.locationField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Organizer {
-            get {
-                return this.organizerField;
-            }
-            set {
-                this.organizerField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime RecurrenceId {
-            get {
-                return this.recurrenceIdField;
-            }
-            set {
-                this.recurrenceIdField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool RecurrenceIdSpecified {
-            get {
-                return this.recurrenceIdFieldSpecified;
-            }
-            set {
-                this.recurrenceIdFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public ushort Reminder {
-            get {
-                return this.reminderField;
-            }
-            set {
-                this.reminderField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool ReminderSpecified {
-            get {
-                return this.reminderFieldSpecified;
-            }
-            set {
-                this.reminderFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte ResponseRequested {
-            get {
-                return this.responseRequestedField;
-            }
-            set {
-                this.responseRequestedField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool ResponseRequestedSpecified {
-            get {
-                return this.responseRequestedFieldSpecified;
-            }
-            set {
-                this.responseRequestedFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public MeetingRequestRecurrences Recurrences {
-            get {
-                return this.recurrencesField;
-            }
-            set {
-                this.recurrencesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string Sensitivity {
-            get {
-                return this.sensitivityField;
-            }
-            set {
-                this.sensitivityField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string BusyStatus {
-            get {
-                return this.busyStatusField;
-            }
-            set {
-                this.busyStatusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string TimeZone {
-            get {
-                return this.timeZoneField;
-            }
-            set {
-                this.timeZoneField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string GlobalObjId {
-            get {
-                return this.globalObjIdField;
-            }
-            set {
-                this.globalObjIdField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte DisallowNewTimeProposal {
-            get {
-                return this.disallowNewTimeProposalField;
-            }
-            set {
-                this.disallowNewTimeProposalField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool DisallowNewTimeProposalSpecified {
-            get {
-                return this.disallowNewTimeProposalFieldSpecified;
-            }
-            set {
-                this.disallowNewTimeProposalFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="Email2")]
-        public byte MeetingMessageType {
-            get {
-                return this.meetingMessageTypeField;
-            }
-            set {
-                this.meetingMessageTypeField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Email")]
-    public partial class MeetingRequestRecurrences {
-        
-        private MeetingRequestRecurrencesRecurrence recurrenceField;
-        
-        /// <remarks/>
-        public MeetingRequestRecurrencesRecurrence Recurrence {
-            get {
-                return this.recurrenceField;
-            }
-            set {
-                this.recurrenceField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Email")]
-    public partial class MeetingRequestRecurrencesRecurrence {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "AirSyncBase")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "AirSyncBase", IsNullable = false)]
+    public partial class Body
+    {
+
         private byte typeField;
-        
-        private string intervalField;
-        
-        private System.DateTime untilField;
-        
-        private string occurrencesField;
-        
-        private string weekOfMonthField;
-        
-        private string dayOfMonthField;
-        
-        private string dayOfWeekField;
-        
-        private string monthOfYearField;
-        
-        private string calendarTypeField;
-        
-        private byte isLeapMonthField;
-        
-        private bool isLeapMonthFieldSpecified;
-        
-        private byte firstDayOfWeekField;
-        
-        private bool firstDayOfWeekFieldSpecified;
-        
+
+        private uint estimatedDataSizeField;
+
+        private bool estimatedDataSizeFieldSpecified;
+
+        private bool truncatedField;
+
+        private bool truncatedFieldSpecified;
+
+        private string dataField;
+
+        private string previewField;
+
+        private string partField;
+
         /// <remarks/>
-        public byte Type {
-            get {
+        public byte Type
+        {
+            get
+            {
                 return this.typeField;
             }
-            set {
+            set
+            {
                 this.typeField = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string Interval {
-            get {
-                return this.intervalField;
+        public uint EstimatedDataSize
+        {
+            get
+            {
+                return this.estimatedDataSizeField;
             }
-            set {
-                this.intervalField = value;
+            set
+            {
+                this.estimatedDataSizeField = value;
             }
         }
-        
-        /// <remarks/>
-        public System.DateTime Until {
-            get {
-                return this.untilField;
-            }
-            set {
-                this.untilField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string Occurrences {
-            get {
-                return this.occurrencesField;
-            }
-            set {
-                this.occurrencesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string WeekOfMonth {
-            get {
-                return this.weekOfMonthField;
-            }
-            set {
-                this.weekOfMonthField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string DayOfMonth {
-            get {
-                return this.dayOfMonthField;
-            }
-            set {
-                this.dayOfMonthField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string DayOfWeek {
-            get {
-                return this.dayOfWeekField;
-            }
-            set {
-                this.dayOfWeekField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string MonthOfYear {
-            get {
-                return this.monthOfYearField;
-            }
-            set {
-                this.monthOfYearField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="Email2", DataType="integer")]
-        public string CalendarType {
-            get {
-                return this.calendarTypeField;
-            }
-            set {
-                this.calendarTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="Email2")]
-        public byte IsLeapMonth {
-            get {
-                return this.isLeapMonthField;
-            }
-            set {
-                this.isLeapMonthField = value;
-            }
-        }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool IsLeapMonthSpecified {
-            get {
-                return this.isLeapMonthFieldSpecified;
+        public bool EstimatedDataSizeSpecified
+        {
+            get
+            {
+                return this.estimatedDataSizeFieldSpecified;
             }
-            set {
-                this.isLeapMonthFieldSpecified = value;
+            set
+            {
+                this.estimatedDataSizeFieldSpecified = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="Email2")]
-        public byte FirstDayOfWeek {
-            get {
-                return this.firstDayOfWeekField;
+        public bool Truncated
+        {
+            get
+            {
+                return this.truncatedField;
             }
-            set {
-                this.firstDayOfWeekField = value;
+            set
+            {
+                this.truncatedField = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool FirstDayOfWeekSpecified {
-            get {
-                return this.firstDayOfWeekFieldSpecified;
+        public bool TruncatedSpecified
+        {
+            get
+            {
+                return this.truncatedFieldSpecified;
             }
-            set {
-                this.firstDayOfWeekFieldSpecified = value;
+            set
+            {
+                this.truncatedFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public string Data
+        {
+            get
+            {
+                return this.dataField;
+            }
+            set
+            {
+                this.dataField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string Preview
+        {
+            get
+            {
+                return this.previewField;
+            }
+            set
+            {
+                this.previewField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "ItemOperations", DataType = "integer")]
+        public string Part
+        {
+            get
+            {
+                return this.partField;
+            }
+            set
+            {
+                this.partField = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Email")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="Email", IsNullable=false)]
-    public partial class Flag {
-        
-        private string subjectField;
-        
-        private string statusField;
-        
-        private string flagTypeField;
-        
-        private System.DateTime dateCompletedField;
-        
-        private bool dateCompletedFieldSpecified;
-        
-        private System.DateTime completeTimeField;
-        
-        private bool completeTimeFieldSpecified;
-        
-        private System.DateTime startDateField;
-        
-        private bool startDateFieldSpecified;
-        
-        private System.DateTime dueDateField;
-        
-        private bool dueDateFieldSpecified;
-        
-        private System.DateTime utcStartDateField;
-        
-        private bool utcStartDateFieldSpecified;
-        
-        private System.DateTime utcDueDateField;
-        
-        private bool utcDueDateFieldSpecified;
-        
-        private byte reminderSetField;
-        
-        private bool reminderSetFieldSpecified;
-        
-        private System.DateTime reminderTimeField;
-        
-        private bool reminderTimeFieldSpecified;
-        
-        private System.DateTime ordinalDateField;
-        
-        private bool ordinalDateFieldSpecified;
-        
-        private string subOrdinalDateField;
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "AirSyncBase")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "AirSyncBase", IsNullable = false)]
+    public partial class BodyPart
+    {
+
+        private byte statusField;
+
+        private byte typeField;
+
+        private uint estimatedDataSizeField;
+
+        private bool truncatedField;
+
+        private bool truncatedFieldSpecified;
+
+        private string dataField;
+
+        private string previewField;
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="Tasks")]
-        public string Subject {
-            get {
-                return this.subjectField;
-            }
-            set {
-                this.subjectField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string Status {
-            get {
+        public byte Status
+        {
+            get
+            {
                 return this.statusField;
             }
-            set {
+            set
+            {
                 this.statusField = value;
             }
         }
-        
+
         /// <remarks/>
-        public string FlagType {
-            get {
+        public byte Type
+        {
+            get
+            {
+                return this.typeField;
+            }
+            set
+            {
+                this.typeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public uint EstimatedDataSize
+        {
+            get
+            {
+                return this.estimatedDataSizeField;
+            }
+            set
+            {
+                this.estimatedDataSizeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool Truncated
+        {
+            get
+            {
+                return this.truncatedField;
+            }
+            set
+            {
+                this.truncatedField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool TruncatedSpecified
+        {
+            get
+            {
+                return this.truncatedFieldSpecified;
+            }
+            set
+            {
+                this.truncatedFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public string Data
+        {
+            get
+            {
+                return this.dataField;
+            }
+            set
+            {
+                this.dataField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string Preview
+        {
+            get
+            {
+                return this.previewField;
+            }
+            set
+            {
+                this.previewField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "AirSyncBase")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "AirSyncBase", IsNullable = false)]
+    public partial class BodyPartPreference
+    {
+
+        private byte typeField;
+
+        private uint truncationSizeField;
+
+        private bool truncationSizeFieldSpecified;
+
+        private bool allOrNoneField;
+
+        private bool allOrNoneFieldSpecified;
+
+        private uint previewField;
+
+        private bool previewFieldSpecified;
+
+        /// <remarks/>
+        public byte Type
+        {
+            get
+            {
+                return this.typeField;
+            }
+            set
+            {
+                this.typeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public uint TruncationSize
+        {
+            get
+            {
+                return this.truncationSizeField;
+            }
+            set
+            {
+                this.truncationSizeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool TruncationSizeSpecified
+        {
+            get
+            {
+                return this.truncationSizeFieldSpecified;
+            }
+            set
+            {
+                this.truncationSizeFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool AllOrNone
+        {
+            get
+            {
+                return this.allOrNoneField;
+            }
+            set
+            {
+                this.allOrNoneField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AllOrNoneSpecified
+        {
+            get
+            {
+                return this.allOrNoneFieldSpecified;
+            }
+            set
+            {
+                this.allOrNoneFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public uint Preview
+        {
+            get
+            {
+                return this.previewField;
+            }
+            set
+            {
+                this.previewField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool PreviewSpecified
+        {
+            get
+            {
+                return this.previewFieldSpecified;
+            }
+            set
+            {
+                this.previewFieldSpecified = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "AirSyncBase")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "AirSyncBase", IsNullable = false)]
+    public partial class BodyPreference
+    {
+
+        private byte typeField;
+
+        private uint truncationSizeField;
+
+        private bool truncationSizeFieldSpecified;
+
+        private bool allOrNoneField;
+
+        private bool allOrNoneFieldSpecified;
+
+        private uint previewField;
+
+        private bool previewFieldSpecified;
+
+        /// <remarks/>
+        public byte Type
+        {
+            get
+            {
+                return this.typeField;
+            }
+            set
+            {
+                this.typeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public uint TruncationSize
+        {
+            get
+            {
+                return this.truncationSizeField;
+            }
+            set
+            {
+                this.truncationSizeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool TruncationSizeSpecified
+        {
+            get
+            {
+                return this.truncationSizeFieldSpecified;
+            }
+            set
+            {
+                this.truncationSizeFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool AllOrNone
+        {
+            get
+            {
+                return this.allOrNoneField;
+            }
+            set
+            {
+                this.allOrNoneField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AllOrNoneSpecified
+        {
+            get
+            {
+                return this.allOrNoneFieldSpecified;
+            }
+            set
+            {
+                this.allOrNoneFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public uint Preview
+        {
+            get
+            {
+                return this.previewField;
+            }
+            set
+            {
+                this.previewField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool PreviewSpecified
+        {
+            get
+            {
+                return this.previewFieldSpecified;
+            }
+            set
+            {
+                this.previewFieldSpecified = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Calendar")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "Calendar", IsNullable = false)]
+    public partial class Categories
+    {
+
+        private string[] categoryField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Category")]
+        public string[] Category
+        {
+            get
+            {
+                return this.categoryField;
+            }
+            set
+            {
+                this.categoryField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Contacts")]
+    [System.Xml.Serialization.XmlRootAttribute("Categories", Namespace = "Contacts", IsNullable = false)]
+    public partial class Categories1
+    {
+
+        private string[] categoryField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Category")]
+        public string[] Category
+        {
+            get
+            {
+                return this.categoryField;
+            }
+            set
+            {
+                this.categoryField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Email")]
+    [System.Xml.Serialization.XmlRootAttribute("Categories", Namespace = "Email", IsNullable = false)]
+    public partial class Categories2
+    {
+
+        private string[] categoryField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Category")]
+        public string[] Category
+        {
+            get
+            {
+                return this.categoryField;
+            }
+            set
+            {
+                this.categoryField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Notes")]
+    [System.Xml.Serialization.XmlRootAttribute("Categories", Namespace = "Notes", IsNullable = false)]
+    public partial class Categories3
+    {
+
+        private string[] categoryField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Category")]
+        public string[] Category
+        {
+            get
+            {
+                return this.categoryField;
+            }
+            set
+            {
+                this.categoryField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Tasks")]
+    [System.Xml.Serialization.XmlRootAttribute("Categories", Namespace = "Tasks", IsNullable = false)]
+    public partial class Categories4
+    {
+
+        private string[] categoryField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Category")]
+        public string[] Category
+        {
+            get
+            {
+                return this.categoryField;
+            }
+            set
+            {
+                this.categoryField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Contacts")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "Contacts", IsNullable = false)]
+    public partial class Children
+    {
+
+        private string[] childField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Child")]
+        public string[] Child
+        {
+            get
+            {
+                return this.childField;
+            }
+            set
+            {
+                this.childField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Settings")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "Settings", IsNullable = false)]
+    public partial class DeviceInformation
+    {
+
+        private string statusField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string Status
+        {
+            get
+            {
+                return this.statusField;
+            }
+            set
+            {
+                this.statusField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Provision")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "Provision", IsNullable = false)]
+    public partial class EASProvisionDoc
+    {
+
+        private bool devicePasswordEnabledField;
+
+        private bool devicePasswordEnabledFieldSpecified;
+
+        private bool alphanumericDevicePasswordRequiredField;
+
+        private bool alphanumericDevicePasswordRequiredFieldSpecified;
+
+        private bool passwordRecoveryEnabledField;
+
+        private bool passwordRecoveryEnabledFieldSpecified;
+
+        private bool requireStorageCardEncryptionField;
+
+        private bool requireStorageCardEncryptionFieldSpecified;
+
+        private bool attachmentsEnabledField;
+
+        private bool attachmentsEnabledFieldSpecified;
+
+        private string minDevicePasswordLengthField;
+
+        private string maxInactivityTimeDeviceLockField;
+
+        private string maxDevicePasswordFailedAttemptsField;
+
+        private string maxAttachmentSizeField;
+
+        private bool allowSimpleDevicePasswordField;
+
+        private bool allowSimpleDevicePasswordFieldSpecified;
+
+        private string devicePasswordExpirationField;
+
+        private uint devicePasswordHistoryField;
+
+        private bool devicePasswordHistoryFieldSpecified;
+
+        private bool allowStorageCardField;
+
+        private bool allowStorageCardFieldSpecified;
+
+        private bool allowCameraField;
+
+        private bool allowCameraFieldSpecified;
+
+        private bool requireDeviceEncryptionField;
+
+        private bool requireDeviceEncryptionFieldSpecified;
+
+        private bool allowUnsignedApplicationsField;
+
+        private bool allowUnsignedApplicationsFieldSpecified;
+
+        private bool allowUnsignedInstallationPackagesField;
+
+        private bool allowUnsignedInstallationPackagesFieldSpecified;
+
+        private byte minDevicePasswordComplexCharactersField;
+
+        private bool minDevicePasswordComplexCharactersFieldSpecified;
+
+        private bool allowWiFiField;
+
+        private bool allowWiFiFieldSpecified;
+
+        private bool allowTextMessagingField;
+
+        private bool allowTextMessagingFieldSpecified;
+
+        private bool allowPOPIMAPEmailField;
+
+        private bool allowPOPIMAPEmailFieldSpecified;
+
+        private byte allowBluetoothField;
+
+        private bool allowBluetoothFieldSpecified;
+
+        private bool allowIrDAField;
+
+        private bool allowIrDAFieldSpecified;
+
+        private bool requireManualSyncWhenRoamingField;
+
+        private bool requireManualSyncWhenRoamingFieldSpecified;
+
+        private bool allowDesktopSyncField;
+
+        private bool allowDesktopSyncFieldSpecified;
+
+        private uint maxCalendarAgeFilterField;
+
+        private bool maxCalendarAgeFilterFieldSpecified;
+
+        private bool allowHTMLEmailField;
+
+        private bool allowHTMLEmailFieldSpecified;
+
+        private uint maxEmailAgeFilterField;
+
+        private bool maxEmailAgeFilterFieldSpecified;
+
+        private string maxEmailBodyTruncationSizeField;
+
+        private string maxEmailHTMLBodyTruncationSizeField;
+
+        private bool requireSignedSMIMEMessagesField;
+
+        private bool requireSignedSMIMEMessagesFieldSpecified;
+
+        private bool requireEncryptedSMIMEMessagesField;
+
+        private bool requireEncryptedSMIMEMessagesFieldSpecified;
+
+        private string requireSignedSMIMEAlgorithmField;
+
+        private string requireEncryptionSMIMEAlgorithmField;
+
+        private string allowSMIMEEncryptionAlgorithmNegotiationField;
+
+        private bool allowSMIMESoftCertsField;
+
+        private bool allowSMIMESoftCertsFieldSpecified;
+
+        private bool allowBrowserField;
+
+        private bool allowBrowserFieldSpecified;
+
+        private bool allowConsumerEmailField;
+
+        private bool allowConsumerEmailFieldSpecified;
+
+        private bool allowRemoteDesktopField;
+
+        private bool allowRemoteDesktopFieldSpecified;
+
+        private bool allowInternetSharingField;
+
+        private bool allowInternetSharingFieldSpecified;
+
+        private string[] unapprovedInROMApplicationListField;
+
+        private string[] approvedApplicationListField;
+
+        /// <remarks/>
+        public bool DevicePasswordEnabled
+        {
+            get
+            {
+                return this.devicePasswordEnabledField;
+            }
+            set
+            {
+                this.devicePasswordEnabledField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool DevicePasswordEnabledSpecified
+        {
+            get
+            {
+                return this.devicePasswordEnabledFieldSpecified;
+            }
+            set
+            {
+                this.devicePasswordEnabledFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool AlphanumericDevicePasswordRequired
+        {
+            get
+            {
+                return this.alphanumericDevicePasswordRequiredField;
+            }
+            set
+            {
+                this.alphanumericDevicePasswordRequiredField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AlphanumericDevicePasswordRequiredSpecified
+        {
+            get
+            {
+                return this.alphanumericDevicePasswordRequiredFieldSpecified;
+            }
+            set
+            {
+                this.alphanumericDevicePasswordRequiredFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool PasswordRecoveryEnabled
+        {
+            get
+            {
+                return this.passwordRecoveryEnabledField;
+            }
+            set
+            {
+                this.passwordRecoveryEnabledField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool PasswordRecoveryEnabledSpecified
+        {
+            get
+            {
+                return this.passwordRecoveryEnabledFieldSpecified;
+            }
+            set
+            {
+                this.passwordRecoveryEnabledFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool RequireStorageCardEncryption
+        {
+            get
+            {
+                return this.requireStorageCardEncryptionField;
+            }
+            set
+            {
+                this.requireStorageCardEncryptionField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool RequireStorageCardEncryptionSpecified
+        {
+            get
+            {
+                return this.requireStorageCardEncryptionFieldSpecified;
+            }
+            set
+            {
+                this.requireStorageCardEncryptionFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool AttachmentsEnabled
+        {
+            get
+            {
+                return this.attachmentsEnabledField;
+            }
+            set
+            {
+                this.attachmentsEnabledField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AttachmentsEnabledSpecified
+        {
+            get
+            {
+                return this.attachmentsEnabledFieldSpecified;
+            }
+            set
+            {
+                this.attachmentsEnabledFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public string MinDevicePasswordLength
+        {
+            get
+            {
+                return this.minDevicePasswordLengthField;
+            }
+            set
+            {
+                this.minDevicePasswordLengthField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string MaxInactivityTimeDeviceLock
+        {
+            get
+            {
+                return this.maxInactivityTimeDeviceLockField;
+            }
+            set
+            {
+                this.maxInactivityTimeDeviceLockField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string MaxDevicePasswordFailedAttempts
+        {
+            get
+            {
+                return this.maxDevicePasswordFailedAttemptsField;
+            }
+            set
+            {
+                this.maxDevicePasswordFailedAttemptsField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string MaxAttachmentSize
+        {
+            get
+            {
+                return this.maxAttachmentSizeField;
+            }
+            set
+            {
+                this.maxAttachmentSizeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool AllowSimpleDevicePassword
+        {
+            get
+            {
+                return this.allowSimpleDevicePasswordField;
+            }
+            set
+            {
+                this.allowSimpleDevicePasswordField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AllowSimpleDevicePasswordSpecified
+        {
+            get
+            {
+                return this.allowSimpleDevicePasswordFieldSpecified;
+            }
+            set
+            {
+                this.allowSimpleDevicePasswordFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public string DevicePasswordExpiration
+        {
+            get
+            {
+                return this.devicePasswordExpirationField;
+            }
+            set
+            {
+                this.devicePasswordExpirationField = value;
+            }
+        }
+
+        /// <remarks/>
+        public uint DevicePasswordHistory
+        {
+            get
+            {
+                return this.devicePasswordHistoryField;
+            }
+            set
+            {
+                this.devicePasswordHistoryField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool DevicePasswordHistorySpecified
+        {
+            get
+            {
+                return this.devicePasswordHistoryFieldSpecified;
+            }
+            set
+            {
+                this.devicePasswordHistoryFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool AllowStorageCard
+        {
+            get
+            {
+                return this.allowStorageCardField;
+            }
+            set
+            {
+                this.allowStorageCardField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AllowStorageCardSpecified
+        {
+            get
+            {
+                return this.allowStorageCardFieldSpecified;
+            }
+            set
+            {
+                this.allowStorageCardFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool AllowCamera
+        {
+            get
+            {
+                return this.allowCameraField;
+            }
+            set
+            {
+                this.allowCameraField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AllowCameraSpecified
+        {
+            get
+            {
+                return this.allowCameraFieldSpecified;
+            }
+            set
+            {
+                this.allowCameraFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool RequireDeviceEncryption
+        {
+            get
+            {
+                return this.requireDeviceEncryptionField;
+            }
+            set
+            {
+                this.requireDeviceEncryptionField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool RequireDeviceEncryptionSpecified
+        {
+            get
+            {
+                return this.requireDeviceEncryptionFieldSpecified;
+            }
+            set
+            {
+                this.requireDeviceEncryptionFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool AllowUnsignedApplications
+        {
+            get
+            {
+                return this.allowUnsignedApplicationsField;
+            }
+            set
+            {
+                this.allowUnsignedApplicationsField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AllowUnsignedApplicationsSpecified
+        {
+            get
+            {
+                return this.allowUnsignedApplicationsFieldSpecified;
+            }
+            set
+            {
+                this.allowUnsignedApplicationsFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool AllowUnsignedInstallationPackages
+        {
+            get
+            {
+                return this.allowUnsignedInstallationPackagesField;
+            }
+            set
+            {
+                this.allowUnsignedInstallationPackagesField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AllowUnsignedInstallationPackagesSpecified
+        {
+            get
+            {
+                return this.allowUnsignedInstallationPackagesFieldSpecified;
+            }
+            set
+            {
+                this.allowUnsignedInstallationPackagesFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte MinDevicePasswordComplexCharacters
+        {
+            get
+            {
+                return this.minDevicePasswordComplexCharactersField;
+            }
+            set
+            {
+                this.minDevicePasswordComplexCharactersField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool MinDevicePasswordComplexCharactersSpecified
+        {
+            get
+            {
+                return this.minDevicePasswordComplexCharactersFieldSpecified;
+            }
+            set
+            {
+                this.minDevicePasswordComplexCharactersFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool AllowWiFi
+        {
+            get
+            {
+                return this.allowWiFiField;
+            }
+            set
+            {
+                this.allowWiFiField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AllowWiFiSpecified
+        {
+            get
+            {
+                return this.allowWiFiFieldSpecified;
+            }
+            set
+            {
+                this.allowWiFiFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool AllowTextMessaging
+        {
+            get
+            {
+                return this.allowTextMessagingField;
+            }
+            set
+            {
+                this.allowTextMessagingField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AllowTextMessagingSpecified
+        {
+            get
+            {
+                return this.allowTextMessagingFieldSpecified;
+            }
+            set
+            {
+                this.allowTextMessagingFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool AllowPOPIMAPEmail
+        {
+            get
+            {
+                return this.allowPOPIMAPEmailField;
+            }
+            set
+            {
+                this.allowPOPIMAPEmailField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AllowPOPIMAPEmailSpecified
+        {
+            get
+            {
+                return this.allowPOPIMAPEmailFieldSpecified;
+            }
+            set
+            {
+                this.allowPOPIMAPEmailFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte AllowBluetooth
+        {
+            get
+            {
+                return this.allowBluetoothField;
+            }
+            set
+            {
+                this.allowBluetoothField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AllowBluetoothSpecified
+        {
+            get
+            {
+                return this.allowBluetoothFieldSpecified;
+            }
+            set
+            {
+                this.allowBluetoothFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool AllowIrDA
+        {
+            get
+            {
+                return this.allowIrDAField;
+            }
+            set
+            {
+                this.allowIrDAField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AllowIrDASpecified
+        {
+            get
+            {
+                return this.allowIrDAFieldSpecified;
+            }
+            set
+            {
+                this.allowIrDAFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool RequireManualSyncWhenRoaming
+        {
+            get
+            {
+                return this.requireManualSyncWhenRoamingField;
+            }
+            set
+            {
+                this.requireManualSyncWhenRoamingField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool RequireManualSyncWhenRoamingSpecified
+        {
+            get
+            {
+                return this.requireManualSyncWhenRoamingFieldSpecified;
+            }
+            set
+            {
+                this.requireManualSyncWhenRoamingFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool AllowDesktopSync
+        {
+            get
+            {
+                return this.allowDesktopSyncField;
+            }
+            set
+            {
+                this.allowDesktopSyncField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AllowDesktopSyncSpecified
+        {
+            get
+            {
+                return this.allowDesktopSyncFieldSpecified;
+            }
+            set
+            {
+                this.allowDesktopSyncFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public uint MaxCalendarAgeFilter
+        {
+            get
+            {
+                return this.maxCalendarAgeFilterField;
+            }
+            set
+            {
+                this.maxCalendarAgeFilterField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool MaxCalendarAgeFilterSpecified
+        {
+            get
+            {
+                return this.maxCalendarAgeFilterFieldSpecified;
+            }
+            set
+            {
+                this.maxCalendarAgeFilterFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool AllowHTMLEmail
+        {
+            get
+            {
+                return this.allowHTMLEmailField;
+            }
+            set
+            {
+                this.allowHTMLEmailField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AllowHTMLEmailSpecified
+        {
+            get
+            {
+                return this.allowHTMLEmailFieldSpecified;
+            }
+            set
+            {
+                this.allowHTMLEmailFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public uint MaxEmailAgeFilter
+        {
+            get
+            {
+                return this.maxEmailAgeFilterField;
+            }
+            set
+            {
+                this.maxEmailAgeFilterField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool MaxEmailAgeFilterSpecified
+        {
+            get
+            {
+                return this.maxEmailAgeFilterFieldSpecified;
+            }
+            set
+            {
+                this.maxEmailAgeFilterFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string MaxEmailBodyTruncationSize
+        {
+            get
+            {
+                return this.maxEmailBodyTruncationSizeField;
+            }
+            set
+            {
+                this.maxEmailBodyTruncationSizeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string MaxEmailHTMLBodyTruncationSize
+        {
+            get
+            {
+                return this.maxEmailHTMLBodyTruncationSizeField;
+            }
+            set
+            {
+                this.maxEmailHTMLBodyTruncationSizeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool RequireSignedSMIMEMessages
+        {
+            get
+            {
+                return this.requireSignedSMIMEMessagesField;
+            }
+            set
+            {
+                this.requireSignedSMIMEMessagesField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool RequireSignedSMIMEMessagesSpecified
+        {
+            get
+            {
+                return this.requireSignedSMIMEMessagesFieldSpecified;
+            }
+            set
+            {
+                this.requireSignedSMIMEMessagesFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool RequireEncryptedSMIMEMessages
+        {
+            get
+            {
+                return this.requireEncryptedSMIMEMessagesField;
+            }
+            set
+            {
+                this.requireEncryptedSMIMEMessagesField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool RequireEncryptedSMIMEMessagesSpecified
+        {
+            get
+            {
+                return this.requireEncryptedSMIMEMessagesFieldSpecified;
+            }
+            set
+            {
+                this.requireEncryptedSMIMEMessagesFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string RequireSignedSMIMEAlgorithm
+        {
+            get
+            {
+                return this.requireSignedSMIMEAlgorithmField;
+            }
+            set
+            {
+                this.requireSignedSMIMEAlgorithmField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string RequireEncryptionSMIMEAlgorithm
+        {
+            get
+            {
+                return this.requireEncryptionSMIMEAlgorithmField;
+            }
+            set
+            {
+                this.requireEncryptionSMIMEAlgorithmField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string AllowSMIMEEncryptionAlgorithmNegotiation
+        {
+            get
+            {
+                return this.allowSMIMEEncryptionAlgorithmNegotiationField;
+            }
+            set
+            {
+                this.allowSMIMEEncryptionAlgorithmNegotiationField = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool AllowSMIMESoftCerts
+        {
+            get
+            {
+                return this.allowSMIMESoftCertsField;
+            }
+            set
+            {
+                this.allowSMIMESoftCertsField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AllowSMIMESoftCertsSpecified
+        {
+            get
+            {
+                return this.allowSMIMESoftCertsFieldSpecified;
+            }
+            set
+            {
+                this.allowSMIMESoftCertsFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool AllowBrowser
+        {
+            get
+            {
+                return this.allowBrowserField;
+            }
+            set
+            {
+                this.allowBrowserField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AllowBrowserSpecified
+        {
+            get
+            {
+                return this.allowBrowserFieldSpecified;
+            }
+            set
+            {
+                this.allowBrowserFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool AllowConsumerEmail
+        {
+            get
+            {
+                return this.allowConsumerEmailField;
+            }
+            set
+            {
+                this.allowConsumerEmailField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AllowConsumerEmailSpecified
+        {
+            get
+            {
+                return this.allowConsumerEmailFieldSpecified;
+            }
+            set
+            {
+                this.allowConsumerEmailFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool AllowRemoteDesktop
+        {
+            get
+            {
+                return this.allowRemoteDesktopField;
+            }
+            set
+            {
+                this.allowRemoteDesktopField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AllowRemoteDesktopSpecified
+        {
+            get
+            {
+                return this.allowRemoteDesktopFieldSpecified;
+            }
+            set
+            {
+                this.allowRemoteDesktopFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool AllowInternetSharing
+        {
+            get
+            {
+                return this.allowInternetSharingField;
+            }
+            set
+            {
+                this.allowInternetSharingField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AllowInternetSharingSpecified
+        {
+            get
+            {
+                return this.allowInternetSharingFieldSpecified;
+            }
+            set
+            {
+                this.allowInternetSharingFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("ApplicationName", IsNullable = false)]
+        public string[] UnapprovedInROMApplicationList
+        {
+            get
+            {
+                return this.unapprovedInROMApplicationListField;
+            }
+            set
+            {
+                this.unapprovedInROMApplicationListField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("Hash", IsNullable = false)]
+        public string[] ApprovedApplicationList
+        {
+            get
+            {
+                return this.approvedApplicationListField;
+            }
+            set
+            {
+                this.approvedApplicationListField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Calendar")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "Calendar", IsNullable = false)]
+    public partial class Exceptions
+    {
+
+        private ExceptionsException[] exceptionField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Exception")]
+        public ExceptionsException[] Exception
+        {
+            get
+            {
+                return this.exceptionField;
+            }
+            set
+            {
+                this.exceptionField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Calendar")]
+    public partial class ExceptionsException
+    {
+
+        private byte deletedField;
+
+        private bool deletedFieldSpecified;
+
+        private string exceptionStartTimeField;
+
+        private string subjectField;
+
+        private string startTimeField;
+
+        private string endTimeField;
+
+        private Body bodyField;
+
+        private string locationField;
+
+        private Categories categoriesField;
+
+        private byte sensitivityField;
+
+        private bool sensitivityFieldSpecified;
+
+        private byte busyStatusField;
+
+        private bool busyStatusFieldSpecified;
+
+        private byte allDayEventField;
+
+        private bool allDayEventFieldSpecified;
+
+        private string reminderField;
+
+        private string dtStampField;
+
+        private byte meetingStatusField;
+
+        private bool meetingStatusFieldSpecified;
+
+        private AttendeesAttendee[] attendeesField;
+
+        private string appointmentReplyTimeField;
+
+        private uint responseTypeField;
+
+        private bool responseTypeFieldSpecified;
+
+        private string onlineMeetingConfLinkField;
+
+        private string onlineMeetingExternalLinkField;
+
+        /// <remarks/>
+        public byte Deleted
+        {
+            get
+            {
+                return this.deletedField;
+            }
+            set
+            {
+                this.deletedField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool DeletedSpecified
+        {
+            get
+            {
+                return this.deletedFieldSpecified;
+            }
+            set
+            {
+                this.deletedFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public string ExceptionStartTime
+        {
+            get
+            {
+                return this.exceptionStartTimeField;
+            }
+            set
+            {
+                this.exceptionStartTimeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string Subject
+        {
+            get
+            {
+                return this.subjectField;
+            }
+            set
+            {
+                this.subjectField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string StartTime
+        {
+            get
+            {
+                return this.startTimeField;
+            }
+            set
+            {
+                this.startTimeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string EndTime
+        {
+            get
+            {
+                return this.endTimeField;
+            }
+            set
+            {
+                this.endTimeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "AirSyncBase")]
+        public Body Body
+        {
+            get
+            {
+                return this.bodyField;
+            }
+            set
+            {
+                this.bodyField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string Location
+        {
+            get
+            {
+                return this.locationField;
+            }
+            set
+            {
+                this.locationField = value;
+            }
+        }
+
+        /// <remarks/>
+        public Categories Categories
+        {
+            get
+            {
+                return this.categoriesField;
+            }
+            set
+            {
+                this.categoriesField = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte Sensitivity
+        {
+            get
+            {
+                return this.sensitivityField;
+            }
+            set
+            {
+                this.sensitivityField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool SensitivitySpecified
+        {
+            get
+            {
+                return this.sensitivityFieldSpecified;
+            }
+            set
+            {
+                this.sensitivityFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte BusyStatus
+        {
+            get
+            {
+                return this.busyStatusField;
+            }
+            set
+            {
+                this.busyStatusField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool BusyStatusSpecified
+        {
+            get
+            {
+                return this.busyStatusFieldSpecified;
+            }
+            set
+            {
+                this.busyStatusFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte AllDayEvent
+        {
+            get
+            {
+                return this.allDayEventField;
+            }
+            set
+            {
+                this.allDayEventField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AllDayEventSpecified
+        {
+            get
+            {
+                return this.allDayEventFieldSpecified;
+            }
+            set
+            {
+                this.allDayEventFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public string Reminder
+        {
+            get
+            {
+                return this.reminderField;
+            }
+            set
+            {
+                this.reminderField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string DtStamp
+        {
+            get
+            {
+                return this.dtStampField;
+            }
+            set
+            {
+                this.dtStampField = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte MeetingStatus
+        {
+            get
+            {
+                return this.meetingStatusField;
+            }
+            set
+            {
+                this.meetingStatusField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool MeetingStatusSpecified
+        {
+            get
+            {
+                return this.meetingStatusFieldSpecified;
+            }
+            set
+            {
+                this.meetingStatusFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Attendees", typeof(Attendees))]
+        public AttendeesAttendee[] Attendees
+        {
+            get
+            {
+                return this.attendeesField;
+            }
+            set
+            {
+                this.attendeesField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string AppointmentReplyTime
+        {
+            get
+            {
+                return this.appointmentReplyTimeField;
+            }
+            set
+            {
+                this.appointmentReplyTimeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public uint ResponseType
+        {
+            get
+            {
+                return this.responseTypeField;
+            }
+            set
+            {
+                this.responseTypeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ResponseTypeSpecified
+        {
+            get
+            {
+                return this.responseTypeFieldSpecified;
+            }
+            set
+            {
+                this.responseTypeFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public string OnlineMeetingConfLink
+        {
+            get
+            {
+                return this.onlineMeetingConfLinkField;
+            }
+            set
+            {
+                this.onlineMeetingConfLinkField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string OnlineMeetingExternalLink
+        {
+            get
+            {
+                return this.onlineMeetingExternalLinkField;
+            }
+            set
+            {
+                this.onlineMeetingExternalLinkField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Email")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "Email", IsNullable = false)]
+    public partial class Flag
+    {
+
+        private string subjectField;
+
+        private string statusField;
+
+        private string flagTypeField;
+
+        private System.DateTime dateCompletedField;
+
+        private bool dateCompletedFieldSpecified;
+
+        private System.DateTime completeTimeField;
+
+        private bool completeTimeFieldSpecified;
+
+        private System.DateTime startDateField;
+
+        private bool startDateFieldSpecified;
+
+        private System.DateTime dueDateField;
+
+        private bool dueDateFieldSpecified;
+
+        private System.DateTime utcStartDateField;
+
+        private bool utcStartDateFieldSpecified;
+
+        private System.DateTime utcDueDateField;
+
+        private bool utcDueDateFieldSpecified;
+
+        private byte reminderSetField;
+
+        private bool reminderSetFieldSpecified;
+
+        private System.DateTime reminderTimeField;
+
+        private bool reminderTimeFieldSpecified;
+
+        private System.DateTime ordinalDateField;
+
+        private bool ordinalDateFieldSpecified;
+
+        private string subOrdinalDateField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "Tasks")]
+        public string Subject
+        {
+            get
+            {
+                return this.subjectField;
+            }
+            set
+            {
+                this.subjectField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string Status
+        {
+            get
+            {
+                return this.statusField;
+            }
+            set
+            {
+                this.statusField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string FlagType
+        {
+            get
+            {
                 return this.flagTypeField;
             }
-            set {
+            set
+            {
                 this.flagTypeField = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="Tasks")]
-        public System.DateTime DateCompleted {
-            get {
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "Tasks")]
+        public System.DateTime DateCompleted
+        {
+            get
+            {
                 return this.dateCompletedField;
             }
-            set {
+            set
+            {
                 this.dateCompletedField = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool DateCompletedSpecified {
-            get {
+        public bool DateCompletedSpecified
+        {
+            get
+            {
                 return this.dateCompletedFieldSpecified;
             }
-            set {
+            set
+            {
                 this.dateCompletedFieldSpecified = value;
             }
         }
-        
+
         /// <remarks/>
-        public System.DateTime CompleteTime {
-            get {
+        public System.DateTime CompleteTime
+        {
+            get
+            {
                 return this.completeTimeField;
             }
-            set {
+            set
+            {
                 this.completeTimeField = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool CompleteTimeSpecified {
-            get {
+        public bool CompleteTimeSpecified
+        {
+            get
+            {
                 return this.completeTimeFieldSpecified;
             }
-            set {
+            set
+            {
                 this.completeTimeFieldSpecified = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="Tasks")]
-        public System.DateTime StartDate {
-            get {
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "Tasks")]
+        public System.DateTime StartDate
+        {
+            get
+            {
                 return this.startDateField;
             }
-            set {
+            set
+            {
                 this.startDateField = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool StartDateSpecified {
-            get {
+        public bool StartDateSpecified
+        {
+            get
+            {
                 return this.startDateFieldSpecified;
             }
-            set {
+            set
+            {
                 this.startDateFieldSpecified = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="Tasks")]
-        public System.DateTime DueDate {
-            get {
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "Tasks")]
+        public System.DateTime DueDate
+        {
+            get
+            {
                 return this.dueDateField;
             }
-            set {
+            set
+            {
                 this.dueDateField = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool DueDateSpecified {
-            get {
+        public bool DueDateSpecified
+        {
+            get
+            {
                 return this.dueDateFieldSpecified;
             }
-            set {
+            set
+            {
                 this.dueDateFieldSpecified = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="Tasks")]
-        public System.DateTime UtcStartDate {
-            get {
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "Tasks")]
+        public System.DateTime UtcStartDate
+        {
+            get
+            {
                 return this.utcStartDateField;
             }
-            set {
+            set
+            {
                 this.utcStartDateField = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool UtcStartDateSpecified {
-            get {
+        public bool UtcStartDateSpecified
+        {
+            get
+            {
                 return this.utcStartDateFieldSpecified;
             }
-            set {
+            set
+            {
                 this.utcStartDateFieldSpecified = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="Tasks")]
-        public System.DateTime UtcDueDate {
-            get {
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "Tasks")]
+        public System.DateTime UtcDueDate
+        {
+            get
+            {
                 return this.utcDueDateField;
             }
-            set {
+            set
+            {
                 this.utcDueDateField = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool UtcDueDateSpecified {
-            get {
+        public bool UtcDueDateSpecified
+        {
+            get
+            {
                 return this.utcDueDateFieldSpecified;
             }
-            set {
+            set
+            {
                 this.utcDueDateFieldSpecified = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="Tasks")]
-        public byte ReminderSet {
-            get {
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "Tasks")]
+        public byte ReminderSet
+        {
+            get
+            {
                 return this.reminderSetField;
             }
-            set {
+            set
+            {
                 this.reminderSetField = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool ReminderSetSpecified {
-            get {
+        public bool ReminderSetSpecified
+        {
+            get
+            {
                 return this.reminderSetFieldSpecified;
             }
-            set {
+            set
+            {
                 this.reminderSetFieldSpecified = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="Tasks")]
-        public System.DateTime ReminderTime {
-            get {
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "Tasks")]
+        public System.DateTime ReminderTime
+        {
+            get
+            {
                 return this.reminderTimeField;
             }
-            set {
+            set
+            {
                 this.reminderTimeField = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool ReminderTimeSpecified {
-            get {
+        public bool ReminderTimeSpecified
+        {
+            get
+            {
                 return this.reminderTimeFieldSpecified;
             }
-            set {
+            set
+            {
                 this.reminderTimeFieldSpecified = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="Tasks")]
-        public System.DateTime OrdinalDate {
-            get {
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "Tasks")]
+        public System.DateTime OrdinalDate
+        {
+            get
+            {
                 return this.ordinalDateField;
             }
-            set {
+            set
+            {
                 this.ordinalDateField = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool OrdinalDateSpecified {
-            get {
+        public bool OrdinalDateSpecified
+        {
+            get
+            {
                 return this.ordinalDateFieldSpecified;
             }
-            set {
+            set
+            {
                 this.ordinalDateFieldSpecified = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="Tasks")]
-        public string SubOrdinalDate {
-            get {
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "Tasks")]
+        public string SubOrdinalDate
+        {
+            get
+            {
                 return this.subOrdinalDateField;
             }
-            set {
+            set
+            {
                 this.subOrdinalDateField = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Email")]
-    [System.Xml.Serialization.XmlRootAttribute("Categories", Namespace="Email", IsNullable=false)]
-    public partial class Categories2 {
-        
-        private string[] categoryField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Category")]
-        public string[] Category {
-            get {
-                return this.categoryField;
-            }
-            set {
-                this.categoryField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="FolderHierarchy")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="FolderHierarchy", IsNullable=false)]
-    public partial class FolderCreate {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "FolderHierarchy")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "FolderHierarchy", IsNullable = false)]
+    public partial class FolderCreate
+    {
+
         private byte statusField;
-        
+
         private string syncKeyField;
-        
+
         private string serverIdField;
-        
+
         /// <remarks/>
-        public byte Status {
-            get {
+        public byte Status
+        {
+            get
+            {
                 return this.statusField;
             }
-            set {
+            set
+            {
                 this.statusField = value;
             }
         }
-        
+
         /// <remarks/>
-        public string SyncKey {
-            get {
+        public string SyncKey
+        {
+            get
+            {
                 return this.syncKeyField;
             }
-            set {
+            set
+            {
                 this.syncKeyField = value;
             }
         }
-        
+
         /// <remarks/>
-        public string ServerId {
-            get {
+        public string ServerId
+        {
+            get
+            {
                 return this.serverIdField;
             }
-            set {
+            set
+            {
                 this.serverIdField = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="FolderHierarchy")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="FolderHierarchy", IsNullable=false)]
-    public partial class FolderDelete {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "FolderHierarchy")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "FolderHierarchy", IsNullable = false)]
+    public partial class FolderDelete
+    {
+
         private byte statusField;
-        
+
         private string syncKeyField;
-        
+
         /// <remarks/>
-        public byte Status {
-            get {
+        public byte Status
+        {
+            get
+            {
                 return this.statusField;
             }
-            set {
+            set
+            {
                 this.statusField = value;
             }
         }
-        
+
         /// <remarks/>
-        public string SyncKey {
-            get {
+        public string SyncKey
+        {
+            get
+            {
                 return this.syncKeyField;
             }
-            set {
+            set
+            {
                 this.syncKeyField = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="FolderHierarchy")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="FolderHierarchy", IsNullable=false)]
-    public partial class FolderSync {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "FolderHierarchy")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "FolderHierarchy", IsNullable = false)]
+    public partial class FolderSync
+    {
+
         private byte statusField;
-        
+
         private string syncKeyField;
-        
+
         private FolderSyncChanges changesField;
-        
+
         /// <remarks/>
-        public byte Status {
-            get {
+        public byte Status
+        {
+            get
+            {
                 return this.statusField;
             }
-            set {
+            set
+            {
                 this.statusField = value;
             }
         }
-        
+
         /// <remarks/>
-        public string SyncKey {
-            get {
+        public string SyncKey
+        {
+            get
+            {
                 return this.syncKeyField;
             }
-            set {
+            set
+            {
                 this.syncKeyField = value;
             }
         }
-        
+
         /// <remarks/>
-        public FolderSyncChanges Changes {
-            get {
+        public FolderSyncChanges Changes
+        {
+            get
+            {
                 return this.changesField;
             }
-            set {
+            set
+            {
                 this.changesField = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="FolderHierarchy")]
-    public partial class FolderSyncChanges {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "FolderHierarchy")]
+    public partial class FolderSyncChanges
+    {
+
         private uint countField;
-        
+
         private bool countFieldSpecified;
-        
+
         private FolderSyncChangesUpdate[] updateField;
-        
+
         private FolderSyncChangesDelete[] deleteField;
-        
+
         private FolderSyncChangesAdd[] addField;
-        
+
         /// <remarks/>
-        public uint Count {
-            get {
+        public uint Count
+        {
+            get
+            {
                 return this.countField;
             }
-            set {
+            set
+            {
                 this.countField = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool CountSpecified {
-            get {
+        public bool CountSpecified
+        {
+            get
+            {
                 return this.countFieldSpecified;
             }
-            set {
+            set
+            {
                 this.countFieldSpecified = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Update")]
-        public FolderSyncChangesUpdate[] Update {
-            get {
+        public FolderSyncChangesUpdate[] Update
+        {
+            get
+            {
                 return this.updateField;
             }
-            set {
+            set
+            {
                 this.updateField = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Delete")]
-        public FolderSyncChangesDelete[] Delete {
-            get {
+        public FolderSyncChangesDelete[] Delete
+        {
+            get
+            {
                 return this.deleteField;
             }
-            set {
+            set
+            {
                 this.deleteField = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Add")]
-        public FolderSyncChangesAdd[] Add {
-            get {
+        public FolderSyncChangesAdd[] Add
+        {
+            get
+            {
                 return this.addField;
             }
-            set {
+            set
+            {
                 this.addField = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="FolderHierarchy")]
-    public partial class FolderSyncChangesUpdate {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "FolderHierarchy")]
+    public partial class FolderSyncChangesUpdate
+    {
+
         private string serverIdField;
-        
+
         private string parentIdField;
-        
+
         private string displayNameField;
-        
+
         private string typeField;
-        
+
         /// <remarks/>
-        public string ServerId {
-            get {
+        public string ServerId
+        {
+            get
+            {
                 return this.serverIdField;
             }
-            set {
+            set
+            {
                 this.serverIdField = value;
             }
         }
-        
+
         /// <remarks/>
-        public string ParentId {
-            get {
+        public string ParentId
+        {
+            get
+            {
                 return this.parentIdField;
             }
-            set {
+            set
+            {
                 this.parentIdField = value;
             }
         }
-        
+
         /// <remarks/>
-        public string DisplayName {
-            get {
+        public string DisplayName
+        {
+            get
+            {
                 return this.displayNameField;
             }
-            set {
+            set
+            {
                 this.displayNameField = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string Type {
-            get {
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string Type
+        {
+            get
+            {
                 return this.typeField;
             }
-            set {
+            set
+            {
                 this.typeField = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="FolderHierarchy")]
-    public partial class FolderSyncChangesDelete {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "FolderHierarchy")]
+    public partial class FolderSyncChangesDelete
+    {
+
         private string serverIdField;
-        
+
         /// <remarks/>
-        public string ServerId {
-            get {
+        public string ServerId
+        {
+            get
+            {
                 return this.serverIdField;
             }
-            set {
+            set
+            {
                 this.serverIdField = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="FolderHierarchy")]
-    public partial class FolderSyncChangesAdd {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "FolderHierarchy")]
+    public partial class FolderSyncChangesAdd
+    {
+
         private string serverIdField;
-        
+
         private string parentIdField;
-        
+
         private string displayNameField;
-        
+
         private string typeField;
-        
+
         /// <remarks/>
-        public string ServerId {
-            get {
+        public string ServerId
+        {
+            get
+            {
                 return this.serverIdField;
             }
-            set {
+            set
+            {
                 this.serverIdField = value;
             }
         }
-        
+
         /// <remarks/>
-        public string ParentId {
-            get {
+        public string ParentId
+        {
+            get
+            {
                 return this.parentIdField;
             }
-            set {
+            set
+            {
                 this.parentIdField = value;
             }
         }
-        
+
         /// <remarks/>
-        public string DisplayName {
-            get {
+        public string DisplayName
+        {
+            get
+            {
                 return this.displayNameField;
             }
-            set {
+            set
+            {
                 this.displayNameField = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string Type {
-            get {
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string Type
+        {
+            get
+            {
                 return this.typeField;
             }
-            set {
+            set
+            {
                 this.typeField = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="FolderHierarchy")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="FolderHierarchy", IsNullable=false)]
-    public partial class FolderUpdate {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "FolderHierarchy")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "FolderHierarchy", IsNullable = false)]
+    public partial class FolderUpdate
+    {
+
         private byte statusField;
-        
+
         private string syncKeyField;
-        
+
         /// <remarks/>
-        public byte Status {
-            get {
+        public byte Status
+        {
+            get
+            {
                 return this.statusField;
             }
-            set {
+            set
+            {
                 this.statusField = value;
             }
         }
-        
+
         /// <remarks/>
-        public string SyncKey {
-            get {
+        public string SyncKey
+        {
+            get
+            {
                 return this.syncKeyField;
             }
-            set {
+            set
+            {
                 this.syncKeyField = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="GetItemEstimate")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="GetItemEstimate", IsNullable=false)]
-    public partial class GetItemEstimate {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "GetItemEstimate")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "GetItemEstimate", IsNullable = false)]
+    public partial class GetItemEstimate
+    {
+
         private byte statusField;
-        
+
         private bool statusFieldSpecified;
-        
+
         private GetItemEstimateResponse[] responseField;
-        
+
         /// <remarks/>
-        public byte Status {
-            get {
+        public byte Status
+        {
+            get
+            {
                 return this.statusField;
             }
-            set {
+            set
+            {
                 this.statusField = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool StatusSpecified {
-            get {
+        public bool StatusSpecified
+        {
+            get
+            {
                 return this.statusFieldSpecified;
             }
-            set {
+            set
+            {
                 this.statusFieldSpecified = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Response")]
-        public GetItemEstimateResponse[] Response {
-            get {
+        public GetItemEstimateResponse[] Response
+        {
+            get
+            {
                 return this.responseField;
             }
-            set {
+            set
+            {
                 this.responseField = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="GetItemEstimate")]
-    public partial class GetItemEstimateResponse {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "GetItemEstimate")]
+    public partial class GetItemEstimateResponse
+    {
+
         private byte statusField;
-        
+
         private GetItemEstimateResponseCollection collectionField;
-        
+
         /// <remarks/>
-        public byte Status {
-            get {
+        public byte Status
+        {
+            get
+            {
                 return this.statusField;
             }
-            set {
+            set
+            {
                 this.statusField = value;
             }
         }
-        
+
         /// <remarks/>
-        public GetItemEstimateResponseCollection Collection {
-            get {
+        public GetItemEstimateResponseCollection Collection
+        {
+            get
+            {
                 return this.collectionField;
             }
-            set {
+            set
+            {
                 this.collectionField = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="GetItemEstimate")]
-    public partial class GetItemEstimateResponseCollection {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "GetItemEstimate")]
+    public partial class GetItemEstimateResponseCollection
+    {
+
         private string collectionIdField;
-        
+
         private string estimateField;
-        
+
         /// <remarks/>
-        public string CollectionId {
-            get {
+        public string CollectionId
+        {
+            get
+            {
                 return this.collectionIdField;
             }
-            set {
+            set
+            {
                 this.collectionIdField = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string Estimate {
-            get {
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string Estimate
+        {
+            get
+            {
                 return this.estimateField;
             }
-            set {
+            set
+            {
                 this.estimateField = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="ItemOperations")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="ItemOperations", IsNullable=false)]
-    public partial class Properties {
-        
-        private object[] itemsField;
-        
-        private ItemsChoiceType3[] itemsElementNameField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Attachments", typeof(Attachments), Namespace="AirSyncBase")]
-        [System.Xml.Serialization.XmlElementAttribute("Body", typeof(Body), Namespace="AirSyncBase")]
-        [System.Xml.Serialization.XmlElementAttribute("BodyPart", typeof(BodyPart), Namespace="AirSyncBase")]
-        [System.Xml.Serialization.XmlElementAttribute("NativeBodyType", typeof(byte), Namespace="AirSyncBase")]
-        [System.Xml.Serialization.XmlElementAttribute("AllDayEvent", typeof(byte), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("AppointmentReplyTime", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Attendees", typeof(Attendees), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("BusyStatus", typeof(byte), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Categories", typeof(Categories), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("DisallowNewTimeProposal", typeof(bool), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("DtStamp", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("EndTime", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Exceptions", typeof(Exceptions), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Location", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("MeetingStatus", typeof(byte), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("OnlineMeetingConfLink", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("OnlineMeetingExternalLink", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("OrganizerEmail", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("OrganizerName", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Recurrence", typeof(Recurrence), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Reminder", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("ResponseRequested", typeof(bool), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("ResponseType", typeof(uint), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Sensitivity", typeof(byte), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("StartTime", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Subject", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Timezone", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("UID", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("AccountName", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("CompanyMainPhone", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("CustomerId", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("GovernmentId", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("IMAddress", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("IMAddress2", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("IMAddress3", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("MMS", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("ManagerName", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("NickName", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("Alias", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Anniversary", typeof(System.DateTime), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("AssistantName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("AssistantPhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Birthday", typeof(System.DateTime), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Business2PhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressCity", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressCountry", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressPostalCode", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressState", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressStreet", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("BusinessFaxNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("BusinessPhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("CarPhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Categories", typeof(Categories1), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Children", typeof(Children), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("CompanyName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Department", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Email1Address", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Email2Address", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Email3Address", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("FileAs", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("FirstName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Home2PhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("HomeAddressCity", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("HomeAddressCountry", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("HomeAddressPostalCode", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("HomeAddressState", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("HomeAddressStreet", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("HomeFaxNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("HomePhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("JobTitle", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("LastName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("MiddleName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("MobilePhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("OfficeLocation", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("OtherAddressCity", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("OtherAddressCountry", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("OtherAddressPostalCode", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("OtherAddressState", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("OtherAddressStreet", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("PagerNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Picture", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("RadioPhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Spouse", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Suffix", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Title", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("WebPage", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("WeightedRank", typeof(int), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("YomiCompanyName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("YomiFirstName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("YomiLastName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("ContentLength", typeof(string), Namespace="DocumentLibrary", DataType="integer")]
-        [System.Xml.Serialization.XmlElementAttribute("ContentType", typeof(string), Namespace="DocumentLibrary")]
-        [System.Xml.Serialization.XmlElementAttribute("CreationDate", typeof(System.DateTime), Namespace="DocumentLibrary")]
-        [System.Xml.Serialization.XmlElementAttribute("DisplayName", typeof(string), Namespace="DocumentLibrary")]
-        [System.Xml.Serialization.XmlElementAttribute("IsFolder", typeof(byte), Namespace="DocumentLibrary")]
-        [System.Xml.Serialization.XmlElementAttribute("IsHidden", typeof(byte), Namespace="DocumentLibrary")]
-        [System.Xml.Serialization.XmlElementAttribute("LastModifiedDate", typeof(System.DateTime), Namespace="DocumentLibrary")]
-        [System.Xml.Serialization.XmlElementAttribute("LinkId", typeof(string), Namespace="DocumentLibrary")]
-        [System.Xml.Serialization.XmlElementAttribute("AccountId", typeof(string), Namespace="Email2")]
-        [System.Xml.Serialization.XmlElementAttribute("CalendarType", typeof(string), Namespace="Email2", DataType="integer")]
-        [System.Xml.Serialization.XmlElementAttribute("ConversationId", typeof(string), Namespace="Email2")]
-        [System.Xml.Serialization.XmlElementAttribute("ConversationIndex", typeof(string), Namespace="Email2")]
-        [System.Xml.Serialization.XmlElementAttribute("FirstDayOfWeek", typeof(byte), Namespace="Email2")]
-        [System.Xml.Serialization.XmlElementAttribute("IsLeapMonth", typeof(byte), Namespace="Email2")]
-        [System.Xml.Serialization.XmlElementAttribute("LastVerbExecuted", typeof(string), Namespace="Email2", DataType="integer")]
-        [System.Xml.Serialization.XmlElementAttribute("LastVerbExecutionTime", typeof(System.DateTime), Namespace="Email2")]
-        [System.Xml.Serialization.XmlElementAttribute("MeetingMessageType", typeof(byte), Namespace="Email2")]
-        [System.Xml.Serialization.XmlElementAttribute("ReceivedAsBcc", typeof(bool), Namespace="Email2")]
-        [System.Xml.Serialization.XmlElementAttribute("Sender", typeof(string), Namespace="Email2")]
-        [System.Xml.Serialization.XmlElementAttribute("UmAttDuration", typeof(string), Namespace="Email2", DataType="integer")]
-        [System.Xml.Serialization.XmlElementAttribute("UmAttOrder", typeof(string), Namespace="Email2", DataType="integer")]
-        [System.Xml.Serialization.XmlElementAttribute("UmCallerID", typeof(string), Namespace="Email2")]
-        [System.Xml.Serialization.XmlElementAttribute("UmUserNotes", typeof(string), Namespace="Email2")]
-        [System.Xml.Serialization.XmlElementAttribute("Categories", typeof(Categories2), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("Cc", typeof(string), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("ContentClass", typeof(string), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("DateReceived", typeof(System.DateTime), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("DisplayTo", typeof(string), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("Flag", typeof(Flag), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("From", typeof(string), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("Importance", typeof(byte), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("InternetCPID", typeof(string), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("MeetingRequest", typeof(MeetingRequest), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("MessageClass", typeof(string), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("Read", typeof(bool), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("ReplyTo", typeof(string), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("Subject", typeof(string), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("ThreadTopic", typeof(string), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("To", typeof(string), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("Data", typeof(string))]
-        [System.Xml.Serialization.XmlElementAttribute("Part", typeof(string), DataType="integer")]
-        [System.Xml.Serialization.XmlElementAttribute("Range", typeof(string))]
-        [System.Xml.Serialization.XmlElementAttribute("Total", typeof(string), DataType="integer")]
-        [System.Xml.Serialization.XmlElementAttribute("Version", typeof(System.DateTime))]
-        [System.Xml.Serialization.XmlElementAttribute("Categories", typeof(Categories3), Namespace="Notes")]
-        [System.Xml.Serialization.XmlElementAttribute("LastModifiedDate", typeof(System.DateTime), Namespace="Notes")]
-        [System.Xml.Serialization.XmlElementAttribute("MessageClass", typeof(string), Namespace="Notes")]
-        [System.Xml.Serialization.XmlElementAttribute("Subject", typeof(string), Namespace="Notes")]
-        [System.Xml.Serialization.XmlElementAttribute("RightsManagementLicense", typeof(RightsManagementLicense), Namespace="RightsManagement")]
-        [System.Xml.Serialization.XmlElementAttribute("Categories", typeof(Categories4), Namespace="Tasks")]
-        [System.Xml.Serialization.XmlElementAttribute("Complete", typeof(byte), Namespace="Tasks")]
-        [System.Xml.Serialization.XmlElementAttribute("DateCompleted", typeof(System.DateTime), Namespace="Tasks")]
-        [System.Xml.Serialization.XmlElementAttribute("DueDate", typeof(System.DateTime), Namespace="Tasks")]
-        [System.Xml.Serialization.XmlElementAttribute("Importance", typeof(byte), Namespace="Tasks")]
-        [System.Xml.Serialization.XmlElementAttribute("OrdinalDate", typeof(System.DateTime), Namespace="Tasks")]
-        [System.Xml.Serialization.XmlElementAttribute("Recurrence", typeof(Recurrence1), Namespace="Tasks")]
-        [System.Xml.Serialization.XmlElementAttribute("ReminderSet", typeof(byte), Namespace="Tasks")]
-        [System.Xml.Serialization.XmlElementAttribute("ReminderTime", typeof(System.DateTime), Namespace="Tasks")]
-        [System.Xml.Serialization.XmlElementAttribute("Sensitivity", typeof(byte), Namespace="Tasks")]
-        [System.Xml.Serialization.XmlElementAttribute("StartDate", typeof(System.DateTime), Namespace="Tasks")]
-        [System.Xml.Serialization.XmlElementAttribute("SubOrdinalDate", typeof(string), Namespace="Tasks")]
-        [System.Xml.Serialization.XmlElementAttribute("Subject", typeof(string), Namespace="Tasks")]
-        [System.Xml.Serialization.XmlElementAttribute("UtcDueDate", typeof(System.DateTime), Namespace="Tasks")]
-        [System.Xml.Serialization.XmlElementAttribute("UtcStartDate", typeof(System.DateTime), Namespace="Tasks")]
-        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
-        public object[] Items {
-            get {
-                return this.itemsField;
-            }
-            set {
-                this.itemsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType3[] ItemsElementName {
-            get {
-                return this.itemsElementNameField;
-            }
-            set {
-                this.itemsElementNameField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Notes")]
-    [System.Xml.Serialization.XmlRootAttribute("Categories", Namespace="Notes", IsNullable=false)]
-    public partial class Categories3 {
-        
-        private string[] categoryField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Category")]
-        public string[] Category {
-            get {
-                return this.categoryField;
-            }
-            set {
-                this.categoryField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="RightsManagement")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="RightsManagement", IsNullable=false)]
-    public partial class RightsManagementLicense {
-        
-        private bool ownerField;
-        
-        private string contentOwnerField;
-        
-        private bool replyAllAllowedField;
-        
-        private bool editAllowedField;
-        
-        private bool replyAllowedField;
-        
-        private bool forwardAllowedField;
-        
-        private bool exportAllowedField;
-        
-        private bool modifyRecipientsAllowedField;
-        
-        private string templateIDField;
-        
-        private bool extractAllowedField;
-        
-        private string templateDescriptionField;
-        
-        private System.DateTime contentExpiryDateField;
-        
-        private string templateNameField;
-        
-        private bool printAllowedField;
-        
-        private bool programmaticAccessAllowedField;
-        
-        /// <remarks/>
-        public bool Owner {
-            get {
-                return this.ownerField;
-            }
-            set {
-                this.ownerField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string ContentOwner {
-            get {
-                return this.contentOwnerField;
-            }
-            set {
-                this.contentOwnerField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool ReplyAllAllowed {
-            get {
-                return this.replyAllAllowedField;
-            }
-            set {
-                this.replyAllAllowedField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool EditAllowed {
-            get {
-                return this.editAllowedField;
-            }
-            set {
-                this.editAllowedField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool ReplyAllowed {
-            get {
-                return this.replyAllowedField;
-            }
-            set {
-                this.replyAllowedField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool ForwardAllowed {
-            get {
-                return this.forwardAllowedField;
-            }
-            set {
-                this.forwardAllowedField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool ExportAllowed {
-            get {
-                return this.exportAllowedField;
-            }
-            set {
-                this.exportAllowedField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool ModifyRecipientsAllowed {
-            get {
-                return this.modifyRecipientsAllowedField;
-            }
-            set {
-                this.modifyRecipientsAllowedField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string TemplateID {
-            get {
-                return this.templateIDField;
-            }
-            set {
-                this.templateIDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool ExtractAllowed {
-            get {
-                return this.extractAllowedField;
-            }
-            set {
-                this.extractAllowedField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string TemplateDescription {
-            get {
-                return this.templateDescriptionField;
-            }
-            set {
-                this.templateDescriptionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime ContentExpiryDate {
-            get {
-                return this.contentExpiryDateField;
-            }
-            set {
-                this.contentExpiryDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string TemplateName {
-            get {
-                return this.templateNameField;
-            }
-            set {
-                this.templateNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool PrintAllowed {
-            get {
-                return this.printAllowedField;
-            }
-            set {
-                this.printAllowedField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool ProgrammaticAccessAllowed {
-            get {
-                return this.programmaticAccessAllowedField;
-            }
-            set {
-                this.programmaticAccessAllowedField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Tasks")]
-    [System.Xml.Serialization.XmlRootAttribute("Categories", Namespace="Tasks", IsNullable=false)]
-    public partial class Categories4 {
-        
-        private string[] categoryField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Category")]
-        public string[] Category {
-            get {
-                return this.categoryField;
-            }
-            set {
-                this.categoryField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Tasks")]
-    [System.Xml.Serialization.XmlRootAttribute("Recurrence", Namespace="Tasks", IsNullable=false)]
-    public partial class Recurrence1 {
-        
-        private byte typeField;
-        
-        private System.DateTime startField;
-        
-        private System.DateTime untilField;
-        
-        private byte occurrencesField;
-        
-        private byte intervalField;
-        
-        private bool intervalFieldSpecified;
-        
-        private byte dayOfWeekField;
-        
-        private byte dayOfMonthField;
-        
-        private byte weekOfMonthField;
-        
-        private byte monthOfYearField;
-        
-        private byte regenerateField;
-        
-        private byte deadOccurField;
-        
-        private byte calendarTypeField;
-        
-        private byte isLeapMonthField;
-        
-        private byte firstDayOfWeekField;
-        
-        private bool firstDayOfWeekFieldSpecified;
-        
-        /// <remarks/>
-        public byte Type {
-            get {
-                return this.typeField;
-            }
-            set {
-                this.typeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime Start {
-            get {
-                return this.startField;
-            }
-            set {
-                this.startField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime Until {
-            get {
-                return this.untilField;
-            }
-            set {
-                this.untilField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte Occurrences {
-            get {
-                return this.occurrencesField;
-            }
-            set {
-                this.occurrencesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte Interval {
-            get {
-                return this.intervalField;
-            }
-            set {
-                this.intervalField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool IntervalSpecified {
-            get {
-                return this.intervalFieldSpecified;
-            }
-            set {
-                this.intervalFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte DayOfWeek {
-            get {
-                return this.dayOfWeekField;
-            }
-            set {
-                this.dayOfWeekField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte DayOfMonth {
-            get {
-                return this.dayOfMonthField;
-            }
-            set {
-                this.dayOfMonthField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte WeekOfMonth {
-            get {
-                return this.weekOfMonthField;
-            }
-            set {
-                this.weekOfMonthField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte MonthOfYear {
-            get {
-                return this.monthOfYearField;
-            }
-            set {
-                this.monthOfYearField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte Regenerate {
-            get {
-                return this.regenerateField;
-            }
-            set {
-                this.regenerateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte DeadOccur {
-            get {
-                return this.deadOccurField;
-            }
-            set {
-                this.deadOccurField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte CalendarType {
-            get {
-                return this.calendarTypeField;
-            }
-            set {
-                this.calendarTypeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte IsLeapMonth {
-            get {
-                return this.isLeapMonthField;
-            }
-            set {
-                this.isLeapMonthField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte FirstDayOfWeek {
-            get {
-                return this.firstDayOfWeekField;
-            }
-            set {
-                this.firstDayOfWeekField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool FirstDayOfWeekSpecified {
-            get {
-                return this.firstDayOfWeekFieldSpecified;
-            }
-            set {
-                this.firstDayOfWeekFieldSpecified = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="ItemOperations", IncludeInSchema=false)]
-    public enum ItemsChoiceType3 {
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Attachments")]
-        Attachments,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Body")]
-        Body,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:BodyPart")]
-        BodyPart,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:NativeBodyType")]
-        NativeBodyType,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AllDayEvent")]
-        AllDayEvent,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AppointmentReplyTime")]
-        AppointmentReplyTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Attendees")]
-        Attendees,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:BusyStatus")]
-        BusyStatus,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Categories")]
-        Categories,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DisallowNewTimeProposal")]
-        DisallowNewTimeProposal,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DtStamp")]
-        DtStamp,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:EndTime")]
-        EndTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Exceptions")]
-        Exceptions,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Location")]
-        Location,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:MeetingStatus")]
-        MeetingStatus,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OnlineMeetingConfLink")]
-        OnlineMeetingConfLink,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OnlineMeetingExternalLink")]
-        OnlineMeetingExternalLink,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerEmail")]
-        OrganizerEmail,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerName")]
-        OrganizerName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Recurrence")]
-        Recurrence,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Reminder")]
-        Reminder,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseRequested")]
-        ResponseRequested,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseType")]
-        ResponseType,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Sensitivity")]
-        Sensitivity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:StartTime")]
-        StartTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Subject")]
-        Subject,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Timezone")]
-        Timezone,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:UID")]
-        UID,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:AccountName")]
-        AccountName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CompanyMainPhone")]
-        CompanyMainPhone,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CustomerId")]
-        CustomerId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:GovernmentId")]
-        GovernmentId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress")]
-        IMAddress,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress2")]
-        IMAddress2,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress3")]
-        IMAddress3,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:MMS")]
-        MMS,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:ManagerName")]
-        ManagerName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:NickName")]
-        NickName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Alias")]
-        Alias,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Anniversary")]
-        Anniversary,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantName")]
-        AssistantName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantPhoneNumber")]
-        AssistantPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Birthday")]
-        Birthday,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Business2PhoneNumber")]
-        Business2PhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCity")]
-        BusinessAddressCity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCountry")]
-        BusinessAddressCountry,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressPostalCode")]
-        BusinessAddressPostalCode,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressState")]
-        BusinessAddressState,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressStreet")]
-        BusinessAddressStreet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessFaxNumber")]
-        BusinessFaxNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessPhoneNumber")]
-        BusinessPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CarPhoneNumber")]
-        CarPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Categories")]
-        Categories1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Children")]
-        Children,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CompanyName")]
-        CompanyName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Department")]
-        Department,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email1Address")]
-        Email1Address,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email2Address")]
-        Email2Address,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email3Address")]
-        Email3Address,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FileAs")]
-        FileAs,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FirstName")]
-        FirstName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Home2PhoneNumber")]
-        Home2PhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCity")]
-        HomeAddressCity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCountry")]
-        HomeAddressCountry,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressPostalCode")]
-        HomeAddressPostalCode,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressState")]
-        HomeAddressState,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressStreet")]
-        HomeAddressStreet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeFaxNumber")]
-        HomeFaxNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomePhoneNumber")]
-        HomePhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:JobTitle")]
-        JobTitle,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:LastName")]
-        LastName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MiddleName")]
-        MiddleName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MobilePhoneNumber")]
-        MobilePhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OfficeLocation")]
-        OfficeLocation,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCity")]
-        OtherAddressCity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCountry")]
-        OtherAddressCountry,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressPostalCode")]
-        OtherAddressPostalCode,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressState")]
-        OtherAddressState,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressStreet")]
-        OtherAddressStreet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:PagerNumber")]
-        PagerNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Picture")]
-        Picture,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:RadioPhoneNumber")]
-        RadioPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Spouse")]
-        Spouse,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Suffix")]
-        Suffix,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Title")]
-        Title,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WebPage")]
-        WebPage,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WeightedRank")]
-        WeightedRank,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiCompanyName")]
-        YomiCompanyName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiFirstName")]
-        YomiFirstName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiLastName")]
-        YomiLastName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:ContentLength")]
-        ContentLength,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:ContentType")]
-        ContentType,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:CreationDate")]
-        CreationDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:DisplayName")]
-        DisplayName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:IsFolder")]
-        IsFolder,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:IsHidden")]
-        IsHidden,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:LastModifiedDate")]
-        LastModifiedDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:LinkId")]
-        LinkId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:AccountId")]
-        AccountId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:CalendarType")]
-        CalendarType,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:ConversationId")]
-        ConversationId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:ConversationIndex")]
-        ConversationIndex,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:FirstDayOfWeek")]
-        FirstDayOfWeek,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:IsLeapMonth")]
-        IsLeapMonth,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:LastVerbExecuted")]
-        LastVerbExecuted,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:LastVerbExecutionTime")]
-        LastVerbExecutionTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:MeetingMessageType")]
-        MeetingMessageType,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:ReceivedAsBcc")]
-        ReceivedAsBcc,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:Sender")]
-        Sender,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmAttDuration")]
-        UmAttDuration,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmAttOrder")]
-        UmAttOrder,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmCallerID")]
-        UmCallerID,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmUserNotes")]
-        UmUserNotes,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Categories")]
-        Categories2,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Cc")]
-        Cc,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:ContentClass")]
-        ContentClass,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:DateReceived")]
-        DateReceived,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:DisplayTo")]
-        DisplayTo,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Flag")]
-        Flag,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:From")]
-        From,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Importance")]
-        Importance,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:InternetCPID")]
-        InternetCPID,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:MeetingRequest")]
-        MeetingRequest,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:MessageClass")]
-        MessageClass,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Read")]
-        Read,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:ReplyTo")]
-        ReplyTo,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Subject")]
-        Subject1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:ThreadTopic")]
-        ThreadTopic,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:To")]
-        To,
-        
-        /// <remarks/>
-        Data,
-        
-        /// <remarks/>
-        Part,
-        
-        /// <remarks/>
-        Range,
-        
-        /// <remarks/>
-        Total,
-        
-        /// <remarks/>
-        Version,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Notes:Categories")]
-        Categories3,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Notes:LastModifiedDate")]
-        LastModifiedDate1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Notes:MessageClass")]
-        MessageClass1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Notes:Subject")]
-        Subject2,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("RightsManagement:RightsManagementLicense")]
-        RightsManagementLicense,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Categories")]
-        Categories4,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Complete")]
-        Complete,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:DateCompleted")]
-        DateCompleted,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:DueDate")]
-        DueDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Importance")]
-        Importance1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:OrdinalDate")]
-        OrdinalDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Recurrence")]
-        Recurrence1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:ReminderSet")]
-        ReminderSet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:ReminderTime")]
-        ReminderTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Sensitivity")]
-        Sensitivity1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:StartDate")]
-        StartDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:SubOrdinalDate")]
-        SubOrdinalDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Subject")]
-        Subject3,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:UtcDueDate")]
-        UtcDueDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:UtcStartDate")]
-        UtcStartDate,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="ItemOperations")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="ItemOperations", IsNullable=false)]
-    public partial class Schema {
-        
-        private object[] itemsField;
-        
-        private ItemsChoiceType4[] itemsElementNameField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Attachments", typeof(string), Namespace="AirSyncBase")]
-        [System.Xml.Serialization.XmlElementAttribute("Body", typeof(string), Namespace="AirSyncBase")]
-        [System.Xml.Serialization.XmlElementAttribute("BodyPart", typeof(string), Namespace="AirSyncBase")]
-        [System.Xml.Serialization.XmlElementAttribute("AllDayEvent", typeof(byte), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Attendees", typeof(Attendees), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("BusyStatus", typeof(byte), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Categories", typeof(Categories), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("DisallowNewTimeProposal", typeof(bool), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("DtStamp", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("EndTime", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Exceptions", typeof(Exceptions), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Location", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("MeetingStatus", typeof(byte), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("OrganizerEmail", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("OrganizerName", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Recurrence", typeof(Recurrence), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Reminder", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("ResponseRequested", typeof(bool), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Sensitivity", typeof(byte), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("StartTime", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Subject", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("Timezone", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("UID", typeof(string), Namespace="Calendar")]
-        [System.Xml.Serialization.XmlElementAttribute("AccountName", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("CompanyMainPhone", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("CustomerId", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("GovernmentId", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("IMAddress", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("IMAddress2", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("IMAddress3", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("MMS", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("ManagerName", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("NickName", typeof(string), Namespace="Contacts2")]
-        [System.Xml.Serialization.XmlElementAttribute("Anniversary", typeof(System.DateTime), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("AssistantName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("AssistantPhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Birthday", typeof(System.DateTime), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Business2PhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressCity", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressCountry", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressPostalCode", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressState", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressStreet", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("BusinessFaxNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("BusinessPhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("CarPhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Categories", typeof(Categories1), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Children", typeof(Children), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("CompanyName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Department", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Email1Address", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Email2Address", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Email3Address", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("FileAs", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("FirstName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Home2PhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("HomeAddressCity", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("HomeAddressCountry", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("HomeAddressPostalCode", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("HomeAddressState", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("HomeAddressStreet", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("HomeFaxNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("HomePhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("JobTitle", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("LastName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("MiddleName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("MobilePhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("OfficeLocation", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("OtherAddressCity", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("OtherAddressCountry", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("OtherAddressPostalCode", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("OtherAddressState", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("OtherAddressStreet", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("PagerNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Picture", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("RadioPhoneNumber", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Spouse", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Suffix", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Title", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("WebPage", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("YomiCompanyName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("YomiFirstName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("YomiLastName", typeof(string), Namespace="Contacts")]
-        [System.Xml.Serialization.XmlElementAttribute("Cc", typeof(string), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("DateReceived", typeof(string), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("DisplayTo", typeof(string), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("From", typeof(string), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("Importance", typeof(string), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("InternetCPID", typeof(string), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("MeetingRequest", typeof(string), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("MessageClass", typeof(string), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("Read", typeof(string), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("ReplyTo", typeof(string), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("Subject", typeof(string), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("ThreadTopic", typeof(string), Namespace="Email")]
-        [System.Xml.Serialization.XmlElementAttribute("To", typeof(string), Namespace="Email")]
-        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
-        public object[] Items {
-            get {
-                return this.itemsField;
-            }
-            set {
-                this.itemsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType4[] ItemsElementName {
-            get {
-                return this.itemsElementNameField;
-            }
-            set {
-                this.itemsElementNameField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="ItemOperations", IncludeInSchema=false)]
-    public enum ItemsChoiceType4 {
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Attachments")]
-        Attachments,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Body")]
-        Body,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:BodyPart")]
-        BodyPart,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AllDayEvent")]
-        AllDayEvent,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Attendees")]
-        Attendees,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:BusyStatus")]
-        BusyStatus,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Categories")]
-        Categories,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DisallowNewTimeProposal")]
-        DisallowNewTimeProposal,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DtStamp")]
-        DtStamp,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:EndTime")]
-        EndTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Exceptions")]
-        Exceptions,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Location")]
-        Location,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:MeetingStatus")]
-        MeetingStatus,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerEmail")]
-        OrganizerEmail,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerName")]
-        OrganizerName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Recurrence")]
-        Recurrence,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Reminder")]
-        Reminder,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseRequested")]
-        ResponseRequested,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Sensitivity")]
-        Sensitivity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:StartTime")]
-        StartTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Subject")]
-        Subject,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Timezone")]
-        Timezone,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:UID")]
-        UID,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:AccountName")]
-        AccountName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CompanyMainPhone")]
-        CompanyMainPhone,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CustomerId")]
-        CustomerId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:GovernmentId")]
-        GovernmentId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress")]
-        IMAddress,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress2")]
-        IMAddress2,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress3")]
-        IMAddress3,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:MMS")]
-        MMS,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:ManagerName")]
-        ManagerName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:NickName")]
-        NickName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Anniversary")]
-        Anniversary,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantName")]
-        AssistantName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantPhoneNumber")]
-        AssistantPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Birthday")]
-        Birthday,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Business2PhoneNumber")]
-        Business2PhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCity")]
-        BusinessAddressCity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCountry")]
-        BusinessAddressCountry,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressPostalCode")]
-        BusinessAddressPostalCode,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressState")]
-        BusinessAddressState,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressStreet")]
-        BusinessAddressStreet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessFaxNumber")]
-        BusinessFaxNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessPhoneNumber")]
-        BusinessPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CarPhoneNumber")]
-        CarPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Categories")]
-        Categories1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Children")]
-        Children,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CompanyName")]
-        CompanyName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Department")]
-        Department,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email1Address")]
-        Email1Address,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email2Address")]
-        Email2Address,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email3Address")]
-        Email3Address,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FileAs")]
-        FileAs,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FirstName")]
-        FirstName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Home2PhoneNumber")]
-        Home2PhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCity")]
-        HomeAddressCity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCountry")]
-        HomeAddressCountry,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressPostalCode")]
-        HomeAddressPostalCode,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressState")]
-        HomeAddressState,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressStreet")]
-        HomeAddressStreet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeFaxNumber")]
-        HomeFaxNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomePhoneNumber")]
-        HomePhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:JobTitle")]
-        JobTitle,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:LastName")]
-        LastName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MiddleName")]
-        MiddleName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MobilePhoneNumber")]
-        MobilePhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OfficeLocation")]
-        OfficeLocation,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCity")]
-        OtherAddressCity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCountry")]
-        OtherAddressCountry,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressPostalCode")]
-        OtherAddressPostalCode,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressState")]
-        OtherAddressState,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressStreet")]
-        OtherAddressStreet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:PagerNumber")]
-        PagerNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Picture")]
-        Picture,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:RadioPhoneNumber")]
-        RadioPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Spouse")]
-        Spouse,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Suffix")]
-        Suffix,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Title")]
-        Title,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WebPage")]
-        WebPage,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiCompanyName")]
-        YomiCompanyName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiFirstName")]
-        YomiFirstName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiLastName")]
-        YomiLastName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Cc")]
-        Cc,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:DateReceived")]
-        DateReceived,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:DisplayTo")]
-        DisplayTo,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:From")]
-        From,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Importance")]
-        Importance,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:InternetCPID")]
-        InternetCPID,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:MeetingRequest")]
-        MeetingRequest,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:MessageClass")]
-        MessageClass,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Read")]
-        Read,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:ReplyTo")]
-        ReplyTo,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Subject")]
-        Subject1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:ThreadTopic")]
-        ThreadTopic,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:To")]
-        To,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="ItemOperations")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="ItemOperations", IsNullable=false)]
-    public partial class ItemOperations {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "ItemOperations")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "ItemOperations", IsNullable = false)]
+    public partial class ItemOperations
+    {
+
         private string statusField;
-        
+
         private ItemOperationsResponse responseField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string Status {
-            get {
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string Status
+        {
+            get
+            {
                 return this.statusField;
             }
-            set {
+            set
+            {
                 this.statusField = value;
             }
         }
-        
+
         /// <remarks/>
-        public ItemOperationsResponse Response {
-            get {
+        public ItemOperationsResponse Response
+        {
+            get
+            {
                 return this.responseField;
             }
-            set {
+            set
+            {
                 this.responseField = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="ItemOperations")]
-    public partial class ItemOperationsResponse {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "ItemOperations")]
+    public partial class ItemOperationsResponse
+    {
+
         private ItemOperationsResponseMove[] moveField;
-        
+
         private ItemOperationsResponseEmptyFolderContents[] emptyFolderContentsField;
-        
+
         private ItemOperationsResponseFetch[] fetchField;
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Move")]
-        public ItemOperationsResponseMove[] Move {
-            get {
+        public ItemOperationsResponseMove[] Move
+        {
+            get
+            {
                 return this.moveField;
             }
-            set {
+            set
+            {
                 this.moveField = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("EmptyFolderContents")]
-        public ItemOperationsResponseEmptyFolderContents[] EmptyFolderContents {
-            get {
+        public ItemOperationsResponseEmptyFolderContents[] EmptyFolderContents
+        {
+            get
+            {
                 return this.emptyFolderContentsField;
             }
-            set {
+            set
+            {
                 this.emptyFolderContentsField = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Fetch")]
-        public ItemOperationsResponseFetch[] Fetch {
-            get {
+        public ItemOperationsResponseFetch[] Fetch
+        {
+            get
+            {
                 return this.fetchField;
             }
-            set {
+            set
+            {
                 this.fetchField = value;
             }
         }
     }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "ItemOperations")]
+    public partial class ItemOperationsResponseEmptyFolderContents
+    {
+
+        private string statusField;
+
+        private string collectionIdField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string Status
+        {
+            get
+            {
+                return this.statusField;
+            }
+            set
+            {
+                this.statusField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "AirSync")]
+        public string CollectionId
+        {
+            get
+            {
+                return this.collectionIdField;
+            }
+            set
+            {
+                this.collectionIdField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "ItemOperations")]
+    public partial class ItemOperationsResponseFetch
+    {
+
+        private string statusField;
+
+        private string collectionIdField;
+
+        private string serverIdField;
+
+        private string longIdField;
+
+        private string classField;
+
+        private string linkIdField;
+
+        private string fileReferenceField;
+
+        private Properties propertiesField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string Status
+        {
+            get
+            {
+                return this.statusField;
+            }
+            set
+            {
+                this.statusField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "AirSync")]
+        public string CollectionId
+        {
+            get
+            {
+                return this.collectionIdField;
+            }
+            set
+            {
+                this.collectionIdField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "AirSync")]
+        public string ServerId
+        {
+            get
+            {
+                return this.serverIdField;
+            }
+            set
+            {
+                this.serverIdField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "Search")]
+        public string LongId
+        {
+            get
+            {
+                return this.longIdField;
+            }
+            set
+            {
+                this.longIdField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "AirSync")]
+        public string Class
+        {
+            get
+            {
+                return this.classField;
+            }
+            set
+            {
+                this.classField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "DocumentLibrary")]
+        public string LinkId
+        {
+            get
+            {
+                return this.linkIdField;
+            }
+            set
+            {
+                this.linkIdField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "AirSyncBase")]
+        public string FileReference
+        {
+            get
+            {
+                return this.fileReferenceField;
+            }
+            set
+            {
+                this.fileReferenceField = value;
+            }
+        }
+
+        /// <remarks/>
+        public Properties Properties
+        {
+            get
+            {
+                return this.propertiesField;
+            }
+            set
+            {
+                this.propertiesField = value;
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="ItemOperations")]
-    public partial class ItemOperationsResponseMove {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "ItemOperations")]
+    public partial class ItemOperationsResponseMove
+    {
+
         private string statusField;
-        
+
         private string conversationIdField;
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string Status {
-            get {
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string Status
+        {
+            get
+            {
                 return this.statusField;
             }
-            set {
+            set
+            {
                 this.statusField = value;
             }
         }
-        
+
         /// <remarks/>
-        public string ConversationId {
-            get {
+        public string ConversationId
+        {
+            get
+            {
                 return this.conversationIdField;
             }
-            set {
+            set
+            {
                 this.conversationIdField = value;
             }
         }
     }
-    
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "AirSync", IncludeInSchema = false)]
+    public enum ItemsChoiceType
+    {
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AllDayEvent")]
+        AllDayEvent,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Attendees")]
+        Attendees,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:BusyStatus")]
+        BusyStatus,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Categories")]
+        Categories,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DisallowNewTimeProposal")]
+        DisallowNewTimeProposal,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DtStamp")]
+        DtStamp,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:EndTime")]
+        EndTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Exceptions")]
+        Exceptions,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Location")]
+        Location,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:MeetingStatus")]
+        MeetingStatus,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerEmail")]
+        OrganizerEmail,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerName")]
+        OrganizerName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Recurrence")]
+        Recurrence,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Reminder")]
+        Reminder,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseRequested")]
+        ResponseRequested,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Sensitivity")]
+        Sensitivity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:StartTime")]
+        StartTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Subject")]
+        Subject,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Timezone")]
+        Timezone,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:UID")]
+        UID,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:AccountName")]
+        AccountName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CompanyMainPhone")]
+        CompanyMainPhone,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CustomerId")]
+        CustomerId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:GovernmentId")]
+        GovernmentId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress")]
+        IMAddress,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress2")]
+        IMAddress2,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress3")]
+        IMAddress3,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:MMS")]
+        MMS,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:ManagerName")]
+        ManagerName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:NickName")]
+        NickName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Anniversary")]
+        Anniversary,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantName")]
+        AssistantName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantPhoneNumber")]
+        AssistantPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Birthday")]
+        Birthday,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Business2PhoneNumber")]
+        Business2PhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCity")]
+        BusinessAddressCity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCountry")]
+        BusinessAddressCountry,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressPostalCode")]
+        BusinessAddressPostalCode,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressState")]
+        BusinessAddressState,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressStreet")]
+        BusinessAddressStreet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessFaxNumber")]
+        BusinessFaxNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessPhoneNumber")]
+        BusinessPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CarPhoneNumber")]
+        CarPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Categories")]
+        Categories1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Children")]
+        Children,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CompanyName")]
+        CompanyName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Department")]
+        Department,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email1Address")]
+        Email1Address,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email2Address")]
+        Email2Address,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email3Address")]
+        Email3Address,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FileAs")]
+        FileAs,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FirstName")]
+        FirstName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Home2PhoneNumber")]
+        Home2PhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCity")]
+        HomeAddressCity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCountry")]
+        HomeAddressCountry,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressPostalCode")]
+        HomeAddressPostalCode,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressState")]
+        HomeAddressState,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressStreet")]
+        HomeAddressStreet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeFaxNumber")]
+        HomeFaxNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomePhoneNumber")]
+        HomePhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:JobTitle")]
+        JobTitle,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:LastName")]
+        LastName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MiddleName")]
+        MiddleName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MobilePhoneNumber")]
+        MobilePhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OfficeLocation")]
+        OfficeLocation,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCity")]
+        OtherAddressCity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCountry")]
+        OtherAddressCountry,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressPostalCode")]
+        OtherAddressPostalCode,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressState")]
+        OtherAddressState,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressStreet")]
+        OtherAddressStreet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:PagerNumber")]
+        PagerNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Picture")]
+        Picture,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:RadioPhoneNumber")]
+        RadioPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Spouse")]
+        Spouse,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Suffix")]
+        Suffix,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Title")]
+        Title,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WebPage")]
+        WebPage,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiCompanyName")]
+        YomiCompanyName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiFirstName")]
+        YomiFirstName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiLastName")]
+        YomiLastName,
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "AirSync", IncludeInSchema = false)]
+    public enum ItemsChoiceType1
+    {
+
+        /// <remarks/>
+        Class,
+
+        /// <remarks/>
+        Conflict,
+
+        /// <remarks/>
+        FilterType,
+
+        /// <remarks/>
+        MIMESupport,
+
+        /// <remarks/>
+        MIMETruncation,
+
+        /// <remarks/>
+        MaxItems,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:BodyPartPreference")]
+        BodyPartPreference,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:BodyPreference")]
+        BodyPreference,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("RightsManagement:RightsManagementSupport")]
+        RightsManagementSupport,
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "Search", IncludeInSchema = false)]
+    public enum ItemsChoiceType2
+    {
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSync:Class")]
+        Class,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSync:CollectionId")]
+        CollectionId,
+
+        /// <remarks/>
+        And,
+
+        /// <remarks/>
+        ConversationId,
+
+        /// <remarks/>
+        EqualTo,
+
+        /// <remarks/>
+        FreeText,
+
+        /// <remarks/>
+        GreaterThan,
+
+        /// <remarks/>
+        LessThan,
+
+        /// <remarks/>
+        Or,
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "ItemOperations", IncludeInSchema = false)]
+    public enum ItemsChoiceType3
+    {
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Attachments")]
+        Attachments,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Body")]
+        Body,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:BodyPart")]
+        BodyPart,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:NativeBodyType")]
+        NativeBodyType,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AllDayEvent")]
+        AllDayEvent,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AppointmentReplyTime")]
+        AppointmentReplyTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Attendees")]
+        Attendees,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:BusyStatus")]
+        BusyStatus,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Categories")]
+        Categories,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DisallowNewTimeProposal")]
+        DisallowNewTimeProposal,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DtStamp")]
+        DtStamp,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:EndTime")]
+        EndTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Exceptions")]
+        Exceptions,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Location")]
+        Location,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:MeetingStatus")]
+        MeetingStatus,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OnlineMeetingConfLink")]
+        OnlineMeetingConfLink,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OnlineMeetingExternalLink")]
+        OnlineMeetingExternalLink,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerEmail")]
+        OrganizerEmail,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerName")]
+        OrganizerName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Recurrence")]
+        Recurrence,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Reminder")]
+        Reminder,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseRequested")]
+        ResponseRequested,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseType")]
+        ResponseType,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Sensitivity")]
+        Sensitivity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:StartTime")]
+        StartTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Subject")]
+        Subject,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Timezone")]
+        Timezone,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:UID")]
+        UID,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:AccountName")]
+        AccountName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CompanyMainPhone")]
+        CompanyMainPhone,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CustomerId")]
+        CustomerId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:GovernmentId")]
+        GovernmentId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress")]
+        IMAddress,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress2")]
+        IMAddress2,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress3")]
+        IMAddress3,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:MMS")]
+        MMS,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:ManagerName")]
+        ManagerName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:NickName")]
+        NickName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Alias")]
+        Alias,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Anniversary")]
+        Anniversary,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantName")]
+        AssistantName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantPhoneNumber")]
+        AssistantPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Birthday")]
+        Birthday,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Business2PhoneNumber")]
+        Business2PhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCity")]
+        BusinessAddressCity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCountry")]
+        BusinessAddressCountry,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressPostalCode")]
+        BusinessAddressPostalCode,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressState")]
+        BusinessAddressState,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressStreet")]
+        BusinessAddressStreet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessFaxNumber")]
+        BusinessFaxNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessPhoneNumber")]
+        BusinessPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CarPhoneNumber")]
+        CarPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Categories")]
+        Categories1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Children")]
+        Children,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CompanyName")]
+        CompanyName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Department")]
+        Department,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email1Address")]
+        Email1Address,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email2Address")]
+        Email2Address,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email3Address")]
+        Email3Address,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FileAs")]
+        FileAs,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FirstName")]
+        FirstName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Home2PhoneNumber")]
+        Home2PhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCity")]
+        HomeAddressCity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCountry")]
+        HomeAddressCountry,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressPostalCode")]
+        HomeAddressPostalCode,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressState")]
+        HomeAddressState,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressStreet")]
+        HomeAddressStreet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeFaxNumber")]
+        HomeFaxNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomePhoneNumber")]
+        HomePhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:JobTitle")]
+        JobTitle,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:LastName")]
+        LastName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MiddleName")]
+        MiddleName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MobilePhoneNumber")]
+        MobilePhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OfficeLocation")]
+        OfficeLocation,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCity")]
+        OtherAddressCity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCountry")]
+        OtherAddressCountry,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressPostalCode")]
+        OtherAddressPostalCode,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressState")]
+        OtherAddressState,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressStreet")]
+        OtherAddressStreet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:PagerNumber")]
+        PagerNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Picture")]
+        Picture,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:RadioPhoneNumber")]
+        RadioPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Spouse")]
+        Spouse,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Suffix")]
+        Suffix,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Title")]
+        Title,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WebPage")]
+        WebPage,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WeightedRank")]
+        WeightedRank,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiCompanyName")]
+        YomiCompanyName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiFirstName")]
+        YomiFirstName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiLastName")]
+        YomiLastName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:ContentLength")]
+        ContentLength,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:ContentType")]
+        ContentType,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:CreationDate")]
+        CreationDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:DisplayName")]
+        DisplayName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:IsFolder")]
+        IsFolder,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:IsHidden")]
+        IsHidden,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:LastModifiedDate")]
+        LastModifiedDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:LinkId")]
+        LinkId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:AccountId")]
+        AccountId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:CalendarType")]
+        CalendarType,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:ConversationId")]
+        ConversationId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:ConversationIndex")]
+        ConversationIndex,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:FirstDayOfWeek")]
+        FirstDayOfWeek,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:IsLeapMonth")]
+        IsLeapMonth,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:LastVerbExecuted")]
+        LastVerbExecuted,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:LastVerbExecutionTime")]
+        LastVerbExecutionTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:MeetingMessageType")]
+        MeetingMessageType,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:ReceivedAsBcc")]
+        ReceivedAsBcc,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:Sender")]
+        Sender,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmAttDuration")]
+        UmAttDuration,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmAttOrder")]
+        UmAttOrder,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmCallerID")]
+        UmCallerID,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmUserNotes")]
+        UmUserNotes,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Categories")]
+        Categories2,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Cc")]
+        Cc,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:ContentClass")]
+        ContentClass,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:DateReceived")]
+        DateReceived,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:DisplayTo")]
+        DisplayTo,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Flag")]
+        Flag,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:From")]
+        From,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Importance")]
+        Importance,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:InternetCPID")]
+        InternetCPID,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:MeetingRequest")]
+        MeetingRequest,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:MessageClass")]
+        MessageClass,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Read")]
+        Read,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:ReplyTo")]
+        ReplyTo,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Subject")]
+        Subject1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:ThreadTopic")]
+        ThreadTopic,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:To")]
+        To,
+
+        /// <remarks/>
+        Data,
+
+        /// <remarks/>
+        Part,
+
+        /// <remarks/>
+        Range,
+
+        /// <remarks/>
+        Total,
+
+        /// <remarks/>
+        Version,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Notes:Categories")]
+        Categories3,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Notes:LastModifiedDate")]
+        LastModifiedDate1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Notes:MessageClass")]
+        MessageClass1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Notes:Subject")]
+        Subject2,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("RightsManagement:RightsManagementLicense")]
+        RightsManagementLicense,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Categories")]
+        Categories4,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Complete")]
+        Complete,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:DateCompleted")]
+        DateCompleted,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:DueDate")]
+        DueDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Importance")]
+        Importance1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:OrdinalDate")]
+        OrdinalDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Recurrence")]
+        Recurrence1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:ReminderSet")]
+        ReminderSet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:ReminderTime")]
+        ReminderTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Sensitivity")]
+        Sensitivity1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:StartDate")]
+        StartDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:SubOrdinalDate")]
+        SubOrdinalDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Subject")]
+        Subject3,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:UtcDueDate")]
+        UtcDueDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:UtcStartDate")]
+        UtcStartDate,
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "ItemOperations", IncludeInSchema = false)]
+    public enum ItemsChoiceType4
+    {
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Attachments")]
+        Attachments,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Body")]
+        Body,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:BodyPart")]
+        BodyPart,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AllDayEvent")]
+        AllDayEvent,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Attendees")]
+        Attendees,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:BusyStatus")]
+        BusyStatus,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Categories")]
+        Categories,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DisallowNewTimeProposal")]
+        DisallowNewTimeProposal,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DtStamp")]
+        DtStamp,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:EndTime")]
+        EndTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Exceptions")]
+        Exceptions,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Location")]
+        Location,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:MeetingStatus")]
+        MeetingStatus,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerEmail")]
+        OrganizerEmail,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerName")]
+        OrganizerName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Recurrence")]
+        Recurrence,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Reminder")]
+        Reminder,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseRequested")]
+        ResponseRequested,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Sensitivity")]
+        Sensitivity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:StartTime")]
+        StartTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Subject")]
+        Subject,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Timezone")]
+        Timezone,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:UID")]
+        UID,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:AccountName")]
+        AccountName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CompanyMainPhone")]
+        CompanyMainPhone,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CustomerId")]
+        CustomerId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:GovernmentId")]
+        GovernmentId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress")]
+        IMAddress,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress2")]
+        IMAddress2,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress3")]
+        IMAddress3,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:MMS")]
+        MMS,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:ManagerName")]
+        ManagerName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:NickName")]
+        NickName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Anniversary")]
+        Anniversary,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantName")]
+        AssistantName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantPhoneNumber")]
+        AssistantPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Birthday")]
+        Birthday,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Business2PhoneNumber")]
+        Business2PhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCity")]
+        BusinessAddressCity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCountry")]
+        BusinessAddressCountry,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressPostalCode")]
+        BusinessAddressPostalCode,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressState")]
+        BusinessAddressState,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressStreet")]
+        BusinessAddressStreet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessFaxNumber")]
+        BusinessFaxNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessPhoneNumber")]
+        BusinessPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CarPhoneNumber")]
+        CarPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Categories")]
+        Categories1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Children")]
+        Children,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CompanyName")]
+        CompanyName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Department")]
+        Department,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email1Address")]
+        Email1Address,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email2Address")]
+        Email2Address,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email3Address")]
+        Email3Address,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FileAs")]
+        FileAs,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FirstName")]
+        FirstName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Home2PhoneNumber")]
+        Home2PhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCity")]
+        HomeAddressCity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCountry")]
+        HomeAddressCountry,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressPostalCode")]
+        HomeAddressPostalCode,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressState")]
+        HomeAddressState,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressStreet")]
+        HomeAddressStreet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeFaxNumber")]
+        HomeFaxNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomePhoneNumber")]
+        HomePhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:JobTitle")]
+        JobTitle,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:LastName")]
+        LastName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MiddleName")]
+        MiddleName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MobilePhoneNumber")]
+        MobilePhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OfficeLocation")]
+        OfficeLocation,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCity")]
+        OtherAddressCity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCountry")]
+        OtherAddressCountry,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressPostalCode")]
+        OtherAddressPostalCode,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressState")]
+        OtherAddressState,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressStreet")]
+        OtherAddressStreet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:PagerNumber")]
+        PagerNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Picture")]
+        Picture,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:RadioPhoneNumber")]
+        RadioPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Spouse")]
+        Spouse,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Suffix")]
+        Suffix,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Title")]
+        Title,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WebPage")]
+        WebPage,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiCompanyName")]
+        YomiCompanyName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiFirstName")]
+        YomiFirstName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiLastName")]
+        YomiLastName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Cc")]
+        Cc,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:DateReceived")]
+        DateReceived,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:DisplayTo")]
+        DisplayTo,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:From")]
+        From,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Importance")]
+        Importance,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:InternetCPID")]
+        InternetCPID,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:MeetingRequest")]
+        MeetingRequest,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:MessageClass")]
+        MessageClass,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Read")]
+        Read,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:ReplyTo")]
+        ReplyTo,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Subject")]
+        Subject1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:ThreadTopic")]
+        ThreadTopic,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:To")]
+        To,
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "Search", IncludeInSchema = false)]
+    public enum ItemsChoiceType5
+    {
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSync:MIMESupport")]
+        MIMESupport,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:BodyPartPreference")]
+        BodyPartPreference,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:BodyPreference")]
+        BodyPreference,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("RightsManagement:RightsManagementSupport")]
+        RightsManagementSupport,
+
+        /// <remarks/>
+        DeepTraversal,
+
+        /// <remarks/>
+        Password,
+
+        /// <remarks/>
+        Picture,
+
+        /// <remarks/>
+        Range,
+
+        /// <remarks/>
+        RebuildResults,
+
+        /// <remarks/>
+        UserName,
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "Search", IncludeInSchema = false)]
+    public enum ItemsChoiceType6
+    {
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Attachments")]
+        Attachments,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Body")]
+        Body,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:BodyPart")]
+        BodyPart,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:NativeBodyType")]
+        NativeBodyType,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AllDayEvent")]
+        AllDayEvent,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AppointmentReplyTime")]
+        AppointmentReplyTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Attendees")]
+        Attendees,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:BusyStatus")]
+        BusyStatus,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DisallowNewTimeProposal")]
+        DisallowNewTimeProposal,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DtStamp")]
+        DtStamp,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:EndTime")]
+        EndTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Exceptions")]
+        Exceptions,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Location")]
+        Location,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:MeetingStatus")]
+        MeetingStatus,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerEmail")]
+        OrganizerEmail,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerName")]
+        OrganizerName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Recurrence")]
+        Recurrence,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Reminder")]
+        Reminder,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseRequested")]
+        ResponseRequested,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseType")]
+        ResponseType,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Sensitivity")]
+        Sensitivity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:StartTime")]
+        StartTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Subject")]
+        Subject,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Timezone")]
+        Timezone,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:UID")]
+        UID,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:AccountName")]
+        AccountName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CompanyMainPhone")]
+        CompanyMainPhone,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CustomerId")]
+        CustomerId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:GovernmentId")]
+        GovernmentId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress")]
+        IMAddress,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress2")]
+        IMAddress2,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress3")]
+        IMAddress3,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:MMS")]
+        MMS,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:ManagerName")]
+        ManagerName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:NickName")]
+        NickName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Alias")]
+        Alias,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Anniversary")]
+        Anniversary,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantName")]
+        AssistantName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantPhoneNumber")]
+        AssistantPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Birthday")]
+        Birthday,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Business2PhoneNumber")]
+        Business2PhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCity")]
+        BusinessAddressCity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCountry")]
+        BusinessAddressCountry,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressPostalCode")]
+        BusinessAddressPostalCode,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressState")]
+        BusinessAddressState,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressStreet")]
+        BusinessAddressStreet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessFaxNumber")]
+        BusinessFaxNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessPhoneNumber")]
+        BusinessPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CarPhoneNumber")]
+        CarPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Categories")]
+        Categories,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Children")]
+        Children,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CompanyName")]
+        CompanyName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Department")]
+        Department,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email1Address")]
+        Email1Address,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email2Address")]
+        Email2Address,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email3Address")]
+        Email3Address,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FileAs")]
+        FileAs,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FirstName")]
+        FirstName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Home2PhoneNumber")]
+        Home2PhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCity")]
+        HomeAddressCity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCountry")]
+        HomeAddressCountry,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressPostalCode")]
+        HomeAddressPostalCode,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressState")]
+        HomeAddressState,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressStreet")]
+        HomeAddressStreet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeFaxNumber")]
+        HomeFaxNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomePhoneNumber")]
+        HomePhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:JobTitle")]
+        JobTitle,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:LastName")]
+        LastName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MiddleName")]
+        MiddleName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MobilePhoneNumber")]
+        MobilePhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OfficeLocation")]
+        OfficeLocation,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCity")]
+        OtherAddressCity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCountry")]
+        OtherAddressCountry,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressPostalCode")]
+        OtherAddressPostalCode,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressState")]
+        OtherAddressState,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressStreet")]
+        OtherAddressStreet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:PagerNumber")]
+        PagerNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Picture")]
+        Picture,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:RadioPhoneNumber")]
+        RadioPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Spouse")]
+        Spouse,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Suffix")]
+        Suffix,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Title")]
+        Title,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WebPage")]
+        WebPage,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WeightedRank")]
+        WeightedRank,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiCompanyName")]
+        YomiCompanyName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiFirstName")]
+        YomiFirstName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiLastName")]
+        YomiLastName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:ContentLength")]
+        ContentLength,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:ContentType")]
+        ContentType,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:CreationDate")]
+        CreationDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:DisplayName")]
+        DisplayName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:IsFolder")]
+        IsFolder,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:IsHidden")]
+        IsHidden,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:LastModifiedDate")]
+        LastModifiedDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:LinkId")]
+        LinkId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:ConversationId")]
+        ConversationId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:ConversationIndex")]
+        ConversationIndex,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:LastVerbExecuted")]
+        LastVerbExecuted,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:LastVerbExecutionTime")]
+        LastVerbExecutionTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:ReceivedAsBcc")]
+        ReceivedAsBcc,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:Sender")]
+        Sender,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmCallerID")]
+        UmCallerID,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmUserNotes")]
+        UmUserNotes,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Categories")]
+        Categories1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Cc")]
+        Cc,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:ContentClass")]
+        ContentClass,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:DateReceived")]
+        DateReceived,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:DisplayTo")]
+        DisplayTo,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Flag")]
+        Flag,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:From")]
+        From,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Importance")]
+        Importance,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:InternetCPID")]
+        InternetCPID,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:MeetingRequest")]
+        MeetingRequest,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:MessageClass")]
+        MessageClass,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Read")]
+        Read,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:ReplyTo")]
+        ReplyTo,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Subject")]
+        Subject1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:ThreadTopic")]
+        ThreadTopic,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:To")]
+        To,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("GAL:Alias")]
+        Alias1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("GAL:Company")]
+        Company,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("GAL:DisplayName")]
+        DisplayName1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("GAL:EmailAddress")]
+        EmailAddress,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("GAL:FirstName")]
+        FirstName1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("GAL:HomePhone")]
+        HomePhone,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("GAL:LastName")]
+        LastName1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("GAL:MobilePhone")]
+        MobilePhone,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("GAL:Office")]
+        Office,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("GAL:Phone")]
+        Phone,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("GAL:Picture")]
+        Picture1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("GAL:Title")]
+        Title1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Notes:Categories")]
+        Categories2,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Notes:LastModifiedDate")]
+        LastModifiedDate1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Notes:MessageClass")]
+        MessageClass1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Notes:Subject")]
+        Subject2,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Categories")]
+        Categories3,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Complete")]
+        Complete,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:DateCompleted")]
+        DateCompleted,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:DueDate")]
+        DueDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Importance")]
+        Importance1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Recurrence")]
+        Recurrence1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:ReminderSet")]
+        ReminderSet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:ReminderTime")]
+        ReminderTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Sensitivity")]
+        Sensitivity1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:StartDate")]
+        StartDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Subject")]
+        Subject3,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:UtcDueDate")]
+        UtcDueDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:UtcStartDate")]
+        UtcStartDate,
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "AirSync", IncludeInSchema = false)]
+    public enum ItemsChoiceType7
+    {
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Attachments")]
+        Attachments,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Body")]
+        Body,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:BodyPart")]
+        BodyPart,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:NativeBodyType")]
+        NativeBodyType,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AllDayEvent")]
+        AllDayEvent,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AppointmentReplyTime")]
+        AppointmentReplyTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Attendees")]
+        Attendees,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:BusyStatus")]
+        BusyStatus,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Categories")]
+        Categories,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DisallowNewTimeProposal")]
+        DisallowNewTimeProposal,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DtStamp")]
+        DtStamp,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:EndTime")]
+        EndTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Exceptions")]
+        Exceptions,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Location")]
+        Location,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:MeetingStatus")]
+        MeetingStatus,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OnlineMeetingConfLink")]
+        OnlineMeetingConfLink,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OnlineMeetingExternalLink")]
+        OnlineMeetingExternalLink,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerEmail")]
+        OrganizerEmail,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerName")]
+        OrganizerName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Recurrence")]
+        Recurrence,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Reminder")]
+        Reminder,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseRequested")]
+        ResponseRequested,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseType")]
+        ResponseType,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Sensitivity")]
+        Sensitivity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:StartTime")]
+        StartTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Subject")]
+        Subject,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Timezone")]
+        Timezone,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:UID")]
+        UID,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:AccountName")]
+        AccountName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CompanyMainPhone")]
+        CompanyMainPhone,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CustomerId")]
+        CustomerId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:GovernmentId")]
+        GovernmentId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress")]
+        IMAddress,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress2")]
+        IMAddress2,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress3")]
+        IMAddress3,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:MMS")]
+        MMS,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:ManagerName")]
+        ManagerName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:NickName")]
+        NickName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Alias")]
+        Alias,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Anniversary")]
+        Anniversary,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantName")]
+        AssistantName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantPhoneNumber")]
+        AssistantPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Birthday")]
+        Birthday,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Business2PhoneNumber")]
+        Business2PhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCity")]
+        BusinessAddressCity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCountry")]
+        BusinessAddressCountry,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressPostalCode")]
+        BusinessAddressPostalCode,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressState")]
+        BusinessAddressState,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressStreet")]
+        BusinessAddressStreet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessFaxNumber")]
+        BusinessFaxNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessPhoneNumber")]
+        BusinessPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CarPhoneNumber")]
+        CarPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Categories")]
+        Categories1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Children")]
+        Children,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CompanyName")]
+        CompanyName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Department")]
+        Department,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email1Address")]
+        Email1Address,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email2Address")]
+        Email2Address,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email3Address")]
+        Email3Address,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FileAs")]
+        FileAs,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FirstName")]
+        FirstName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Home2PhoneNumber")]
+        Home2PhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCity")]
+        HomeAddressCity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCountry")]
+        HomeAddressCountry,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressPostalCode")]
+        HomeAddressPostalCode,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressState")]
+        HomeAddressState,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressStreet")]
+        HomeAddressStreet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeFaxNumber")]
+        HomeFaxNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomePhoneNumber")]
+        HomePhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:JobTitle")]
+        JobTitle,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:LastName")]
+        LastName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MiddleName")]
+        MiddleName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MobilePhoneNumber")]
+        MobilePhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OfficeLocation")]
+        OfficeLocation,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCity")]
+        OtherAddressCity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCountry")]
+        OtherAddressCountry,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressPostalCode")]
+        OtherAddressPostalCode,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressState")]
+        OtherAddressState,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressStreet")]
+        OtherAddressStreet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:PagerNumber")]
+        PagerNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Picture")]
+        Picture,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:RadioPhoneNumber")]
+        RadioPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Spouse")]
+        Spouse,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Suffix")]
+        Suffix,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Title")]
+        Title,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WebPage")]
+        WebPage,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WeightedRank")]
+        WeightedRank,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiCompanyName")]
+        YomiCompanyName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiFirstName")]
+        YomiFirstName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiLastName")]
+        YomiLastName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:ContentLength")]
+        ContentLength,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:ContentType")]
+        ContentType,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:CreationDate")]
+        CreationDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:DisplayName")]
+        DisplayName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:IsFolder")]
+        IsFolder,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:IsHidden")]
+        IsHidden,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:LastModifiedDate")]
+        LastModifiedDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:LinkId")]
+        LinkId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:AccountId")]
+        AccountId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:CalendarType")]
+        CalendarType,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:ConversationId")]
+        ConversationId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:ConversationIndex")]
+        ConversationIndex,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:FirstDayOfWeek")]
+        FirstDayOfWeek,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:IsLeapMonth")]
+        IsLeapMonth,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:LastVerbExecuted")]
+        LastVerbExecuted,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:LastVerbExecutionTime")]
+        LastVerbExecutionTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:MeetingMessageType")]
+        MeetingMessageType,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:ReceivedAsBcc")]
+        ReceivedAsBcc,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:Sender")]
+        Sender,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmAttDuration")]
+        UmAttDuration,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmAttOrder")]
+        UmAttOrder,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmCallerID")]
+        UmCallerID,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmUserNotes")]
+        UmUserNotes,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Categories")]
+        Categories2,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Cc")]
+        Cc,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:ContentClass")]
+        ContentClass,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:DateReceived")]
+        DateReceived,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:DisplayTo")]
+        DisplayTo,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Flag")]
+        Flag,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:From")]
+        From,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Importance")]
+        Importance,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:InternetCPID")]
+        InternetCPID,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:MeetingRequest")]
+        MeetingRequest,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:MessageClass")]
+        MessageClass,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Read")]
+        Read,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:ReplyTo")]
+        ReplyTo,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Subject")]
+        Subject1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:ThreadTopic")]
+        ThreadTopic,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:To")]
+        To,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Notes:Categories")]
+        Categories3,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Notes:LastModifiedDate")]
+        LastModifiedDate1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Notes:MessageClass")]
+        MessageClass1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Notes:Subject")]
+        Subject2,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("RightsManagement:RightsManagementLicense")]
+        RightsManagementLicense,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Categories")]
+        Categories4,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Complete")]
+        Complete,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:DateCompleted")]
+        DateCompleted,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:DueDate")]
+        DueDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Importance")]
+        Importance1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:OrdinalDate")]
+        OrdinalDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Recurrence")]
+        Recurrence1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:ReminderSet")]
+        ReminderSet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:ReminderTime")]
+        ReminderTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Sensitivity")]
+        Sensitivity1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:StartDate")]
+        StartDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:SubOrdinalDate")]
+        SubOrdinalDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Subject")]
+        Subject3,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:UtcDueDate")]
+        UtcDueDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:UtcStartDate")]
+        UtcStartDate,
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "AirSync", IncludeInSchema = false)]
+    public enum ItemsChoiceType8
+    {
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Attachments")]
+        Attachments,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Body")]
+        Body,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:BodyPart")]
+        BodyPart,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:NativeBodyType")]
+        NativeBodyType,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AllDayEvent")]
+        AllDayEvent,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AppointmentReplyTime")]
+        AppointmentReplyTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Attendees")]
+        Attendees,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:BusyStatus")]
+        BusyStatus,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Categories")]
+        Categories,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DisallowNewTimeProposal")]
+        DisallowNewTimeProposal,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DtStamp")]
+        DtStamp,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:EndTime")]
+        EndTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Exceptions")]
+        Exceptions,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Location")]
+        Location,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:MeetingStatus")]
+        MeetingStatus,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OnlineMeetingConfLink")]
+        OnlineMeetingConfLink,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OnlineMeetingExternalLink")]
+        OnlineMeetingExternalLink,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerEmail")]
+        OrganizerEmail,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerName")]
+        OrganizerName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Recurrence")]
+        Recurrence,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Reminder")]
+        Reminder,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseRequested")]
+        ResponseRequested,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseType")]
+        ResponseType,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Sensitivity")]
+        Sensitivity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:StartTime")]
+        StartTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Subject")]
+        Subject,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Timezone")]
+        Timezone,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:UID")]
+        UID,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:AccountName")]
+        AccountName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CompanyMainPhone")]
+        CompanyMainPhone,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CustomerId")]
+        CustomerId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:GovernmentId")]
+        GovernmentId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress")]
+        IMAddress,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress2")]
+        IMAddress2,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress3")]
+        IMAddress3,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:MMS")]
+        MMS,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:ManagerName")]
+        ManagerName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:NickName")]
+        NickName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Alias")]
+        Alias,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Anniversary")]
+        Anniversary,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantName")]
+        AssistantName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantPhoneNumber")]
+        AssistantPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Birthday")]
+        Birthday,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Business2PhoneNumber")]
+        Business2PhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCity")]
+        BusinessAddressCity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCountry")]
+        BusinessAddressCountry,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressPostalCode")]
+        BusinessAddressPostalCode,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressState")]
+        BusinessAddressState,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressStreet")]
+        BusinessAddressStreet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessFaxNumber")]
+        BusinessFaxNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessPhoneNumber")]
+        BusinessPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CarPhoneNumber")]
+        CarPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Categories")]
+        Categories1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Children")]
+        Children,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CompanyName")]
+        CompanyName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Department")]
+        Department,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email1Address")]
+        Email1Address,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email2Address")]
+        Email2Address,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email3Address")]
+        Email3Address,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FileAs")]
+        FileAs,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FirstName")]
+        FirstName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Home2PhoneNumber")]
+        Home2PhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCity")]
+        HomeAddressCity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCountry")]
+        HomeAddressCountry,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressPostalCode")]
+        HomeAddressPostalCode,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressState")]
+        HomeAddressState,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressStreet")]
+        HomeAddressStreet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeFaxNumber")]
+        HomeFaxNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomePhoneNumber")]
+        HomePhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:JobTitle")]
+        JobTitle,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:LastName")]
+        LastName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MiddleName")]
+        MiddleName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MobilePhoneNumber")]
+        MobilePhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OfficeLocation")]
+        OfficeLocation,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCity")]
+        OtherAddressCity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCountry")]
+        OtherAddressCountry,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressPostalCode")]
+        OtherAddressPostalCode,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressState")]
+        OtherAddressState,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressStreet")]
+        OtherAddressStreet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:PagerNumber")]
+        PagerNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Picture")]
+        Picture,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:RadioPhoneNumber")]
+        RadioPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Spouse")]
+        Spouse,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Suffix")]
+        Suffix,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Title")]
+        Title,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WebPage")]
+        WebPage,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WeightedRank")]
+        WeightedRank,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiCompanyName")]
+        YomiCompanyName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiFirstName")]
+        YomiFirstName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiLastName")]
+        YomiLastName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:ContentLength")]
+        ContentLength,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:ContentType")]
+        ContentType,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:CreationDate")]
+        CreationDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:DisplayName")]
+        DisplayName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:IsFolder")]
+        IsFolder,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:IsHidden")]
+        IsHidden,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:LastModifiedDate")]
+        LastModifiedDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:LinkId")]
+        LinkId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:AccountId")]
+        AccountId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:CalendarType")]
+        CalendarType,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:ConversationId")]
+        ConversationId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:ConversationIndex")]
+        ConversationIndex,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:FirstDayOfWeek")]
+        FirstDayOfWeek,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:IsLeapMonth")]
+        IsLeapMonth,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:LastVerbExecuted")]
+        LastVerbExecuted,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:LastVerbExecutionTime")]
+        LastVerbExecutionTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:MeetingMessageType")]
+        MeetingMessageType,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:ReceivedAsBcc")]
+        ReceivedAsBcc,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:Sender")]
+        Sender,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmAttDuration")]
+        UmAttDuration,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmAttOrder")]
+        UmAttOrder,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmCallerID")]
+        UmCallerID,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmUserNotes")]
+        UmUserNotes,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Categories")]
+        Categories2,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Cc")]
+        Cc,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:ContentClass")]
+        ContentClass,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:DateReceived")]
+        DateReceived,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:DisplayTo")]
+        DisplayTo,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Flag")]
+        Flag,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:From")]
+        From,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Importance")]
+        Importance,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:InternetCPID")]
+        InternetCPID,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:MeetingRequest")]
+        MeetingRequest,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:MessageClass")]
+        MessageClass,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Read")]
+        Read,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:ReplyTo")]
+        ReplyTo,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Subject")]
+        Subject1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:ThreadTopic")]
+        ThreadTopic,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:To")]
+        To,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Notes:Categories")]
+        Categories3,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Notes:LastModifiedDate")]
+        LastModifiedDate1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Notes:MessageClass")]
+        MessageClass1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Notes:Subject")]
+        Subject2,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("RightsManagement:RightsManagementLicense")]
+        RightsManagementLicense,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Categories")]
+        Categories4,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Complete")]
+        Complete,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:DateCompleted")]
+        DateCompleted,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:DueDate")]
+        DueDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Importance")]
+        Importance1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:OrdinalDate")]
+        OrdinalDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Recurrence")]
+        Recurrence1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:ReminderSet")]
+        ReminderSet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:ReminderTime")]
+        ReminderTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Sensitivity")]
+        Sensitivity1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:StartDate")]
+        StartDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:SubOrdinalDate")]
+        SubOrdinalDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Subject")]
+        Subject3,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:UtcDueDate")]
+        UtcDueDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:UtcStartDate")]
+        UtcStartDate,
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "AirSync", IncludeInSchema = false)]
+    public enum ItemsChoiceType9
+    {
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Attachments")]
+        Attachments,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Body")]
+        Body,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:NativeBodyType")]
+        NativeBodyType,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AllDayEvent")]
+        AllDayEvent,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AppointmentReplyTime")]
+        AppointmentReplyTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Attendees")]
+        Attendees,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:BusyStatus")]
+        BusyStatus,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Categories")]
+        Categories,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DisallowNewTimeProposal")]
+        DisallowNewTimeProposal,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DtStamp")]
+        DtStamp,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:EndTime")]
+        EndTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Exceptions")]
+        Exceptions,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Location")]
+        Location,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:MeetingStatus")]
+        MeetingStatus,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OnlineMeetingConfLink")]
+        OnlineMeetingConfLink,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OnlineMeetingExternalLink")]
+        OnlineMeetingExternalLink,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerEmail")]
+        OrganizerEmail,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerName")]
+        OrganizerName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Recurrence")]
+        Recurrence,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Reminder")]
+        Reminder,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseRequested")]
+        ResponseRequested,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseType")]
+        ResponseType,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Sensitivity")]
+        Sensitivity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:StartTime")]
+        StartTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Subject")]
+        Subject,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Timezone")]
+        Timezone,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Calendar:UID")]
+        UID,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:AccountName")]
+        AccountName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CompanyMainPhone")]
+        CompanyMainPhone,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CustomerId")]
+        CustomerId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:GovernmentId")]
+        GovernmentId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress")]
+        IMAddress,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress2")]
+        IMAddress2,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress3")]
+        IMAddress3,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:MMS")]
+        MMS,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:ManagerName")]
+        ManagerName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:NickName")]
+        NickName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Alias")]
+        Alias,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Anniversary")]
+        Anniversary,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantName")]
+        AssistantName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantPhoneNumber")]
+        AssistantPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Birthday")]
+        Birthday,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Business2PhoneNumber")]
+        Business2PhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCity")]
+        BusinessAddressCity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCountry")]
+        BusinessAddressCountry,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressPostalCode")]
+        BusinessAddressPostalCode,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressState")]
+        BusinessAddressState,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressStreet")]
+        BusinessAddressStreet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessFaxNumber")]
+        BusinessFaxNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessPhoneNumber")]
+        BusinessPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CarPhoneNumber")]
+        CarPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Categories")]
+        Categories1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Children")]
+        Children,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CompanyName")]
+        CompanyName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Department")]
+        Department,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email1Address")]
+        Email1Address,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email2Address")]
+        Email2Address,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email3Address")]
+        Email3Address,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FileAs")]
+        FileAs,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FirstName")]
+        FirstName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Home2PhoneNumber")]
+        Home2PhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCity")]
+        HomeAddressCity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCountry")]
+        HomeAddressCountry,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressPostalCode")]
+        HomeAddressPostalCode,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressState")]
+        HomeAddressState,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressStreet")]
+        HomeAddressStreet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeFaxNumber")]
+        HomeFaxNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomePhoneNumber")]
+        HomePhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:JobTitle")]
+        JobTitle,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:LastName")]
+        LastName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MiddleName")]
+        MiddleName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MobilePhoneNumber")]
+        MobilePhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OfficeLocation")]
+        OfficeLocation,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCity")]
+        OtherAddressCity,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCountry")]
+        OtherAddressCountry,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressPostalCode")]
+        OtherAddressPostalCode,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressState")]
+        OtherAddressState,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressStreet")]
+        OtherAddressStreet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:PagerNumber")]
+        PagerNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Picture")]
+        Picture,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:RadioPhoneNumber")]
+        RadioPhoneNumber,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Spouse")]
+        Spouse,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Suffix")]
+        Suffix,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Title")]
+        Title,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WebPage")]
+        WebPage,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WeightedRank")]
+        WeightedRank,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiCompanyName")]
+        YomiCompanyName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiFirstName")]
+        YomiFirstName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiLastName")]
+        YomiLastName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:ContentLength")]
+        ContentLength,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:ContentType")]
+        ContentType,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:CreationDate")]
+        CreationDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:DisplayName")]
+        DisplayName,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:IsFolder")]
+        IsFolder,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:IsHidden")]
+        IsHidden,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:LastModifiedDate")]
+        LastModifiedDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:LinkId")]
+        LinkId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:AccountId")]
+        AccountId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:CalendarType")]
+        CalendarType,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:ConversationId")]
+        ConversationId,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:ConversationIndex")]
+        ConversationIndex,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:FirstDayOfWeek")]
+        FirstDayOfWeek,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:IsLeapMonth")]
+        IsLeapMonth,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:LastVerbExecuted")]
+        LastVerbExecuted,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:LastVerbExecutionTime")]
+        LastVerbExecutionTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:MeetingMessageType")]
+        MeetingMessageType,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:ReceivedAsBcc")]
+        ReceivedAsBcc,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:Sender")]
+        Sender,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmAttDuration")]
+        UmAttDuration,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmAttOrder")]
+        UmAttOrder,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmCallerID")]
+        UmCallerID,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmUserNotes")]
+        UmUserNotes,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Categories")]
+        Categories2,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Cc")]
+        Cc,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:ContentClass")]
+        ContentClass,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:DateReceived")]
+        DateReceived,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:DisplayTo")]
+        DisplayTo,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Flag")]
+        Flag,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:From")]
+        From,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Importance")]
+        Importance,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:InternetCPID")]
+        InternetCPID,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:MeetingRequest")]
+        MeetingRequest,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:MessageClass")]
+        MessageClass,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Read")]
+        Read,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:ReplyTo")]
+        ReplyTo,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:Subject")]
+        Subject1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:ThreadTopic")]
+        ThreadTopic,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Email:To")]
+        To,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Notes:Categories")]
+        Categories3,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Notes:LastModifiedDate")]
+        LastModifiedDate1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Notes:MessageClass")]
+        MessageClass1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Notes:Subject")]
+        Subject2,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("RightsManagement:RightsManagementLicense")]
+        RightsManagementLicense,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Categories")]
+        Categories4,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Complete")]
+        Complete,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:DateCompleted")]
+        DateCompleted,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:DueDate")]
+        DueDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Importance")]
+        Importance1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:OrdinalDate")]
+        OrdinalDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Recurrence")]
+        Recurrence1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:ReminderSet")]
+        ReminderSet,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:ReminderTime")]
+        ReminderTime,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Sensitivity")]
+        Sensitivity1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:StartDate")]
+        StartDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:SubOrdinalDate")]
+        SubOrdinalDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Subject")]
+        Subject3,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:UtcDueDate")]
+        UtcDueDate,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("Tasks:UtcStartDate")]
+        UtcStartDate,
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "AirSync", IncludeInSchema = false)]
+    public enum ItemsChoiceType10
+    {
+
+        /// <remarks/>
+        CollectionId,
+
+        /// <remarks/>
+        Commands,
+
+        /// <remarks/>
+        MoreAvailable,
+
+        /// <remarks/>
+        Responses,
+
+        /// <remarks/>
+        Status,
+
+        /// <remarks/>
+        SyncKey,
+    }
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="ItemOperations")]
-    public partial class ItemOperationsResponseEmptyFolderContents {
-        
-        private string statusField;
-        
-        private string collectionIdField;
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Email")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "Email", IsNullable = false)]
+    public partial class MeetingRequest
+    {
+
+        private byte allDayEventField;
+
+        private bool allDayEventFieldSpecified;
+
+        private System.DateTime startTimeField;
+
+        private System.DateTime dtStampField;
+
+        private System.DateTime endTimeField;
+
+        private byte instanceTypeField;
+
+        private string locationField;
+
+        private string organizerField;
+
+        private System.DateTime recurrenceIdField;
+
+        private bool recurrenceIdFieldSpecified;
+
+        private ushort reminderField;
+
+        private bool reminderFieldSpecified;
+
+        private byte responseRequestedField;
+
+        private bool responseRequestedFieldSpecified;
+
+        private MeetingRequestRecurrences recurrencesField;
+
+        private string sensitivityField;
+
+        private string busyStatusField;
+
+        private string timeZoneField;
+
+        private string globalObjIdField;
+
+        private byte disallowNewTimeProposalField;
+
+        private bool disallowNewTimeProposalFieldSpecified;
+
+        private byte meetingMessageTypeField;
+
+        private bool meetingMessageTypeFieldSpecified;
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string Status {
-            get {
-                return this.statusField;
+        public byte AllDayEvent
+        {
+            get
+            {
+                return this.allDayEventField;
             }
-            set {
-                this.statusField = value;
+            set
+            {
+                this.allDayEventField = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="AirSync")]
-        public string CollectionId {
-            get {
-                return this.collectionIdField;
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool AllDayEventSpecified
+        {
+            get
+            {
+                return this.allDayEventFieldSpecified;
             }
-            set {
-                this.collectionIdField = value;
+            set
+            {
+                this.allDayEventFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public System.DateTime StartTime
+        {
+            get
+            {
+                return this.startTimeField;
+            }
+            set
+            {
+                this.startTimeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public System.DateTime DtStamp
+        {
+            get
+            {
+                return this.dtStampField;
+            }
+            set
+            {
+                this.dtStampField = value;
+            }
+        }
+
+        /// <remarks/>
+        public System.DateTime EndTime
+        {
+            get
+            {
+                return this.endTimeField;
+            }
+            set
+            {
+                this.endTimeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte InstanceType
+        {
+            get
+            {
+                return this.instanceTypeField;
+            }
+            set
+            {
+                this.instanceTypeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string Location
+        {
+            get
+            {
+                return this.locationField;
+            }
+            set
+            {
+                this.locationField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string Organizer
+        {
+            get
+            {
+                return this.organizerField;
+            }
+            set
+            {
+                this.organizerField = value;
+            }
+        }
+
+        /// <remarks/>
+        public System.DateTime RecurrenceId
+        {
+            get
+            {
+                return this.recurrenceIdField;
+            }
+            set
+            {
+                this.recurrenceIdField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool RecurrenceIdSpecified
+        {
+            get
+            {
+                return this.recurrenceIdFieldSpecified;
+            }
+            set
+            {
+                this.recurrenceIdFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public ushort Reminder
+        {
+            get
+            {
+                return this.reminderField;
+            }
+            set
+            {
+                this.reminderField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ReminderSpecified
+        {
+            get
+            {
+                return this.reminderFieldSpecified;
+            }
+            set
+            {
+                this.reminderFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte ResponseRequested
+        {
+            get
+            {
+                return this.responseRequestedField;
+            }
+            set
+            {
+                this.responseRequestedField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ResponseRequestedSpecified
+        {
+            get
+            {
+                return this.responseRequestedFieldSpecified;
+            }
+            set
+            {
+                this.responseRequestedFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public MeetingRequestRecurrences Recurrences
+        {
+            get
+            {
+                return this.recurrencesField;
+            }
+            set
+            {
+                this.recurrencesField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string Sensitivity
+        {
+            get
+            {
+                return this.sensitivityField;
+            }
+            set
+            {
+                this.sensitivityField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string BusyStatus
+        {
+            get
+            {
+                return this.busyStatusField;
+            }
+            set
+            {
+                this.busyStatusField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string TimeZone
+        {
+            get
+            {
+                return this.timeZoneField;
+            }
+            set
+            {
+                this.timeZoneField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string GlobalObjId
+        {
+            get
+            {
+                return this.globalObjIdField;
+            }
+            set
+            {
+                this.globalObjIdField = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte DisallowNewTimeProposal
+        {
+            get
+            {
+                return this.disallowNewTimeProposalField;
+            }
+            set
+            {
+                this.disallowNewTimeProposalField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool DisallowNewTimeProposalSpecified
+        {
+            get
+            {
+                return this.disallowNewTimeProposalFieldSpecified;
+            }
+            set
+            {
+                this.disallowNewTimeProposalFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "Email2")]
+        public byte MeetingMessageType
+        {
+            get
+            {
+                return this.meetingMessageTypeField;
+            }
+            set
+            {
+                this.meetingMessageTypeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool MeetingMessageTypeSpecified
+        {
+            get
+            {
+                return this.meetingMessageTypeFieldSpecified;
+            }
+            set
+            {
+                this.meetingMessageTypeFieldSpecified = value;
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="ItemOperations")]
-    public partial class ItemOperationsResponseFetch {
-        
-        private string statusField;
-        
-        private string collectionIdField;
-        
-        private string serverIdField;
-        
-        private string longIdField;
-        
-        private string classField;
-        
-        private string linkIdField;
-        
-        private string fileReferenceField;
-        
-        private Properties propertiesField;
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Email")]
+    public partial class MeetingRequestRecurrences
+    {
+
+        private MeetingRequestRecurrencesRecurrence recurrenceField;
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string Status {
-            get {
-                return this.statusField;
+        public MeetingRequestRecurrencesRecurrence Recurrence
+        {
+            get
+            {
+                return this.recurrenceField;
             }
-            set {
-                this.statusField = value;
+            set
+            {
+                this.recurrenceField = value;
             }
         }
-        
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Email")]
+    public partial class MeetingRequestRecurrencesRecurrence
+    {
+
+        private byte typeField;
+
+        private string intervalField;
+
+        private System.DateTime untilField;
+
+        private bool untilFieldSpecified;
+
+        private string occurrencesField;
+
+        private string weekOfMonthField;
+
+        private string dayOfMonthField;
+
+        private string dayOfWeekField;
+
+        private string monthOfYearField;
+
+        private string calendarTypeField;
+
+        private byte isLeapMonthField;
+
+        private bool isLeapMonthFieldSpecified;
+
+        private byte firstDayOfWeekField;
+
+        private bool firstDayOfWeekFieldSpecified;
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="AirSync")]
-        public string CollectionId {
-            get {
-                return this.collectionIdField;
+        public byte Type
+        {
+            get
+            {
+                return this.typeField;
             }
-            set {
-                this.collectionIdField = value;
+            set
+            {
+                this.typeField = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="AirSync")]
-        public string ServerId {
-            get {
-                return this.serverIdField;
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string Interval
+        {
+            get
+            {
+                return this.intervalField;
             }
-            set {
-                this.serverIdField = value;
+            set
+            {
+                this.intervalField = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="Search")]
-        public string LongId {
-            get {
-                return this.longIdField;
+        public System.DateTime Until
+        {
+            get
+            {
+                return this.untilField;
             }
-            set {
-                this.longIdField = value;
+            set
+            {
+                this.untilField = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="AirSync")]
-        public string Class {
-            get {
-                return this.classField;
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool UntilSpecified
+        {
+            get
+            {
+                return this.untilFieldSpecified;
             }
-            set {
-                this.classField = value;
+            set
+            {
+                this.untilFieldSpecified = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="DocumentLibrary")]
-        public string LinkId {
-            get {
-                return this.linkIdField;
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string Occurrences
+        {
+            get
+            {
+                return this.occurrencesField;
             }
-            set {
-                this.linkIdField = value;
+            set
+            {
+                this.occurrencesField = value;
             }
         }
-        
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="AirSyncBase")]
-        public string FileReference {
-            get {
-                return this.fileReferenceField;
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string WeekOfMonth
+        {
+            get
+            {
+                return this.weekOfMonthField;
             }
-            set {
-                this.fileReferenceField = value;
+            set
+            {
+                this.weekOfMonthField = value;
             }
         }
-        
+
         /// <remarks/>
-        public Properties Properties {
-            get {
-                return this.propertiesField;
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string DayOfMonth
+        {
+            get
+            {
+                return this.dayOfMonthField;
             }
-            set {
-                this.propertiesField = value;
+            set
+            {
+                this.dayOfMonthField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string DayOfWeek
+        {
+            get
+            {
+                return this.dayOfWeekField;
+            }
+            set
+            {
+                this.dayOfWeekField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string MonthOfYear
+        {
+            get
+            {
+                return this.monthOfYearField;
+            }
+            set
+            {
+                this.monthOfYearField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "Email2", DataType = "integer")]
+        public string CalendarType
+        {
+            get
+            {
+                return this.calendarTypeField;
+            }
+            set
+            {
+                this.calendarTypeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "Email2")]
+        public byte IsLeapMonth
+        {
+            get
+            {
+                return this.isLeapMonthField;
+            }
+            set
+            {
+                this.isLeapMonthField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool IsLeapMonthSpecified
+        {
+            get
+            {
+                return this.isLeapMonthFieldSpecified;
+            }
+            set
+            {
+                this.isLeapMonthFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "Email2")]
+        public byte FirstDayOfWeek
+        {
+            get
+            {
+                return this.firstDayOfWeekField;
+            }
+            set
+            {
+                this.firstDayOfWeekField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool FirstDayOfWeekSpecified
+        {
+            get
+            {
+                return this.firstDayOfWeekFieldSpecified;
+            }
+            set
+            {
+                this.firstDayOfWeekFieldSpecified = value;
             }
         }
     }
@@ -5760,6 +9083,307 @@ namespace TSEA.Original.Response {
             }
         }
     }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Settings")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "Settings", IsNullable = false)]
+    public partial class OofMessage
+    {
+
+        private string appliesToInternalField;
+
+        private string appliesToExternalKnownField;
+
+        private string appliesToExternalUnknownField;
+
+        private string enabledField;
+
+        private string replyMessageField;
+
+        private string bodyTypeField;
+
+        /// <remarks/>
+        public string AppliesToInternal
+        {
+            get
+            {
+                return this.appliesToInternalField;
+            }
+            set
+            {
+                this.appliesToInternalField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string AppliesToExternalKnown
+        {
+            get
+            {
+                return this.appliesToExternalKnownField;
+            }
+            set
+            {
+                this.appliesToExternalKnownField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string AppliesToExternalUnknown
+        {
+            get
+            {
+                return this.appliesToExternalUnknownField;
+            }
+            set
+            {
+                this.appliesToExternalUnknownField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string Enabled
+        {
+            get
+            {
+                return this.enabledField;
+            }
+            set
+            {
+                this.enabledField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string ReplyMessage
+        {
+            get
+            {
+                return this.replyMessageField;
+            }
+            set
+            {
+                this.replyMessageField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string BodyType
+        {
+            get
+            {
+                return this.bodyTypeField;
+            }
+            set
+            {
+                this.bodyTypeField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Settings")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "Settings", IsNullable = false)]
+    public enum OofState
+    {
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("0")]
+        Item0,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("1")]
+        Item1,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("2")]
+        Item2,
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "AirSync")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "AirSync", IsNullable = false)]
+    public partial class Options
+    {
+
+        private object[] itemsField;
+
+        private ItemsChoiceType1[] itemsElementNameField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Class", typeof(string))]
+        [System.Xml.Serialization.XmlElementAttribute("Conflict", typeof(byte))]
+        [System.Xml.Serialization.XmlElementAttribute("FilterType", typeof(byte))]
+        [System.Xml.Serialization.XmlElementAttribute("MIMESupport", typeof(byte))]
+        [System.Xml.Serialization.XmlElementAttribute("MIMETruncation", typeof(byte))]
+        [System.Xml.Serialization.XmlElementAttribute("MaxItems", typeof(string), DataType = "integer")]
+        [System.Xml.Serialization.XmlElementAttribute("BodyPartPreference", typeof(BodyPartPreference), Namespace = "AirSyncBase")]
+        [System.Xml.Serialization.XmlElementAttribute("BodyPreference", typeof(BodyPreference), Namespace = "AirSyncBase")]
+        [System.Xml.Serialization.XmlElementAttribute("RightsManagementSupport", typeof(bool), Namespace = "RightsManagement")]
+        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
+        public object[] Items
+        {
+            get
+            {
+                return this.itemsField;
+            }
+            set
+            {
+                this.itemsField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public ItemsChoiceType1[] ItemsElementName
+        {
+            get
+            {
+                return this.itemsElementNameField;
+            }
+            set
+            {
+                this.itemsElementNameField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Search")]
+    [System.Xml.Serialization.XmlRootAttribute("Options", Namespace = "Search", IsNullable = false)]
+    public partial class Options1
+    {
+
+        private object[] itemsField;
+
+        private ItemsChoiceType5[] itemsElementNameField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("MIMESupport", typeof(byte), Namespace = "AirSync")]
+        [System.Xml.Serialization.XmlElementAttribute("BodyPartPreference", typeof(BodyPartPreference), Namespace = "AirSyncBase")]
+        [System.Xml.Serialization.XmlElementAttribute("BodyPreference", typeof(BodyPreference), Namespace = "AirSyncBase")]
+        [System.Xml.Serialization.XmlElementAttribute("RightsManagementSupport", typeof(bool), Namespace = "RightsManagement")]
+        [System.Xml.Serialization.XmlElementAttribute("DeepTraversal", typeof(string))]
+        [System.Xml.Serialization.XmlElementAttribute("Password", typeof(string))]
+        [System.Xml.Serialization.XmlElementAttribute("Picture", typeof(OptionsPicture))]
+        [System.Xml.Serialization.XmlElementAttribute("Range", typeof(string))]
+        [System.Xml.Serialization.XmlElementAttribute("RebuildResults", typeof(string))]
+        [System.Xml.Serialization.XmlElementAttribute("UserName", typeof(string))]
+        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
+        public object[] Items
+        {
+            get
+            {
+                return this.itemsField;
+            }
+            set
+            {
+                this.itemsField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public ItemsChoiceType5[] ItemsElementName
+        {
+            get
+            {
+                return this.itemsElementNameField;
+            }
+            set
+            {
+                this.itemsElementNameField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Search")]
+    public partial class OptionsPicture
+    {
+
+        private uint maxSizeField;
+
+        private bool maxSizeFieldSpecified;
+
+        private uint maxPicturesField;
+
+        private bool maxPicturesFieldSpecified;
+
+        /// <remarks/>
+        public uint MaxSize
+        {
+            get
+            {
+                return this.maxSizeField;
+            }
+            set
+            {
+                this.maxSizeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool MaxSizeSpecified
+        {
+            get
+            {
+                return this.maxSizeFieldSpecified;
+            }
+            set
+            {
+                this.maxSizeFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public uint MaxPictures
+        {
+            get
+            {
+                return this.maxPicturesField;
+            }
+            set
+            {
+                this.maxPicturesField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool MaxPicturesSpecified
+        {
+            get
+            {
+                return this.maxPicturesFieldSpecified;
+            }
+            set
+            {
+                this.maxPicturesFieldSpecified = value;
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
@@ -5821,914 +9445,201 @@ namespace TSEA.Original.Response {
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Provision")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="Provision", IsNullable=false)]
-    public partial class EASProvisionDoc {
-        
-        private bool devicePasswordEnabledField;
-        
-        private bool devicePasswordEnabledFieldSpecified;
-        
-        private bool alphanumericDevicePasswordRequiredField;
-        
-        private bool alphanumericDevicePasswordRequiredFieldSpecified;
-        
-        private bool passwordRecoveryEnabledField;
-        
-        private bool passwordRecoveryEnabledFieldSpecified;
-        
-        private bool requireStorageCardEncryptionField;
-        
-        private bool requireStorageCardEncryptionFieldSpecified;
-        
-        private bool attachmentsEnabledField;
-        
-        private bool attachmentsEnabledFieldSpecified;
-        
-        private string minDevicePasswordLengthField;
-        
-        private string maxInactivityTimeDeviceLockField;
-        
-        private string maxDevicePasswordFailedAttemptsField;
-        
-        private string maxAttachmentSizeField;
-        
-        private bool allowSimpleDevicePasswordField;
-        
-        private bool allowSimpleDevicePasswordFieldSpecified;
-        
-        private string devicePasswordExpirationField;
-        
-        private uint devicePasswordHistoryField;
-        
-        private bool devicePasswordHistoryFieldSpecified;
-        
-        private bool allowStorageCardField;
-        
-        private bool allowStorageCardFieldSpecified;
-        
-        private bool allowCameraField;
-        
-        private bool allowCameraFieldSpecified;
-        
-        private bool requireDeviceEncryptionField;
-        
-        private bool requireDeviceEncryptionFieldSpecified;
-        
-        private bool allowUnsignedApplicationsField;
-        
-        private bool allowUnsignedApplicationsFieldSpecified;
-        
-        private bool allowUnsignedInstallationPackagesField;
-        
-        private bool allowUnsignedInstallationPackagesFieldSpecified;
-        
-        private byte minDevicePasswordComplexCharactersField;
-        
-        private bool minDevicePasswordComplexCharactersFieldSpecified;
-        
-        private bool allowWiFiField;
-        
-        private bool allowWiFiFieldSpecified;
-        
-        private bool allowTextMessagingField;
-        
-        private bool allowTextMessagingFieldSpecified;
-        
-        private bool allowPOPIMAPEmailField;
-        
-        private bool allowPOPIMAPEmailFieldSpecified;
-        
-        private byte allowBluetoothField;
-        
-        private bool allowBluetoothFieldSpecified;
-        
-        private bool allowIrDAField;
-        
-        private bool allowIrDAFieldSpecified;
-        
-        private bool requireManualSyncWhenRoamingField;
-        
-        private bool requireManualSyncWhenRoamingFieldSpecified;
-        
-        private bool allowDesktopSyncField;
-        
-        private bool allowDesktopSyncFieldSpecified;
-        
-        private uint maxCalendarAgeFilterField;
-        
-        private bool maxCalendarAgeFilterFieldSpecified;
-        
-        private bool allowHTMLEmailField;
-        
-        private bool allowHTMLEmailFieldSpecified;
-        
-        private uint maxEmailAgeFilterField;
-        
-        private bool maxEmailAgeFilterFieldSpecified;
-        
-        private string maxEmailBodyTruncationSizeField;
-        
-        private string maxEmailHTMLBodyTruncationSizeField;
-        
-        private bool requireSignedSMIMEMessagesField;
-        
-        private bool requireSignedSMIMEMessagesFieldSpecified;
-        
-        private bool requireEncryptedSMIMEMessagesField;
-        
-        private bool requireEncryptedSMIMEMessagesFieldSpecified;
-        
-        private string requireSignedSMIMEAlgorithmField;
-        
-        private string requireEncryptionSMIMEAlgorithmField;
-        
-        private string allowSMIMEEncryptionAlgorithmNegotiationField;
-        
-        private bool allowSMIMESoftCertsField;
-        
-        private bool allowSMIMESoftCertsFieldSpecified;
-        
-        private bool allowBrowserField;
-        
-        private bool allowBrowserFieldSpecified;
-        
-        private bool allowConsumerEmailField;
-        
-        private bool allowConsumerEmailFieldSpecified;
-        
-        private bool allowRemoteDesktopField;
-        
-        private bool allowRemoteDesktopFieldSpecified;
-        
-        private bool allowInternetSharingField;
-        
-        private bool allowInternetSharingFieldSpecified;
-        
-        private string[] unapprovedInROMApplicationListField;
-        
-        private string[] approvedApplicationListField;
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "ItemOperations")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "ItemOperations", IsNullable = false)]
+    public partial class Properties
+    {
+
+        private object[] itemsField;
+
+        private ItemsChoiceType3[] itemsElementNameField;
+
         /// <remarks/>
-        public bool DevicePasswordEnabled {
-            get {
-                return this.devicePasswordEnabledField;
+        [System.Xml.Serialization.XmlElementAttribute("Attachments", typeof(Attachments), Namespace = "AirSyncBase")]
+        [System.Xml.Serialization.XmlElementAttribute("Body", typeof(Body), Namespace = "AirSyncBase")]
+        [System.Xml.Serialization.XmlElementAttribute("BodyPart", typeof(BodyPart), Namespace = "AirSyncBase")]
+        [System.Xml.Serialization.XmlElementAttribute("NativeBodyType", typeof(byte), Namespace = "AirSyncBase")]
+        [System.Xml.Serialization.XmlElementAttribute("AllDayEvent", typeof(byte), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("AppointmentReplyTime", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Attendees", typeof(Attendees), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("BusyStatus", typeof(byte), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Categories", typeof(Categories), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("DisallowNewTimeProposal", typeof(bool), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("DtStamp", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("EndTime", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Exceptions", typeof(Exceptions), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Location", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("MeetingStatus", typeof(byte), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("OnlineMeetingConfLink", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("OnlineMeetingExternalLink", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("OrganizerEmail", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("OrganizerName", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Recurrence", typeof(Recurrence), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Reminder", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("ResponseRequested", typeof(bool), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("ResponseType", typeof(uint), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Sensitivity", typeof(byte), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("StartTime", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Subject", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Timezone", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("UID", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("AccountName", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("CompanyMainPhone", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("CustomerId", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("GovernmentId", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("IMAddress", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("IMAddress2", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("IMAddress3", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("MMS", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("ManagerName", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("NickName", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("Alias", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Anniversary", typeof(System.DateTime), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("AssistantName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("AssistantPhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Birthday", typeof(System.DateTime), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Business2PhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressCity", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressCountry", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressPostalCode", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressState", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressStreet", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("BusinessFaxNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("BusinessPhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("CarPhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Categories", typeof(Categories1), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Children", typeof(Children), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("CompanyName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Department", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Email1Address", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Email2Address", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Email3Address", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("FileAs", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("FirstName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Home2PhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("HomeAddressCity", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("HomeAddressCountry", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("HomeAddressPostalCode", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("HomeAddressState", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("HomeAddressStreet", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("HomeFaxNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("HomePhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("JobTitle", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("LastName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("MiddleName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("MobilePhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("OfficeLocation", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("OtherAddressCity", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("OtherAddressCountry", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("OtherAddressPostalCode", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("OtherAddressState", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("OtherAddressStreet", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("PagerNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Picture", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("RadioPhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Spouse", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Suffix", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Title", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("WebPage", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("WeightedRank", typeof(int), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("YomiCompanyName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("YomiFirstName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("YomiLastName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("ContentLength", typeof(string), Namespace = "DocumentLibrary", DataType = "integer")]
+        [System.Xml.Serialization.XmlElementAttribute("ContentType", typeof(string), Namespace = "DocumentLibrary")]
+        [System.Xml.Serialization.XmlElementAttribute("CreationDate", typeof(System.DateTime), Namespace = "DocumentLibrary")]
+        [System.Xml.Serialization.XmlElementAttribute("DisplayName", typeof(string), Namespace = "DocumentLibrary")]
+        [System.Xml.Serialization.XmlElementAttribute("IsFolder", typeof(byte), Namespace = "DocumentLibrary")]
+        [System.Xml.Serialization.XmlElementAttribute("IsHidden", typeof(byte), Namespace = "DocumentLibrary")]
+        [System.Xml.Serialization.XmlElementAttribute("LastModifiedDate", typeof(System.DateTime), Namespace = "DocumentLibrary")]
+        [System.Xml.Serialization.XmlElementAttribute("LinkId", typeof(string), Namespace = "DocumentLibrary")]
+        [System.Xml.Serialization.XmlElementAttribute("AccountId", typeof(string), Namespace = "Email2")]
+        [System.Xml.Serialization.XmlElementAttribute("CalendarType", typeof(string), Namespace = "Email2", DataType = "integer")]
+        [System.Xml.Serialization.XmlElementAttribute("ConversationId", typeof(string), Namespace = "Email2")]
+        [System.Xml.Serialization.XmlElementAttribute("ConversationIndex", typeof(string), Namespace = "Email2")]
+        [System.Xml.Serialization.XmlElementAttribute("FirstDayOfWeek", typeof(byte), Namespace = "Email2")]
+        [System.Xml.Serialization.XmlElementAttribute("IsLeapMonth", typeof(byte), Namespace = "Email2")]
+        [System.Xml.Serialization.XmlElementAttribute("LastVerbExecuted", typeof(string), Namespace = "Email2", DataType = "integer")]
+        [System.Xml.Serialization.XmlElementAttribute("LastVerbExecutionTime", typeof(System.DateTime), Namespace = "Email2")]
+        [System.Xml.Serialization.XmlElementAttribute("MeetingMessageType", typeof(byte), Namespace = "Email2")]
+        [System.Xml.Serialization.XmlElementAttribute("ReceivedAsBcc", typeof(bool), Namespace = "Email2")]
+        [System.Xml.Serialization.XmlElementAttribute("Sender", typeof(string), Namespace = "Email2")]
+        [System.Xml.Serialization.XmlElementAttribute("UmAttDuration", typeof(string), Namespace = "Email2", DataType = "integer")]
+        [System.Xml.Serialization.XmlElementAttribute("UmAttOrder", typeof(string), Namespace = "Email2", DataType = "integer")]
+        [System.Xml.Serialization.XmlElementAttribute("UmCallerID", typeof(string), Namespace = "Email2")]
+        [System.Xml.Serialization.XmlElementAttribute("UmUserNotes", typeof(string), Namespace = "Email2")]
+        [System.Xml.Serialization.XmlElementAttribute("Categories", typeof(Categories2), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("Cc", typeof(string), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("ContentClass", typeof(string), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("DateReceived", typeof(System.DateTime), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("DisplayTo", typeof(string), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("Flag", typeof(Flag), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("From", typeof(string), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("Importance", typeof(byte), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("InternetCPID", typeof(string), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("MeetingRequest", typeof(MeetingRequest), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("MessageClass", typeof(string), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("Read", typeof(bool), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("ReplyTo", typeof(string), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("Subject", typeof(string), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("ThreadTopic", typeof(string), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("To", typeof(string), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("Data", typeof(string))]
+        [System.Xml.Serialization.XmlElementAttribute("Part", typeof(string), DataType = "integer")]
+        [System.Xml.Serialization.XmlElementAttribute("Range", typeof(string))]
+        [System.Xml.Serialization.XmlElementAttribute("Total", typeof(string), DataType = "integer")]
+        [System.Xml.Serialization.XmlElementAttribute("Version", typeof(System.DateTime))]
+        [System.Xml.Serialization.XmlElementAttribute("Categories", typeof(Categories3), Namespace = "Notes")]
+        [System.Xml.Serialization.XmlElementAttribute("LastModifiedDate", typeof(string), Namespace = "Notes")]
+        [System.Xml.Serialization.XmlElementAttribute("MessageClass", typeof(string), Namespace = "Notes")]
+        [System.Xml.Serialization.XmlElementAttribute("Subject", typeof(string), Namespace = "Notes")]
+        [System.Xml.Serialization.XmlElementAttribute("RightsManagementLicense", typeof(RightsManagementLicense), Namespace = "RightsManagement")]
+        [System.Xml.Serialization.XmlElementAttribute("Categories", typeof(Categories4), Namespace = "Tasks")]
+        [System.Xml.Serialization.XmlElementAttribute("Complete", typeof(byte), Namespace = "Tasks")]
+        [System.Xml.Serialization.XmlElementAttribute("DateCompleted", typeof(System.DateTime), Namespace = "Tasks")]
+        [System.Xml.Serialization.XmlElementAttribute("DueDate", typeof(System.DateTime), Namespace = "Tasks")]
+        [System.Xml.Serialization.XmlElementAttribute("Importance", typeof(byte), Namespace = "Tasks")]
+        [System.Xml.Serialization.XmlElementAttribute("OrdinalDate", typeof(System.DateTime), Namespace = "Tasks")]
+        [System.Xml.Serialization.XmlElementAttribute("Recurrence", typeof(Recurrence1), Namespace = "Tasks")]
+        [System.Xml.Serialization.XmlElementAttribute("ReminderSet", typeof(byte), Namespace = "Tasks")]
+        [System.Xml.Serialization.XmlElementAttribute("ReminderTime", typeof(System.DateTime), Namespace = "Tasks")]
+        [System.Xml.Serialization.XmlElementAttribute("Sensitivity", typeof(byte), Namespace = "Tasks")]
+        [System.Xml.Serialization.XmlElementAttribute("StartDate", typeof(System.DateTime), Namespace = "Tasks")]
+        [System.Xml.Serialization.XmlElementAttribute("SubOrdinalDate", typeof(string), Namespace = "Tasks")]
+        [System.Xml.Serialization.XmlElementAttribute("Subject", typeof(string), Namespace = "Tasks")]
+        [System.Xml.Serialization.XmlElementAttribute("UtcDueDate", typeof(System.DateTime), Namespace = "Tasks")]
+        [System.Xml.Serialization.XmlElementAttribute("UtcStartDate", typeof(System.DateTime), Namespace = "Tasks")]
+        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
+        public object[] Items
+        {
+            get
+            {
+                return this.itemsField;
             }
-            set {
-                this.devicePasswordEnabledField = value;
+            set
+            {
+                this.itemsField = value;
             }
         }
-        
+
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool DevicePasswordEnabledSpecified {
-            get {
-                return this.devicePasswordEnabledFieldSpecified;
-            }
-            set {
-                this.devicePasswordEnabledFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool AlphanumericDevicePasswordRequired {
-            get {
-                return this.alphanumericDevicePasswordRequiredField;
-            }
-            set {
-                this.alphanumericDevicePasswordRequiredField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AlphanumericDevicePasswordRequiredSpecified {
-            get {
-                return this.alphanumericDevicePasswordRequiredFieldSpecified;
-            }
-            set {
-                this.alphanumericDevicePasswordRequiredFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool PasswordRecoveryEnabled {
-            get {
-                return this.passwordRecoveryEnabledField;
-            }
-            set {
-                this.passwordRecoveryEnabledField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool PasswordRecoveryEnabledSpecified {
-            get {
-                return this.passwordRecoveryEnabledFieldSpecified;
-            }
-            set {
-                this.passwordRecoveryEnabledFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool RequireStorageCardEncryption {
-            get {
-                return this.requireStorageCardEncryptionField;
-            }
-            set {
-                this.requireStorageCardEncryptionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool RequireStorageCardEncryptionSpecified {
-            get {
-                return this.requireStorageCardEncryptionFieldSpecified;
-            }
-            set {
-                this.requireStorageCardEncryptionFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool AttachmentsEnabled {
-            get {
-                return this.attachmentsEnabledField;
-            }
-            set {
-                this.attachmentsEnabledField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AttachmentsEnabledSpecified {
-            get {
-                return this.attachmentsEnabledFieldSpecified;
-            }
-            set {
-                this.attachmentsEnabledFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string MinDevicePasswordLength {
-            get {
-                return this.minDevicePasswordLengthField;
-            }
-            set {
-                this.minDevicePasswordLengthField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string MaxInactivityTimeDeviceLock {
-            get {
-                return this.maxInactivityTimeDeviceLockField;
-            }
-            set {
-                this.maxInactivityTimeDeviceLockField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string MaxDevicePasswordFailedAttempts {
-            get {
-                return this.maxDevicePasswordFailedAttemptsField;
-            }
-            set {
-                this.maxDevicePasswordFailedAttemptsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string MaxAttachmentSize {
-            get {
-                return this.maxAttachmentSizeField;
-            }
-            set {
-                this.maxAttachmentSizeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool AllowSimpleDevicePassword {
-            get {
-                return this.allowSimpleDevicePasswordField;
-            }
-            set {
-                this.allowSimpleDevicePasswordField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AllowSimpleDevicePasswordSpecified {
-            get {
-                return this.allowSimpleDevicePasswordFieldSpecified;
-            }
-            set {
-                this.allowSimpleDevicePasswordFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string DevicePasswordExpiration {
-            get {
-                return this.devicePasswordExpirationField;
-            }
-            set {
-                this.devicePasswordExpirationField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public uint DevicePasswordHistory {
-            get {
-                return this.devicePasswordHistoryField;
-            }
-            set {
-                this.devicePasswordHistoryField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool DevicePasswordHistorySpecified {
-            get {
-                return this.devicePasswordHistoryFieldSpecified;
-            }
-            set {
-                this.devicePasswordHistoryFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool AllowStorageCard {
-            get {
-                return this.allowStorageCardField;
-            }
-            set {
-                this.allowStorageCardField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AllowStorageCardSpecified {
-            get {
-                return this.allowStorageCardFieldSpecified;
-            }
-            set {
-                this.allowStorageCardFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool AllowCamera {
-            get {
-                return this.allowCameraField;
-            }
-            set {
-                this.allowCameraField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AllowCameraSpecified {
-            get {
-                return this.allowCameraFieldSpecified;
-            }
-            set {
-                this.allowCameraFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool RequireDeviceEncryption {
-            get {
-                return this.requireDeviceEncryptionField;
-            }
-            set {
-                this.requireDeviceEncryptionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool RequireDeviceEncryptionSpecified {
-            get {
-                return this.requireDeviceEncryptionFieldSpecified;
-            }
-            set {
-                this.requireDeviceEncryptionFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool AllowUnsignedApplications {
-            get {
-                return this.allowUnsignedApplicationsField;
-            }
-            set {
-                this.allowUnsignedApplicationsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AllowUnsignedApplicationsSpecified {
-            get {
-                return this.allowUnsignedApplicationsFieldSpecified;
-            }
-            set {
-                this.allowUnsignedApplicationsFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool AllowUnsignedInstallationPackages {
-            get {
-                return this.allowUnsignedInstallationPackagesField;
-            }
-            set {
-                this.allowUnsignedInstallationPackagesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AllowUnsignedInstallationPackagesSpecified {
-            get {
-                return this.allowUnsignedInstallationPackagesFieldSpecified;
-            }
-            set {
-                this.allowUnsignedInstallationPackagesFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte MinDevicePasswordComplexCharacters {
-            get {
-                return this.minDevicePasswordComplexCharactersField;
-            }
-            set {
-                this.minDevicePasswordComplexCharactersField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool MinDevicePasswordComplexCharactersSpecified {
-            get {
-                return this.minDevicePasswordComplexCharactersFieldSpecified;
-            }
-            set {
-                this.minDevicePasswordComplexCharactersFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool AllowWiFi {
-            get {
-                return this.allowWiFiField;
-            }
-            set {
-                this.allowWiFiField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AllowWiFiSpecified {
-            get {
-                return this.allowWiFiFieldSpecified;
-            }
-            set {
-                this.allowWiFiFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool AllowTextMessaging {
-            get {
-                return this.allowTextMessagingField;
-            }
-            set {
-                this.allowTextMessagingField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AllowTextMessagingSpecified {
-            get {
-                return this.allowTextMessagingFieldSpecified;
-            }
-            set {
-                this.allowTextMessagingFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool AllowPOPIMAPEmail {
-            get {
-                return this.allowPOPIMAPEmailField;
-            }
-            set {
-                this.allowPOPIMAPEmailField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AllowPOPIMAPEmailSpecified {
-            get {
-                return this.allowPOPIMAPEmailFieldSpecified;
-            }
-            set {
-                this.allowPOPIMAPEmailFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public byte AllowBluetooth {
-            get {
-                return this.allowBluetoothField;
-            }
-            set {
-                this.allowBluetoothField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AllowBluetoothSpecified {
-            get {
-                return this.allowBluetoothFieldSpecified;
-            }
-            set {
-                this.allowBluetoothFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool AllowIrDA {
-            get {
-                return this.allowIrDAField;
-            }
-            set {
-                this.allowIrDAField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AllowIrDASpecified {
-            get {
-                return this.allowIrDAFieldSpecified;
-            }
-            set {
-                this.allowIrDAFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool RequireManualSyncWhenRoaming {
-            get {
-                return this.requireManualSyncWhenRoamingField;
-            }
-            set {
-                this.requireManualSyncWhenRoamingField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool RequireManualSyncWhenRoamingSpecified {
-            get {
-                return this.requireManualSyncWhenRoamingFieldSpecified;
-            }
-            set {
-                this.requireManualSyncWhenRoamingFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool AllowDesktopSync {
-            get {
-                return this.allowDesktopSyncField;
-            }
-            set {
-                this.allowDesktopSyncField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AllowDesktopSyncSpecified {
-            get {
-                return this.allowDesktopSyncFieldSpecified;
-            }
-            set {
-                this.allowDesktopSyncFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public uint MaxCalendarAgeFilter {
-            get {
-                return this.maxCalendarAgeFilterField;
-            }
-            set {
-                this.maxCalendarAgeFilterField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool MaxCalendarAgeFilterSpecified {
-            get {
-                return this.maxCalendarAgeFilterFieldSpecified;
-            }
-            set {
-                this.maxCalendarAgeFilterFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool AllowHTMLEmail {
-            get {
-                return this.allowHTMLEmailField;
-            }
-            set {
-                this.allowHTMLEmailField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AllowHTMLEmailSpecified {
-            get {
-                return this.allowHTMLEmailFieldSpecified;
-            }
-            set {
-                this.allowHTMLEmailFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public uint MaxEmailAgeFilter {
-            get {
-                return this.maxEmailAgeFilterField;
-            }
-            set {
-                this.maxEmailAgeFilterField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool MaxEmailAgeFilterSpecified {
-            get {
-                return this.maxEmailAgeFilterFieldSpecified;
-            }
-            set {
-                this.maxEmailAgeFilterFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string MaxEmailBodyTruncationSize {
-            get {
-                return this.maxEmailBodyTruncationSizeField;
-            }
-            set {
-                this.maxEmailBodyTruncationSizeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string MaxEmailHTMLBodyTruncationSize {
-            get {
-                return this.maxEmailHTMLBodyTruncationSizeField;
-            }
-            set {
-                this.maxEmailHTMLBodyTruncationSizeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool RequireSignedSMIMEMessages {
-            get {
-                return this.requireSignedSMIMEMessagesField;
-            }
-            set {
-                this.requireSignedSMIMEMessagesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool RequireSignedSMIMEMessagesSpecified {
-            get {
-                return this.requireSignedSMIMEMessagesFieldSpecified;
-            }
-            set {
-                this.requireSignedSMIMEMessagesFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool RequireEncryptedSMIMEMessages {
-            get {
-                return this.requireEncryptedSMIMEMessagesField;
-            }
-            set {
-                this.requireEncryptedSMIMEMessagesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool RequireEncryptedSMIMEMessagesSpecified {
-            get {
-                return this.requireEncryptedSMIMEMessagesFieldSpecified;
-            }
-            set {
-                this.requireEncryptedSMIMEMessagesFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string RequireSignedSMIMEAlgorithm {
-            get {
-                return this.requireSignedSMIMEAlgorithmField;
-            }
-            set {
-                this.requireSignedSMIMEAlgorithmField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string RequireEncryptionSMIMEAlgorithm {
-            get {
-                return this.requireEncryptionSMIMEAlgorithmField;
-            }
-            set {
-                this.requireEncryptionSMIMEAlgorithmField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string AllowSMIMEEncryptionAlgorithmNegotiation {
-            get {
-                return this.allowSMIMEEncryptionAlgorithmNegotiationField;
-            }
-            set {
-                this.allowSMIMEEncryptionAlgorithmNegotiationField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool AllowSMIMESoftCerts {
-            get {
-                return this.allowSMIMESoftCertsField;
-            }
-            set {
-                this.allowSMIMESoftCertsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AllowSMIMESoftCertsSpecified {
-            get {
-                return this.allowSMIMESoftCertsFieldSpecified;
-            }
-            set {
-                this.allowSMIMESoftCertsFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool AllowBrowser {
-            get {
-                return this.allowBrowserField;
-            }
-            set {
-                this.allowBrowserField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AllowBrowserSpecified {
-            get {
-                return this.allowBrowserFieldSpecified;
-            }
-            set {
-                this.allowBrowserFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool AllowConsumerEmail {
-            get {
-                return this.allowConsumerEmailField;
-            }
-            set {
-                this.allowConsumerEmailField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AllowConsumerEmailSpecified {
-            get {
-                return this.allowConsumerEmailFieldSpecified;
-            }
-            set {
-                this.allowConsumerEmailFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool AllowRemoteDesktop {
-            get {
-                return this.allowRemoteDesktopField;
-            }
-            set {
-                this.allowRemoteDesktopField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AllowRemoteDesktopSpecified {
-            get {
-                return this.allowRemoteDesktopFieldSpecified;
-            }
-            set {
-                this.allowRemoteDesktopFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool AllowInternetSharing {
-            get {
-                return this.allowInternetSharingField;
-            }
-            set {
-                this.allowInternetSharingField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool AllowInternetSharingSpecified {
-            get {
-                return this.allowInternetSharingFieldSpecified;
-            }
-            set {
-                this.allowInternetSharingFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayItemAttribute("ApplicationName", IsNullable=false)]
-        public string[] UnapprovedInROMApplicationList {
-            get {
-                return this.unapprovedInROMApplicationListField;
-            }
-            set {
-                this.unapprovedInROMApplicationListField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayItemAttribute("Hash", IsNullable=false)]
-        public string[] ApprovedApplicationList {
-            get {
-                return this.approvedApplicationListField;
-            }
-            set {
-                this.approvedApplicationListField = value;
+        public ItemsChoiceType3[] ItemsElementName
+        {
+            get
+            {
+                return this.itemsElementNameField;
+            }
+            set
+            {
+                this.itemsElementNameField = value;
             }
         }
     }
@@ -6788,29 +9699,6 @@ namespace TSEA.Original.Response {
             }
             set {
                 this.remoteWipeField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Settings")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="Settings", IsNullable=false)]
-    public partial class DeviceInformation {
-        
-        private string statusField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string Status {
-            get {
-                return this.statusField;
-            }
-            set {
-                this.statusField = value;
             }
         }
     }
@@ -6913,6 +9801,755 @@ namespace TSEA.Original.Response {
             }
         }
     }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "Search")]
+    [System.Xml.Serialization.XmlRootAttribute("Query", Namespace = "Search", IsNullable = false)]
+    public partial class queryType
+    {
+
+        private object[] itemsField;
+
+        private ItemsChoiceType2[] itemsElementNameField;
+
+        private string[] textField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Class", typeof(string), Namespace = "AirSync")]
+        [System.Xml.Serialization.XmlElementAttribute("CollectionId", typeof(string), Namespace = "AirSync")]
+        [System.Xml.Serialization.XmlElementAttribute("And", typeof(queryType))]
+        [System.Xml.Serialization.XmlElementAttribute("ConversationId", typeof(string))]
+        [System.Xml.Serialization.XmlElementAttribute("EqualTo", typeof(queryTypeEqualTo))]
+        [System.Xml.Serialization.XmlElementAttribute("FreeText", typeof(string))]
+        [System.Xml.Serialization.XmlElementAttribute("GreaterThan", typeof(queryTypeGreaterThan))]
+        [System.Xml.Serialization.XmlElementAttribute("LessThan", typeof(queryTypeLessThan))]
+        [System.Xml.Serialization.XmlElementAttribute("Or", typeof(queryType))]
+        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
+        public object[] Items
+        {
+            get
+            {
+                return this.itemsField;
+            }
+            set
+            {
+                this.itemsField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public ItemsChoiceType2[] ItemsElementName
+        {
+            get
+            {
+                return this.itemsElementNameField;
+            }
+            set
+            {
+                this.itemsElementNameField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string[] Text
+        {
+            get
+            {
+                return this.textField;
+            }
+            set
+            {
+                this.textField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Search")]
+    public partial class queryTypeEqualTo
+    {
+
+        private string linkIdField;
+
+        private string valueField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Namespace = "DocumentLibrary")]
+        public string LinkId
+        {
+            get
+            {
+                return this.linkIdField;
+            }
+            set
+            {
+                this.linkIdField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string Value
+        {
+            get
+            {
+                return this.valueField;
+            }
+            set
+            {
+                this.valueField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Search")]
+    public partial class queryTypeGreaterThan
+    {
+
+        private System.DateTime[] itemsField;
+
+        private string valueField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("DateReceived", Namespace = "Email")]
+        public System.DateTime[] Items
+        {
+            get
+            {
+                return this.itemsField;
+            }
+            set
+            {
+                this.itemsField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string Value
+        {
+            get
+            {
+                return this.valueField;
+            }
+            set
+            {
+                this.valueField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Search")]
+    public partial class queryTypeLessThan
+    {
+
+        private System.DateTime[] itemsField;
+
+        private string valueField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("DateReceived", Namespace = "Email")]
+        public System.DateTime[] Items
+        {
+            get
+            {
+                return this.itemsField;
+            }
+            set
+            {
+                this.itemsField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string Value
+        {
+            get
+            {
+                return this.valueField;
+            }
+            set
+            {
+                this.valueField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Calendar")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "Calendar", IsNullable = false)]
+    public partial class Recurrence
+    {
+
+        private byte typeField;
+
+        private ushort occurrencesField;
+
+        private bool occurrencesFieldSpecified;
+
+        private ushort intervalField;
+
+        private byte weekOfMonthField;
+
+        private bool weekOfMonthFieldSpecified;
+
+        private ushort dayOfWeekField;
+
+        private bool dayOfWeekFieldSpecified;
+
+        private byte monthOfYearField;
+
+        private bool monthOfYearFieldSpecified;
+
+        private string untilField;
+
+        private byte dayOfMonthField;
+
+        private bool dayOfMonthFieldSpecified;
+
+        private byte calendarTypeField;
+
+        private bool calendarTypeFieldSpecified;
+
+        private byte isLeapMonthField;
+
+        private bool isLeapMonthFieldSpecified;
+
+        private byte firstDayOfWeekField;
+
+        private bool firstDayOfWeekFieldSpecified;
+
+        /// <remarks/>
+        public byte Type
+        {
+            get
+            {
+                return this.typeField;
+            }
+            set
+            {
+                this.typeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public ushort Occurrences
+        {
+            get
+            {
+                return this.occurrencesField;
+            }
+            set
+            {
+                this.occurrencesField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool OccurrencesSpecified
+        {
+            get
+            {
+                return this.occurrencesFieldSpecified;
+            }
+            set
+            {
+                this.occurrencesFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public ushort Interval
+        {
+            get
+            {
+                return this.intervalField;
+            }
+            set
+            {
+                this.intervalField = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte WeekOfMonth
+        {
+            get
+            {
+                return this.weekOfMonthField;
+            }
+            set
+            {
+                this.weekOfMonthField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool WeekOfMonthSpecified
+        {
+            get
+            {
+                return this.weekOfMonthFieldSpecified;
+            }
+            set
+            {
+                this.weekOfMonthFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public ushort DayOfWeek
+        {
+            get
+            {
+                return this.dayOfWeekField;
+            }
+            set
+            {
+                this.dayOfWeekField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool DayOfWeekSpecified
+        {
+            get
+            {
+                return this.dayOfWeekFieldSpecified;
+            }
+            set
+            {
+                this.dayOfWeekFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte MonthOfYear
+        {
+            get
+            {
+                return this.monthOfYearField;
+            }
+            set
+            {
+                this.monthOfYearField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool MonthOfYearSpecified
+        {
+            get
+            {
+                return this.monthOfYearFieldSpecified;
+            }
+            set
+            {
+                this.monthOfYearFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public string Until
+        {
+            get
+            {
+                return this.untilField;
+            }
+            set
+            {
+                this.untilField = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte DayOfMonth
+        {
+            get
+            {
+                return this.dayOfMonthField;
+            }
+            set
+            {
+                this.dayOfMonthField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool DayOfMonthSpecified
+        {
+            get
+            {
+                return this.dayOfMonthFieldSpecified;
+            }
+            set
+            {
+                this.dayOfMonthFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte CalendarType
+        {
+            get
+            {
+                return this.calendarTypeField;
+            }
+            set
+            {
+                this.calendarTypeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool CalendarTypeSpecified
+        {
+            get
+            {
+                return this.calendarTypeFieldSpecified;
+            }
+            set
+            {
+                this.calendarTypeFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte IsLeapMonth
+        {
+            get
+            {
+                return this.isLeapMonthField;
+            }
+            set
+            {
+                this.isLeapMonthField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool IsLeapMonthSpecified
+        {
+            get
+            {
+                return this.isLeapMonthFieldSpecified;
+            }
+            set
+            {
+                this.isLeapMonthFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte FirstDayOfWeek
+        {
+            get
+            {
+                return this.firstDayOfWeekField;
+            }
+            set
+            {
+                this.firstDayOfWeekField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool FirstDayOfWeekSpecified
+        {
+            get
+            {
+                return this.firstDayOfWeekFieldSpecified;
+            }
+            set
+            {
+                this.firstDayOfWeekFieldSpecified = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Tasks")]
+    [System.Xml.Serialization.XmlRootAttribute("Recurrence", Namespace = "Tasks", IsNullable = false)]
+    public partial class Recurrence1
+    {
+
+        private byte typeField;
+
+        private System.DateTime startField;
+
+        private System.DateTime untilField;
+
+        private byte occurrencesField;
+
+        private byte intervalField;
+
+        private bool intervalFieldSpecified;
+
+        private byte dayOfWeekField;
+
+        private byte dayOfMonthField;
+
+        private byte weekOfMonthField;
+
+        private byte monthOfYearField;
+
+        private byte regenerateField;
+
+        private byte deadOccurField;
+
+        private byte calendarTypeField;
+
+        private byte isLeapMonthField;
+
+        private byte firstDayOfWeekField;
+
+        private bool firstDayOfWeekFieldSpecified;
+
+        /// <remarks/>
+        public byte Type
+        {
+            get
+            {
+                return this.typeField;
+            }
+            set
+            {
+                this.typeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public System.DateTime Start
+        {
+            get
+            {
+                return this.startField;
+            }
+            set
+            {
+                this.startField = value;
+            }
+        }
+
+        /// <remarks/>
+        public System.DateTime Until
+        {
+            get
+            {
+                return this.untilField;
+            }
+            set
+            {
+                this.untilField = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte Occurrences
+        {
+            get
+            {
+                return this.occurrencesField;
+            }
+            set
+            {
+                this.occurrencesField = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte Interval
+        {
+            get
+            {
+                return this.intervalField;
+            }
+            set
+            {
+                this.intervalField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool IntervalSpecified
+        {
+            get
+            {
+                return this.intervalFieldSpecified;
+            }
+            set
+            {
+                this.intervalFieldSpecified = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte DayOfWeek
+        {
+            get
+            {
+                return this.dayOfWeekField;
+            }
+            set
+            {
+                this.dayOfWeekField = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte DayOfMonth
+        {
+            get
+            {
+                return this.dayOfMonthField;
+            }
+            set
+            {
+                this.dayOfMonthField = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte WeekOfMonth
+        {
+            get
+            {
+                return this.weekOfMonthField;
+            }
+            set
+            {
+                this.weekOfMonthField = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte MonthOfYear
+        {
+            get
+            {
+                return this.monthOfYearField;
+            }
+            set
+            {
+                this.monthOfYearField = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte Regenerate
+        {
+            get
+            {
+                return this.regenerateField;
+            }
+            set
+            {
+                this.regenerateField = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte DeadOccur
+        {
+            get
+            {
+                return this.deadOccurField;
+            }
+            set
+            {
+                this.deadOccurField = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte CalendarType
+        {
+            get
+            {
+                return this.calendarTypeField;
+            }
+            set
+            {
+                this.calendarTypeField = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte IsLeapMonth
+        {
+            get
+            {
+                return this.isLeapMonthField;
+            }
+            set
+            {
+                this.isLeapMonthField = value;
+            }
+        }
+
+        /// <remarks/>
+        public byte FirstDayOfWeek
+        {
+            get
+            {
+                return this.firstDayOfWeekField;
+            }
+            set
+            {
+                this.firstDayOfWeekField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool FirstDayOfWeekSpecified
+        {
+            get
+            {
+                return this.firstDayOfWeekFieldSpecified;
+            }
+            set
+            {
+                this.firstDayOfWeekFieldSpecified = value;
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
@@ -6921,7 +10558,8 @@ namespace TSEA.Original.Response {
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="ResolveRecipients")]
     [System.Xml.Serialization.XmlRootAttribute(Namespace="ResolveRecipients", IsNullable=false)]
-    public partial class ResolveRecipients {
+    public partial class ResolveRecipients 
+    {
         
         private byte statusField;
         
@@ -6938,11 +10576,14 @@ namespace TSEA.Original.Response {
         }
         
         /// <remarks/>
-        public ResolveRecipientsResponse Response {
-            get {
+        public ResolveRecipientsResponse Response 
+        {
+            get 
+            {
                 return this.responseField;
             }
-            set {
+            set 
+            {
                 this.responseField = value;
             }
         }
@@ -6954,7 +10595,8 @@ namespace TSEA.Original.Response {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="ResolveRecipients")]
-    public partial class ResolveRecipientsResponse {
+    public partial class ResolveRecipientsResponse 
+    {
         
         private string toField;
         
@@ -6965,43 +10607,55 @@ namespace TSEA.Original.Response {
         private ResolveRecipientsResponseRecipient[] recipientField;
         
         /// <remarks/>
-        public string To {
-            get {
+        public string To 
+        {
+            get 
+            {
                 return this.toField;
             }
-            set {
+            set 
+            {
                 this.toField = value;
             }
         }
         
         /// <remarks/>
-        public string Status {
-            get {
+        public string Status 
+        {
+            get 
+            {
                 return this.statusField;
             }
-            set {
+            set 
+            {
                 this.statusField = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string RecipientCount {
-            get {
+        public string RecipientCount 
+        {
+            get 
+            {
                 return this.recipientCountField;
             }
-            set {
+            set 
+            {
                 this.recipientCountField = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Recipient")]
-        public ResolveRecipientsResponseRecipient[] Recipient {
-            get {
+        public ResolveRecipientsResponseRecipient[] Recipient 
+        {
+            get 
+            {
                 return this.recipientField;
             }
-            set {
+            set 
+            {
                 this.recipientField = value;
             }
         }
@@ -7013,7 +10667,8 @@ namespace TSEA.Original.Response {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="ResolveRecipients")]
-    public partial class ResolveRecipientsResponseRecipient {
+    public partial class ResolveRecipientsResponseRecipient 
+    {
         
         private byte typeField;
         
@@ -7079,11 +10734,14 @@ namespace TSEA.Original.Response {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Picture")]
-        public ResolveRecipientsResponseRecipientPicture[] Picture {
-            get {
+        public ResolveRecipientsResponseRecipientPicture[] Picture 
+        {
+            get 
+            {
                 return this.pictureField;
             }
-            set {
+            set 
+            {
                 this.pictureField = value;
             }
         }
@@ -7095,28 +10753,35 @@ namespace TSEA.Original.Response {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="ResolveRecipients")]
-    public partial class ResolveRecipientsResponseRecipientAvailability {
+    public partial class ResolveRecipientsResponseRecipientAvailability 
+    {
         
         private string statusField;
         
         private string mergedFreeBusyField;
         
         /// <remarks/>
-        public string Status {
-            get {
+        public string Status 
+        {
+            get 
+            {
                 return this.statusField;
             }
-            set {
+            set 
+            {
                 this.statusField = value;
             }
         }
         
         /// <remarks/>
-        public string MergedFreeBusy {
-            get {
+        public string MergedFreeBusy 
+        {
+            get 
+            {
                 return this.mergedFreeBusyField;
             }
-            set {
+            set 
+            {
                 this.mergedFreeBusyField = value;
             }
         }
@@ -7128,7 +10793,8 @@ namespace TSEA.Original.Response {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="ResolveRecipients")]
-    public partial class ResolveRecipientsResponseRecipientCertificates {
+    public partial class ResolveRecipientsResponseRecipientCertificates 
+    {
         
         private byte statusField;
         
@@ -7184,11 +10850,14 @@ namespace TSEA.Original.Response {
         }
         
         /// <remarks/>
-        public string MiniCertificate {
-            get {
+        public string MiniCertificate 
+        {
+            get 
+            {
                 return this.miniCertificateField;
             }
-            set {
+            set 
+            {
                 this.miniCertificateField = value;
             }
         }
@@ -7200,33 +10869,275 @@ namespace TSEA.Original.Response {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="ResolveRecipients")]
-    public partial class ResolveRecipientsResponseRecipientPicture {
+    public partial class ResolveRecipientsResponseRecipientPicture 
+    {
         
         private string statusField;
         
         private string dataField;
         
         /// <remarks/>
-        public string Status {
-            get {
+        public string Status 
+        {
+            get 
+            {
                 return this.statusField;
             }
-            set {
+            set 
+            {
                 this.statusField = value;
             }
         }
         
         /// <remarks/>
-        public string Data {
-            get {
+        public string Data 
+        {
+            get 
+            {
                 return this.dataField;
             }
-            set {
+            set 
+            {
                 this.dataField = value;
             }
         }
     }
-    
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "RightsManagement")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "RightsManagement", IsNullable = false)]
+    public partial class RightsManagementLicense
+    {
+        private bool ownerField;
+
+        private string contentOwnerField;
+
+        private bool replyAllAllowedField;
+
+        private bool editAllowedField;
+
+        private bool replyAllowedField;
+
+        private bool forwardAllowedField;
+
+        private bool exportAllowedField;
+
+        private bool modifyRecipientsAllowedField;
+
+        private string templateIDField;
+
+        private bool extractAllowedField;
+
+        private string templateDescriptionField;
+
+        private System.DateTime contentExpiryDateField;
+
+        private string templateNameField;
+
+        private bool printAllowedField;
+
+        private bool programmaticAccessAllowedField;
+
+        /// <remarks/>
+        public bool Owner
+        {
+            get
+            {
+                return this.ownerField;
+            }
+            set
+            {
+                this.ownerField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string ContentOwner
+        {
+            get
+            {
+                return this.contentOwnerField;
+            }
+            set
+            {
+                this.contentOwnerField = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool ReplyAllAllowed
+        {
+            get
+            {
+                return this.replyAllAllowedField;
+            }
+            set
+            {
+                this.replyAllAllowedField = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool EditAllowed
+        {
+            get
+            {
+                return this.editAllowedField;
+            }
+            set
+            {
+                this.editAllowedField = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool ReplyAllowed
+        {
+            get
+            {
+                return this.replyAllowedField;
+            }
+            set
+            {
+                this.replyAllowedField = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool ForwardAllowed
+        {
+            get
+            {
+                return this.forwardAllowedField;
+            }
+            set
+            {
+                this.forwardAllowedField = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool ExportAllowed
+        {
+            get
+            {
+                return this.exportAllowedField;
+            }
+            set
+            {
+                this.exportAllowedField = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool ModifyRecipientsAllowed
+        {
+            get
+            {
+                return this.modifyRecipientsAllowedField;
+            }
+            set
+            {
+                this.modifyRecipientsAllowedField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string TemplateID
+        {
+            get
+            {
+                return this.templateIDField;
+            }
+            set
+            {
+                this.templateIDField = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool ExtractAllowed
+        {
+            get
+            {
+                return this.extractAllowedField;
+            }
+            set
+            {
+                this.extractAllowedField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string TemplateDescription
+        {
+            get
+            {
+                return this.templateDescriptionField;
+            }
+            set
+            {
+                this.templateDescriptionField = value;
+            }
+        }
+
+        /// <remarks/>
+        public System.DateTime ContentExpiryDate
+        {
+            get
+            {
+                return this.contentExpiryDateField;
+            }
+            set
+            {
+                this.contentExpiryDateField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string TemplateName
+        {
+            get
+            {
+                return this.templateNameField;
+            }
+            set
+            {
+                this.templateNameField = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool PrintAllowed
+        {
+            get
+            {
+                return this.printAllowedField;
+            }
+            set
+            {
+                this.printAllowedField = value;
+            }
+        }
+
+        /// <remarks/>
+        public bool ProgrammaticAccessAllowed
+        {
+            get
+            {
+                return this.programmaticAccessAllowedField;
+            }
+            set
+            {
+                this.programmaticAccessAllowedField = value;
+            }
+        }
+    }
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
@@ -7294,351 +11205,147 @@ namespace TSEA.Original.Response {
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="Search")]
-    [System.Xml.Serialization.XmlRootAttribute("Query", Namespace="Search", IsNullable=false)]
-    public partial class queryType {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "ItemOperations")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "ItemOperations", IsNullable = false)]
+    public partial class Schema
+    {
+
         private object[] itemsField;
-        
-        private ItemsChoiceType2[] itemsElementNameField;
-        
-        private string[] textField;
-        
+
+        private ItemsChoiceType4[] itemsElementNameField;
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Class", typeof(string), Namespace="AirSync")]
-        [System.Xml.Serialization.XmlElementAttribute("CollectionId", typeof(string), Namespace="AirSync")]
-        [System.Xml.Serialization.XmlElementAttribute("And", typeof(queryType))]
-        [System.Xml.Serialization.XmlElementAttribute("ConversationId", typeof(string))]
-        [System.Xml.Serialization.XmlElementAttribute("EqualTo", typeof(queryTypeEqualTo))]
-        [System.Xml.Serialization.XmlElementAttribute("FreeText", typeof(string))]
-        [System.Xml.Serialization.XmlElementAttribute("GreaterThan", typeof(queryTypeGreaterThan))]
-        [System.Xml.Serialization.XmlElementAttribute("LessThan", typeof(queryTypeLessThan))]
-        [System.Xml.Serialization.XmlElementAttribute("Or", typeof(queryType))]
+        [System.Xml.Serialization.XmlElementAttribute("Attachments", typeof(string), Namespace = "AirSyncBase")]
+        [System.Xml.Serialization.XmlElementAttribute("Body", typeof(string), Namespace = "AirSyncBase")]
+        [System.Xml.Serialization.XmlElementAttribute("BodyPart", typeof(string), Namespace = "AirSyncBase")]
+        [System.Xml.Serialization.XmlElementAttribute("AllDayEvent", typeof(byte), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Attendees", typeof(Attendees), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("BusyStatus", typeof(byte), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Categories", typeof(Categories), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("DisallowNewTimeProposal", typeof(bool), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("DtStamp", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("EndTime", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Exceptions", typeof(Exceptions), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Location", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("MeetingStatus", typeof(byte), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("OrganizerEmail", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("OrganizerName", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Recurrence", typeof(Recurrence), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Reminder", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("ResponseRequested", typeof(bool), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Sensitivity", typeof(byte), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("StartTime", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Subject", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Timezone", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("UID", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("AccountName", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("CompanyMainPhone", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("CustomerId", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("GovernmentId", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("IMAddress", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("IMAddress2", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("IMAddress3", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("MMS", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("ManagerName", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("NickName", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("Anniversary", typeof(System.DateTime), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("AssistantName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("AssistantPhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Birthday", typeof(System.DateTime), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Business2PhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressCity", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressCountry", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressPostalCode", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressState", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressStreet", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("BusinessFaxNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("BusinessPhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("CarPhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Categories", typeof(Categories1), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Children", typeof(Children), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("CompanyName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Department", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Email1Address", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Email2Address", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Email3Address", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("FileAs", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("FirstName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Home2PhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("HomeAddressCity", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("HomeAddressCountry", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("HomeAddressPostalCode", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("HomeAddressState", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("HomeAddressStreet", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("HomeFaxNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("HomePhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("JobTitle", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("LastName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("MiddleName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("MobilePhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("OfficeLocation", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("OtherAddressCity", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("OtherAddressCountry", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("OtherAddressPostalCode", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("OtherAddressState", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("OtherAddressStreet", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("PagerNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Picture", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("RadioPhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Spouse", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Suffix", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Title", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("WebPage", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("YomiCompanyName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("YomiFirstName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("YomiLastName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Cc", typeof(string), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("DateReceived", typeof(System.DateTime), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("DisplayTo", typeof(string), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("From", typeof(string), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("Importance", typeof(byte), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("InternetCPID", typeof(string), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("MeetingRequest", typeof(MeetingRequest), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("MessageClass", typeof(string), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("Read", typeof(bool), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("ReplyTo", typeof(string), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("Subject", typeof(string), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("ThreadTopic", typeof(string), Namespace = "Email")]
+        [System.Xml.Serialization.XmlElementAttribute("To", typeof(string), Namespace = "Email")]
         [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
-        public object[] Items {
-            get {
+        public object[] Items
+        {
+            get
+            {
                 return this.itemsField;
             }
-            set {
+            set
+            {
                 this.itemsField = value;
             }
         }
-        
+
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType2[] ItemsElementName {
-            get {
+        public ItemsChoiceType4[] ItemsElementName
+        {
+            get
+            {
                 return this.itemsElementNameField;
             }
-            set {
-                this.itemsElementNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlTextAttribute()]
-        public string[] Text {
-            get {
-                return this.textField;
-            }
-            set {
-                this.textField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Search")]
-    public partial class queryTypeEqualTo {
-        
-        private string linkIdField;
-        
-        private string valueField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Namespace="DocumentLibrary")]
-        public string LinkId {
-            get {
-                return this.linkIdField;
-            }
-            set {
-                this.linkIdField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Search")]
-    public partial class queryTypeGreaterThan {
-        
-        private string[] itemsField;
-        
-        private string valueField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("DateReceived", Namespace="Email")]
-        public string[] Items {
-            get {
-                return this.itemsField;
-            }
-            set {
-                this.itemsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Search")]
-    public partial class queryTypeLessThan {
-        
-        private string[] itemsField;
-        
-        private string valueField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("DateReceived", Namespace="Email")]
-        public string[] Items {
-            get {
-                return this.itemsField;
-            }
-            set {
-                this.itemsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Value {
-            get {
-                return this.valueField;
-            }
-            set {
-                this.valueField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="Search", IncludeInSchema=false)]
-    public enum ItemsChoiceType2 {
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSync:Class")]
-        Class,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSync:CollectionId")]
-        CollectionId,
-        
-        /// <remarks/>
-        And,
-        
-        /// <remarks/>
-        ConversationId,
-        
-        /// <remarks/>
-        EqualTo,
-        
-        /// <remarks/>
-        FreeText,
-        
-        /// <remarks/>
-        GreaterThan,
-        
-        /// <remarks/>
-        LessThan,
-        
-        /// <remarks/>
-        Or,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Search")]
-    [System.Xml.Serialization.XmlRootAttribute("Options", Namespace="Search", IsNullable=false)]
-    public partial class Options1 {
-        
-        private object[] itemsField;
-        
-        private ItemsChoiceType5[] itemsElementNameField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("MIMESupport", typeof(byte), Namespace="AirSync")]
-        [System.Xml.Serialization.XmlElementAttribute("BodyPartPreference", typeof(BodyPartPreference), Namespace="AirSyncBase")]
-        [System.Xml.Serialization.XmlElementAttribute("BodyPreference", typeof(BodyPreference), Namespace="AirSyncBase")]
-        [System.Xml.Serialization.XmlElementAttribute("RightsManagementSupport", typeof(bool), Namespace="RightsManagement")]
-        [System.Xml.Serialization.XmlElementAttribute("DeepTraversal", typeof(string))]
-        [System.Xml.Serialization.XmlElementAttribute("Password", typeof(string))]
-        [System.Xml.Serialization.XmlElementAttribute("Picture", typeof(OptionsPicture))]
-        [System.Xml.Serialization.XmlElementAttribute("Range", typeof(string))]
-        [System.Xml.Serialization.XmlElementAttribute("RebuildResults", typeof(string))]
-        [System.Xml.Serialization.XmlElementAttribute("UserName", typeof(string))]
-        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
-        public object[] Items {
-            get {
-                return this.itemsField;
-            }
-            set {
-                this.itemsField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemsChoiceType5[] ItemsElementName {
-            get {
-                return this.itemsElementNameField;
-            }
-            set {
+            set
+            {
                 this.itemsElementNameField = value;
             }
         }
     }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Search")]
-    public partial class OptionsPicture {
-        
-        private uint maxSizeField;
-        
-        private bool maxSizeFieldSpecified;
-        
-        private uint maxPicturesField;
-        
-        private bool maxPicturesFieldSpecified;
-        
-        /// <remarks/>
-        public uint MaxSize {
-            get {
-                return this.maxSizeField;
-            }
-            set {
-                this.maxSizeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool MaxSizeSpecified {
-            get {
-                return this.maxSizeFieldSpecified;
-            }
-            set {
-                this.maxSizeFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public uint MaxPictures {
-            get {
-                return this.maxPicturesField;
-            }
-            set {
-                this.maxPicturesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool MaxPicturesSpecified {
-            get {
-                return this.maxPicturesFieldSpecified;
-            }
-            set {
-                this.maxPicturesFieldSpecified = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="Search", IncludeInSchema=false)]
-    public enum ItemsChoiceType5 {
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSync:MIMESupport")]
-        MIMESupport,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:BodyPartPreference")]
-        BodyPartPreference,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:BodyPreference")]
-        BodyPreference,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("RightsManagement:RightsManagementSupport")]
-        RightsManagementSupport,
-        
-        /// <remarks/>
-        DeepTraversal,
-        
-        /// <remarks/>
-        Password,
-        
-        /// <remarks/>
-        Picture,
-        
-        /// <remarks/>
-        Range,
-        
-        /// <remarks/>
-        RebuildResults,
-        
-        /// <remarks/>
-        UserName,
-    }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
@@ -7959,7 +11666,7 @@ namespace TSEA.Original.Response {
         [System.Xml.Serialization.XmlElementAttribute("Picture", typeof(SearchResponseStoreResultPicture), Namespace="GAL")]
         [System.Xml.Serialization.XmlElementAttribute("Title", typeof(string), Namespace="GAL")]
         [System.Xml.Serialization.XmlElementAttribute("Categories", typeof(Categories3), Namespace="Notes")]
-        [System.Xml.Serialization.XmlElementAttribute("LastModifiedDate", typeof(System.DateTime), Namespace="Notes")]
+        [System.Xml.Serialization.XmlElementAttribute("LastModifiedDate", typeof(string), Namespace="Notes")]
         [System.Xml.Serialization.XmlElementAttribute("MessageClass", typeof(string), Namespace="Notes")]
         [System.Xml.Serialization.XmlElementAttribute("Subject", typeof(string), Namespace="Notes")]
         [System.Xml.Serialization.XmlElementAttribute("Categories", typeof(Categories4), Namespace="Tasks")]
@@ -8048,605 +11755,6 @@ namespace TSEA.Original.Response {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="Search", IncludeInSchema=false)]
-    public enum ItemsChoiceType6 {
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Attachments")]
-        Attachments,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Body")]
-        Body,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:BodyPart")]
-        BodyPart,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:NativeBodyType")]
-        NativeBodyType,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AllDayEvent")]
-        AllDayEvent,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AppointmentReplyTime")]
-        AppointmentReplyTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Attendees")]
-        Attendees,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:BusyStatus")]
-        BusyStatus,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DisallowNewTimeProposal")]
-        DisallowNewTimeProposal,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DtStamp")]
-        DtStamp,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:EndTime")]
-        EndTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Exceptions")]
-        Exceptions,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Location")]
-        Location,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:MeetingStatus")]
-        MeetingStatus,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerEmail")]
-        OrganizerEmail,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerName")]
-        OrganizerName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Recurrence")]
-        Recurrence,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Reminder")]
-        Reminder,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseRequested")]
-        ResponseRequested,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseType")]
-        ResponseType,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Sensitivity")]
-        Sensitivity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:StartTime")]
-        StartTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Subject")]
-        Subject,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Timezone")]
-        Timezone,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:UID")]
-        UID,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:AccountName")]
-        AccountName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CompanyMainPhone")]
-        CompanyMainPhone,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CustomerId")]
-        CustomerId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:GovernmentId")]
-        GovernmentId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress")]
-        IMAddress,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress2")]
-        IMAddress2,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress3")]
-        IMAddress3,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:MMS")]
-        MMS,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:ManagerName")]
-        ManagerName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:NickName")]
-        NickName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Alias")]
-        Alias,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Anniversary")]
-        Anniversary,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantName")]
-        AssistantName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantPhoneNumber")]
-        AssistantPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Birthday")]
-        Birthday,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Business2PhoneNumber")]
-        Business2PhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCity")]
-        BusinessAddressCity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCountry")]
-        BusinessAddressCountry,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressPostalCode")]
-        BusinessAddressPostalCode,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressState")]
-        BusinessAddressState,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressStreet")]
-        BusinessAddressStreet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessFaxNumber")]
-        BusinessFaxNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessPhoneNumber")]
-        BusinessPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CarPhoneNumber")]
-        CarPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Categories")]
-        Categories,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Children")]
-        Children,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CompanyName")]
-        CompanyName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Department")]
-        Department,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email1Address")]
-        Email1Address,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email2Address")]
-        Email2Address,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email3Address")]
-        Email3Address,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FileAs")]
-        FileAs,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FirstName")]
-        FirstName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Home2PhoneNumber")]
-        Home2PhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCity")]
-        HomeAddressCity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCountry")]
-        HomeAddressCountry,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressPostalCode")]
-        HomeAddressPostalCode,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressState")]
-        HomeAddressState,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressStreet")]
-        HomeAddressStreet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeFaxNumber")]
-        HomeFaxNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomePhoneNumber")]
-        HomePhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:JobTitle")]
-        JobTitle,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:LastName")]
-        LastName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MiddleName")]
-        MiddleName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MobilePhoneNumber")]
-        MobilePhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OfficeLocation")]
-        OfficeLocation,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCity")]
-        OtherAddressCity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCountry")]
-        OtherAddressCountry,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressPostalCode")]
-        OtherAddressPostalCode,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressState")]
-        OtherAddressState,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressStreet")]
-        OtherAddressStreet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:PagerNumber")]
-        PagerNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Picture")]
-        Picture,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:RadioPhoneNumber")]
-        RadioPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Spouse")]
-        Spouse,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Suffix")]
-        Suffix,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Title")]
-        Title,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WebPage")]
-        WebPage,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WeightedRank")]
-        WeightedRank,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiCompanyName")]
-        YomiCompanyName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiFirstName")]
-        YomiFirstName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiLastName")]
-        YomiLastName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:ContentLength")]
-        ContentLength,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:ContentType")]
-        ContentType,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:CreationDate")]
-        CreationDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:DisplayName")]
-        DisplayName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:IsFolder")]
-        IsFolder,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:IsHidden")]
-        IsHidden,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:LastModifiedDate")]
-        LastModifiedDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:LinkId")]
-        LinkId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:ConversationId")]
-        ConversationId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:ConversationIndex")]
-        ConversationIndex,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:LastVerbExecuted")]
-        LastVerbExecuted,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:LastVerbExecutionTime")]
-        LastVerbExecutionTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:ReceivedAsBcc")]
-        ReceivedAsBcc,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:Sender")]
-        Sender,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmCallerID")]
-        UmCallerID,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmUserNotes")]
-        UmUserNotes,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Categories")]
-        Categories1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Cc")]
-        Cc,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:ContentClass")]
-        ContentClass,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:DateReceived")]
-        DateReceived,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:DisplayTo")]
-        DisplayTo,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Flag")]
-        Flag,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:From")]
-        From,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Importance")]
-        Importance,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:InternetCPID")]
-        InternetCPID,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:MeetingRequest")]
-        MeetingRequest,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:MessageClass")]
-        MessageClass,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Read")]
-        Read,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:ReplyTo")]
-        ReplyTo,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Subject")]
-        Subject1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:ThreadTopic")]
-        ThreadTopic,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:To")]
-        To,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("GAL:Alias")]
-        Alias1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("GAL:Company")]
-        Company,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("GAL:DisplayName")]
-        DisplayName1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("GAL:EmailAddress")]
-        EmailAddress,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("GAL:FirstName")]
-        FirstName1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("GAL:HomePhone")]
-        HomePhone,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("GAL:LastName")]
-        LastName1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("GAL:MobilePhone")]
-        MobilePhone,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("GAL:Office")]
-        Office,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("GAL:Phone")]
-        Phone,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("GAL:Picture")]
-        Picture1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("GAL:Title")]
-        Title1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Notes:Categories")]
-        Categories2,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Notes:LastModifiedDate")]
-        LastModifiedDate1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Notes:MessageClass")]
-        MessageClass1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Notes:Subject")]
-        Subject2,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Categories")]
-        Categories3,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Complete")]
-        Complete,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:DateCompleted")]
-        DateCompleted,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:DueDate")]
-        DueDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Importance")]
-        Importance1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Recurrence")]
-        Recurrence1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:ReminderSet")]
-        ReminderSet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:ReminderTime")]
-        ReminderTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Sensitivity")]
-        Sensitivity1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:StartDate")]
-        StartDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Subject")]
-        Subject3,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:UtcDueDate")]
-        UtcDueDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:UtcStartDate")]
-        UtcStartDate,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="ComposeMail")]
@@ -8663,247 +11771,6 @@ namespace TSEA.Original.Response {
             }
             set {
                 this.statusField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Settings")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="Settings", IsNullable=false)]
-    public enum OofState {
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("0")]
-        Item0,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("1")]
-        Item1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("2")]
-        Item2,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Settings")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="Settings", IsNullable=false)]
-    public partial class OofMessage {
-        
-        private string appliesToInternalField;
-        
-        private string appliesToExternalKnownField;
-        
-        private string appliesToExternalUnknownField;
-        
-        private string enabledField;
-        
-        private string replyMessageField;
-        
-        private string bodyTypeField;
-        
-        /// <remarks/>
-        public string AppliesToInternal {
-            get {
-                return this.appliesToInternalField;
-            }
-            set {
-                this.appliesToInternalField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string AppliesToExternalKnown {
-            get {
-                return this.appliesToExternalKnownField;
-            }
-            set {
-                this.appliesToExternalKnownField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string AppliesToExternalUnknown {
-            get {
-                return this.appliesToExternalUnknownField;
-            }
-            set {
-                this.appliesToExternalUnknownField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Enabled {
-            get {
-                return this.enabledField;
-            }
-            set {
-                this.enabledField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string ReplyMessage {
-            get {
-                return this.replyMessageField;
-            }
-            set {
-                this.replyMessageField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string BodyType {
-            get {
-                return this.bodyTypeField;
-            }
-            set {
-                this.bodyTypeField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Settings")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="Settings", IsNullable=false)]
-    public partial class Accounts {
-        
-        private AccountsAccount[] accountField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Account")]
-        public AccountsAccount[] Account {
-            get {
-                return this.accountField;
-            }
-            set {
-                this.accountField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Settings")]
-    public partial class AccountsAccount {
-        
-        private string accountIdField;
-        
-        private string accountNameField;
-        
-        private string userDisplayNameField;
-        
-        private bool sendDisabledField;
-        
-        private bool sendDisabledFieldSpecified;
-        
-        private AccountsAccountEmailAddresses emailAddressesField;
-        
-        /// <remarks/>
-        public string AccountId {
-            get {
-                return this.accountIdField;
-            }
-            set {
-                this.accountIdField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string AccountName {
-            get {
-                return this.accountNameField;
-            }
-            set {
-                this.accountNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string UserDisplayName {
-            get {
-                return this.userDisplayNameField;
-            }
-            set {
-                this.userDisplayNameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool SendDisabled {
-            get {
-                return this.sendDisabledField;
-            }
-            set {
-                this.sendDisabledField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool SendDisabledSpecified {
-            get {
-                return this.sendDisabledFieldSpecified;
-            }
-            set {
-                this.sendDisabledFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        public AccountsAccountEmailAddresses EmailAddresses {
-            get {
-                return this.emailAddressesField;
-            }
-            set {
-                this.emailAddressesField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Settings")]
-    public partial class AccountsAccountEmailAddresses {
-        
-        private string[] sMTPAddressField;
-        
-        private string primarySmtpAddressField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("SMTPAddress")]
-        public string[] SMTPAddress {
-            get {
-                return this.sMTPAddressField;
-            }
-            set {
-                this.sMTPAddressField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string PrimarySmtpAddress {
-            get {
-                return this.primarySmtpAddressField;
-            }
-            set {
-                this.primarySmtpAddressField = value;
             }
         }
     }
@@ -8987,6 +11854,32 @@ namespace TSEA.Original.Response {
             }
             set {
                 this.rightsManagementInformationField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Settings")]
+    public partial class SettingsDevicePassword
+    {
+
+        private string statusField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string Status
+        {
+            get
+            {
+                return this.statusField;
+            }
+            set
+            {
+                this.statusField = value;
             }
         }
     }
@@ -9095,25 +11988,70 @@ namespace TSEA.Original.Response {
             }
         }
     }
-    
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Settings")]
-    public partial class SettingsDevicePassword {
-        
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Settings")]
+    public partial class SettingsRightsManagementInformation
+    {
         private string statusField;
-        
+
+        private SettingsRightsManagementInformationGet getField;
+
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string Status {
-            get {
+        [System.Xml.Serialization.XmlElementAttribute(DataType = "integer")]
+        public string Status
+        {
+            get
+            {
                 return this.statusField;
             }
-            set {
+            set
+            {
                 this.statusField = value;
+            }
+        }
+
+        /// <remarks/>
+        public SettingsRightsManagementInformationGet Get
+        {
+            get
+            {
+                return this.getField;
+            }
+            set
+            {
+                this.getField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "Settings")]
+    public partial class SettingsRightsManagementInformationGet
+    {
+
+        private RightsManagementTemplatesRightsManagementTemplate[] rightsManagementTemplatesField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Namespace = "RightsManagement")]
+        [System.Xml.Serialization.XmlArrayItemAttribute("RightsManagementTemplate", IsNullable = false)]
+        public RightsManagementTemplatesRightsManagementTemplate[] RightsManagementTemplates
+        {
+            get
+            {
+                return this.rightsManagementTemplatesField;
+            }
+            set
+            {
+                this.rightsManagementTemplatesField = value;
             }
         }
     }
@@ -9124,7 +12062,8 @@ namespace TSEA.Original.Response {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Settings")]
-    public partial class SettingsUserInformation {
+    public partial class SettingsUserInformation 
+    {
         
         private string statusField;
         
@@ -9132,21 +12071,27 @@ namespace TSEA.Original.Response {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string Status {
-            get {
+        public string Status 
+        {
+            get 
+            {
                 return this.statusField;
             }
-            set {
+            set 
+            {
                 this.statusField = value;
             }
         }
         
         /// <remarks/>
-        public SettingsUserInformationGet Get {
-            get {
+        public SettingsUserInformationGet Get 
+        {
+            get 
+            {
                 return this.getField;
             }
-            set {
+            set 
+            {
                 this.getField = value;
             }
         }
@@ -9170,63 +12115,6 @@ namespace TSEA.Original.Response {
             }
             set {
                 this.accountsField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Settings")]
-    public partial class SettingsRightsManagementInformation {
-        
-        private string statusField;
-        
-        private SettingsRightsManagementInformationGet getField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="integer")]
-        public string Status {
-            get {
-                return this.statusField;
-            }
-            set {
-                this.statusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public SettingsRightsManagementInformationGet Get {
-            get {
-                return this.getField;
-            }
-            set {
-                this.getField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="Settings")]
-    public partial class SettingsRightsManagementInformationGet {
-        
-        private RightsManagementTemplatesRightsManagementTemplate[] rightsManagementTemplatesField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Namespace="RightsManagement")]
-        [System.Xml.Serialization.XmlArrayItemAttribute("RightsManagementTemplate", IsNullable=false)]
-        public RightsManagementTemplatesRightsManagementTemplate[] RightsManagementTemplates {
-            get {
-                return this.rightsManagementTemplatesField;
-            }
-            set {
-                this.rightsManagementTemplatesField = value;
             }
         }
     }
@@ -9273,6 +12161,243 @@ namespace TSEA.Original.Response {
             }
             set {
                 this.statusField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "AirSync")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "AirSync", IsNullable = false)]
+    public partial class SoftDelete
+    {
+
+        private string serverIdField;
+
+        /// <remarks/>
+        public string ServerId
+        {
+            get
+            {
+                return this.serverIdField;
+            }
+            set
+            {
+                this.serverIdField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "ComposeMail")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "ComposeMail", IsNullable = false)]
+    public partial class Source
+    {
+
+        private string folderIdField;
+
+        private string itemIdField;
+
+        private string longIdField;
+
+        private string instanceIdField;
+
+        /// <remarks/>
+        public string FolderId
+        {
+            get
+            {
+                return this.folderIdField;
+            }
+            set
+            {
+                this.folderIdField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string ItemId
+        {
+            get
+            {
+                return this.itemIdField;
+            }
+            set
+            {
+                this.itemIdField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string LongId
+        {
+            get
+            {
+                return this.longIdField;
+            }
+            set
+            {
+                this.longIdField = value;
+            }
+        }
+
+        /// <remarks/>
+        public string InstanceId
+        {
+            get
+            {
+                return this.instanceIdField;
+            }
+            set
+            {
+                this.instanceIdField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "AirSync")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace = "AirSync", IsNullable = false)]
+    public partial class Supported
+    {
+
+        private object[] itemsField;
+
+        private ItemsChoiceType[] itemsElementNameField;
+
+        private string[] textField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("AllDayEvent", typeof(byte), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Attendees", typeof(Attendees), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("BusyStatus", typeof(byte), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Categories", typeof(Categories), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("DisallowNewTimeProposal", typeof(bool), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("DtStamp", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("EndTime", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Exceptions", typeof(Exceptions), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Location", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("MeetingStatus", typeof(byte), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("OrganizerEmail", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("OrganizerName", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Recurrence", typeof(Recurrence), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Reminder", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("ResponseRequested", typeof(bool), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Sensitivity", typeof(byte), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("StartTime", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Subject", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("Timezone", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("UID", typeof(string), Namespace = "Calendar")]
+        [System.Xml.Serialization.XmlElementAttribute("AccountName", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("CompanyMainPhone", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("CustomerId", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("GovernmentId", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("IMAddress", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("IMAddress2", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("IMAddress3", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("MMS", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("ManagerName", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("NickName", typeof(string), Namespace = "Contacts2")]
+        [System.Xml.Serialization.XmlElementAttribute("Anniversary", typeof(System.DateTime), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("AssistantName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("AssistantPhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Birthday", typeof(System.DateTime), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Business2PhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressCity", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressCountry", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressPostalCode", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressState", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("BusinessAddressStreet", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("BusinessFaxNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("BusinessPhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("CarPhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Categories", typeof(Categories1), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Children", typeof(Children), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("CompanyName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Department", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Email1Address", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Email2Address", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Email3Address", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("FileAs", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("FirstName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Home2PhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("HomeAddressCity", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("HomeAddressCountry", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("HomeAddressPostalCode", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("HomeAddressState", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("HomeAddressStreet", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("HomeFaxNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("HomePhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("JobTitle", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("LastName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("MiddleName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("MobilePhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("OfficeLocation", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("OtherAddressCity", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("OtherAddressCountry", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("OtherAddressPostalCode", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("OtherAddressState", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("OtherAddressStreet", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("PagerNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Picture", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("RadioPhoneNumber", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Spouse", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Suffix", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("Title", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("WebPage", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("YomiCompanyName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("YomiFirstName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlElementAttribute("YomiLastName", typeof(string), Namespace = "Contacts")]
+        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
+        public object[] Items
+        {
+            get
+            {
+                return this.itemsField;
+            }
+            set
+            {
+                this.itemsField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("ItemsElementName")]
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public ItemsChoiceType[] ItemsElementName
+        {
+            get
+            {
+                return this.itemsElementNameField;
+            }
+            set
+            {
+                this.itemsElementNameField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string[] Text
+        {
+            get
+            {
+                return this.textField;
+            }
+            set
+            {
+                this.textField = value;
             }
         }
     }
@@ -9693,7 +12818,7 @@ namespace TSEA.Original.Response {
         [System.Xml.Serialization.XmlElementAttribute("ThreadTopic", typeof(string), Namespace="Email")]
         [System.Xml.Serialization.XmlElementAttribute("To", typeof(string), Namespace="Email")]
         [System.Xml.Serialization.XmlElementAttribute("Categories", typeof(Categories3), Namespace="Notes")]
-        [System.Xml.Serialization.XmlElementAttribute("LastModifiedDate", typeof(System.DateTime), Namespace="Notes")]
+        [System.Xml.Serialization.XmlElementAttribute("LastModifiedDate", typeof(string), Namespace="Notes")]
         [System.Xml.Serialization.XmlElementAttribute("MessageClass", typeof(string), Namespace="Notes")]
         [System.Xml.Serialization.XmlElementAttribute("Subject", typeof(string), Namespace="Notes")]
         [System.Xml.Serialization.XmlElementAttribute("RightsManagementLicense", typeof(RightsManagementLicense), Namespace="RightsManagement")]
@@ -9733,609 +12858,6 @@ namespace TSEA.Original.Response {
                 this.itemsElementNameField = value;
             }
         }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="AirSync", IncludeInSchema=false)]
-    public enum ItemsChoiceType7 {
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Attachments")]
-        Attachments,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Body")]
-        Body,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:BodyPart")]
-        BodyPart,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:NativeBodyType")]
-        NativeBodyType,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AllDayEvent")]
-        AllDayEvent,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AppointmentReplyTime")]
-        AppointmentReplyTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Attendees")]
-        Attendees,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:BusyStatus")]
-        BusyStatus,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Categories")]
-        Categories,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DisallowNewTimeProposal")]
-        DisallowNewTimeProposal,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DtStamp")]
-        DtStamp,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:EndTime")]
-        EndTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Exceptions")]
-        Exceptions,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Location")]
-        Location,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:MeetingStatus")]
-        MeetingStatus,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OnlineMeetingConfLink")]
-        OnlineMeetingConfLink,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OnlineMeetingExternalLink")]
-        OnlineMeetingExternalLink,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerEmail")]
-        OrganizerEmail,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerName")]
-        OrganizerName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Recurrence")]
-        Recurrence,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Reminder")]
-        Reminder,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseRequested")]
-        ResponseRequested,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseType")]
-        ResponseType,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Sensitivity")]
-        Sensitivity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:StartTime")]
-        StartTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Subject")]
-        Subject,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Timezone")]
-        Timezone,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:UID")]
-        UID,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:AccountName")]
-        AccountName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CompanyMainPhone")]
-        CompanyMainPhone,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CustomerId")]
-        CustomerId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:GovernmentId")]
-        GovernmentId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress")]
-        IMAddress,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress2")]
-        IMAddress2,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress3")]
-        IMAddress3,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:MMS")]
-        MMS,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:ManagerName")]
-        ManagerName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:NickName")]
-        NickName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Alias")]
-        Alias,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Anniversary")]
-        Anniversary,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantName")]
-        AssistantName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantPhoneNumber")]
-        AssistantPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Birthday")]
-        Birthday,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Business2PhoneNumber")]
-        Business2PhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCity")]
-        BusinessAddressCity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCountry")]
-        BusinessAddressCountry,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressPostalCode")]
-        BusinessAddressPostalCode,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressState")]
-        BusinessAddressState,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressStreet")]
-        BusinessAddressStreet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessFaxNumber")]
-        BusinessFaxNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessPhoneNumber")]
-        BusinessPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CarPhoneNumber")]
-        CarPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Categories")]
-        Categories1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Children")]
-        Children,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CompanyName")]
-        CompanyName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Department")]
-        Department,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email1Address")]
-        Email1Address,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email2Address")]
-        Email2Address,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email3Address")]
-        Email3Address,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FileAs")]
-        FileAs,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FirstName")]
-        FirstName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Home2PhoneNumber")]
-        Home2PhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCity")]
-        HomeAddressCity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCountry")]
-        HomeAddressCountry,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressPostalCode")]
-        HomeAddressPostalCode,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressState")]
-        HomeAddressState,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressStreet")]
-        HomeAddressStreet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeFaxNumber")]
-        HomeFaxNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomePhoneNumber")]
-        HomePhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:JobTitle")]
-        JobTitle,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:LastName")]
-        LastName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MiddleName")]
-        MiddleName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MobilePhoneNumber")]
-        MobilePhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OfficeLocation")]
-        OfficeLocation,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCity")]
-        OtherAddressCity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCountry")]
-        OtherAddressCountry,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressPostalCode")]
-        OtherAddressPostalCode,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressState")]
-        OtherAddressState,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressStreet")]
-        OtherAddressStreet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:PagerNumber")]
-        PagerNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Picture")]
-        Picture,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:RadioPhoneNumber")]
-        RadioPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Spouse")]
-        Spouse,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Suffix")]
-        Suffix,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Title")]
-        Title,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WebPage")]
-        WebPage,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WeightedRank")]
-        WeightedRank,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiCompanyName")]
-        YomiCompanyName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiFirstName")]
-        YomiFirstName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiLastName")]
-        YomiLastName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:ContentLength")]
-        ContentLength,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:ContentType")]
-        ContentType,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:CreationDate")]
-        CreationDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:DisplayName")]
-        DisplayName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:IsFolder")]
-        IsFolder,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:IsHidden")]
-        IsHidden,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:LastModifiedDate")]
-        LastModifiedDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:LinkId")]
-        LinkId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:AccountId")]
-        AccountId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:CalendarType")]
-        CalendarType,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:ConversationId")]
-        ConversationId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:ConversationIndex")]
-        ConversationIndex,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:FirstDayOfWeek")]
-        FirstDayOfWeek,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:IsLeapMonth")]
-        IsLeapMonth,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:LastVerbExecuted")]
-        LastVerbExecuted,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:LastVerbExecutionTime")]
-        LastVerbExecutionTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:MeetingMessageType")]
-        MeetingMessageType,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:ReceivedAsBcc")]
-        ReceivedAsBcc,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:Sender")]
-        Sender,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmAttDuration")]
-        UmAttDuration,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmAttOrder")]
-        UmAttOrder,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmCallerID")]
-        UmCallerID,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmUserNotes")]
-        UmUserNotes,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Categories")]
-        Categories2,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Cc")]
-        Cc,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:ContentClass")]
-        ContentClass,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:DateReceived")]
-        DateReceived,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:DisplayTo")]
-        DisplayTo,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Flag")]
-        Flag,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:From")]
-        From,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Importance")]
-        Importance,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:InternetCPID")]
-        InternetCPID,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:MeetingRequest")]
-        MeetingRequest,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:MessageClass")]
-        MessageClass,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Read")]
-        Read,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:ReplyTo")]
-        ReplyTo,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Subject")]
-        Subject1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:ThreadTopic")]
-        ThreadTopic,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:To")]
-        To,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Notes:Categories")]
-        Categories3,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Notes:LastModifiedDate")]
-        LastModifiedDate1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Notes:MessageClass")]
-        MessageClass1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Notes:Subject")]
-        Subject2,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("RightsManagement:RightsManagementLicense")]
-        RightsManagementLicense,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Categories")]
-        Categories4,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Complete")]
-        Complete,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:DateCompleted")]
-        DateCompleted,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:DueDate")]
-        DueDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Importance")]
-        Importance1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:OrdinalDate")]
-        OrdinalDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Recurrence")]
-        Recurrence1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:ReminderSet")]
-        ReminderSet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:ReminderTime")]
-        ReminderTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Sensitivity")]
-        Sensitivity1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:StartDate")]
-        StartDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:SubOrdinalDate")]
-        SubOrdinalDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Subject")]
-        Subject3,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:UtcDueDate")]
-        UtcDueDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:UtcStartDate")]
-        UtcStartDate,
     }
     
     /// <remarks/>
@@ -10514,7 +13036,7 @@ namespace TSEA.Original.Response {
         [System.Xml.Serialization.XmlElementAttribute("ThreadTopic", typeof(string), Namespace="Email")]
         [System.Xml.Serialization.XmlElementAttribute("To", typeof(string), Namespace="Email")]
         [System.Xml.Serialization.XmlElementAttribute("Categories", typeof(Categories3), Namespace="Notes")]
-        [System.Xml.Serialization.XmlElementAttribute("LastModifiedDate", typeof(System.DateTime), Namespace="Notes")]
+        [System.Xml.Serialization.XmlElementAttribute("LastModifiedDate", typeof(string), Namespace="Notes")]
         [System.Xml.Serialization.XmlElementAttribute("MessageClass", typeof(string), Namespace="Notes")]
         [System.Xml.Serialization.XmlElementAttribute("Subject", typeof(string), Namespace="Notes")]
         [System.Xml.Serialization.XmlElementAttribute("RightsManagementLicense", typeof(RightsManagementLicense), Namespace="RightsManagement")]
@@ -10554,609 +13076,6 @@ namespace TSEA.Original.Response {
                 this.itemsElementNameField = value;
             }
         }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="AirSync", IncludeInSchema=false)]
-    public enum ItemsChoiceType8 {
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Attachments")]
-        Attachments,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Body")]
-        Body,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:BodyPart")]
-        BodyPart,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:NativeBodyType")]
-        NativeBodyType,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AllDayEvent")]
-        AllDayEvent,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AppointmentReplyTime")]
-        AppointmentReplyTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Attendees")]
-        Attendees,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:BusyStatus")]
-        BusyStatus,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Categories")]
-        Categories,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DisallowNewTimeProposal")]
-        DisallowNewTimeProposal,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DtStamp")]
-        DtStamp,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:EndTime")]
-        EndTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Exceptions")]
-        Exceptions,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Location")]
-        Location,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:MeetingStatus")]
-        MeetingStatus,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OnlineMeetingConfLink")]
-        OnlineMeetingConfLink,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OnlineMeetingExternalLink")]
-        OnlineMeetingExternalLink,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerEmail")]
-        OrganizerEmail,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerName")]
-        OrganizerName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Recurrence")]
-        Recurrence,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Reminder")]
-        Reminder,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseRequested")]
-        ResponseRequested,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseType")]
-        ResponseType,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Sensitivity")]
-        Sensitivity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:StartTime")]
-        StartTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Subject")]
-        Subject,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Timezone")]
-        Timezone,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:UID")]
-        UID,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:AccountName")]
-        AccountName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CompanyMainPhone")]
-        CompanyMainPhone,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CustomerId")]
-        CustomerId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:GovernmentId")]
-        GovernmentId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress")]
-        IMAddress,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress2")]
-        IMAddress2,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress3")]
-        IMAddress3,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:MMS")]
-        MMS,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:ManagerName")]
-        ManagerName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:NickName")]
-        NickName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Alias")]
-        Alias,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Anniversary")]
-        Anniversary,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantName")]
-        AssistantName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantPhoneNumber")]
-        AssistantPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Birthday")]
-        Birthday,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Business2PhoneNumber")]
-        Business2PhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCity")]
-        BusinessAddressCity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCountry")]
-        BusinessAddressCountry,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressPostalCode")]
-        BusinessAddressPostalCode,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressState")]
-        BusinessAddressState,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressStreet")]
-        BusinessAddressStreet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessFaxNumber")]
-        BusinessFaxNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessPhoneNumber")]
-        BusinessPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CarPhoneNumber")]
-        CarPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Categories")]
-        Categories1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Children")]
-        Children,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CompanyName")]
-        CompanyName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Department")]
-        Department,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email1Address")]
-        Email1Address,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email2Address")]
-        Email2Address,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email3Address")]
-        Email3Address,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FileAs")]
-        FileAs,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FirstName")]
-        FirstName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Home2PhoneNumber")]
-        Home2PhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCity")]
-        HomeAddressCity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCountry")]
-        HomeAddressCountry,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressPostalCode")]
-        HomeAddressPostalCode,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressState")]
-        HomeAddressState,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressStreet")]
-        HomeAddressStreet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeFaxNumber")]
-        HomeFaxNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomePhoneNumber")]
-        HomePhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:JobTitle")]
-        JobTitle,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:LastName")]
-        LastName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MiddleName")]
-        MiddleName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MobilePhoneNumber")]
-        MobilePhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OfficeLocation")]
-        OfficeLocation,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCity")]
-        OtherAddressCity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCountry")]
-        OtherAddressCountry,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressPostalCode")]
-        OtherAddressPostalCode,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressState")]
-        OtherAddressState,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressStreet")]
-        OtherAddressStreet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:PagerNumber")]
-        PagerNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Picture")]
-        Picture,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:RadioPhoneNumber")]
-        RadioPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Spouse")]
-        Spouse,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Suffix")]
-        Suffix,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Title")]
-        Title,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WebPage")]
-        WebPage,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WeightedRank")]
-        WeightedRank,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiCompanyName")]
-        YomiCompanyName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiFirstName")]
-        YomiFirstName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiLastName")]
-        YomiLastName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:ContentLength")]
-        ContentLength,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:ContentType")]
-        ContentType,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:CreationDate")]
-        CreationDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:DisplayName")]
-        DisplayName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:IsFolder")]
-        IsFolder,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:IsHidden")]
-        IsHidden,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:LastModifiedDate")]
-        LastModifiedDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:LinkId")]
-        LinkId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:AccountId")]
-        AccountId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:CalendarType")]
-        CalendarType,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:ConversationId")]
-        ConversationId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:ConversationIndex")]
-        ConversationIndex,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:FirstDayOfWeek")]
-        FirstDayOfWeek,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:IsLeapMonth")]
-        IsLeapMonth,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:LastVerbExecuted")]
-        LastVerbExecuted,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:LastVerbExecutionTime")]
-        LastVerbExecutionTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:MeetingMessageType")]
-        MeetingMessageType,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:ReceivedAsBcc")]
-        ReceivedAsBcc,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:Sender")]
-        Sender,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmAttDuration")]
-        UmAttDuration,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmAttOrder")]
-        UmAttOrder,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmCallerID")]
-        UmCallerID,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmUserNotes")]
-        UmUserNotes,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Categories")]
-        Categories2,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Cc")]
-        Cc,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:ContentClass")]
-        ContentClass,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:DateReceived")]
-        DateReceived,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:DisplayTo")]
-        DisplayTo,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Flag")]
-        Flag,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:From")]
-        From,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Importance")]
-        Importance,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:InternetCPID")]
-        InternetCPID,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:MeetingRequest")]
-        MeetingRequest,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:MessageClass")]
-        MessageClass,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Read")]
-        Read,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:ReplyTo")]
-        ReplyTo,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Subject")]
-        Subject1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:ThreadTopic")]
-        ThreadTopic,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:To")]
-        To,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Notes:Categories")]
-        Categories3,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Notes:LastModifiedDate")]
-        LastModifiedDate1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Notes:MessageClass")]
-        MessageClass1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Notes:Subject")]
-        Subject2,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("RightsManagement:RightsManagementLicense")]
-        RightsManagementLicense,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Categories")]
-        Categories4,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Complete")]
-        Complete,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:DateCompleted")]
-        DateCompleted,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:DueDate")]
-        DueDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Importance")]
-        Importance1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:OrdinalDate")]
-        OrdinalDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Recurrence")]
-        Recurrence1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:ReminderSet")]
-        ReminderSet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:ReminderTime")]
-        ReminderTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Sensitivity")]
-        Sensitivity1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:StartDate")]
-        StartDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:SubOrdinalDate")]
-        SubOrdinalDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Subject")]
-        Subject3,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:UtcDueDate")]
-        UtcDueDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:UtcStartDate")]
-        UtcStartDate,
     }
     
     /// <remarks/>
@@ -11495,7 +13414,7 @@ namespace TSEA.Original.Response {
         [System.Xml.Serialization.XmlElementAttribute("ThreadTopic", typeof(string), Namespace="Email")]
         [System.Xml.Serialization.XmlElementAttribute("To", typeof(string), Namespace="Email")]
         [System.Xml.Serialization.XmlElementAttribute("Categories", typeof(Categories3), Namespace="Notes")]
-        [System.Xml.Serialization.XmlElementAttribute("LastModifiedDate", typeof(System.DateTime), Namespace="Notes")]
+        [System.Xml.Serialization.XmlElementAttribute("LastModifiedDate", typeof(string), Namespace="Notes")]
         [System.Xml.Serialization.XmlElementAttribute("MessageClass", typeof(string), Namespace="Notes")]
         [System.Xml.Serialization.XmlElementAttribute("Subject", typeof(string), Namespace="Notes")]
         [System.Xml.Serialization.XmlElementAttribute("RightsManagementLicense", typeof(RightsManagementLicense), Namespace="RightsManagement")]
@@ -11535,630 +13454,6 @@ namespace TSEA.Original.Response {
                 this.itemsElementNameField = value;
             }
         }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="AirSync", IncludeInSchema=false)]
-    public enum ItemsChoiceType9 {
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Attachments")]
-        Attachments,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:Body")]
-        Body,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("AirSyncBase:NativeBodyType")]
-        NativeBodyType,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AllDayEvent")]
-        AllDayEvent,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:AppointmentReplyTime")]
-        AppointmentReplyTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Attendees")]
-        Attendees,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:BusyStatus")]
-        BusyStatus,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Categories")]
-        Categories,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DisallowNewTimeProposal")]
-        DisallowNewTimeProposal,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:DtStamp")]
-        DtStamp,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:EndTime")]
-        EndTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Exceptions")]
-        Exceptions,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Location")]
-        Location,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:MeetingStatus")]
-        MeetingStatus,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OnlineMeetingConfLink")]
-        OnlineMeetingConfLink,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OnlineMeetingExternalLink")]
-        OnlineMeetingExternalLink,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerEmail")]
-        OrganizerEmail,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:OrganizerName")]
-        OrganizerName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Recurrence")]
-        Recurrence,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Reminder")]
-        Reminder,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseRequested")]
-        ResponseRequested,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:ResponseType")]
-        ResponseType,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Sensitivity")]
-        Sensitivity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:StartTime")]
-        StartTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Subject")]
-        Subject,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:Timezone")]
-        Timezone,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Calendar:UID")]
-        UID,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:AccountName")]
-        AccountName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CompanyMainPhone")]
-        CompanyMainPhone,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:CustomerId")]
-        CustomerId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:GovernmentId")]
-        GovernmentId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress")]
-        IMAddress,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress2")]
-        IMAddress2,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:IMAddress3")]
-        IMAddress3,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:MMS")]
-        MMS,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:ManagerName")]
-        ManagerName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts2:NickName")]
-        NickName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Alias")]
-        Alias,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Anniversary")]
-        Anniversary,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantName")]
-        AssistantName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:AssistantPhoneNumber")]
-        AssistantPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Birthday")]
-        Birthday,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Business2PhoneNumber")]
-        Business2PhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCity")]
-        BusinessAddressCity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressCountry")]
-        BusinessAddressCountry,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressPostalCode")]
-        BusinessAddressPostalCode,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressState")]
-        BusinessAddressState,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessAddressStreet")]
-        BusinessAddressStreet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessFaxNumber")]
-        BusinessFaxNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:BusinessPhoneNumber")]
-        BusinessPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CarPhoneNumber")]
-        CarPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Categories")]
-        Categories1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Children")]
-        Children,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:CompanyName")]
-        CompanyName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Department")]
-        Department,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email1Address")]
-        Email1Address,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email2Address")]
-        Email2Address,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Email3Address")]
-        Email3Address,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FileAs")]
-        FileAs,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:FirstName")]
-        FirstName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Home2PhoneNumber")]
-        Home2PhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCity")]
-        HomeAddressCity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressCountry")]
-        HomeAddressCountry,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressPostalCode")]
-        HomeAddressPostalCode,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressState")]
-        HomeAddressState,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeAddressStreet")]
-        HomeAddressStreet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomeFaxNumber")]
-        HomeFaxNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:HomePhoneNumber")]
-        HomePhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:JobTitle")]
-        JobTitle,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:LastName")]
-        LastName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MiddleName")]
-        MiddleName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:MobilePhoneNumber")]
-        MobilePhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OfficeLocation")]
-        OfficeLocation,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCity")]
-        OtherAddressCity,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressCountry")]
-        OtherAddressCountry,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressPostalCode")]
-        OtherAddressPostalCode,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressState")]
-        OtherAddressState,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:OtherAddressStreet")]
-        OtherAddressStreet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:PagerNumber")]
-        PagerNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Picture")]
-        Picture,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:RadioPhoneNumber")]
-        RadioPhoneNumber,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Spouse")]
-        Spouse,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Suffix")]
-        Suffix,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:Title")]
-        Title,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WebPage")]
-        WebPage,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:WeightedRank")]
-        WeightedRank,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiCompanyName")]
-        YomiCompanyName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiFirstName")]
-        YomiFirstName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Contacts:YomiLastName")]
-        YomiLastName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:ContentLength")]
-        ContentLength,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:ContentType")]
-        ContentType,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:CreationDate")]
-        CreationDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:DisplayName")]
-        DisplayName,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:IsFolder")]
-        IsFolder,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:IsHidden")]
-        IsHidden,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:LastModifiedDate")]
-        LastModifiedDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("DocumentLibrary:LinkId")]
-        LinkId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:AccountId")]
-        AccountId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:CalendarType")]
-        CalendarType,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:ConversationId")]
-        ConversationId,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:ConversationIndex")]
-        ConversationIndex,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:FirstDayOfWeek")]
-        FirstDayOfWeek,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:IsLeapMonth")]
-        IsLeapMonth,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:LastVerbExecuted")]
-        LastVerbExecuted,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:LastVerbExecutionTime")]
-        LastVerbExecutionTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:MeetingMessageType")]
-        MeetingMessageType,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:ReceivedAsBcc")]
-        ReceivedAsBcc,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:Sender")]
-        Sender,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmAttDuration")]
-        UmAttDuration,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmAttOrder")]
-        UmAttOrder,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmCallerID")]
-        UmCallerID,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email2:UmUserNotes")]
-        UmUserNotes,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Categories")]
-        Categories2,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Cc")]
-        Cc,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:ContentClass")]
-        ContentClass,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:DateReceived")]
-        DateReceived,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:DisplayTo")]
-        DisplayTo,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Flag")]
-        Flag,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:From")]
-        From,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Importance")]
-        Importance,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:InternetCPID")]
-        InternetCPID,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:MeetingRequest")]
-        MeetingRequest,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:MessageClass")]
-        MessageClass,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Read")]
-        Read,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:ReplyTo")]
-        ReplyTo,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:Subject")]
-        Subject1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:ThreadTopic")]
-        ThreadTopic,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Email:To")]
-        To,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Notes:Categories")]
-        Categories3,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Notes:LastModifiedDate")]
-        LastModifiedDate1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Notes:MessageClass")]
-        MessageClass1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Notes:Subject")]
-        Subject2,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("RightsManagement:RightsManagementLicense")]
-        RightsManagementLicense,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Categories")]
-        Categories4,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Complete")]
-        Complete,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:DateCompleted")]
-        DateCompleted,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:DueDate")]
-        DueDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Importance")]
-        Importance1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:OrdinalDate")]
-        OrdinalDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Recurrence")]
-        Recurrence1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:ReminderSet")]
-        ReminderSet,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:ReminderTime")]
-        ReminderTime,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Sensitivity")]
-        Sensitivity1,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:StartDate")]
-        StartDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:SubOrdinalDate")]
-        SubOrdinalDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:Subject")]
-        Subject3,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:UtcDueDate")]
-        UtcDueDate,
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("Tasks:UtcStartDate")]
-        UtcStartDate,
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="AirSync", IncludeInSchema=false)]
-    public enum ItemsChoiceType10 {
-        
-        /// <remarks/>
-        CollectionId,
-        
-        /// <remarks/>
-        Commands,
-        
-        /// <remarks/>
-        MoreAvailable,
-        
-        /// <remarks/>
-        Responses,
-        
-        /// <remarks/>
-        Status,
-        
-        /// <remarks/>
-        SyncKey,
     }
     
     /// <remarks/>

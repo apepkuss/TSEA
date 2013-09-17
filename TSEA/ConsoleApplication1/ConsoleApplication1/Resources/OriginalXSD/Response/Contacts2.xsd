@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:airsyncbase="AirSyncBase" xmlns="Contacts2" targetNamespace="Contacts2" elementFormDefault="qualified" attributeFormDefault="unqualified">
-  <!--<xs:import namespace="AirSyncBase" schemaLocation="AirSyncBase.xsd"/>-->
+  <xs:import namespace="AirSyncBase" schemaLocation="AirSyncBase.xsd"/>
   <xs:element name="CustomerId" type="xs:string"/>
   <xs:element name="GovernmentId" type="xs:string"/>
   <xs:element name="IMAddress" type="xs:string"/>
