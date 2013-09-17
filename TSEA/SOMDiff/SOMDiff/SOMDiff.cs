@@ -11,6 +11,8 @@ namespace Xin.SOMDiff
     using System.Xml;
     using System.Xml.Schema;
 
+    using Xin.SOMDiff.Drawing;
+
     public class SOMDiff
     {
         #region Fields
@@ -30,6 +32,8 @@ namespace Xin.SOMDiff
         private static List<MismatchedPair> result = new List<MismatchedPair>();
         private static Dictionary<string, SchemaTypeCollection> sourceSchemaTypeCollection = new Dictionary<string, SchemaTypeCollection>();
         private static Dictionary<string, SchemaTypeCollection> changeSchemaTypeCollection = new Dictionary<string, SchemaTypeCollection>();
+
+        private Dictionary<string, List<string>> externalReferences = new Dictionary<string, List<string>>();
         #endregion
 
         #region Constructors
@@ -59,6 +63,7 @@ namespace Xin.SOMDiff
             Uri sourceUri = new Uri(sourefile);
             foreach (XmlSchema schema in sourceSchemaSet.Schemas())
             {
+                // get all simpleType and complexType elements
                 foreach (XmlSchemaType schemaType in schema.SchemaTypes.Values)
                 {
                     SchemaTypeCollection collection = new SchemaTypeCollection();
@@ -67,6 +72,7 @@ namespace Xin.SOMDiff
                     sourceSchemaTypeCollection.Add(string.Format("{0}:{1}", schemaType.QualifiedName.Namespace, schemaType.QualifiedName.Name), collection);
                 }
 
+                // get the schema to check
                 if (schema.SourceUri == sourceUri.ToString())
                 {
                     sourceXmlSchema = schema;
@@ -80,6 +86,7 @@ namespace Xin.SOMDiff
             Uri changeUri = new Uri(changefile);
             foreach (XmlSchema schema in changeSchemaSet.Schemas())
             {
+                // get all simpleType and complexType elements
                 foreach (XmlSchemaType schemaType in schema.SchemaTypes.Values)
                 {
                     SchemaTypeCollection collection = new SchemaTypeCollection();
@@ -97,14 +104,80 @@ namespace Xin.SOMDiff
 
         #endregion
 
+        #region Properties
+
+        public Dictionary<string, List<string>> ExternalReferences
+        {
+            get { return this.externalReferences; }
+            private set { this.externalReferences = value; }
+        }
+        #endregion
+
         #region Public Methods
 
         /// <summary>
         /// Analyze the dependency among schemas and display the dependency graph.
         /// </summary>
-        public void ParseSchemaDependency()
+        public void ParseSchemaDependency(string filepath)
         {
+            if (!Directory.Exists(filepath))
+            {
+                throw new DirectoryNotFoundException(string.Format("Invalid directory: {0}", filepath));
+            }
 
+            string[] schemaFiles = Directory.GetFiles(filepath, "*.xsd", SearchOption.TopDirectoryOnly);
+
+            XmlSchemaSet schemas = new XmlSchemaSet();
+            foreach (string file in schemaFiles)
+            {
+                XmlTextReader sreader = new XmlTextReader(file);
+                XmlSchema schema = XmlSchema.Read(sreader, this.ValidationCallBack);
+                schemas.ValidationEventHandler += new ValidationEventHandler(this.ValidationCallBack);
+                schemas.Add(schema);
+            }
+
+            //schemas.Compile();
+
+            foreach (XmlSchema schema in schemas.Schemas())
+            {
+                string schemaLocation = schema.SourceUri.Substring(schema.SourceUri.LastIndexOf('/') + 1);
+
+                // get references by tracing import and include elements
+                if (!externalReferences.ContainsKey(schemaLocation))
+                {
+                    if (schema.Includes != null && schema.Includes.Count > 0)
+                    {
+                        List<string> references = new List<string>();
+                        foreach (XmlSchemaExternal item in schema.Includes)
+                        {
+                            if (item is XmlSchemaImport)
+                            {
+                                references.Add((item as XmlSchemaImport).SchemaLocation);
+                            }
+                            else if (item is XmlSchemaInclude)
+                            {
+                                references.Add((item as XmlSchemaInclude).SchemaLocation);
+                            }
+                            else if (item is XmlSchemaRedefine)
+                            {
+                                // TODO
+                            }
+                        }
+
+                        externalReferences.Add(schemaLocation, references);
+                    }
+                    else
+                    {
+                        externalReferences.Add(schemaLocation, null);
+                    }
+                }
+            }
+        }
+
+        public void DisplaySchemaDependencyGraph()
+        {
+            ReferencePainter painter = new ReferencePainter();
+            painter.DisplayReferenceGraph(externalReferences);
         }
         
         public void DiffSchemas()

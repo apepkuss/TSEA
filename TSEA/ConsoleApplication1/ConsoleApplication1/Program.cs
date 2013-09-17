@@ -19,6 +19,7 @@ namespace ConsoleApplication1
 
     class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
             #region Reference XmlDiffPatch.dll first if you want to run the following commented code.
@@ -64,14 +65,18 @@ namespace ConsoleApplication1
             //}
             #endregion
 
-            
-
             #region Step1: SOMDiff invocation
 
             string sourefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Request\ItemOperations.xsd";
             string changefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Request\io.xsd";
 
+            string sourcepath = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Request";
+
             SOMDiff sdiff = new SOMDiff(sourefile, changefile);
+
+            sdiff.ParseSchemaDependency(sourcepath);
+            sdiff.DisplaySchemaDependencyGraph();
+
             sdiff.DiffSchemas();
 
             Console.Read();
