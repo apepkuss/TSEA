@@ -161,16 +161,11 @@ namespace TestUI
                 Graph graph = new Graph();
                 //graph.LayoutAlgorithmSettings=new MdsLayoutSettings();
 
-                string sourefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Request\ItemOperations.xsd";
-                string changefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Request\io.xsd";
-
                 string sourcepath = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Request";
 
-                SOMDiff sdiff = new SOMDiff(sourefile, changefile);
-
-                sdiff.ParseSchemaDependency(sourcepath);
-
-                graph = ReferencePainter.CreateGraphInstance(sdiff.ExternalReferences);
+                SOMDiff sdiff = new SOMDiff();
+                Dictionary<string, List<string>> dependency = sdiff.ParseSchemaDependency(sourcepath);
+                graph = ReferencePainter.CreateGraphInstance(dependency);
 
                 //layout the graph and draw it
                 graphViewer.Graph = graph;

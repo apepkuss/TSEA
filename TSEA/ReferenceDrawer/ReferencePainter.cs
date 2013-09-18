@@ -21,20 +21,6 @@ namespace Xin.SOMDiff.Drawing
         }
 
         /// <summary>
-        /// Display a reference graph.
-        /// </summary>
-        public void DisplayReferenceGraph(Dictionary<string, List<string>> references)
-        {
-            //Graph graph = this.CreateGraphInstance(references);
-
-            //if (graph != null)
-            //{
-            //    this.graphViewer.Graph = graph;
-            //    this.Display(this.graphViewer);
-            //}
-        }
-
-        /// <summary>
         /// Create a reference graph
         /// </summary>
         /// <returns></returns>

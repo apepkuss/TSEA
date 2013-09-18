@@ -16,12 +16,15 @@ namespace Xin.SOMDiff
     public class SOMDiff
     {
         #region Fields
-        
+
         private static XmlSchema sourceXmlSchema = new XmlSchema();
         private static XmlSchema changeXmlSchema = new XmlSchema();
 
-        private static XmlSchemaSet sourceSchemaSet = new XmlSchemaSet();
-        private static XmlSchemaSet changeSchemaSet = new XmlSchemaSet();
+        //private static XmlSchemaSet sourceSchemaSet = new XmlSchemaSet();
+        //private static XmlSchemaSet changeSchemaSet = new XmlSchemaSet();
+
+        private static Dictionary<string, XmlSchema> sourceSchemaSet = new Dictionary<string, XmlSchema>();
+        private static Dictionary<string, XmlSchema> changeSchemaSet = new Dictionary<string, XmlSchema>();
 
         private static List<XmlSchemaFacet> removedFacets = new List<XmlSchemaFacet>();
         private static List<XmlSchemaFacet> addedFacets = new List<XmlSchemaFacet>();
@@ -33,7 +36,10 @@ namespace Xin.SOMDiff
         private static Dictionary<string, SchemaTypeCollection> sourceSchemaTypeCollection = new Dictionary<string, SchemaTypeCollection>();
         private static Dictionary<string, SchemaTypeCollection> changeSchemaTypeCollection = new Dictionary<string, SchemaTypeCollection>();
 
-        private Dictionary<string, List<string>> externalReferences = new Dictionary<string, List<string>>();
+        private static Dictionary<string, Dictionary<string, XmlSchemaGroup>> sourceSchemaGroups = new Dictionary<string, Dictionary<string, XmlSchemaGroup>>();
+        private static Dictionary<string, Dictionary<string, XmlSchemaGroup>> changeSchemaGroups = new Dictionary<string, Dictionary<string, XmlSchemaGroup>>();
+
+        private static Dictionary<string, string> comparedGroups = new Dictionary<string, string>();
         #endregion
 
         #region Constructors
@@ -44,73 +50,14 @@ namespace Xin.SOMDiff
             changePath.Clear();
         }
 
-        public SOMDiff(string sourefile, string changefile) : base()
-        {
-            XmlTextReader sreader = new XmlTextReader(sourefile);
-            sourceXmlSchema = XmlSchema.Read(sreader, this.ValidationCallBack);
-
-            XmlTextReader creader = new XmlTextReader(changefile);
-            changeXmlSchema = XmlSchema.Read(creader, this.ValidationCallBack);
-
-
-            // Add the customer schema to a new XmlSchemaSet and compile it.
-            // Any schema validation warnings and errors encountered reading or 
-            // compiling the schema are handled by the ValidationEventHandler delegate.
-            sourceSchemaSet.ValidationEventHandler += new ValidationEventHandler(this.ValidationCallBack);
-            sourceSchemaSet.Add(sourceXmlSchema);
-            sourceSchemaSet.Compile();
-
-            Uri sourceUri = new Uri(sourefile);
-            foreach (XmlSchema schema in sourceSchemaSet.Schemas())
-            {
-                // get all simpleType and complexType elements
-                foreach (XmlSchemaType schemaType in schema.SchemaTypes.Values)
-                {
-                    SchemaTypeCollection collection = new SchemaTypeCollection();
-                    collection.Add(schemaType);
-
-                    sourceSchemaTypeCollection.Add(string.Format("{0}:{1}", schemaType.QualifiedName.Namespace, schemaType.QualifiedName.Name), collection);
-                }
-
-                // get the schema to check
-                if (schema.SourceUri == sourceUri.ToString())
-                {
-                    sourceXmlSchema = schema;
-                }
-            }
-
-            changeSchemaSet.ValidationEventHandler += new ValidationEventHandler(this.ValidationCallBack);
-            changeSchemaSet.Add(changeXmlSchema);
-            changeSchemaSet.Compile();
-
-            Uri changeUri = new Uri(changefile);
-            foreach (XmlSchema schema in changeSchemaSet.Schemas())
-            {
-                // get all simpleType and complexType elements
-                foreach (XmlSchemaType schemaType in schema.SchemaTypes.Values)
-                {
-                    SchemaTypeCollection collection = new SchemaTypeCollection();
-                    collection.Add(schemaType);
-                    
-                    changeSchemaTypeCollection.Add(string.Format("{0}:{1}", schemaType.QualifiedName.Namespace, schemaType.QualifiedName.Name), collection);
-                }
-
-                if (schema.SourceUri == changeUri.ToString())
-                {
-                    changeXmlSchema = schema;
-                }
-            }
-        }
-
         #endregion
 
         #region Properties
 
-        public Dictionary<string, List<string>> ExternalReferences
-        {
-            get { return this.externalReferences; }
-            private set { this.externalReferences = value; }
-        }
+        public string SourceFile { get; set; }
+
+        public string ChangeFile { get; set; }
+
         #endregion
 
         #region Public Methods
@@ -118,7 +65,7 @@ namespace Xin.SOMDiff
         /// <summary>
         /// Analyze the dependency among schemas and display the dependency graph.
         /// </summary>
-        public void ParseSchemaDependency(string filepath)
+        public Dictionary<string, List<string>> ParseSchemaDependency(string filepath)
         {
             if (!Directory.Exists(filepath))
             {
@@ -136,52 +83,69 @@ namespace Xin.SOMDiff
                 schemas.Add(schema);
             }
 
-            //schemas.Compile();
+            Dictionary<string, List<string>> externalReferences = null;
 
-            foreach (XmlSchema schema in schemas.Schemas())
+            if (schemas.Count > 0)
             {
-                string schemaLocation = schema.SourceUri.Substring(schema.SourceUri.LastIndexOf('/') + 1);
+                externalReferences = new Dictionary<string, List<string>>();
 
-                // get references by tracing import and include elements
-                if (!externalReferences.ContainsKey(schemaLocation))
+                foreach (XmlSchema schema in schemas.Schemas())
                 {
-                    if (schema.Includes != null && schema.Includes.Count > 0)
-                    {
-                        List<string> references = new List<string>();
-                        foreach (XmlSchemaExternal item in schema.Includes)
-                        {
-                            if (item is XmlSchemaImport)
-                            {
-                                references.Add((item as XmlSchemaImport).SchemaLocation);
-                            }
-                            else if (item is XmlSchemaInclude)
-                            {
-                                references.Add((item as XmlSchemaInclude).SchemaLocation);
-                            }
-                            else if (item is XmlSchemaRedefine)
-                            {
-                                // TODO
-                            }
-                        }
+                    string schemaLocation = schema.SourceUri.Substring(schema.SourceUri.LastIndexOf('/') + 1);
 
-                        externalReferences.Add(schemaLocation, references);
-                    }
-                    else
+                    // get references by tracing import and include elements
+                    if (!externalReferences.ContainsKey(schemaLocation))
                     {
-                        externalReferences.Add(schemaLocation, null);
+                        if (schema.Includes != null && schema.Includes.Count > 0)
+                        {
+                            List<string> references = new List<string>();
+                            foreach (XmlSchemaExternal item in schema.Includes)
+                            {
+                                if (item is XmlSchemaImport)
+                                {
+                                    references.Add((item as XmlSchemaImport).SchemaLocation);
+                                }
+                                else if (item is XmlSchemaInclude)
+                                {
+                                    references.Add((item as XmlSchemaInclude).SchemaLocation);
+                                }
+                                else if (item is XmlSchemaRedefine)
+                                {
+                                    // TODO
+                                }
+                            }
+
+                            externalReferences.Add(schemaLocation, references);
+                        }
+                        else
+                        {
+                            externalReferences.Add(schemaLocation, null);
+                        }
                     }
                 }
             }
+            
+            return externalReferences;
         }
 
-        public void DisplaySchemaDependencyGraph()
+        public void DiffSchemas(string sourcefile, string changefile)
         {
-            ReferencePainter painter = new ReferencePainter();
-            painter.DisplayReferenceGraph(externalReferences);
-        }
-        
-        public void DiffSchemas()
-        {
+            if (string.IsNullOrEmpty(sourcefile))
+            {
+                throw new ArgumentNullException("The first argument is invalid.");
+            }
+
+            if (string.IsNullOrEmpty(changefile))
+            {
+                throw new ArgumentNullException("The second argument is invalid.");
+            }
+
+            this.SourceFile = sourcefile;
+            this.ChangeFile = changefile;
+
+            sourceXmlSchema = this.GetXmlSchemaObject(sourcefile, ref sourceSchemaTypeCollection, ref sourceSchemaSet, ref sourceSchemaGroups);
+            changeXmlSchema = this.GetXmlSchemaObject(changefile, ref changeSchemaTypeCollection, ref changeSchemaSet, ref changeSchemaGroups);
+
             #region The following code has been moved to constructor
             
             //XmlTextReader sreader = new XmlTextReader(sourefile);
@@ -539,7 +503,7 @@ namespace Xin.SOMDiff
 
             #region Code for debug
 
-            if (element1.Name == "DeleteSubFolders")
+            if (element1.Name == "Properties")
             {
 
             }
@@ -951,26 +915,39 @@ namespace Xin.SOMDiff
 
         private void CompareSingleGroup(XmlSchemaGroup group1, XmlSchemaGroup group2, bool ordered = false)
         {
-            sourcePath.Push(group1.Name);
-            changePath.Push(group2.Name);
-
-            if (group1.Particle is XmlSchemaSequence)
+            // Check if the pair of groups have been compared.
+            if (comparedGroups.ContainsKey(group1.Name) && comparedGroups[group1.Name] == group2.Name)
             {
-                XmlSchemaSequence particle1 = group1.Particle as XmlSchemaSequence;
-
-                if (group2.Particle is XmlSchemaSequence)
-                {
-                    XmlSchemaSequence particle2 = group2.Particle as XmlSchemaSequence;
-
-                    this.CompareParticleSequence(particle1, particle2);
-                }
-                else
-                {
-                }
+                return;
             }
             else
             {
+                comparedGroups.Add(group1.Name, group2.Name);
+            }
 
+            sourcePath.Push(group1.Name);
+            changePath.Push(group2.Name);
+
+            if (group1.Particle != null || group2.Particle != null)
+            {
+                if (group1.Particle is XmlSchemaSequence)
+                {
+                    XmlSchemaSequence particle1 = group1.Particle as XmlSchemaSequence;
+
+                    if (group2.Particle is XmlSchemaSequence)
+                    {
+                        XmlSchemaSequence particle2 = group2.Particle as XmlSchemaSequence;
+
+                        this.CompareParticleSequence(particle1, particle2);
+                    }
+                    else
+                    {
+                    }
+                }
+                else
+                {
+
+                }
             }
 
             sourcePath.Pop();
@@ -1022,42 +999,60 @@ namespace Xin.SOMDiff
             }
         }
 
-        private void CompareSingleRefGroup(XmlSchemaGroupRef group1, XmlSchemaGroupRef group2)
+        private void CompareSingleRefGroup(XmlSchemaGroupRef refGroup1, XmlSchemaGroupRef refGroup2)
         {
-            if (group1 == null || group2 == null)
+            if (refGroup1 == null || refGroup2 == null)
             {
                 return;
             }
 
             ChangeTypes changeType = ChangeTypes.None;
 
-            sourcePath.Push(string.Format("{0}:{1}", group1.RefName.Namespace, group1.RefName.Name));
-            changePath.Push(string.Format("{0}:{1}", group2.RefName.Namespace, group2.RefName.Name));
+            sourcePath.Push(string.Format("{0}:{1}", refGroup1.RefName.Namespace, refGroup1.RefName.Name));
+            changePath.Push(string.Format("{0}:{1}", refGroup2.RefName.Namespace, refGroup2.RefName.Name));
 
-            changeType = this.CompareFacetMaxOccurs(group1.MaxOccursString, group2.MaxOccursString);
-            this.AddMismatchedPair(sourcePath.ToArray(), group1, changePath.ToArray(), group2, changeType);
+            changeType = this.CompareFacetMaxOccurs(refGroup1.MaxOccursString, refGroup2.MaxOccursString);
+            this.AddMismatchedPair(sourcePath.ToArray(), refGroup1, changePath.ToArray(), refGroup2, changeType);
 
-            changeType = this.CompareFacetMinOccurs(group1.MinOccursString, group2.MinOccursString);
-            this.AddMismatchedPair(sourcePath.ToArray(), group1, changePath.ToArray(), group2, changeType);
+            changeType = this.CompareFacetMinOccurs(refGroup1.MinOccursString, refGroup2.MinOccursString);
+            this.AddMismatchedPair(sourcePath.ToArray(), refGroup1, changePath.ToArray(), refGroup2, changeType);
 
-            if (group1.Particle is XmlSchemaSequence)
+            XmlSchemaGroup group1 = null;
+            if (sourceSchemaGroups.ContainsKey(refGroup1.RefName.Namespace) && sourceSchemaGroups[refGroup1.RefName.Namespace].ContainsKey(refGroup1.RefName.Name))
             {
-                XmlSchemaSequence sequence1 = group1.Particle as XmlSchemaSequence;
+                group1 = sourceSchemaGroups[refGroup1.RefName.Namespace][refGroup1.RefName.Name];
+            }
 
-                if (group2.Particle is XmlSchemaSequence)
+            XmlSchemaGroup group2 = null;
+            if (changeSchemaGroups.ContainsKey(refGroup2.RefName.Namespace) && changeSchemaGroups[refGroup2.RefName.Namespace].ContainsKey(refGroup2.RefName.Name))
+            {
+                group2 = changeSchemaGroups[refGroup2.RefName.Namespace][refGroup2.RefName.Name];
+            }
+
+            this.CompareSingleGroup(group1, group2);
+
+
+            if (refGroup1.Particle != null || refGroup2.Particle != null)
+            {
+                if (refGroup1.Particle is XmlSchemaSequence)
                 {
-                    XmlSchemaSequence sequence2 = group2.Particle as XmlSchemaSequence;
+                    XmlSchemaSequence sequence1 = refGroup1.Particle as XmlSchemaSequence;
 
-                    this.CompareParticleSequence(sequence1, sequence2);
+                    if (refGroup2.Particle is XmlSchemaSequence)
+                    {
+                        XmlSchemaSequence sequence2 = refGroup2.Particle as XmlSchemaSequence;
+
+                        this.CompareParticleSequence(sequence1, sequence2);
+                    }
+                    else
+                    {
+
+                    }
                 }
                 else
                 {
 
                 }
-            }
-            else
-            {
-
             }
 
             sourcePath.Pop();
@@ -1882,7 +1877,7 @@ namespace Xin.SOMDiff
 
         #endregion
 
-        #region Helper Methods
+        #region Helper Methods for Comparison
 
         private void CompareXmlSchemaObjectCollection(XmlSchemaObjectCollection xmlSchemaObjectCollection1, XmlSchemaObjectCollection xmlSchemaObjectCollection2, bool flag = false)
         {
@@ -2061,13 +2056,18 @@ namespace Xin.SOMDiff
                 }
                 else
                 {
-                    foreach (XmlSchema schema in sourceSchemaSet.Schemas())
+                    //foreach (XmlSchema schema in sourceSchemaSet.Schemas())
+                    //{
+                    //    if (refName.Namespace == schema.TargetNamespace)
+                    //    {
+                    //        refSchema = schema;
+                    //        break;
+                    //    }
+                    //}
+
+                    if (sourceSchemaSet.ContainsKey(refName.Namespace))
                     {
-                        if (refName.Namespace == schema.TargetNamespace)
-                        {
-                            refSchema = schema;
-                            break;
-                        }
+                        refSchema = sourceSchemaSet[refName.Namespace];
                     }
                 }
 
@@ -2080,32 +2080,44 @@ namespace Xin.SOMDiff
                 }
                 else
                 {
-                    foreach (XmlSchema schema in changeSchemaSet.Schemas())
+                    //foreach (XmlSchema schema in changeSchemaSet.Schemas())
+                    //{
+                    //    if (refName.Namespace == schema.TargetNamespace)
+                    //    {
+                    //        refSchema = schema;
+                    //        break;
+                    //    }
+                    //}
+
+                    if (changeSchemaSet.ContainsKey(refName.Namespace))
                     {
-                        if (refName.Namespace == schema.TargetNamespace)
-                        {
-                            refSchema = schema;
-                            break;
-                        }
+                        refSchema = changeSchemaSet[refName.Namespace];
                     }
                 }
             }
 
-            foreach (XmlSchemaElement element in refSchema.Elements.Values)
+            if (refSchema != null && refSchema.Elements != null && refSchema.Elements.Count > 0)
             {
-                if (refName.Name == element.Name)
+                foreach (XmlSchemaElement element in refSchema.Elements.Values)
                 {
-                    //if (flag)
-                    //{
-                    //    sourcePath.Push(string.Format("{0}:{1}", refName.Namespace, refName.Name));
-                    //}
-                    //else
-                    //{
-                    //    changePath.Push(string.Format("{0}:{1}", refName.Namespace, refName.Name));
-                    //}
+                    if (refName.Name == element.Name)
+                    {
+                        //if (flag)
+                        //{
+                        //    sourcePath.Push(string.Format("{0}:{1}", refName.Namespace, refName.Name));
+                        //}
+                        //else
+                        //{
+                        //    changePath.Push(string.Format("{0}:{1}", refName.Namespace, refName.Name));
+                        //}
 
-                    return element;
+                        return element;
+                    }
                 }
+            }
+            else
+            {
+
             }
 
             return null;
@@ -2123,13 +2135,18 @@ namespace Xin.SOMDiff
                 }
                 else
                 {
-                    foreach (XmlSchema schema in sourceSchemaSet.Schemas())
+                    //foreach (XmlSchema schema in sourceSchemaSet.Schemas())
+                    //{
+                    //    if (refType.Namespace == schema.TargetNamespace)
+                    //    {
+                    //        refSchema = schema;
+                    //        break;
+                    //    }
+                    //}
+
+                    if (sourceSchemaSet.ContainsKey(refType.Namespace))
                     {
-                        if (refType.Namespace == schema.TargetNamespace)
-                        {
-                            refSchema = schema;
-                            break;
-                        }
+                        refSchema = sourceSchemaSet[refType.Namespace];
                     }
                 }
 
@@ -2142,13 +2159,18 @@ namespace Xin.SOMDiff
                 }
                 else
                 {
-                    foreach (XmlSchema schema in changeSchemaSet.Schemas())
+                    //foreach (XmlSchema schema in changeSchemaSet.Schemas())
+                    //{
+                    //    if (refType.Namespace == schema.TargetNamespace)
+                    //    {
+                    //        refSchema = schema;
+                    //        break;
+                    //    }
+                    //}
+
+                    if (changeSchemaSet.ContainsKey(refType.Namespace))
                     {
-                        if (refType.Namespace == schema.TargetNamespace)
-                        {
-                            refSchema = schema;
-                            break;
-                        }
+                        refSchema = changeSchemaSet[refType.Namespace];
                     }
                 }
             }
@@ -2444,6 +2466,65 @@ namespace Xin.SOMDiff
                 
             }
 
+        }
+
+        /// <summary>
+        /// Get an XmlSchema object from a specified XSD file.
+        /// </summary>
+        /// <param name="xsdfile"></param>
+        /// <param name="schemaTypeCollection"></param>
+        /// <returns></returns>
+        private XmlSchema GetXmlSchemaObject(string xsdfile, ref Dictionary<string, SchemaTypeCollection> schemaTypeCollection, ref Dictionary<string, XmlSchema> schemaDict, ref Dictionary<string, Dictionary<string, XmlSchemaGroup>> schemaGroups)
+        {
+            XmlTextReader sreader = new XmlTextReader(xsdfile);
+            XmlSchema xmlSchema = XmlSchema.Read(sreader, this.ValidationCallBack);
+
+            // Add the customer schema to a new XmlSchemaSet and compile it.
+            // Any schema validation warnings and errors encountered reading or 
+            // compiling the schema are handled by the ValidationEventHandler delegate.
+            XmlSchemaSet schemaSet = new XmlSchemaSet();
+            schemaSet.ValidationEventHandler += new ValidationEventHandler(this.ValidationCallBack);
+            schemaSet.Add(xmlSchema);
+            //schemaSet.Compile();
+
+            Uri uri = new Uri(xsdfile);
+            
+            foreach (XmlSchema schema in schemaSet.Schemas())
+            {
+                if (!schemaDict.ContainsKey(schema.TargetNamespace))
+                {
+                    schemaDict.Add(schema.TargetNamespace, schema);
+                }
+
+                // get all simpleType and complexType elements
+                foreach (XmlSchemaType schemaType in schema.SchemaTypes.Values)
+                {
+                    SchemaTypeCollection collection = new SchemaTypeCollection();
+                    collection.Add(schemaType);
+
+                    schemaTypeCollection.Add(string.Format("{0}:{1}", schemaType.QualifiedName.Namespace, schemaType.QualifiedName.Name), collection);
+                }
+
+                if (schema.Groups != null && schema.Groups.Count > 0)
+                {
+                    Dictionary<string, XmlSchemaGroup> groups = new Dictionary<string, XmlSchemaGroup>();
+
+                    foreach (XmlSchemaGroup group in schema.Groups.Values)
+                    {
+                        groups.Add(group.Name, group);
+                    }
+
+                    schemaGroups.Add(schema.TargetNamespace, groups);
+                }
+
+                // get the schema to check
+                if (schema.SourceUri == uri.ToString())
+                {
+                    xmlSchema = schema;
+                }
+            }
+
+            return xmlSchema;
         }
 
         #endregion

@@ -67,6 +67,30 @@ namespace ConsoleApplication1
 
 
 
+            
+
+
+            #region Step1: SOMDiff invocation
+
+            SOMDiff sdiff = new SOMDiff();
+
+            // Get the dependency graph
+            string sourcepath = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Request";
+            string changepath = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Request";
+
+            sdiff.ParseSchemaDependency(sourcepath);
+            sdiff.ParseSchemaDependency(changepath);
+
+            // Diff a specific pair of XSD files
+            string sourefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Request\Calendar.xsd";
+            string changefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Request\cal.xsd";
+            sdiff.DiffSchemas(sourefile, changefile);
+
+            Console.Read();
+
+            #endregion
+
+
             #region Step2: Launch xsd.exe to generate proxy class automatically
 
             string directory = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Response";
@@ -107,28 +131,6 @@ namespace ConsoleApplication1
             Console.Read();
 
             #endregion
-
-
-            #region Step1: SOMDiff invocation
-
-            string sourefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Request\ItemOperations.xsd";
-            string changefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Request\io.xsd";
-
-            string sourcepath = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Request";
-
-            SOMDiff sdiff = new SOMDiff(sourefile, changefile);
-
-            sdiff.ParseSchemaDependency(sourcepath);
-            sdiff.DisplaySchemaDependencyGraph();
-
-            sdiff.DiffSchemas();
-
-            Console.Read();
-
-            #endregion
-
-            
-            
 
             
 
