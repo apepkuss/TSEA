@@ -20,9 +20,6 @@ namespace Xin.SOMDiff
         private static XmlSchema sourceXmlSchema = new XmlSchema();
         private static XmlSchema changeXmlSchema = new XmlSchema();
 
-        //private static XmlSchemaSet sourceSchemaSet = new XmlSchemaSet();
-        //private static XmlSchemaSet changeSchemaSet = new XmlSchemaSet();
-
         private static Dictionary<string, XmlSchema> sourceSchemaSet = new Dictionary<string, XmlSchema>();
         private static Dictionary<string, XmlSchema> changeSchemaSet = new Dictionary<string, XmlSchema>();
 
@@ -40,6 +37,7 @@ namespace Xin.SOMDiff
         private static Dictionary<string, Dictionary<string, XmlSchemaGroup>> changeSchemaGroups = new Dictionary<string, Dictionary<string, XmlSchemaGroup>>();
 
         private static Dictionary<string, string> comparedGroups = new Dictionary<string, string>();
+
         #endregion
 
         #region Constructors
@@ -503,10 +501,10 @@ namespace Xin.SOMDiff
 
             #region Code for debug
 
-            if (element1.Name == "Properties")
-            {
+            //if (element1.Name == "Properties")
+            //{
 
-            }
+            //}
 
             //if (element1.RefName.Name == "Supported")
             //{
@@ -1323,8 +1321,6 @@ namespace Xin.SOMDiff
             {
             }
 
-
-
             //sourcePath.Pop();
             //changePath.Pop();
         }
@@ -1349,19 +1345,6 @@ namespace Xin.SOMDiff
 
             this.CompareXmlSchemaObjectCollection(choice1.Items, choice2.Items);
 
-
-            //if (choice1.Items.Count == choice2.Items.Count)
-            //{
-            //    for (int i = 0; i < choice1.Items.Count; i++)
-            //    {
-            //        this.CompareXmlSchemaObject(choice1.Items[i], choice2.Items[i]);
-            //    }
-            //}
-            //else
-            //{
-            //    this.CompareXmlSchemaObjectCollection(choice1.Items, choice2.Items);
-            //}
-
             //sourcePath.Pop();
             //changePath.Pop();
         }
@@ -1381,11 +1364,6 @@ namespace Xin.SOMDiff
 
             if (all1.Items.Count == all2.Items.Count)
             {
-                //for (int i = 0; i < all1.Items.Count; i++)
-                //{
-                //    this.CompareXmlSchemaObject(all1.Items[i], all2.Items[i]);
-                //}
-
                 this.CompareXmlSchemaObjectCollection(all1.Items, all2.Items);
             } 
             else
@@ -1458,24 +1436,6 @@ namespace Xin.SOMDiff
         {
             sourcePath.Push("Restriction");
             changePath.Push("Restriction");
-
-            ChangeTypes changeType = ChangeTypes.None;
-
-            //if (!restriction1.BaseTypeName.IsEmpty && !restriction2.BaseTypeName.IsEmpty)
-            //{
-            //    changeType = this.CompareQualifiedName(restriction1.BaseTypeName, restriction2.BaseTypeName);
-
-            //    if (changeType != ChangeTypes.None)
-            //    {
-
-            //    }
-
-            //    this.AddMismatchedPair(sourcePath.ToArray(), restriction1, changePath.ToArray(), restriction2, changeType);
-            //}
-            //else if (!restriction1.BaseTypeName.IsEmpty || !restriction2.BaseTypeName.IsEmpty)
-            //{
-            //    this.AddMismatchedPair(sourcePath.ToArray(), restriction1, changePath.ToArray(), restriction2, ChangeTypes.TypeChange_Update);
-            //}
 
             if (restriction1.Facets.Count > 0 && restriction2.Facets.Count > 0)
             {
@@ -1633,7 +1593,8 @@ namespace Xin.SOMDiff
                 }
             }
 
-
+            #region Unused code
+            
             //List<XmlSchemaFacet> addedFacets = new List<XmlSchemaFacet>();
             //List<XmlSchemaFacet> removedFacets = new List<XmlSchemaFacet>();
 
@@ -1688,6 +1649,8 @@ namespace Xin.SOMDiff
 
             //    }
             //}
+
+            #endregion
         }
 
         #endregion
@@ -2056,15 +2019,6 @@ namespace Xin.SOMDiff
                 }
                 else
                 {
-                    //foreach (XmlSchema schema in sourceSchemaSet.Schemas())
-                    //{
-                    //    if (refName.Namespace == schema.TargetNamespace)
-                    //    {
-                    //        refSchema = schema;
-                    //        break;
-                    //    }
-                    //}
-
                     if (sourceSchemaSet.ContainsKey(refName.Namespace))
                     {
                         refSchema = sourceSchemaSet[refName.Namespace];
@@ -2080,15 +2034,6 @@ namespace Xin.SOMDiff
                 }
                 else
                 {
-                    //foreach (XmlSchema schema in changeSchemaSet.Schemas())
-                    //{
-                    //    if (refName.Namespace == schema.TargetNamespace)
-                    //    {
-                    //        refSchema = schema;
-                    //        break;
-                    //    }
-                    //}
-
                     if (changeSchemaSet.ContainsKey(refName.Namespace))
                     {
                         refSchema = changeSchemaSet[refName.Namespace];
@@ -2102,15 +2047,6 @@ namespace Xin.SOMDiff
                 {
                     if (refName.Name == element.Name)
                     {
-                        //if (flag)
-                        //{
-                        //    sourcePath.Push(string.Format("{0}:{1}", refName.Namespace, refName.Name));
-                        //}
-                        //else
-                        //{
-                        //    changePath.Push(string.Format("{0}:{1}", refName.Namespace, refName.Name));
-                        //}
-
                         return element;
                     }
                 }
@@ -2135,15 +2071,6 @@ namespace Xin.SOMDiff
                 }
                 else
                 {
-                    //foreach (XmlSchema schema in sourceSchemaSet.Schemas())
-                    //{
-                    //    if (refType.Namespace == schema.TargetNamespace)
-                    //    {
-                    //        refSchema = schema;
-                    //        break;
-                    //    }
-                    //}
-
                     if (sourceSchemaSet.ContainsKey(refType.Namespace))
                     {
                         refSchema = sourceSchemaSet[refType.Namespace];
@@ -2159,15 +2086,6 @@ namespace Xin.SOMDiff
                 }
                 else
                 {
-                    //foreach (XmlSchema schema in changeSchemaSet.Schemas())
-                    //{
-                    //    if (refType.Namespace == schema.TargetNamespace)
-                    //    {
-                    //        refSchema = schema;
-                    //        break;
-                    //    }
-                    //}
-
                     if (changeSchemaSet.ContainsKey(refType.Namespace))
                     {
                         refSchema = changeSchemaSet[refType.Namespace];
@@ -2177,7 +2095,6 @@ namespace Xin.SOMDiff
 
             foreach (XmlSchemaType type in refSchema.SchemaTypes.Values)
             {
-
                 if (refType.Name == type.Name)
                 {
                     return type;
@@ -2276,24 +2193,6 @@ namespace Xin.SOMDiff
         {
             ChangeTypes changeType = ChangeTypes.None;
 
-            //if (sourceFacet != null && changeFacet != null)
-            //{
-            //    // TODO
-            //}
-            //else if (sourceFacet != null)
-            //{
-            //    // TODO
-            //}
-            //else if (changeFacet != null)
-            //{
-
-            //}
-            //else
-            //{
-            //    return changeType;
-            //}
-
-
             if (facetType == FacetTypes.EnumerationFacet)
             {
                 if (sourceFacet != null && changeFacet != null)
@@ -2313,7 +2212,7 @@ namespace Xin.SOMDiff
                     sourcePath.Push("enumeration");
 
 
-
+                    // TODO
 
 
                     sourcePath.Pop();
@@ -2323,7 +2222,7 @@ namespace Xin.SOMDiff
                     changePath.Push("enumeration");
 
 
-
+                    // TODO
 
 
                     changePath.Pop();
@@ -2458,8 +2357,6 @@ namespace Xin.SOMDiff
         private void ParseElement(XmlSchemaObject node)
         {
             XmlSchemaElement element = node as XmlSchemaElement;
-
-            int i = 0;
 
             if (element.RefName != null)
             {

@@ -1,0 +1,13 @@
+
+REQUIRED: 
+
+1. P0: private string GetXPath(string[] rawPath)
+2. P0: UI
+
+
+
+
+OPTIONAL:
+
+1. private void ParseChoiceNode(XmlSchemaObject node)
+2. private void ParseElement(XmlSchemaObject node)
