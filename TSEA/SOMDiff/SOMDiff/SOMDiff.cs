@@ -56,6 +56,14 @@ namespace Xin.SOMDiff
 
         public string ChangeFile { get; set; }
 
+        public static List<MismatchedPair> Result
+        {
+            get
+            {
+                return result;
+            }
+        }
+
         #endregion
 
         #region Public Methods

@@ -86,6 +86,8 @@ namespace ConsoleApplication1
             string changefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Request\cal.xsd";
             sdiff.DiffSchemas(sourefile, changefile);
 
+            List<MismatchedPair> result = SOMDiff.Result;
+
             Console.Read();
 
             #endregion
