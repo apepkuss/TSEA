@@ -75,15 +75,15 @@ namespace ConsoleApplication1
             SOMDiff sdiff = new SOMDiff();
 
             // Get the dependency graph
-            string sourcepath = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Request";
-            string changepath = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Request";
+            string sourcepath = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Response";
+            string changepath = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Response";
 
             sdiff.ParseSchemaDependency(sourcepath);
             sdiff.ParseSchemaDependency(changepath);
 
             // Diff a specific pair of XSD files
-            string sourefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Request\Search.xsd";
-            string changefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Request\srch.xsd";
+            string sourefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Response\ProvisionResponse.xsd";
+            string changefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Response\provres.xsd";
             sdiff.DiffSchemas(sourefile, changefile);
 
             List<MismatchedPair> result = SOMDiff.Result;

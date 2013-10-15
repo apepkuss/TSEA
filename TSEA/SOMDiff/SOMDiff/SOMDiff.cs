@@ -38,6 +38,9 @@ namespace Xin.SOMDiff
 
         private static Dictionary<string, string> comparedGroups = new Dictionary<string, string>();
 
+        private static Stack<string> originalTypeStack = new Stack<string>();
+        private static Stack<string> changedTypeStack = new Stack<string>();
+
         #endregion
 
         #region Constructors
@@ -509,10 +512,10 @@ namespace Xin.SOMDiff
 
             #region Code for debug
 
-            //if (element1.Name == "Properties")
-            //{
+            if (element1.Name == "Provision")
+            {
 
-            //}
+            }
 
             //if (element1.RefName.Name == "Supported")
             //{
@@ -647,6 +650,10 @@ namespace Xin.SOMDiff
                 else if (!string.IsNullOrEmpty(element1.RefName.Name) || !string.IsNullOrEmpty(element2.RefName.Name))
                 {
                     this.CompareRefElement(element1, element2);
+                }
+                else
+                {
+
                 }
             }
 
@@ -1071,7 +1078,19 @@ namespace Xin.SOMDiff
 
         private void CompareSchemaType(XmlSchemaType schemaType1, XmlSchemaType schemaType2)
         {
-            if (schemaType1 == null && schemaType2 == null)
+            if (!originalTypeStack.Contains(schemaType1.Name) && !changedTypeStack.Contains(schemaType2.Name))
+            {
+                if (!string.IsNullOrEmpty(schemaType1.Name))
+                {
+                    originalTypeStack.Push(schemaType1.Name);
+                }
+
+                if (!string.IsNullOrEmpty(schemaType2.Name))
+                {
+                    changedTypeStack.Push(schemaType2.Name);
+                }
+            }
+            else
             {
                 return;
             }
@@ -1115,6 +1134,16 @@ namespace Xin.SOMDiff
             else
             {
 
+            }
+
+            if (originalTypeStack.Count > 0)
+            {
+                originalTypeStack.Pop();
+            }
+
+            if (changedTypeStack.Count > 0)
+            {
+                changedTypeStack.Pop();
             }
         }
 
@@ -1269,8 +1298,6 @@ namespace Xin.SOMDiff
                     {
 
                     }
-
-
                 }
                 else
                 {
@@ -1934,7 +1961,6 @@ namespace Xin.SOMDiff
                     {
 
                     }
-
                 }
                 else
                 {
