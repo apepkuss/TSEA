@@ -82,8 +82,8 @@ namespace ConsoleApplication1
             sdiff.ParseSchemaDependency(changepath);
 
             // Diff a specific pair of XSD files
-            string sourefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Request\Calendar.xsd";
-            string changefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Request\cal.xsd";
+            string sourefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Request\Search.xsd";
+            string changefile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Request\srch.xsd";
             sdiff.DiffSchemas(sourefile, changefile);
 
             List<MismatchedPair> result = SOMDiff.Result;
