@@ -903,6 +903,14 @@ namespace Xin.SOMDiff
 
         private void CompareSingleGroup(XmlSchemaGroup group1, XmlSchemaGroup group2, bool ordered = false)
         {
+            //////////////////////////////////////////////////////////////////////////
+            // TODO: HERE IS A MAJOR BUG TO BE FIXED
+            //////////////////////////////////////////////////////////////////////////
+            if (group1 == null || group2 == null)
+            {
+                return;
+            }
+
             // Check if the pair of groups have been compared.
             if (comparedGroups.ContainsKey(group1.Name) && comparedGroups[group1.Name] == group2.Name)
             {
@@ -1062,12 +1070,12 @@ namespace Xin.SOMDiff
                 if (schemaType2 is XmlSchemaSimpleType)
                 {
                     XmlSchemaSimpleType simple2 = schemaType2 as XmlSchemaSimpleType;
-                    this.AddMismatchedPair(sourcePath.ToArray(), null, changePath.ToArray(), simple2, ChangeTypes.TypeChange_Add);
+                    this.AddMismatchedPair(null, null, changePath.ToArray(), simple2, ChangeTypes.TypeChange_Add);
                 }
                 else if (schemaType2 is XmlSchemaComplexType)
                 {
                     XmlSchemaComplexType simple2 = schemaType2 as XmlSchemaComplexType;
-                    this.AddMismatchedPair(sourcePath.ToArray(), null, changePath.ToArray(), simple2, ChangeTypes.TypeChange_Add);
+                    this.AddMismatchedPair(null, null, changePath.ToArray(), simple2, ChangeTypes.TypeChange_Add);
                 }
 
                 return;
@@ -1077,12 +1085,12 @@ namespace Xin.SOMDiff
                 if (schemaType1 is XmlSchemaSimpleType)
                 {
                     XmlSchemaSimpleType simple1 = schemaType1 as XmlSchemaSimpleType;
-                    this.AddMismatchedPair(sourcePath.ToArray(), simple1, changePath.ToArray(), null, ChangeTypes.TypeChange_Remove);
+                    this.AddMismatchedPair(sourcePath.ToArray(), simple1, null, null, ChangeTypes.TypeChange_Remove);
                 }
                 else if (schemaType1 is XmlSchemaComplexType)
                 {
                     XmlSchemaComplexType simple1 = schemaType1 as XmlSchemaComplexType;
-                    this.AddMismatchedPair(sourcePath.ToArray(), simple1, changePath.ToArray(), null, ChangeTypes.TypeChange_Remove);
+                    this.AddMismatchedPair(sourcePath.ToArray(), simple1, null, null, ChangeTypes.TypeChange_Remove);
                 }
 
                 return;
@@ -2160,6 +2168,11 @@ namespace Xin.SOMDiff
                 }
             }
 
+            if (refSchema == null || refSchema.SchemaTypes == null)
+            {
+                return null;
+            }
+
             foreach (XmlSchemaType type in refSchema.SchemaTypes.Values)
             {
                 if (refType.Name == type.Name)
@@ -2191,9 +2204,12 @@ namespace Xin.SOMDiff
             {
                 MismatchedPair pair = new MismatchedPair();
 
-                pair.SourcePath = this.GetXPath(rawPath1);
+                if(rawPath1 != null)
+                    pair.SourcePath = this.GetXPath(rawPath1);
                 pair.SourceObject = object1;
-                pair.ChangePath = this.GetXPath(rawPath2);
+
+                if(rawPath2 != null)
+                    pair.ChangePath = this.GetXPath(rawPath2);
                 pair.ChangeObject = object2;
 
                 pair.ChangeType = changeType;
