@@ -2436,6 +2436,7 @@ namespace Xin.SOMDiff
                     schemaTypeCollection.Add(string.Format("{0}:{1}", schemaType.QualifiedName.Namespace, schemaType.QualifiedName.Name), collection);
                 }
 
+                // get all groups
                 if (schema.Groups != null && schema.Groups.Count > 0)
                 {
                     Dictionary<string, XmlSchemaGroup> groups = new Dictionary<string, XmlSchemaGroup>();
