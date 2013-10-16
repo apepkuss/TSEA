@@ -512,10 +512,10 @@ namespace Xin.SOMDiff
 
             #region Code for debug
 
-            if (element1.Name == "Provision")
-            {
+            //if (element1.Name == "Provision")
+            //{
 
-            }
+            //}
 
             //if (element1.RefName.Name == "Supported")
             //{
@@ -1078,16 +1078,39 @@ namespace Xin.SOMDiff
 
         private void CompareSchemaType(XmlSchemaType schemaType1, XmlSchemaType schemaType2)
         {
-            if (!originalTypeStack.Contains(schemaType1.Name) && !changedTypeStack.Contains(schemaType2.Name))
+            if (!string.IsNullOrEmpty(schemaType1.Name) && !string.IsNullOrEmpty(schemaType2.Name))
             {
-                if (!string.IsNullOrEmpty(schemaType1.Name))
+                if (!originalTypeStack.Contains(schemaType1.Name) && !changedTypeStack.Contains(schemaType2.Name))
                 {
                     originalTypeStack.Push(schemaType1.Name);
+                    changedTypeStack.Push(schemaType2.Name);
                 }
-
-                if (!string.IsNullOrEmpty(schemaType2.Name))
+                else
+                {
+                    return;
+                }
+                
+            }
+            else if (string.IsNullOrEmpty(schemaType1.Name))
+            {
+                if (!changedTypeStack.Contains(schemaType2.Name))
                 {
                     changedTypeStack.Push(schemaType2.Name);
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else if (string.IsNullOrEmpty(schemaType2.Name))
+            {
+                if (!changedTypeStack.Contains(schemaType1.Name))
+                {
+                    changedTypeStack.Push(schemaType1.Name);
+                }
+                else
+                {
+                    return;
                 }
             }
             else
@@ -1362,8 +1385,8 @@ namespace Xin.SOMDiff
 
         private void CompareParticleChoice(XmlSchemaChoice choice1, XmlSchemaChoice choice2)
         {
-            //sourcePath.Push("choice");
-            //changePath.Push("choice");
+            sourcePath.Push("choice");
+            changePath.Push("choice");
 
             if (choice1 == null || choice2 == null)
             {
@@ -1380,8 +1403,8 @@ namespace Xin.SOMDiff
 
             this.CompareXmlSchemaObjectCollection(choice1.Items, choice2.Items);
 
-            //sourcePath.Pop();
-            //changePath.Pop();
+            sourcePath.Pop();
+            changePath.Pop();
         }
 
         private void CompareParticleAll(XmlSchemaAll all1, XmlSchemaAll all2)
