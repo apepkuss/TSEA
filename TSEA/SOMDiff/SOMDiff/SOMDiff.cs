@@ -512,7 +512,7 @@ namespace Xin.SOMDiff
 
             #region Code for debug
 
-            //if (element1.Name == "Provision")
+            //if (element1.Name == "Sync")
             //{
 
             //}
@@ -899,31 +899,6 @@ namespace Xin.SOMDiff
             {
                 // TODO
             }
-
-
-            //bool bigger = source.Count >= change.Count ? true : false;
-
-            //XmlSchemaObjectTable large = null;
-            //XmlSchemaObjectTable small = null;
-
-            //if (bigger)
-            //{
-            //    large = source;
-            //    small = change;
-            //}
-            //else
-            //{
-            //    large = change;
-            //    small = source;
-            //}
-
-            //foreach (XmlSchemaGroup group1 in large.Values)
-            //{
-            //    foreach (XmlSchemaGroup group2 in small.Values)
-            //    {
-            //        this.CompareSingleGroup(group1, group2);
-            //    }
-            //}
         }
 
         private void CompareSingleGroup(XmlSchemaGroup group1, XmlSchemaGroup group2, bool ordered = false)
@@ -1078,6 +1053,41 @@ namespace Xin.SOMDiff
 
         private void CompareSchemaType(XmlSchemaType schemaType1, XmlSchemaType schemaType2)
         {
+            if (schemaType1 == null && schemaType2 == null)
+            {
+                return;
+            }
+            else if (schemaType1 == null)
+            {
+                if (schemaType2 is XmlSchemaSimpleType)
+                {
+                    XmlSchemaSimpleType simple2 = schemaType2 as XmlSchemaSimpleType;
+                    this.AddMismatchedPair(sourcePath.ToArray(), null, changePath.ToArray(), simple2, ChangeTypes.TypeChange_Add);
+                }
+                else if (schemaType2 is XmlSchemaComplexType)
+                {
+                    XmlSchemaComplexType simple2 = schemaType2 as XmlSchemaComplexType;
+                    this.AddMismatchedPair(sourcePath.ToArray(), null, changePath.ToArray(), simple2, ChangeTypes.TypeChange_Add);
+                }
+
+                return;
+            }
+            else if (schemaType2 == null)
+            {
+                if (schemaType1 is XmlSchemaSimpleType)
+                {
+                    XmlSchemaSimpleType simple1 = schemaType1 as XmlSchemaSimpleType;
+                    this.AddMismatchedPair(sourcePath.ToArray(), simple1, changePath.ToArray(), null, ChangeTypes.TypeChange_Remove);
+                }
+                else if (schemaType1 is XmlSchemaComplexType)
+                {
+                    XmlSchemaComplexType simple1 = schemaType1 as XmlSchemaComplexType;
+                    this.AddMismatchedPair(sourcePath.ToArray(), simple1, changePath.ToArray(), null, ChangeTypes.TypeChange_Remove);
+                }
+
+                return;
+            }
+
             if (!string.IsNullOrEmpty(schemaType1.Name) && !string.IsNullOrEmpty(schemaType2.Name))
             {
                 if (!originalTypeStack.Contains(schemaType1.Name) && !changedTypeStack.Contains(schemaType2.Name))
@@ -1089,7 +1099,7 @@ namespace Xin.SOMDiff
                 {
                     return;
                 }
-                
+
             }
             else if (string.IsNullOrEmpty(schemaType1.Name))
             {
