@@ -165,6 +165,43 @@ namespace Sam.XmlDiffPath
 		}
 
         /// <summary>
+        /// Compare two versions of XML documents
+        /// </summary>
+        /// <param name="sourceFile">The original XML document.</param>
+        /// <param name="changedFile">The changed XML document.</param>
+        /// <param name="writer">XmlWriter object for returning the list of changes (diffgram).</param>
+        /// <returns>If the documents are identical, return true; otherwise, false.</returns>
+        public bool Compare(string sourceFile, string changedFile, XmlWriter writer)
+        {
+            if (sourceFile == null)
+                throw new ArgumentNullException("sourceFile");
+            if (changedFile == null)
+                throw new ArgumentNullException("changedFile");
+
+            XmlReader sourceReader = null;
+            XmlReader targetReader = null;
+
+            try
+            {
+                this.OpenDocuments(sourceFile, changedFile, ref sourceReader, ref targetReader);
+                return this.Compare(sourceReader, targetReader, writer);
+            }
+            finally
+            {
+                if (sourceReader != null)
+                {
+                    sourceReader.Close();
+                    sourceReader = null;
+                }
+                if (targetReader != null)
+                {
+                    targetReader.Close();
+                    targetReader = null;
+                }
+            }
+        }
+
+        /// <summary>
         ///    Compares two XML documents or fragments.
         ///    If the diffgramWriter parameter is not null it will contain the list of changes 
         ///    between the two XML documents/fragments (diffgram).
@@ -198,7 +235,7 @@ namespace Sam.XmlDiffPath
                 }
 
                 // compare
-                return Diff(diffgramWriter);
+                return this.Diff(diffgramWriter);
             }
             finally
             {
@@ -358,6 +395,7 @@ namespace Sam.XmlDiffPath
 		private void OpenDocuments(String sourceFile, String changedFile, ref XmlReader sourceReader, ref XmlReader changedReader)
 		{
 			XmlTextReader tr = new XmlTextReader(sourceFile);
+            // don't resolver any external DTD references.
 			tr.XmlResolver = null;
 			sourceReader = tr;
 

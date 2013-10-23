@@ -24,7 +24,6 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             #region Reference XmlDiffPatch.dll first if you want to run the following commented code.
-            bool fragments = false;
             string sourceFile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Request\ItemOperations.xsd";
             string changedFile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Request\io.xsd";
             string diffgramFileName = @"C:\Users\v-liuxin\Desktop\test\EmailDiff" + DateTime.Now.ToLongTimeString().Replace(":", "") + ".xml";
@@ -33,16 +32,15 @@ namespace ConsoleApplication1
             XmlWriter diffgramWriter = new XmlTextWriter(diffgramFileName, Encoding.Unicode);
 
             // create XmlDiff object & set the desired options and algorithm
-            XmlDiffAlgorithm algorithm = XmlDiffAlgorithm.Precise;
             XmlDiffOptions options = XmlDiffOptions.None;
             XmlDiff xmlDiff = new XmlDiff(options);
-            xmlDiff.Algorithm = algorithm;
+            xmlDiff.Algorithm = XmlDiffAlgorithm.Precise;
 
             // Compare the XML files
-            bool bEqual = false;
+            bool areEqual = false;
             try
             {
-                bEqual = xmlDiff.Compare(sourceFile, changedFile, fragments, diffgramWriter);
+                areEqual = xmlDiff.Compare(sourceFile, changedFile, diffgramWriter);
             }
             catch (Exception e)
             {
@@ -50,7 +48,7 @@ namespace ConsoleApplication1
                 return;
             }
 
-            if (bEqual)
+            if (areEqual)
             {
                 Console.WriteLine("Files are identical.");
             }
