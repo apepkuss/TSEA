@@ -62,6 +62,8 @@ namespace Sam.XmlDiffPath
             }
         }
 
+        public XmlDiffAlgorithm Algorithm { get { return this.algorithm; } set { this.algorithm = value; } }
+
         /// <summary>
         ///    If true, the order of child nodes of each element will be ignored when comparing 
         ///    the documents/fragments.

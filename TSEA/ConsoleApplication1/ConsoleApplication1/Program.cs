@@ -10,12 +10,13 @@ namespace ConsoleApplication1
     using System.IO;
     using System.Xml;
     using System.Xml.Schema;
-    using Sam.XmlDiff;
     using System.Collections;
     using System.Diagnostics;
 
     using Xin.SOMDiff;
+    using Sam.XmlDiffPath;
     //using Xin.XsdToClass;
+    //using Sam.XmlDiff;
 
     class Program
     {
@@ -23,50 +24,50 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             #region Reference XmlDiffPatch.dll first if you want to run the following commented code.
-            //bool fragments = false;
-            //string sourceFile = @"C:\Users\v-liuxin\Desktop\test\Email-old.xsd";
-            //string changedFile = @"C:\Users\v-liuxin\Desktop\test\email-new.xsd";
-            //string diffgramFileName = @"C:\Users\v-liuxin\Desktop\test\EmailDiff.xml";
+            bool fragments = false;
+            string sourceFile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Request\ItemOperations.xsd";
+            string changedFile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Request\io.xsd";
+            string diffgramFileName = @"C:\Users\v-liuxin\Desktop\test\EmailDiff" + DateTime.Now.ToLongTimeString().Replace(":", "") + ".xml";
 
-            //// create XmlTextWriter where the diffgram will be saved
-            //XmlWriter diffgramWriter = new XmlTextWriter(diffgramFileName, Encoding.Unicode);
+            // create XmlTextWriter where the diffgram will be saved
+            XmlWriter diffgramWriter = new XmlTextWriter(diffgramFileName, Encoding.Unicode);
 
-            //// create XmlDiff object & set the desired options and algorithm
-            //XmlDiffAlgorithm algorithm = XmlDiffAlgorithm.Precise;
-            //XmlDiffOptions options = XmlDiffOptions.None;
-            //XmlDiff xmlDiff = new XmlDiff(options);
-            //xmlDiff.Algorithm = algorithm;
+            // create XmlDiff object & set the desired options and algorithm
+            XmlDiffAlgorithm algorithm = XmlDiffAlgorithm.Precise;
+            XmlDiffOptions options = XmlDiffOptions.None;
+            XmlDiff xmlDiff = new XmlDiff(options);
+            xmlDiff.Algorithm = algorithm;
 
-            //// Compare the XML files
-            //bool bEqual = false;
-            //try
-            //{
-            //    bEqual = xmlDiff.Compare(sourceFile, changedFile, fragments, diffgramWriter);
-            //}
-            //catch (Exception e)
-            //{
-            //    Console.WriteLine("Error:" + e.Message);
-            //    return;
-            //}
+            // Compare the XML files
+            bool bEqual = false;
+            try
+            {
+                bEqual = xmlDiff.Compare(sourceFile, changedFile, fragments, diffgramWriter);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error:" + e.Message);
+                return;
+            }
 
-            //if (bEqual)
-            //{
-            //    Console.WriteLine("Files are identical.");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Files are different.");
-            //}
+            if (bEqual)
+            {
+                Console.WriteLine("Files are identical.");
+            }
+            else
+            {
+                Console.WriteLine("Files are different.");
+            }
 
-            //if (diffgramWriter != null)
-            //{
-            //    diffgramWriter.Close();
-            //    Console.WriteLine("XDL diffgram has been saved to " + diffgramFileName + ".");
-            //}
+            if (diffgramWriter != null)
+            {
+                diffgramWriter.Close();
+                Console.WriteLine("XDL diffgram has been saved to " + diffgramFileName + ".");
+            }
             #endregion
 
-
-
+            Console.Read();
+            
             
 
 
@@ -231,21 +232,21 @@ namespace ConsoleApplication1
 
             #endregion
 
-
             #region XmlDiff invocation
 
-            string soureFile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\SettingsResponse.xsd";
-            string changedFile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\setres.xsd";
-            
-            XmlDiff diff = new XmlDiff(soureFile, changedFile);
+            //string soureFile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\OriginalXSD\Request\AirSync.xsd";
+            //string changedFile = @"D:\8-GitHub\TSEA\TSEA\ConsoleApplication1\ConsoleApplication1\Resources\ChangedXSD\Request\as.xsd";
 
-            diff.Parse();
+            //XmlDiff diff = new XmlDiff(soureFile, changedFile);
 
-            diff.Diff();
+            //diff.Parse();
 
-            Console.Read();
+            //diff.Diff();
+
+            //Console.Read();
 
             #endregion
+            
 
         }
 

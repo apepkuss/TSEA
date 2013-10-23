@@ -381,7 +381,7 @@ namespace Sam.XmlDiff
 
         private void ParseTypeAttributes(ref XmlDocument xmlDoc, string xsdFile)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         /// <summary>
